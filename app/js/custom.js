@@ -1,6 +1,6 @@
 $(function () {
 
-    let mobileMenu = reRenderMobileMneu($('.mobile-menu'));
+    // let mobileMenu = reRenderMobileMneu($('.mobile-menu'));
 
     function reRenderMobileMneu(mobileMenu) {
         let mobileMenuVal = mobileMenu[0].innerHTML;
@@ -27,8 +27,36 @@ $(function () {
         }
     }
 
-    $('.mobile-menu-btn,.close-menu-btn').on('click', function() {
-        toggleMenu(mobileMenu, this);
-    });
+    window.submenu = {
+        menu: null,
+        subMenus: null,
+        init: () => {
+          let e = window.submenu;
+          e.menu = $('.has-submenu');
+          if (e.menu.length <= 0) {
+              return;
+          }
+          e.subMenus = $('.has-submenu .submenu');
+
+          e.menu.unbind('mouseover');
+          e.menu.unbind('mouseleave');
+          e.subMenus.unbind('mouseleave');
+
+          e.menu.on('mouseover', function () {
+              let submenu = $(this).find('.submenu');
+              submenu.show();
+          });
+          e.menu.on('mouseleave', function () {
+              let submenu = $(this).find('.submenu');
+              if (submenu.css('display') == "block") {
+                  submenu.hide();
+              }
+          });
+          e.subMenus.on('mouseleave', () => {
+              $(this).hide();
+          });
+        }
+    };
+    window.submenu.init();
 
 });

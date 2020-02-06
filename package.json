@@ -9,6 +9,7 @@
 	"author": "WebDesign Master",
 	"license": "ISC",
 	"devDependencies": {
+		"@mdi/font": "^4.9.95",
 		"bootstrap": "^4.4.1",
 		"browser-sync": "^2.26.7",
 		"del": "^5.1.0",
@@ -33,8 +34,8 @@
 	},
 	"browserslist": [
 		"last 10 versions",
-		"cover 99.5%", 
-		"unreleased versions", 
+		"cover 99.5%",
+		"unreleased versions",
 		"last 2 years",
 		"ie 6-8",
 		"Firefox > 20",

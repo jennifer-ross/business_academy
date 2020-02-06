@@ -61,6 +61,8 @@ gulp.task('styles', function() {
 	}))
 	.pipe(cleancss( {level: { 1: { specialComments: 0 } } })) // Optional. Comment out when debugging
 	.pipe(gulp.dest('app/css'))
+	.pipe(concat('template_styles.css'))
+	.pipe(gulp.dest('app/css'))
 	// .pipe(gulp.dest(wp_css_outDir))
 	.pipe(browserSync.stream())
 });

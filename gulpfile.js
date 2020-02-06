@@ -53,7 +53,7 @@ gulp.task('build', async function () {
 gulp.task('styles', function() {
 	return gulp.src('app/sass/**/*.sass')
 	.pipe(sass({ outputStyle: 'expanded' }))
-	.pipe(concat('styles.min.css'))
+	.pipe(concat('styles.css'))
 	.pipe(autoprefixer({
 		flexbox: true,
 		grid: 'autoplace',
@@ -133,7 +133,7 @@ gulp.task('rsync', function() {
 
 gulp.task('watch', function() {
 	gulp.watch('app/sass/**/*.sass', gulp.parallel('styles'));
-	gulp.watch(['libs/**/*.js', 'app/js/_custom.js'], gulp.parallel('scripts'));
+	// gulp.watch(['libs/**/*.js', 'app/js/_custom.js'], gulp.parallel('scripts'));
 	gulp.watch('app/*.html', gulp.parallel('code'));
 	// gulp.watch(wp_Dir+'**/*.php', gulp.parallel('reload'));
 	// gulp.watch(wp_Dir+'**/*.js', gulp.parallel('reload'));

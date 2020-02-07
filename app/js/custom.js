@@ -27,6 +27,29 @@ $(function () {
         }
     }
 
+    let productDetailSwiper = new Swiper('.swiper-container', {
+        direction: 'horizontal',
+        autoHeight: !0,
+        loop: !1,
+        centeredSlides: true,
+        allowTouchMove: true,
+        passiveListeners: false,
+        simulateTouch: true,
+        touchStartPreventDefault: false,
+        followFinger: false,
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            clickable: true,
+        },
+    });
+
     window.submenu = {
         menu: null,
         subMenus: null,

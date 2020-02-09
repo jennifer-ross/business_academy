@@ -399,7 +399,7 @@ ul
 		margin-right: 20px
 		margin-bottom: 20px
 		border: solid 1px #dde8f1
-		max-width: 24.2%
+		max-width: 24.1%
 		.bg
 			object-fit: cover
 			width: 100%
@@ -535,6 +535,77 @@ ul
 			line-height: 1.5
 			color: #202b38
 
+.nb-container
+	display: flex
+	justify-content: space-between
+	.section-title
+		h1,h2,h3,h4,h5
+			font-size: 36px
 
+.books-block,.news-block
+	.action
+		display: flex
+		width: 100%
+		justify-content: flex-end
+		margin-top: 15px
+		.btn
+			display: flex
+			font-size: 21px
+			color: #11558f
+			text-decoration: underline !important
+			span
+				font-size: 30px
+
+.news-block
+	justify-content: flex-start
+	max-width: 640px
+	.section-content
+		margin-top: 30px
+		padding-top: 15px
+		padding-right: 17px
+		padding-bottom: 22px
+		display: flex
+		flex-direction: column
+		background: #f6f9fb
+		position: relative
+		&:before
+			content: ""
+			position: absolute
+			left: -100%
+			top: 0
+			height: 100%
+			width: 100%
+			background: #f6f9fb
+	.action
+		justify-content: flex-start
+	.item
+		&:not(:last-child)
+			margin-bottom: 20px
+		.date
+			color: #202b38
+			font-size: 14px
+		.title
+			font-size: 16px
+			color: #8f1154
+			font-weight: 600
+			margin: 0
+		.content
+			color: #202b38
+			font-size: 16px
+		.btn
+			font-size: 16px
+			text-decoration: underline !important
+			color: #8f1154
+
+.books-block
+	max-width: 59%
+	display: flex
+	flex-direction: column
+	.section-title
+		text-align: right
+	.section-content
+		display: flex
+		flex: 1 1 auto
+		align-items: center
 
 @import media

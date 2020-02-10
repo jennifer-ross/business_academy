@@ -3,538 +3,1116 @@
 @import libs
 
 *
-	z-index: auto
+  z-index: auto
 
 html
-	margin-top: 0 !important
-	overflow-x: hidden !important
+  margin-top: 0 !important
+  overflow-x: hidden !important
 
 .no-scroll
-	overflow-y: hidden
+  overflow-y: hidden
 
 b, strong
-	font-weight: bold !important
+  font-weight: bold !important
 
 body
-	font-size: $fz16
-	min-width: 320px
-	position: relative
-	font-family: "OpenSans"
-	text-rendering: antialiased
-	overflow-x: hidden !important
-	line-height: normal !important
-	background: #fff !important
-	font-style: normal
-	letter-spacing: normal
+  font-size: $fz16
+  min-width: 320px
+  position: relative
+  font-family: "OpenSans"
+  text-rendering: antialiased
+  overflow-x: hidden !important
+  line-height: normal !important
+  background: #fff !important
+  font-style: normal
+  letter-spacing: normal
+
 .row
-	margin: 0 !important
+  margin: 0 !important
 
 .no-js
-	.menu-toggle
-		display: none
+  .menu-toggle
+    display: none
 
 .site
-	margin: 0
+  margin: 0
 
 a
-	text-decoration: none !important
+  text-decoration: none !important
 
 .hidden
-	display: none !important
+  display: none !important
 
 
 .fluid-container
-	width: 100%
-	padding: 0 1.875rem
+  width: 100%
+  padding: 0 1.875rem
 
 ul
-	margin: 0
-	padding: 0
+  margin: 0
+  padding: 0
 
 *
-	outline: none
+  outline: none
 
 button
-	outline: none
-	box-shadow: none
-	background: transparent
-	border: none
+  outline: none
+  box-shadow: none
+  background: transparent
+  border: none
 
 ul
-	padding: 0
-	margin: 0
+  padding: 0
+  margin: 0
 
 .container
-	margin: 0 auto
-	width: 1550px
-	max-width: 1550px
+  margin: 0 auto
+  width: 1550px
+  max-width: 1550px
 
 .container.second
-	margin: 0 auto
-	width: 1510px
-	max-width: 1510px
+  margin: 0 auto
+  width: 1510px
+  max-width: 1510px
 
 .fluid-container
-	padding-left: 68px
-	padding-right: 68px
+  padding-left: 68px
+  padding-right: 68px
 
 .section
-	overflow: hidden
+  overflow: hidden
 
-.header,.section,.footer,.swiper-slide, .container
-	position: relative
+.header, .section, .footer, .swiper-slide, .container
+  position: relative
 
 .header
-	.menus
-		display: flex
-		flex-direction: column
-	.top-head-menu
-		background: #f9f9f9
-		padding: 8px 0
-		.container
-			display: flex
-			justify-content: space-between
-	.left__head-menu
-		ul
-			display: flex
-			li
-				list-style: none
-				margin: 0 1rem
-				&:first-child
-					margin-left: 0
-				&:last-child
-					margin-right: 0
-			li, li a
-				font-size: 12px
-				color: #3d444d
-	.right__head-menu
-		display: flex
-		font-size: 14px
-		span,i
-			font-size: 14px
-			margin-right: 7px
-		.search
-			color: $b
-		.eng-version
-			color: $r
-			font-weight: bold
-			margin-left: 30px
-	.top-menu
-		.container
-			display: flex
-		.logo
-			display: flex
-			max-width: 233px
-			margin-right: 2rem
-			align-items: center
-			span
-				margin-left: 4px
-				font-size: 16px
-				color: $b
-		.menu
-			display: flex
-			flex-direction: column
-			flex: 1 1 auto
-			.upper
-				padding-bottom: 1rem
-				padding-top: 1rem
-				display: flex
-				justify-content: space-between
-				.btn
-					font-size: 16px
-					font-weight: 600
-					color: $b
-					margin: 0 15px
-					&:first-child
-						margin-left: 0
-					&:last-child
-						margin-right: 0
-				.btn.active
-					color: $r
-				.phone
-					font-size: 18px
-				.submenu
-					position: absolute
-					width: calc(100% + 2rem)
-					box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25)
-					background-color: #ffffff
-					z-index: 1
-					padding-top: 15px
-					padding-bottom: 15px
-					left: calc(-50% + 1.5rem)
-					display: none
-					&:before
-						content: ""
-						top: 0
-						width: 100%
-						height: 2px
-						position: absolute
-						background: $b
-					ul
-						flex-direction: column
-						li
-							margin: 0
-							padding-top: 7.5px
-							padding-bottom: 7.5px
-							padding-left: 15px
-							padding-right: 30px
-							&:first-child
-								padding-top: 0
-							&:last-child
-								padding-bottom: 0
-				ul
-					display: flex
-					li
-						list-style: none
-						margin: 0 15px
-						position: relative
-						span
-							cursor: pointer
-							&:before
-								color: $b
-								font-size: 18px
-						&:first-child
-							margin-left: 0
-						&:last-child
-							margin-right: 0
-					li, li a
-						color: #3d444d
-						font-size: 14px
-			.lower
-				display: flex
-				padding: 10px 0
-				align-items: center
-				position: relative
-				flex: 1 1 auto
-				&:before
-					content: ""
-					position: absolute
-					top: 0
-					left: 0
-					width: 100%
-					height: 2px
-					background: $r
-				.desc
-					font-size: 10px
-					color: #3d444d
-					max-width: 250px
-					margin-right: 50px
-				ul
-					display: flex
-					flex: 1 1 auto
-					li
-						list-style: none
-						margin: 0 12px
-						flex: 1 1 auto
-						display: flex
-						&:first-child
-							margin-left: 0
-						&:last-child
-							margin-right: 0
-					li, li a
-						text-transform: uppercase
-						font-size: 16px
-						color: $b
-						font-weight: 600
+  .menus
+    display: flex
+    flex-direction: column
+
+  .top-head-menu
+    background: #f9f9f9
+    padding: 8px 0
+
+    .container
+      display: flex
+      justify-content: space-between
+
+  .left__head-menu
+    ul
+      display: flex
+
+      li
+        list-style: none
+        margin: 0 1rem
+
+        &:first-child
+          margin-left: 0
+
+        &:last-child
+          margin-right: 0
+
+      li, li a
+        font-size: 12px
+        color: #3d444d
+
+  .right__head-menu
+    display: flex
+    font-size: 14px
+
+    span, i
+      font-size: 14px
+      margin-right: 7px
+
+    .search
+      color: $b
+
+    .eng-version
+      color: $r
+      font-weight: bold
+      margin-left: 30px
+
+  .top-menu
+    .container
+      display: flex
+
+    .logo
+      display: flex
+      max-width: 233px
+      margin-right: 2rem
+      align-items: center
+
+      span
+        margin-left: 4px
+        font-size: 16px
+        color: $b
+
+    .menu
+      display: flex
+      flex-direction: column
+      flex: 1 1 auto
+
+      .upper
+        padding-bottom: 1rem
+        padding-top: 1rem
+        display: flex
+        justify-content: space-between
+
+        .btn
+          font-size: 16px
+          font-weight: 600
+          color: $b
+          margin: 0 15px
+
+          &:first-child
+            margin-left: 0
+
+          &:last-child
+            margin-right: 0
+
+        .btn.active
+          color: $r
+
+        .phone
+          font-size: 18px
+
+        .submenu
+          position: absolute
+          width: calc(100% + 2rem)
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25)
+          background-color: #ffffff
+          z-index: 2
+          padding-top: 15px
+          padding-bottom: 15px
+          left: calc(-50% + 1.5rem)
+          display: none
+
+          &:before
+            content: ""
+            top: 0
+            width: 100%
+            height: 2px
+            position: absolute
+            background: $b
+
+          ul
+            flex-direction: column
+
+            li
+              margin: 0
+              padding-top: 7.5px
+              padding-bottom: 7.5px
+              padding-left: 15px
+              padding-right: 30px
+
+              &:first-child
+                padding-top: 0
+
+              &:last-child
+                padding-bottom: 0
+
+        ul
+          display: flex
+
+          li
+            list-style: none
+            margin: 0 15px
+            position: relative
+
+            span
+              cursor: pointer
+
+              &:before
+                color: $b
+                font-size: 18px
+
+            &:first-child
+              margin-left: 0
+
+            &:last-child
+              margin-right: 0
+
+          li, li a
+            color: #3d444d
+            font-size: 14px
+
+      .lower
+        display: flex
+        padding: 10px 0
+        align-items: center
+        position: relative
+        flex: 1 1 auto
+
+        &:before
+          content: ""
+          position: absolute
+          top: 0
+          left: 0
+          width: 100%
+          height: 2px
+          background: $r
+
+        .desc
+          font-size: 10px
+          color: #3d444d
+          max-width: 250px
+          margin-right: 50px
+
+        ul
+          display: flex
+          flex: 1 1 auto
+
+          li
+            list-style: none
+            margin: 0 12px
+            flex: 1 1 auto
+            display: flex
+
+            &:first-child
+              margin-left: 0
+
+            &:last-child
+              margin-right: 0
+
+          li, li a
+            text-transform: uppercase
+            font-size: 16px
+            color: $b
+            font-weight: 600
 
 
 .swiper-pagination-bullet
-	border: solid 2px $b
-	border-radius: 9px
-	width: 18px
-	height: 18px
-	background: transparent
-	opacity: 1
-	margin: 0 5px
+  border: solid 2px $b
+  border-radius: 9px
+  width: 18px
+  height: 18px
+  background: transparent
+  opacity: 1
+  margin: 0 5px
+
 .swiper-pagination-bullet-active
-	border: solid 2px $r
+  border: solid 2px $r
 
 .swiper-pagination
-	justify-content: flex-end
-	display: flex
-	padding-right: 210px
-	bottom: 16px !important
+  justify-content: flex-end
+  display: flex
+  padding-right: 210px
+  bottom: 16px !important
 
 .swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled
-	opacity: 1
+  opacity: 1
 
 .swiper-button-prev, .swiper-button-next
-	&:after
-		content: url("/img/arrow-left.svg")
+  &:after
+    content: url("/img/arrow-left.svg")
+
 .swiper-button-prev
-	left: 68px
+  left: 68px
+
 .swiper-button-next
-	right: 68px
-	&:after
-		transform: rotate(180deg)
+  right: 68px
+
+  &:after
+    transform: rotate(180deg)
 
 .slide-bg
-	position: relative
-	.content
-		width: 100%
-		height: auto
-		position: absolute
-		left: 0
-		top: 0
-		padding-left: 183px
-		padding-top: 61px
-		padding-bottom: 56px
-		max-width: calc(758px + 183px)
-	.subtitle
-		font-size: 24px
-		color: $b
-		margin-bottom: 12px
-	.title
-		margin-bottom: 12px
-		text-transform: uppercase
-		h1,h2,h3,h4,h5
-			font-size: 36px
-			font-weight: bold
-			color: $r
-	.desc
-		font-size: 24px
-		color: #202b38
-		padding-right: 8rem
-	.action
-		margin-top: 24px
-		.btn
-			font-size: 24px
-			color: $b
-			text-transform: uppercase
-			padding: 2px 38px
-			padding-right: 5px
-			border: solid 2px $b
-			border-radius: 2px
-			display: inline-flex
-			align-items: center
-			span
-				margin-left: 15px
-				font-size: 30px
+  position: relative
+
+  .content
+    width: 100%
+    height: auto
+    position: absolute
+    left: 0
+    top: 0
+    padding-left: 183px
+    padding-top: 61px
+    padding-bottom: 56px
+    max-width: calc(758px + 183px)
+
+  .subtitle
+    font-size: 24px
+    color: $b
+    margin-bottom: 12px
+
+  .title
+    margin-bottom: 12px
+    text-transform: uppercase
+
+    h1, h2, h3, h4, h5
+      font-size: 36px
+      font-weight: bold
+      color: $r
+
+  .desc
+    font-size: 24px
+    color: #202b38
+    padding-right: 8rem
+
+  .action
+    margin-top: 24px
+
+    .btn
+      font-size: 24px
+      color: $b
+      text-transform: uppercase
+      padding: 2px 38px
+      padding-right: 5px
+      border: solid 2px $b
+      border-radius: 2px
+      display: inline-flex
+      align-items: center
+
+      span
+        margin-left: 15px
+        font-size: 30px
 
 .section
-	padding: 15px 22px
-	padding-bottom: 30px
-	.section-title
-		//padding-left: 160px
-		padding-bottom: 16px
-		h1,h2,h3,h4,h5
-			margin: 0
-			font-size: 48px
-			color: $b
-			font-weight: normal
-	.section-action
-		display: flex
-		justify-content: center
-		.btn
-			font-size: 24px
-			color: $r
-			text-transform: uppercase
-			span
-				margin: 0 5px
-	.label-title
-		&:after
-			content: ""
-			position: absolute
-			left: 0
-			bottom: 0
-			background: $r
-			height: 2px
-			width: 100%
-	.title-with-action
-		display: flex
-		justify-content: space-between
-		align-items: flex-end
-		.btn
-			margin-bottom: 10px
-			font-size: 21px
-			color: $b
-			text-decoration: underline !important
-			display: flex
-			align-items: center
-			span
-				font-size: 30px
-				margin-top: 5px
-	.right-to-left
-		display: flex
-		flex-direction: row
-		padding-top: 30px
-		.left
-			margin-right: 15px
-			iframe
-				width: 100%
-		.right
-			display: flex
-			flex-direction: column
-			padding-right: 1rem
-			margin-left: 15px
-			.desc
-				font-size: 24px
-				line-height: 2.08
-				color: #202b38
-				margin-top: 15px
-			.title
-				padding-left: 20px
-				position: relative
-				&:before
-					content: ""
-					position: absolute
-					left: 0
-					top: 8%
-					width: 3px
-					background: $b
-					height: 90%
-				h1,h2,h3,h4,h5
-					margin: 0
-					font-size: 36px
-					font-weight: bold
-					color: $b
+  padding: 15px 22px
+  padding-bottom: 30px
 
+  .section-title
+    //padding-left: 160px
+    padding-bottom: 16px
+
+    h1, h2, h3, h4, h5
+      margin: 0
+      font-size: 48px
+      color: $b
+      font-weight: normal
+
+  .section-action
+    display: flex
+    justify-content: center
+
+    .btn
+      font-size: 24px
+      color: $r
+      text-transform: uppercase
+
+      span
+        margin: 0 5px
+
+  .label-title
+    &:after
+      content: ""
+      position: absolute
+      left: 0
+      bottom: 0
+      background: $r
+      height: 2px
+      width: 100%
+
+  .title-with-action
+    display: flex
+    justify-content: space-between
+    align-items: flex-end
+
+    .btn
+      margin-bottom: 10px
+      font-size: 21px
+      color: $b
+      text-decoration: underline !important
+      display: flex
+      align-items: center
+
+      span
+        font-size: 30px
+        margin-top: 5px
+
+  .right-to-left, .left-to-right
+    display: flex
+    flex-direction: row
+    padding-top: 30px
+    .left
+      margin-right: 15px
+      min-width: 762px
+      iframe
+        width: 100%
+    .right
+      display: flex
+      flex-direction: column
+      padding-right: 1rem
+      margin-left: 15px
+      .desc
+        font-size: 24px
+        line-height: 2.08
+        color: #202b38
+        margin-top: 15px
+      .title
+        padding-left: 20px
+        position: relative
+        &:before
+          content: ""
+          position: absolute
+          left: 0
+          top: 8%
+          width: 3px
+          background: $b
+          height: 90%
+        h1, h2, h3, h4, h5
+          margin: 0
+          font-size: 36px
+          font-weight: bold
+          color: $b
+
+  .right-to-left
+    flex-direction: row-reverse !important
+    .right
+      .title
+        padding-left: 0
+  .rtl-2
+    .left
+      margin-right: 0
+      display: flex
+      justify-content: flex-end
+      img
+        //object-fit: cover
+        //width: 100%
+    .right
+      margin-left: 0
+      padding-right: 20px
+      padding-top: 5rem
+      .desc
+        line-height: 1.67
+        font-size: 18px
+        display: flex
+        flex-direction: column
+        margin-top: 30px
+        .subtl
+        .align-right
+          display: flex
+          align-self: flex-end
+      .title
+        position: relative
+        padding-bottom: 30px
+        padding-right: 80px
+        &:before
+          content: ""
+          position: absolute
+          left: 0
+          bottom: 0
+          top: unset
+          height: 3px
+          background: #8f1154
+          width: 100%
+        h1, h2, h3, h4, h5
+          margin: 0
+          font-size: 48px
+          font-weight: normal
+          color: #11558f
+
+.custom-action
+  display: flex
+  justify-content: space-between
+  margin-top: 20px
+  .btn
+    font-size: 18px
+    line-height: 1.67
+    text-transform: uppercase
+    color: #fff
+    padding: 3px 15px
+    background: #8f1154
+    border-radius: 2px
+  .left-action
+    display: flex
+    justify-content: flex-start
+    align-items: flex-end
+  .subtl
+    font-size: 24px
+    color: #202b38
+  p
+    font-size: 18px
+    line-height: 1.67
+  .right-action
+    max-width: 370px
+    text-align: right
+    .align-right
+      justify-content: flex-end
+    p:last-child
+      margin-bottom: 0
 
 .seminars-container
-	display: flex
-	flex-wrap: wrap
-	.seminar
-		flex: 1 1 auto
-		position: relative
-		margin-right: 20px
-		margin-bottom: 20px
-		border: solid 1px #dde8f1
-		max-width: 24.2%
-		.bg
-			object-fit: cover
-			width: 100%
-			height: fit-content
-		.content
-			position: absolute
-			width: 100%
-			left: 0
-			top: 0
-			height: 100%
-			padding: 7px 40px
-			display: flex
-			flex-direction: column
-			justify-content: space-between
-			.seminar-date
-				display: flex
-				align-items: center
-				.date
-					font-size: 48px
-					color: #11558f
-				.position
-					display: flex
-					flex-direction: column
-					font-size: 18px
-					color: #11558f
-					margin-left: 10px
-			.heading
-				font-size: 21px
-				font-weight: bold
-				color: $r
-				padding-right: 4rem
-			.action
-				.btn
-					font-size: 18px
-					font-weight: bold
-					color: #11558f
-					text-align: right
-					display: flex
-					align-items: center
-					justify-content: flex-end
-					text-transform: uppercase
-					span
-						font-size: 48px
-		&:first-child
-			border: solid 1px transparent
-			max-width: 41.1%
-			.content
-				background: rgba(#89093b, .7)
-				&:after
-					content: ""
-					width: 100%
-					height: 100%
-					position: absolute
-					z-index: -1
-					left: -3px
-					top: 3px
-					box-shadow: -1px 1px 0 0 rgba(143, 17, 84, 0.8)
-					background: #fff
-			.heading
-				color: #ffffff
-				font-size: 30px
-			.seminar-date
-				.date,.position
-					color: #fff
-			.action
-				.btn
-					color: #fff
-		&:nth-child(2)
-			max-width: 28.3%
-		&:nth-child(3)
-			max-width: 28.3%
-			margin-right: 0
-		&:last-child
-			margin-right: 0
+  display: flex
+  flex-wrap: wrap
+
+  .seminar
+    flex: 1 1 auto
+    position: relative
+    margin-right: 20px
+    margin-bottom: 20px
+    border: solid 1px #dde8f1
+    max-width: 24.1%
+
+    .bg
+      object-fit: cover
+      width: 100%
+      height: fit-content
+
+    .content
+      position: absolute
+      width: 100%
+      left: 0
+      top: 0
+      height: 100%
+      padding: 7px 40px
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+
+      .seminar-date
+        display: flex
+        align-items: center
+
+        .date
+          font-size: 48px
+          color: #11558f
+
+        .position
+          display: flex
+          flex-direction: column
+          font-size: 18px
+          color: #11558f
+          margin-left: 10px
+
+      .heading
+        font-size: 21px
+        font-weight: bold
+        color: $r
+        padding-right: 4rem
+
+      .action
+        .btn
+          font-size: 18px
+          font-weight: bold
+          color: #11558f
+          text-align: right
+          display: flex
+          align-items: center
+          justify-content: flex-end
+          text-transform: uppercase
+
+          span
+            font-size: 48px
+
+    &:first-child
+      border: solid 1px transparent
+      max-width: 41.1%
+
+      .content
+        background: rgba(#89093b, .7)
+
+        &:after
+          content: ""
+          width: 100%
+          height: 100%
+          position: absolute
+          z-index: -1
+          left: -3px
+          top: 3px
+          box-shadow: -1px 1px 0 0 rgba(143, 17, 84, 0.8)
+          background: #fff
+
+      .heading
+        color: #ffffff
+        font-size: 30px
+
+      .seminar-date
+        .date, .position
+          color: #fff
+
+      .action
+        .btn
+          color: #fff
+
+    &:nth-child(2)
+      max-width: 28.3%
+
+    &:nth-child(3)
+      max-width: 28.3%
+      margin-right: 0
+
+    &:last-child
+      margin-right: 0
 
 .news-container
-	display: flex
-	flex-wrap: wrap
-	.news-item
-		box-shadow: 8px 8px 0 0 rgba(17, 85, 143, 0.6)
-		border: solid 1px #dde8f1
-		background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), #ffffff)
-		max-width: 366px
-		display: flex
-		flex-direction: column
-		flex: 1 1 auto
-		//margin-top: 30px
-		position: relative
-		margin: 30px auto
-		.bg
-			position: absolute
-			left: 0
-			top: 0
-			width: 100%
-			height: fit-content
-			object-fit: cover
-			z-index: -1
-		.news-title
-			display: flex
-			justify-content: space-between
-			position: relative
-			padding: 20px 15px
-			padding-bottom: 25px
-			&:after
-				content: ""
-				bottom: 0
-				position: absolute
-				left: 15px
-				width: calc(100% - 30px)
-				height: 2px
-				background: $r
-			.date
-				font-size: 18px
-				color: $r
-				transform: rotate(-90deg) translateY(-50%)
-				position: absolute
-				left: -10px
-				bottom: 50%
-			.title
-				text-align: right
-				padding-left: 30px
-				h1,h2,h3,h4,h5
-					text-transform: uppercase
-					margin: 0
-					font-size: 24px
-					color: $b
-					font-weight: normal
-		.desc
-			padding: 0 15px
-			padding-bottom: 38px
-			padding-top: 24px
-			font-size: 16px
-			line-height: 1.5
-			color: #202b38
+  display: flex
+  flex-wrap: wrap
 
+  .news-item
+    box-shadow: 8px 8px 0 0 rgba(17, 85, 143, 0.6)
+    border: solid 1px #dde8f1
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), #ffffff)
+    max-width: 366px
+    display: flex
+    flex-direction: column
+    flex: 1 1 auto
+    //margin-top: 30px
+    position: relative
+    margin: 30px auto
+
+    .bg
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      height: fit-content
+      object-fit: cover
+      z-index: -1
+
+    .news-title
+      display: flex
+      justify-content: space-between
+      position: relative
+      padding: 20px 15px
+      padding-bottom: 25px
+
+      &:after
+        content: ""
+        bottom: 0
+        position: absolute
+        left: 15px
+        width: calc(100% - 30px)
+        height: 2px
+        background: $r
+
+      .date
+        font-size: 18px
+        color: $r
+        transform: rotate(-90deg) translateY(-50%)
+        position: absolute
+        left: -10px
+        bottom: 50%
+
+      .title
+        text-align: right
+        padding-left: 30px
+
+        h1, h2, h3, h4, h5
+          text-transform: uppercase
+          margin: 0
+          font-size: 24px
+          color: $b
+          font-weight: normal
+
+    .desc
+      padding: 0 15px
+      padding-bottom: 38px
+      padding-top: 24px
+      font-size: 16px
+      line-height: 1.5
+      color: #202b38
+
+.nb-container
+  display: flex
+  justify-content: space-between
+
+  .section-title
+    h1, h2, h3, h4, h5
+      font-size: 36px
+
+.books-block, .news-block
+  .action
+    display: flex
+    width: 100%
+    justify-content: flex-end
+    margin-top: 15px
+
+    .btn
+      display: flex
+      font-size: 21px
+      color: #11558f
+      text-decoration: underline !important
+
+      span
+        font-size: 30px
+
+.news-block
+  justify-content: flex-start
+  max-width: 640px
+
+  .section-content
+    margin-top: 30px
+    padding-top: 15px
+    padding-right: 17px
+    padding-bottom: 22px
+    display: flex
+    flex-direction: column
+    background: #f6f9fb
+    position: relative
+
+    &:before
+      content: ""
+      position: absolute
+      left: -100%
+      top: 0
+      height: 100%
+      width: 100%
+      background: #f6f9fb
+
+  .action
+    justify-content: flex-start
+
+  .item
+    &:not(:last-child)
+      margin-bottom: 20px
+
+    .date
+      color: #202b38
+      font-size: 14px
+
+    .title
+      font-size: 16px
+      color: #8f1154
+      font-weight: 600
+      margin: 0
+
+    .content
+      color: #202b38
+      font-size: 16px
+
+    .btn
+      font-size: 16px
+      text-decoration: underline !important
+      color: #8f1154
+
+.books-block
+  max-width: 59%
+  display: flex
+  flex-direction: column
+
+  .section-title
+    text-align: right
+
+  .section-content
+    display: flex
+    flex: 1 1 auto
+    align-items: center
+
+.section-reviews
+  padding: 0
+  padding-bottom: 30px
+
+  .swiper-container-reviews
+    width: 100%
+    height: 100%
+    max-height: 248px
+    position: relative
+
+  .swiper-slide
+    display: flex
+    justify-content: center
+    align-items: center
+    max-width: 366px
+
+  .swiper-button-prev
+    color: #fff
+    left: 40px
+
+    &:after
+      font-family: "Material Design Icons"
+      content: "\F141"
+      font-size: 72px
+
+  .swiper-button-next
+    color: #fff
+    right: 40px
+
+    &:after
+      font-family: "Material Design Icons"
+      content: "\F141"
+      font-size: 72px
+
+  .review-slide
+    position: relative
+    width: 100%
+
+    .img
+      object-fit: cover
+      width: 100%
+
+    &:after
+      content: ""
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      height: 100%
+      background: linear-gradient(to right, rgba(221, 232, 241, 0) 3%, #dde8f1)
+
+  .slider-container
+    padding-top: 30px
+    padding-bottom: 162px
+    background: #f6f9fb
+
+  .review-detail
+    display: flex
+    margin-top: -132px
+
+    .container
+      display: flex
+      align-items: center
+
+    .review-content
+      border: solid 1px #dde8f1
+      background-color: #ffffff
+      display: flex
+      align-items: center
+      justify-content: center
+      padding-left: 60px
+      position: relative
+      padding-right: 132px
+      border-left: 0
+
+      .text
+        position: relative
+        font-size: 24px
+        color: #11558f
+
+        &:before
+          content: ""
+          position: absolute
+          left: -60px
+          top: 0
+          height: 100%
+          width: 30px
+          background: #8f1154
+
+    .image
+      min-width: 630px
+      border: solid 1px rgba(17, 85, 143, 0.2)
+      border-right: 0
+
+      img
+        object-fit: cover
+        width: 100%
+
+.section-videos
+  .section-action
+    margin-top: 20px
+  .filter-container
+    display: flex
+    flex-wrap: wrap
+    padding-right: 4rem
+    span
+      font-size: 18px
+      line-height: 1.89
+      color: #11558f
+      margin: 7.5px 15px
+      display: flex
+      border: 1px solid transparent
+      padding-right: 7px
+      padding-left: 7px
+    span.active
+      border-radius: 2px
+      border: solid 1px #dde8f1
+      color: #8f1154
+  .items-container
+    display: flex
+    flex-wrap: wrap
+  .item
+    flex: 1 1 auto
+    display: flex
+    flex-direction: column
+    margin-right: 30px
+    margin-top: 15px
+    max-width: 32%
+    &:nth-child(3n)
+      margin-right: 0
+    &:last-child
+      margin-right: 0
+    .content
+      position: relative
+      display: flex
+      height: 280px
+      min-height: 280px
+    .title
+      font-size: 18px
+      color: #202b38
+      text-align: center
+      padding: 15px 5px
+
+.section-services
+  padding-top: 30px
+
+.services-container
+  display: flex
+  .item
+    border: solid 1px #8f1154
+    margin: 0 auto
+    display: flex
+    position: relative
+    height: 370px
+    flex: 1 1 auto
+    max-width: 366px
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5))
+    .icon
+      display: flex
+      justify-content: center
+      align-items: center
+      padding-top: 60px
+      span
+        font-size: 60px
+        color: #8f1154
+  .bg
+    position: absolute
+    width: 100%
+    left: 0
+    top: 0
+    height: 100%
+    z-index: -1
+    img
+      object-fit: cover
+      width: 100%
+  .content
+    padding: 10px 20px
+    display: flex
+    flex-direction: column
+    justify-content: center
+  .title
+    font-size: 30px
+    text-transform: uppercase
+    font-weight: bold
+    text-align: center
+    color: #8f1154
+
+.clients-container
+  position: relative
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  .item
+    flex: 1 1 auto
+    display: flex
+    flex-direction: column
+    max-width: 12.5%
+    margin: 30px
+    margin-bottom: 0
+    font-size: 14px
+    color: #202b38
+    text-align: center
+
+input
+  border: none
+  outline: none
+  text-align: center
+  line-height: 1.25
+  font-size: 24px
+  color: #3d444d
+  border-bottom: 2px solid $b
+  &::placeholder
+    line-height: 1.25
+    font-size: 24px
+    text-align: center
+    color: #3d444d
+
+.section-subscribe
+  padding-bottom: 15px
+  background: url("/img/subscribe-bg.jpg")
+.subscribe-form-container
+  display: flex
+  padding: 30px 0
+  .subsc
+    width: 50%
+    display: flex
+    flex-direction: column
+    justify-content: center
+    font-size: 36px
+    font-weight: 600
+    text-align: right
+    color: #11558f
+    padding-right: 16rem
+  .subscribe-form
+    width: 50%
+    display: flex
+    flex-direction: column
+    padding: 0 8rem
+    padding-top: 40px
+    justify-content: center
+    align-items: center
+    margin-bottom: 0
+    .btn
+      margin-top: 30px
+      border-radius: 2px
+      background-color: #8f1154
+      font-size: 18px
+      line-height: 1.67
+      display: flex
+      text-transform: uppercase
+      text-align: center
+      justify-content: center
+      color: #fff
+      padding: 0 45px
+      font-weight: normal
+    .desc
+      margin-top: 15px
+      text-align: center
+      font-size: 18px
+      color: #202b38
+
+footer
+  .menu
+    ul
+      display: flex
+      flex-wrap: wrap
+      li,li a
+        font-size: 21px
+        font-weight: 600
+        text-align: center
+        color: #11558f
+      li
+        list-style: none
+        flex: 1 1 auto
+  .services
+    display: flex
+    justify-content: space-between
+    margin-top: 45px
+    .serv-menu
+      display: flex
+      flex-direction: column
+    ul
+      display: flex
+      flex-direction: column
+    li, li a, span
+      font-size: 16px
+      font-weight: normal
+      color: #202b38
+    span
+      text-transform: uppercase
+    li
+      list-style: none
+    .serv-submenu
+      margin-bottom: 20px
+  .fserv
+    margin-top: 80px
+    display: flex
+    justify-content: space-between
+    padding: 0 60px
+    .item
+      display: flex
+      flex-direction: column
+      justify-content: center
+      text-align: center
+      align-items: center
+      max-width: 236px
+      .img
+        width: 64px
+        height: 64px
+      span
+        margin-top: 15px
+        font-size: 14px
+        text-align: center
+        color: #202b38
+  .copyright-block
+    background: #f9f9f9
+    padding-top: 7px
+    padding-bottom: 19px
+    margin-top: 35px
+    .container
+      display: flex
+      justify-content: space-between
+  .copyright-block, .copyright-block a
+    font-size: 16px
+    color: #202b38
 
 
 @import media

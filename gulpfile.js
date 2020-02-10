@@ -8,7 +8,6 @@ var gulp         = require('gulp'),
 		rsync        = require('gulp-rsync'),
 		newer        = require('gulp-newer'),
 		rename       = require('gulp-rename'),
-		responsive   = require('gulp-responsive'),
 		del          = require('del');
 		// wp_css_outDir = '/Applications/MAMP/htdocs/wp-content/themes/fastsol_digital/css',
 		// wp_Dir = '/Applications/MAMP/htdocs/wp-content/themes/fastsol_digital/';
@@ -81,24 +80,6 @@ gulp.task('scripts', function() {
 	.pipe(gulp.dest('app/js'))
 	.pipe(browserSync.reload({ stream: true }))
 });
-
-// Responsive Images
-gulp.task('img-responsive', async function() {
-	return gulp.src('app/img/_src/**/*.{png,jpg,jpeg,webp,raw}')
-		.pipe(newer('app/img/@1x'))
-		.pipe(responsive({
-			'*': [{
-				// Produce @2x images
-				width: '100%', quality: 90, rename: { prefix: '@2x/', },
-			}, {
-				// Produce @1x images
-				width: '50%', quality: 90, rename: { prefix: '@1x/', }
-			}]
-		})).on('error', function () { console.log('No matching images found') })
-		.pipe(rename(function (path) {path.extname = path.extname.replace('jpeg', 'jpg')}))
-		.pipe(gulp.dest('app/img'))
-});
-gulp.task('img', gulp.series('img-responsive', bsReload));
 
 // Clean @*x IMG's
 gulp.task('cleanimg', function() {

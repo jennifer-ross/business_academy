@@ -50,6 +50,21 @@ $(function () {
         },
     });
 
+    let reviewsSwiper = new Swiper('.swiper-container-reviews', {
+        spaceBetween: 20,
+        direction: 'horizontal',
+        autoHeight: !0,
+        loop: !1,
+        centeredSlides: true,
+        freeMode: true,
+        slidesPerView: 4,
+        spaceBetween: 30,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
     window.submenu = {
         menu: null,
         subMenus: null,

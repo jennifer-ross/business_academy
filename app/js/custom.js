@@ -55,14 +55,82 @@ $(function () {
         direction: 'horizontal',
         autoHeight: !0,
         loop: !1,
-        centeredSlides: true,
-        freeMode: true,
-        slidesPerView: 4,
+        centeredSlides: false,
+        // freeMode: false,
+        slidesPerView: 5,
         spaceBetween: 30,
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
+        on: {
+        }
+    });
+
+    $('.swiper-container-reviews .swiper-slide').on('click', function () {
+        let el = $(this);
+        let detail = $('.review-detail');
+        let img = detail.find('.image img');
+        let text = detail.find('.text');
+
+        let more = el.find('.more');
+        let moreImg = more.find('img');
+        let moreText = more.find('.text');
+
+        img.attr('src', moreImg.attr('src'));
+        text.html(moreText.html());
+
+        let viewer = new Viewer(img[0], {
+            keyboard: false,
+            movable: false,
+            navbar: false,
+            rotatable: false,
+            scaleble: true,
+            slideOnTouch: false,
+            toggleOnDblclick: true,
+            toolbar: false,
+            tooltip: false,
+            zoomable: true,
+            zoomOnTouch: false,
+            zoomOnWheel: true,
+        });
+});
+
+    let sertificatsSwiper = new Swiper('.swiper-container-sertificat', {
+        direction: 'horizontal',
+        autoHeight: !0,
+        loop: !1,
+        centeredSlides: false,
+        allowTouchMove: true,
+        passiveListeners: false,
+        simulateTouch: true,
+        touchStartPreventDefault: false,
+        followFinger: false,
+        slidesPerView: 4,
+        slidesPerGroup: 4,
+        spaceBetween: 30,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
+    $.each($('.sertificat-slide'), function (k, v) {
+        let el = $(this).find('img')[0];
+        let viewer = new Viewer(el, {
+            keyboard: false,
+            movable: false,
+            navbar: false,
+            rotatable: false,
+            scaleble: true,
+            slideOnTouch: false,
+            toggleOnDblclick: true,
+            toolbar: false,
+            tooltip: false,
+            zoomable: true,
+            zoomOnTouch: false,
+            zoomOnWheel: true,
+        });
     });
 
     window.submenu = {

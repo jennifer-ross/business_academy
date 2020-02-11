@@ -81,6 +81,7 @@ ul
 
 .section
   overflow: hidden
+  margin: 15px 0
 
 .header, .section, .footer, .swiper-slide, .container
   position: relative
@@ -126,6 +127,8 @@ ul
 
     .search
       color: $b
+      display: flex
+      align-items: center
 
     .eng-version
       color: $r
@@ -423,24 +426,30 @@ ul
     display: flex
     flex-direction: row
     padding-top: 30px
+
     .left
       margin-right: 15px
       min-width: 762px
+
       iframe
         width: 100%
+
     .right
       display: flex
       flex-direction: column
       padding-right: 1rem
       margin-left: 15px
+
       .desc
         font-size: 24px
         line-height: 2.08
         color: #202b38
         margin-top: 15px
+
       .title
         padding-left: 20px
         position: relative
+
         &:before
           content: ""
           position: absolute
@@ -449,6 +458,7 @@ ul
           width: 3px
           background: $b
           height: 90%
+
         h1, h2, h3, h4, h5
           margin: 0
           font-size: 36px
@@ -457,35 +467,43 @@ ul
 
   .right-to-left
     flex-direction: row-reverse !important
+
     .right
       .title
         padding-left: 0
+
   .rtl-2
     .left
       margin-right: 0
       display: flex
       justify-content: flex-end
+
       img
-        //object-fit: cover
-        //width: 100%
+    //object-fit: cover
+    //width: 100%
     .right
       margin-left: 0
       padding-right: 20px
       padding-top: 5rem
+      padding-bottom: 4rem
       .desc
         line-height: 1.67
         font-size: 18px
         display: flex
         flex-direction: column
         margin-top: 30px
+
         .subtl
+
         .align-right
           display: flex
           align-self: flex-end
+
       .title
         position: relative
         padding-bottom: 30px
         padding-right: 80px
+
         &:before
           content: ""
           position: absolute
@@ -495,6 +513,7 @@ ul
           height: 3px
           background: #8f1154
           width: 100%
+
         h1, h2, h3, h4, h5
           margin: 0
           font-size: 48px
@@ -505,6 +524,7 @@ ul
   display: flex
   justify-content: space-between
   margin-top: 20px
+
   .btn
     font-size: 18px
     line-height: 1.67
@@ -513,23 +533,34 @@ ul
     padding: 3px 15px
     background: #8f1154
     border-radius: 2px
+
   .left-action
     display: flex
     justify-content: flex-start
     align-items: flex-end
+
   .subtl
     font-size: 24px
     color: #202b38
+
   p
     font-size: 18px
     line-height: 1.67
+
   .right-action
     max-width: 370px
     text-align: right
+
     .align-right
       justify-content: flex-end
+
     p:last-child
       margin-bottom: 0
+
+.section-seminars
+  .section-action
+    .blue-link
+      display: none
 
 .seminars-container
   display: flex
@@ -546,13 +577,14 @@ ul
     .bg
       object-fit: cover
       width: 100%
-      height: fit-content
-
-    .content
+      height: 100%
       position: absolute
-      width: 100%
       left: 0
       top: 0
+      z-index: -1
+
+    .content
+      width: 100%
       height: 100%
       padding: 7px 40px
       display: flex
@@ -578,7 +610,9 @@ ul
         font-size: 21px
         font-weight: bold
         color: $r
-        padding-right: 4rem
+        padding-right: 5rem
+        padding-bottom: 50px
+        padding-top: 15px
 
       .action
         .btn
@@ -606,7 +640,7 @@ ul
           width: 100%
           height: 100%
           position: absolute
-          z-index: -1
+          z-index: -2
           left: -3px
           top: 3px
           box-shadow: -1px 1px 0 0 rgba(143, 17, 84, 0.8)
@@ -633,6 +667,16 @@ ul
 
     &:last-child
       margin-right: 0
+
+.blue-link
+  display: flex
+  font-size: 21px
+  color: #11558f !important
+  text-decoration: underline !important
+  text-transform: unset !important
+  align-items: center
+  span
+    font-size: 30px
 
 .news-container
   display: flex
@@ -787,6 +831,13 @@ ul
     display: flex
     flex: 1 1 auto
     align-items: center
+    .item
+      max-height: 220px
+      //width: 220px
+      height: 220px
+      img
+        object-fit: cover
+        height: 220px
 
 .section-reviews
   padding: 0
@@ -889,10 +940,12 @@ ul
 .section-videos
   .section-action
     margin-top: 20px
+
   .filter-container
     display: flex
     flex-wrap: wrap
     padding-right: 4rem
+
     span
       font-size: 18px
       line-height: 1.89
@@ -902,13 +955,16 @@ ul
       border: 1px solid transparent
       padding-right: 7px
       padding-left: 7px
+
     span.active
       border-radius: 2px
       border: solid 1px #dde8f1
       color: #8f1154
+
   .items-container
     display: flex
     flex-wrap: wrap
+
   .item
     flex: 1 1 auto
     display: flex
@@ -916,15 +972,19 @@ ul
     margin-right: 30px
     margin-top: 15px
     max-width: 32%
+
     &:nth-child(3n)
       margin-right: 0
+
     &:last-child
       margin-right: 0
+
     .content
       position: relative
       display: flex
       height: 280px
       min-height: 280px
+
     .title
       font-size: 18px
       color: #202b38
@@ -936,6 +996,7 @@ ul
 
 .services-container
   display: flex
+
   .item
     border: solid 1px #8f1154
     margin: 0 auto
@@ -945,14 +1006,17 @@ ul
     flex: 1 1 auto
     max-width: 366px
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5))
+
     .icon
       display: flex
       justify-content: center
       align-items: center
       padding-top: 60px
+
       span
         font-size: 60px
         color: #8f1154
+
   .bg
     position: absolute
     width: 100%
@@ -960,14 +1024,17 @@ ul
     top: 0
     height: 100%
     z-index: -1
+
     img
       object-fit: cover
       width: 100%
+
   .content
     padding: 10px 20px
     display: flex
     flex-direction: column
     justify-content: center
+
   .title
     font-size: 30px
     text-transform: uppercase
@@ -980,6 +1047,7 @@ ul
   display: flex
   flex-direction: row
   flex-wrap: wrap
+
   .item
     flex: 1 1 auto
     display: flex
@@ -992,6 +1060,7 @@ ul
     text-align: center
 
 input
+  width: 100%
   border: none
   outline: none
   text-align: center
@@ -999,6 +1068,7 @@ input
   font-size: 24px
   color: #3d444d
   border-bottom: 2px solid $b
+
   &::placeholder
     line-height: 1.25
     font-size: 24px
@@ -1007,7 +1077,9 @@ input
 
 .section-subscribe
   padding-bottom: 15px
-  background: url("/img/subscribe-bg.jpg")
+  background: url("/img/subscribe-bg.jpg") no-repeat
+  background-size: cover
+
 .subscribe-form-container
   display: flex
   padding: 30px 0
@@ -1021,6 +1093,7 @@ input
     text-align: right
     color: #11558f
     padding-right: 16rem
+
   .subscribe-form
     width: 50%
     display: flex
@@ -1030,6 +1103,7 @@ input
     justify-content: center
     align-items: center
     margin-bottom: 0
+
     .btn
       margin-top: 30px
       border-radius: 2px
@@ -1043,6 +1117,7 @@ input
       color: #fff
       padding: 0 45px
       font-weight: normal
+
     .desc
       margin-top: 15px
       text-align: center
@@ -1054,39 +1129,50 @@ footer
     ul
       display: flex
       flex-wrap: wrap
-      li,li a
+
+      li, li a
         font-size: 21px
         font-weight: 600
         text-align: center
         color: #11558f
+
       li
         list-style: none
         flex: 1 1 auto
+
   .services
     display: flex
     justify-content: space-between
     margin-top: 45px
+
     .serv-menu
       display: flex
       flex-direction: column
+
     ul
       display: flex
       flex-direction: column
+
     li, li a, span
       font-size: 16px
       font-weight: normal
       color: #202b38
+
     span
       text-transform: uppercase
+
     li
       list-style: none
+
     .serv-submenu
       margin-bottom: 20px
+
   .fserv
     margin-top: 80px
     display: flex
     justify-content: space-between
     padding: 0 60px
+
     .item
       display: flex
       flex-direction: column
@@ -1094,25 +1180,373 @@ footer
       text-align: center
       align-items: center
       max-width: 236px
+
       .img
         width: 64px
         height: 64px
+
       span
         margin-top: 15px
         font-size: 14px
         text-align: center
         color: #202b38
+
   .copyright-block
     background: #f9f9f9
     padding-top: 7px
     padding-bottom: 19px
     margin-top: 35px
+
     .container
       display: flex
       justify-content: space-between
+
   .copyright-block, .copyright-block a
     font-size: 16px
     color: #202b38
+  .about
+    display: flex
+    flex-direction: column
+    margin-top: 60px
+    position: relative
+    padding-top: 12px
+    &:before
+      content: ""
+      left: 0
+      top: 0
+      position: absolute
+      width: 100%
+      height: 2px
+      background: $r
+    .sbtl
+      font-size: 12px
+      color: #3d444d
+      text-align: center
+      display: flex
+      justify-content: center
+      width: 100%
+  .logo
+    font-size: 16px
+    font-weight: normal
+    color: #11558f
+    max-width: 220px
+    display: flex
+    align-items: center
+    span
+      margin-left: 7px
+  .about-content
+    display: flex
+    justify-content: space-between
+    margin-top: 20px
+  .contacts,.contacts a
+    font-size: 18px
+    font-weight: 600
+    line-height: 1.67
+    color: #202b38
+    span
+      font-size: 18px
+      margin-right: 8px
+  .contacts a
+    display: flex
+    align-items: center
+  .contacts
+    display: flex
+    flex-direction: column
+  .actions
+    display: flex
+    flex-direction: column
+    .title
+      font-size: 18px
+      font-weight: 600
+      color: #11558f
+      text-transform: uppercase
+    .action
+      margin-top: 25px
+    .btn
+      font-size: 16px
+      font-weight: 600
+      color: #ffffff
+      background: $r
+      padding: 7px 35px
+      text-transform: uppercase
+      margin: 0 7.5px
+      &:first-child
+        margin-left: 0
+      &:last-child
+        margin-right: 0
+    .btn-blue
+      background: $b
+  .socials
+    display: flex
+    flex-direction: column
+    align-items: flex-end
+    .title
+      font-size: 18px
+      font-weight: 600
+      text-align: right
+      color: #8f1154
+      text-transform: uppercase
+    .social-container
+      display: flex
+      justify-content: flex-end
+      margin-top: 20px
+      a
+        width: 36px
+        height: 36px
+        background: $b
+        border-radius: 2px
+        display: flex
+        justify-content: center
+        align-items: center
+        &:not(:last-child)
+          margin-right: 15px
+      span, i
+        font-size: 24px
+        color: #ffffff
 
+.count-container
+  display: flex
+  justify-content: space-between
+  .item
+    max-width: 280px
+    .count
+      background-image: linear-gradient(to bottom, #b22771 53%, #8f1154 54%)
+      font-family: Oswald
+      font-size: 48px
+      font-weight: normal
+      font-stretch: normal
+      font-style: normal
+      line-height: normal
+      letter-spacing: normal
+      text-align: center
+      background-clip: text
+      -webkit-text-fill-color: transparent
+      position: relative
+      padding-bottom: 12px
+      padding-top: 5px
+      &:after
+        position: absolute
+        bottom: 0
+        left: 0
+        width: 100%
+        height: 1px
+        background: $r
+        content: ""
+      .count-bg
+        text-shadow: -6px 6px 0 rgba(131, 198, 254, 0.4), 0 0 8px #ffffff
+        position: absolute
+        color: transparent
+        left: 0
+        top: 0
+        display: flex
+        width: 100%
+        height: 100%
+        justify-content: center
+        align-items: center
+        z-index: -1
+      .bg
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        height: 100%
+
+    .desc
+      font-size: 18px
+      font-weight: normal
+      text-align: center
+      color: #11558f
+      padding: 0 1rem
+
+.swiper-container-sertificat
+  margin: 30px 0
+
+.section-hit
+  padding: 0
+  margin-top: 30px
+  margin-bottom: 30px
+
+.hit-container
+  display: flex
+  padding-top: 60px
+  .hit
+    position: absolute
+    top: -2rem
+    left: 15%
+  .left-block, .right-block
+    position: relative
+  .left-block .bg, .right-block .bg
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    content: ""
+    z-index: -1
+    img
+      width: 100%
+      object-fit: cover
+      height: fit-content
+  .left-block
+    width: 50%
+  .right-block
+    width: 50%
+    position: relative
+    &:after
+      content: url("/img/hit-price.png")
+      position: absolute
+      bottom: -2rem
+      right: 200px
+    .content
+      font-size: 24px
+      color: #ffffff
+      text-transform: uppercase
+      padding-top: 60px
+      padding-left: 30px
+      padding-right: 420px
+      padding-bottom: 30px
+      font-weight: 600
+      span
+        font-weight: bold
+  .items-container
+    margin-top: 15px
+    max-width: 265px
+    p
+      font-size: 18px
+      font-weight: 600
+      text-align: right
+      color: #11558f
+      display: flex
+      align-items: center
+    span
+      font-size: 36px
+      font-weight: normal
+      text-align: right
+      color: #8f1154
+      margin-left: 15px
+    i
+      font-style: normal
+      font-size: 24px
+      color: #8f1154
+      margin-right: 5px
+    .icon-public
+      display: flex
+      align-items: center
+      span
+        margin-left: 0
+        margin-right: 15px
+  .left-block
+    .content
+      display: flex
+      justify-content: flex-end
+      padding-top: 60px
+      padding-bottom: 30px
+      padding-right: 120px
+      .left-path
+        text-align: right
+        padding-right: 15px
+        position: relative
+        display: flex
+        flex-direction: column
+        align-items: flex-end
+        &:after
+          content: ""
+          width: 2px
+          background: $r
+          right: 0
+          position: absolute
+          height: 100%
+          top: 0
+        .title
+          max-width: 234px
+          justify-content: flex-end
+      .right-path
+        padding-left: 15px
+      .title
+        font-size: 24px
+        font-weight: bold
+        color: #8f1154
+        text-transform: uppercase
+        min-height: 66px
+        display: flex
+        align-items: flex-end
+
+.sertificat-slide
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding-top: 40px
+  padding-bottom: 40px
+  border: 1px solid #DDE8F1
+  height: 410px
+  min-height: 410px
+  span
+    margin-top: 50px
+    text-align: center
+    font-size: 16px
+    font-weight: normal
+    color: #202b38
+    padding: 0 48px
+  img
+    object-fit: contain
+    //padding-left: 98px
+    //padding-right: 98px
+    max-width: 290px
+    max-height: 202px
+
+.section-sertificats
+  .container
+    overflow: hidden
+  .section-content
+    position: relative
+  .swiper-button-prev, .swiper-button-next
+    line-height: 84px
+    text-transform: uppercase
+    color: #8F1154
+    &:after
+      font-size: 72px
+      font-family: "Material Design Icons"
+      content: '\F141'
+
+  .swiper-button-prev
+    left: 55px
+  .swiper-button-next
+    right: 55px
+
+.mobile-menu-btn
+  display: none
+
+.inner-wrap, .inner-wrap
+  overflow: hidden
+  width: 100.1%
+  height: 100.1%
+  position: absolute
+  z-index: 1
+  top: 0
+  left: 0
+
+.row-bg
+  background-attachment: fixed
+  position: absolute
+  z-index: 1
+  top: 0
+  left: 0
+  background-size: contain
+  width: 100%
+  height: 100%
+
+.mobile-watch
+  display: none
+  justify-content: center
+  text-align: center
+
+.watch
+  padding: 2px 12px
+  background: #8F1154
+  border-radius: 2px
+  color: #fff !important
+  text-transform: uppercase
+  font-size: 16px
+  font-weight: 600
 
 @import media

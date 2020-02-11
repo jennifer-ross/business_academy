@@ -23,12 +23,12 @@
 //    padding-left: 0
 //    padding-right: 0
 //
-//@media screen and (max-width: 576.98px)
-//  .container
-//    width: 100%
-//    max-width: 100%
-//    padding-left: 1rem
-//    padding-right: 1rem
+@media screen and (max-width: 576.98px)
+  .container
+    width: 100%
+    max-width: 100%
+    padding-left: 1rem
+    padding-right: 1rem
 
 //sm: 540px,
 //md: 720px,
@@ -50,7 +50,102 @@
 
 // ≥576px
 +media-breakpoint-down(xs)
-  //
+  .section
+    padding: 10px 6px
+    padding-bottom: 10px
+    .section-title
+      padding-bottom: 10px
+      h1,h2,h3,h4,h5
+        font-size: 24px
+      .container
+        padding-left: 0
+        padding-right: 0
+  .section-seminars
+    padding-left: 0
+    padding-right: 0
+    .section-action
+      display: flex
+      justify-content: flex-end
+      .show-all
+        display: none
+      .blue-link
+        display: flex
+        font-size: 18px
+        span
+          font-size: 24px
+  .seminars-container
+    flex-direction: column
+    .seminar
+      width: 100%
+      max-width: 100%
+      overflow: hidden
+      margin-right: 0
+      margin-bottom: 10px
+      display: none
+      &:first-child, &:nth-child(3), &:last-child, &:nth-child(2)
+        max-width: 100%
+      &:first-child
+        border: none
+      &:nth-child(1),&:nth-child(2), &:nth-child(3)
+        display: flex
+      .bg
+      .content
+        padding: 7px 10px
+        padding-bottom: 7px
+        .action
+          .btn
+            font-size: 16px
+            span
+              font-size: 24px
+        .seminar-date
+          .date
+            font-size: 36px
+          .position
+            font-size: 16px
+            margin-left: 20px
+        .heading
+          font-size: 16px
+          padding-bottom: 10px
+          padding-top: 10px
+          padding-right: 5rem
+
+  .section-slider
+    display: none
+  .mobile-watch
+    display: inline-flex
+    width: calc(100% - 2rem)
+    margin: 12px auto
+  .mobile-menu-btn
+    display: block
+    font-size: 32px
+    color: $b
+
+  .header
+    .left__head-menu
+      display: none
+    .eng-version
+      display: none
+    .top-head-menu
+      padding: 2px 0
+      .container
+        align-items: center
+    .top-menu
+      margin-top: 10px
+      .menu
+        justify-content: center
+        align-items: flex-end
+        .lower
+          display: none
+        .upper
+          .action-block
+            display: flex
+            flex-direction: column
+          .btn,ul
+            display: none
+          .phone
+            display: inline-flex
+            margin: 0
+
 
 /*==========  Mobile First  ==========*/
 

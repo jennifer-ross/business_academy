@@ -50,19 +50,48 @@
 
 // ≥576px
 +media-breakpoint-down(xs)
+  .blue-link
+    display: flex
+    font-size: 18px !important
+    span
+      font-size: 24px !important
+
   .section
     padding: 10px 6px
     padding-bottom: 10px
+    .section-content
+      .container
+        padding: 10px 5px
     .section-title
       padding-bottom: 10px
       h1,h2,h3,h4,h5
         font-size: 24px
-      .container
-        padding-left: 0
-        padding-right: 0
+    & > .container
+      padding-left: 0
+      padding-right: 0
+    .left-to-right
+      flex-direction: column
+      .left
+        min-width: unset
+        width: 100%
+        margin-bottom: 10px
+        iframe
+          height: 205px
+      .right
+        margin-left: 0
+        .title
+          h1,h2,h3,h4,h5
+            font-size: 18px
+        .desc
+          font-size: 16px
+          line-height: normal
+
   .section-seminars
     padding-left: 0
     padding-right: 0
+    .section-title
+      padding-left: 1rem
+      padding-right: 1rem
     .section-action
       display: flex
       justify-content: flex-end
@@ -73,6 +102,7 @@
         font-size: 18px
         span
           font-size: 24px
+
   .seminars-container
     flex-direction: column
     .seminar
@@ -131,6 +161,11 @@
         align-items: center
     .top-menu
       margin-top: 10px
+      .logo
+        max-width: 160px
+        margin-right: 0
+        img
+          max-width: 100%
       .menu
         justify-content: center
         align-items: flex-end
@@ -146,6 +181,166 @@
             display: inline-flex
             margin: 0
 
+  .swiper-pagination
+    padding: 0
+  .swiper-pagination-bullet
+    width: 9px
+    height: 9px
+
+  .swiper-container-init-mobile
+    padding: 0 25px
+    .swiper-pagination
+      display: block
+    .swiper-button-prev,.swiper-button-next
+      display: block
+      color: #11558f
+      opacity: .2
+      &:after
+        font-family: "Material Design Icons"
+        content: '\F141'
+        font-size: 36px
+    .swiper-button-prev
+      left: -10px
+    .swiper-button-next
+      right: 0
+      &:after
+        content: '\F142'
+
+  .section-news
+    padding-bottom: 30px
+    .swiper-pagination
+      bottom: -20px !important
+
+  .news-container
+    flex-wrap: nowrap
+    .swiper-slide-active
+    .news-item
+      flex: none
+      max-width: unset
+      margin-top: 0
+      margin-bottom: 0
+      .bg
+        height: 100%
+      .content
+        padding-top: 10px
+      .news-title
+        .date
+          font-size: 18px
+          bottom: 45%
+      .news-title
+        padding-bottom: 10px
+        .title
+          padding-left: 70px
+          h1,h2,h3,h4,h5
+            font-size: 18px
+            line-height: normal
+      .desc
+        padding-top: 10px
+        font-size: 14px
+        line-height: normal
+        padding-bottom: 10px
+        padding-right: 20px
+  .nb-container
+    flex-direction: column
+  .news-block
+    .section-content
+      background: #f6f9fb
+      position: relative
+    .action
+      margin: 0
+      justify-content: flex-end
+      background: #f6f9fb
+      padding-bottom: 10px
+    .news-block-content
+      flex-direction: row
+    .swiper-pagination
+      bottom: 5px !important
+    .news-block-content
+      margin-top: 0
+      padding-bottom: 20px
+      .item
+        padding: 10px 20px
+  .books-block
+    margin-top: 10px
+    max-width: 100%
+    .action
+      margin-top: 20px
+    .swiper-pagination
+      bottom: -15px !important
+    .section-title
+      text-align: left
+      justify-content: flex-start
+    .section-content
+      position: relative
+    .item
+      display: flex
+      justify-content: center
+
+  .section-reviews
+    .action
+      margin-top: 20px
+      justify-content: flex-end
+      display: flex
+    .swiper-pagination
+      bottom: -20px !important
+    .review-detail-container
+      //display: none
+    .slider-container
+      padding-top: 10px
+      padding-bottom: 30px
+    .review-detail
+      margin-top: -30px
+      .image
+        display: none
+      .review-content
+        padding: 5px 20px
+        .text
+          font-size: 14px
+          &:before
+            content: none
+      padding-bottom: 0
+    .swiper-container-reviews
+      max-height: unset
+      background: transparent
+      height: auto
+    .review-slide
+
+  .hit-container
+    padding: 0
+    flex-direction: column
+    .items-container
+      p
+        font-size: 12px
+      span
+        font-size: 24px
+        margin-left: 6px
+      i
+        font-size: 18px
+        margin-bottom: -1px
+      .text
+        p
+          display: flex
+          align-items: flex-end
+      .icon-public
+        span
+          font-size: 24px
+          margin-right: 5px
+    .left-block
+      width: 100%
+      .content
+        padding: 66px 5px
+        padding-bottom: 10px
+        .left-path
+          padding-right: 5px
+        .right-path
+          padding-left: 5px
+        .title
+          font-size: 18px
+    .right-block
+      width: 100%
+      .content
+        .title
+          font-size: 18px
 
 /*==========  Mobile First  ==========*/
 

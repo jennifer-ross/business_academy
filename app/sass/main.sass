@@ -774,7 +774,7 @@ ul
   justify-content: flex-start
   max-width: 640px
 
-  .section-content
+  .news-block-content
     margin-top: 30px
     padding-top: 15px
     padding-right: 17px
@@ -805,7 +805,7 @@ ul
       font-size: 14px
 
     .title
-      font-size: 16px
+      font-size: 18px
       color: #8f1154
       font-weight: 600
       margin: 0
@@ -827,13 +827,13 @@ ul
   .section-title
     text-align: right
 
-  .section-content
+  .books-block-content
     display: flex
     flex: 1 1 auto
     align-items: center
     .item
       max-height: 220px
-      //width: 220px
+      width: auto
       height: 220px
       img
         object-fit: cover
@@ -1548,5 +1548,16 @@ footer
   text-transform: uppercase
   font-size: 16px
   font-weight: 600
+
+.swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled
+  pointer-events: auto
+
+.swiper-container-init-mobile
+  .swiper-wrapper
+    height: auto
+  .swiper-pagination
+    display: none
+  .swiper-button-prev,.swiper-button-next
+    display: none
 
 @import media

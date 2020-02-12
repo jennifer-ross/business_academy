@@ -67,6 +67,80 @@ $(function () {
         }
     });
 
+    // fix vertical height swiper sliders
+    const swiperFix = (els) => {
+        let count = 1;
+        let swiperIntervalId = setInterval(function () {
+            Array.prototype.forEach.call(els, (v,k) => {
+                v.update();
+            });
+            if (count >= 3) {
+                clearInterval(swiperIntervalId);
+            }
+            count++;
+        }, 500);
+    };
+
+    let Swipers = [];
+    if (window.innerWidth <= 576) {
+        reviewsSwiper.destroy();
+
+        let mobileSwipers = $('.swiper-container-init-mobile');
+
+        $.each(mobileSwipers, (k,v) => {
+            v = $(v);
+            let pagination = v.closest('.section-content').find('.swiper-pagination');
+            let type = v.attr('data-swiper-type') || null;
+
+            let mobileSwiper = new Swiper(v, {
+                direction: 'horizontal',
+                autoHeight: !0,
+                loop: !1,
+                centeredSlides: true,
+                allowTouchMove: true,
+                passiveListeners: false,
+                simulateTouch: true,
+                touchStartPreventDefault: false,
+                followFinger: false,
+                slidesPerView: 1,
+                spaceBetween: 60,
+                calculateHeight: true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: pagination || '.swiper-pagination',
+                    type: 'bullets',
+                    clickable: true,
+                },
+                on: {
+                    slideChangeTransitionStart: function() {
+                        switch (this.type) {
+                            case "review" : {
+                                let el = $(this.$el).find('.swiper-slide-active');
+
+                                let more = el.find('.more');
+                                let moreText = more.find('.text');
+
+                                let detail = $('.review-detail');
+                                let text = detail.find('.text');
+
+                                text.html(moreText.html());
+
+                                return;
+                            }
+                            default: return;
+                        }
+                    }
+                }
+            });
+            mobileSwiper.type = type;
+            Swipers.push(mobileSwiper);
+        });
+        swiperFix(Swipers);
+    }
+
     $('.swiper-container-reviews .swiper-slide').on('click', function () {
         let el = $(this);
         let detail = $('.review-detail');
@@ -94,7 +168,7 @@ $(function () {
             zoomOnTouch: false,
             zoomOnWheel: true,
         });
-});
+    });
 
     let sertificatsSwiper = new Swiper('.swiper-container-sertificat', {
         direction: 'horizontal',

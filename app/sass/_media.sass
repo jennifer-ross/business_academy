@@ -305,42 +305,140 @@
       height: auto
     .review-slide
 
+
+  .section-hit
+    padding-left: 0
+    padding-right: 0
+    padding-bottom: 0
+    margin-bottom: 0
   .hit-container
     padding: 0
     flex-direction: column
+    .action
+      padding-left: 0
+      .btn
+        padding-left: 0
+        padding-right: 0
+        width: 100%
+        margin-top: 10px
+    .hit
+      top: .2rem
+      left: 0
+      width: 30%
+      img
+        width: 100%
+    .action-ctn
+      padding-left: 5px
+      padding-right: 5px
+      padding-bottom: 20px
     .items-container
       p
         font-size: 12px
+        margin-bottom: .5rem
       span
         font-size: 24px
         margin-left: 6px
       i
         font-size: 18px
         margin-bottom: -1px
+      .item:not(.icon-public)
+        &:last-child
+          p
+            margin-bottom: 0
       .text
         p
           display: flex
           align-items: flex-end
       .icon-public
+        margin-top: 3rem
         span
           font-size: 24px
           margin-right: 5px
     .left-block
       width: 100%
       .content
-        padding: 66px 5px
+        padding: 66px 0
         padding-bottom: 10px
         .left-path
           padding-right: 5px
+          width: 50%
+          &:after
+            right: -1px
+          .title
+            align-items: flex-start
         .right-path
           padding-left: 5px
+          width: 50%
+          .title
+            display: flex
+            align-items: flex-start
         .title
           font-size: 18px
+          min-height: unset
     .right-block
       width: 100%
+      overflow: hidden
+      &::after
+        right: -2.25rem
+        transform: scale(.65,.8)
+        bottom: -4rem
+      .bg
+        img
+          height: 100%
       .content
+        padding-bottom: 10px
+        padding-top: 10px
+        padding-right: 0
+        font-size: 16px
+        width: 60%
         .title
           font-size: 18px
+
+  .section
+    .rtl-2
+      .left
+        display: none
+      .right
+        padding-top: 0
+        padding-right: 0
+        padding-bottom: 0
+        .desc
+          margin-top: 10px
+          font-size: 14px
+          line-height: normal
+        .title
+          padding-bottom: 5px
+          h1,h2,h3,h4,h5
+            font-size: 24px
+            line-height: normal
+      .custom-action
+        flex-direction: column-reverse
+        margin-top: 0
+        .mobile-content
+          display: flex
+          flex-direction: column
+          justify-content: flex-end
+          margin-bottom: 2px
+          margin-right: 10px
+        .mobile-image
+          display: inline-flex
+          img
+            width: 100%
+        p
+          font-size: 12px
+          line-height: normal
+        .right-action
+          display: flex
+          .subtl
+            font-size: 18px
+        .left-action
+          display: flex
+          justify-content: center
+          margin-top: 10px
+          .btn
+            padding-left: 26px
+            padding-right: 26px
+
 
 /*==========  Mobile First  ==========*/
 

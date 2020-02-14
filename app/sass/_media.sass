@@ -186,6 +186,9 @@
   .swiper-pagination-bullet
     width: 9px
     height: 9px
+    border: solid 1px #11558f
+  .swiper-pagination-bullet-active
+    border: solid 1px #8f1154
 
   .swiper-container-init-mobile
     padding: 0 25px
@@ -439,6 +442,100 @@
             padding-left: 26px
             padding-right: 26px
 
+  .section-videos
+    .filter-container
+      padding: 0
+      .mobile-filter-container
+        position: relative
+        display: block
+        span.mdi
+          pointer-events: none
+          position: absolute
+          display: inline-block
+          right: .2rem
+          top: 50%
+          font-size: 24px
+          line-height: normal
+          padding: 0
+          margin: 0
+          transform: translateY(-50%)
+      .mobile-filter
+        display: block
+        border-radius: 2px
+        border: solid 1px #dde8f1
+        font-size: 16px
+        color: $b
+        padding: 3px 6px
+        width: 100%
+        padding-right: 2rem
+        position: relative
+        appearance: none
+        &::-ms-expand
+          display: none
+        //&:after
+        //  content: "\F140"
+        //  font-size: 24px
+        //  font-family: "Material Design Icons"
+        //  position: absolute
+        //  right: .5rem
+        //  top: 50%
+        //  transform: translateY(-50%)
+        //  width: 24px
+        //  height: 24px
+        //  display: inline-block
+      span
+        display: none
+
+  .section-videos
+    padding-bottom: 20px
+    .swiper-pagination
+      bottom: -12px !important
+    .section-action
+      display: none
+    .items-container
+      flex-wrap: unset
+    .item
+      max-width: unset
+      margin-right: 0
+      flex: none
+      .content
+        width: 100%
+        height: 163px
+        min-height: 163px
+      .title
+        font-size: 14px
+
+  .section-services
+    .swiper-pagination
+      bottom: -10px !important
+  .services-container
+    .item
+      flex: none
+      max-width: unset
+
+  .section-count
+    padding-bottom: 30px
+    .swiper-pagination
+      bottom: -25px !important
+  .count-container
+    .item
+      max-width: unset
+
+  .clients-container
+    //flex-wrap: wrap
+    transform: translate3d(0px, 0px, 0px) !important
+    height: auto !important
+    flex-direction: row
+    .item
+      flex: none
+      margin: 0 !important
+      max-width: unset
+      width: 32% !important
+      p
+        display: none
+    .hide
+      width: 0 !important
+      height: 0 !important
 
 /*==========  Mobile First  ==========*/
 

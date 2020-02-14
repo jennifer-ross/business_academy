@@ -71,7 +71,7 @@ $(function () {
     const swiperFix = (els) => {
         let count = 1;
         let swiperIntervalId = setInterval(function () {
-            Array.prototype.forEach.call(els, (v,k) => {
+            Array.prototype.forEach.call(els, (v) => {
                 v.update();
             });
             if (count >= 3) {
@@ -91,6 +91,14 @@ $(function () {
             v = $(v);
             let pagination = v.closest('.section-content').find('.swiper-pagination');
             let type = v.attr('data-swiper-type') || null;
+            let slidesPerGroup = 1;
+
+            if (type === 'client') {
+                slidesPerGroup = 9;
+            }
+
+            let elsHide = null;
+            let elsShow = null;
 
             let mobileSwiper = new Swiper(v, {
                 direction: 'horizontal',
@@ -104,6 +112,7 @@ $(function () {
                 followFinger: false,
                 slidesPerView: 1,
                 spaceBetween: 60,
+                slidesPerGroup: slidesPerGroup,
                 calculateHeight: true,
                 navigation: {
                     nextEl: '.swiper-button-next',
@@ -115,6 +124,31 @@ $(function () {
                     clickable: true,
                 },
                 on: {
+                    init: function () {
+                        this.type = type;
+                        this.currentSlide = 0;
+                        switch (this.type) {
+                            case "client" : {
+                                let elMultiplier = 9;
+                                let els = $(this.el).find('.swiper-slide');
+                                let curSlide = this.currentSlide;
+
+                                if (this.currentSlide <= 0) {
+                                    curSlide = 1;
+                                }
+                                let offset = curSlide * elMultiplier;
+                                let from = this.currentSlide * elMultiplier;
+                                let offsetE = els.slice(from,offset);
+
+                                if (offsetE.length === 0) {
+                                    offsetE = els.slice(offset);
+                                }
+                                elsHide = els;
+                                elsShow = offsetE;
+                            }
+                            default: return;
+                        }
+                    },
                     slideChangeTransitionStart: function() {
                         switch (this.type) {
                             case "review" : {
@@ -130,12 +164,64 @@ $(function () {
 
                                 return;
                             }
+                            case "client" : {
+                                console.log(this.currentSlide);
+                            }
                             default: return;
                         }
-                    }
+                    },
+                    slideNextTransitionStart: function () {
+                        this.currentSlide++;
+                        switch (this.type) {
+                            case "client" : {
+                                let elMultiplier = 9;
+                                let els = $(this.el).find('.swiper-slide');
+                                let curSlide = this.currentSlide;
+                                if (this.currentSlide <= 0) {
+                                    curSlide = 1;
+                                }
+                                let offset = curSlide * elMultiplier;
+                                let from = this.currentSlide * elMultiplier;
+                                let offsetE = els.slice(from,offset+elMultiplier);
+                                if (offsetE.length === 0) {
+                                    offsetE = els.slice(offset);
+                                }
+                                $(els).addClass('hide');
+                                $(offsetE).removeClass('hide');
+                            }
+                            default: return;
+                        }
+                    },
+                    slidePrevTransitionStart: function () {
+                        this.currentSlide--;
+                        switch (this.type) {
+                            case "client" : {
+                                let elMultiplier = 9;
+                                let els = $(this.el).find('.swiper-slide');
+                                let curSlide = this.currentSlide;
+                                if (this.currentSlide <= 0) {
+                                    curSlide = 1;
+                                }
+                                let offset = curSlide * elMultiplier;
+                                let from = this.currentSlide * elMultiplier;
+                                let offsetE = els.slice(from,offset-elMultiplier);
+                                if (offsetE.length === 0) {
+                                    offsetE = els.slice(offset);
+                                }
+                                $(els).removeClass('hide');
+                                $(offsetE).addClass('hide');
+                            }
+                            default: return;
+                        }
+                    },
                 }
             });
-            mobileSwiper.type = type;
+            try {
+                $(elsHide).addClass('hide');
+                $(elsShow).removeClass('hide');
+            }catch (e) {
+
+            }
             Swipers.push(mobileSwiper);
         });
         swiperFix(Swipers);
@@ -189,6 +275,36 @@ $(function () {
         },
     });
 
+    // let sw = new Swiper('.swiper-container-init-mobile2', {
+    //     direction: 'horizontal',
+    //     autoHeight: !0,
+    //     loop: !1,
+    //     centeredSlides: true,
+    //     allowTouchMove: true,
+    //     passiveListeners: false,
+    //     simulateTouch: true,
+    //     touchStartPreventDefault: false,
+    //     followFinger: false,
+    //     slidesPerView: 9,
+    //     slidesPerGroup: 9,
+    //     spaceBetween: 0,
+    //     calculateHeight: true,
+    //     navigation: {
+    //         nextEl: '.swiper-button-next',
+    //         prevEl: '.swiper-button-prev',
+    //     },
+    //     pagination: {
+    //         el: '.swiper-pagination',
+    //         type: 'bullets',
+    //         clickable: true,
+    //     }
+    // });
+    // let items = $('.clients-swiper-container .item');
+    // items.hide();
+    // for (let i = 0;i<9;i++) {
+    //     $(items[i]).css('display', 'flex');
+    // }
+
     $.each($('.sertificat-slide'), function (k, v) {
         let el = $(this).find('img')[0];
         let viewer = new Viewer(el, {
@@ -206,6 +322,10 @@ $(function () {
             zoomOnWheel: true,
         });
     });
+
+    let clients = $('.clients-container .item');
+    let clientsCnt = clients.length;
+
 
     window.submenu = {
         menu: null,
@@ -237,6 +357,46 @@ $(function () {
           });
         }
     };
+
+    window.itemsFilter = {
+        filter: null,
+        init: () => {
+            let e = window.itemsFilter;
+            e.filter = $('[data-filter]');
+            if (e.filter.length <= 0) {
+                return;
+            }
+            Array.prototype.forEach.call(e.filter, function (v) {
+                v = $(v);
+                let filterKeys = v.find('[data-filter-key]');
+                let filterItemsContainer = $(v.attr('data-filter-items'));
+                let filterItems = filterItemsContainer.find(".item");
+                filterKeys.unbind('click');
+                filterKeys.on('click', function () {
+                    let el = $(this);
+                    let key = el.attr('data-filter-key');
+
+                    if (el.hasClass('active')) {
+                        key = 0;
+                        filterKeys.removeClass('active');
+                    }else {
+                        filterKeys.removeClass('active');
+                        el.addClass('active');
+                    }
+
+                    if (key == 0 || key == 'all') {
+                        filterItems.css('display', 'flex');
+                        return;
+                    }
+                    filterItems.hide();
+                    let filtered = filterItemsContainer.find('[data-fkey="' + key + '"]');
+                    filtered.css('display','flex');
+                });
+            });
+        }
+    };
+
     window.submenu.init();
+    window.itemsFilter.init();
 
 });

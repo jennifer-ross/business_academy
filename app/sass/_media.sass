@@ -190,7 +190,7 @@
   .swiper-pagination-bullet-active
     border: solid 1px #8f1154
 
-  .swiper-container-init-mobile
+  .swiper-container-init-mobile, .section-sertificats
     padding: 0 25px
     .swiper-pagination
       display: block
@@ -198,6 +198,7 @@
       display: block
       color: #11558f
       opacity: .2
+      line-height: normal
       &:after
         font-family: "Material Design Icons"
         content: '\F141'
@@ -280,6 +281,14 @@
       justify-content: center
 
   .section-reviews
+    .swiper-container-init-mobile .swiper-button-next
+      right: -10px
+    .rating
+      display: none
+      .stars
+        span
+          width: 14px
+          font-size: 16px
     .action
       margin-top: 20px
       justify-content: flex-end
@@ -299,6 +308,7 @@
         padding: 5px 20px
         .text
           font-size: 14px
+          padding-right: 0
           &:before
             content: none
       padding-bottom: 0
@@ -308,6 +318,11 @@
       height: auto
     .review-slide
 
+  .section-reviews .swiper-slide .review-slide>.rating
+    display: flex !important
+    right: 10px
+    & > span
+      font-size: 28px
 
   .section-hit
     padding-left: 0
@@ -521,6 +536,10 @@
     .item
       max-width: unset
 
+
+  .section-clients
+    .swiper-pagination
+      bottom: -5px !important
   .clients-container
     //flex-wrap: wrap
     transform: translate3d(0px, 0px, 0px) !important
@@ -536,6 +555,164 @@
     .hide
       width: 0 !important
       height: 0 !important
+
+  .subscribe-form-container
+    flex-direction: column
+    align-items: center
+    padding: 0 !important
+    .subsc
+      padding: 0
+      text-align: center
+      font-size: 18px
+      width: 80%
+    .subscribe-form
+      margin-top: 25px
+      padding: 0
+      width: 90%
+      .btn
+        width: 100%
+        margin-top: 20px
+      .desc
+        font-size: 12px
+        margin-bottom: 0
+
+  input,input::placeholder
+    font-size: 18px
+
+  footer
+    .container
+    .services
+      display: none
+    .menu
+      position: relative
+      &:after
+        content: ""
+        left: -.5rem
+        bottom: 0
+        width: calc(100% + 1rem)
+        height: 2px
+        background: $r
+        position: absolute
+      ul
+        li,li a
+          font-size: 16px
+          text-transform: uppercase
+          font-weight: 600
+        li
+          width: 50%
+          margin-bottom: 10px
+    .fserv
+      margin-top: 20px
+      padding: 0
+      padding-left: .25rem
+      padding-right: .25rem
+      flex-wrap: wrap
+      justify-content: center
+      .item
+        width: calc(50% - 10px)
+        margin-bottom: 15px
+        margin-right: 10px
+        &:nth-of-type(2n)
+          margin-right: 0
+        .image
+          width: 64px
+          height: 64px
+          display: flex
+          align-items: flex-end
+          justify-content: center
+        span
+          font-size: 11px
+
+    .about
+      margin-top: 0px
+      &:before
+        width: calc(100% + 1rem)
+        left: -.5rem
+      .sbtl
+        display: none
+    .contacts
+      display: none
+    .actions
+      display: none
+    .about-content
+      flex-direction: column
+      margin-top: 10px
+    .socials
+      justify-content: center
+      align-items: center
+      margin-top: 20px
+      .social-container
+        margin-top: 10px
+    .logo
+      align-self: center
+    .copyright-block
+      text-align: center
+      font-size: 14px
+      .container
+        display: flex
+        flex-direction: column
+        padding-left: .25rem
+        padding-right: .25rem
+      .address
+        margin-bottom: 10px
+        display: flex
+        text-align: left
+      .contacts
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        margin-bottom: 10px
+        padding-left: 5px
+        padding-right: 5px
+        a
+          display: flex
+          font-size: 16px
+          font-weight: 600
+          font-stretch: normal
+          font-style: normal
+          line-height: 1.88
+          letter-spacing: normal
+          text-align: center
+          color: $b
+          span
+            font-size: 16px
+            margin-right: 5px
+      .copyright
+        order: 0
+        display: flex
+        text-align: center
+        justify-content: center
+        margin-bottom: 20px
+      .policy
+        order: 1
+        display: flex
+        justify-content: center
+      .policy,.policy a
+        font-size: 18px
+
+  .section-sertificats
+    padding-left: 5px
+    padding-right: 5px
+    .swiper-container-init-mobile
+      padding-left: 20px
+      padding-right: 20px
+      margin-top: 0
+    .swiper-pagination
+      width: 100%
+      bottom: 20px !important
+  .sertificat-slide
+    padding-top: 20px
+    padding-bottom: 32px
+    height: auto
+    min-height: unset
+    img
+      max-width: 100%
+      max-height: 100%
+      padding-left: 20px
+      padding-right: 20px
+    span
+      margin-top: 10px
+      padding: 0 20px
 
 /*==========  Mobile First  ==========*/
 

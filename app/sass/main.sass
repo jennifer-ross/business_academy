@@ -562,6 +562,10 @@ ul
     .blue-link
       display: none
 
+.section-slider
+  padding-left: 0
+  padding-right: 0
+
 .seminars-container
   display: flex
   flex-wrap: wrap
@@ -827,7 +831,7 @@ ul
   .section-title
     text-align: right
 
-  .books-block-content
+  .section-content
     display: flex
     flex: 1 1 auto
     align-items: center
@@ -842,7 +846,42 @@ ul
 .section-reviews
   padding: 0
   padding-bottom: 30px
-
+  .swiper-button-next, .swiper-button-prev
+    display: block !important
+    width: auto
+    height: auto
+  .rating
+    position: absolute
+    right: 0
+    top: 50%
+    transform: translateY(-50%)
+    background: $r
+    padding: 10px 5px
+    height: 100%
+    display: flex
+    //justify-content: center
+    flex-direction: column
+    align-items: center
+    .stars
+      display: flex
+      span
+        width: 18px
+        margin-right: 2px
+        font-size: 20px
+        color: $white
+        &:last-child
+          margin-right: 0
+    &>span
+      color: $white
+      font-weight: bold
+      font-size: 60px
+      line-height: 89px
+      flex: 1 1 auto
+      display: flex
+      justify-content: center
+      align-items: center
+  .action
+    display: none
   .swiper-container-reviews
     width: 100%
     height: 100%
@@ -854,6 +893,23 @@ ul
     justify-content: center
     align-items: center
     max-width: 366px
+    .review-slide
+      & > .rating
+        background: transparent
+        z-index: 1
+        align-items: center
+        justify-content: center
+        right: 15px
+        .stars
+          flex-direction: column
+          span
+            color: $r
+            margin-right: 0
+        & > span
+          color: $r
+          flex: none
+          font-size: 36px
+          line-height: 53px
 
   .swiper-button-prev
     color: #fff
@@ -870,7 +926,7 @@ ul
 
     &:after
       font-family: "Material Design Icons"
-      content: "\F141"
+      content: "\F142"
       font-size: 72px
 
   .review-slide
@@ -911,13 +967,14 @@ ul
       justify-content: center
       padding-left: 60px
       position: relative
-      padding-right: 132px
+      //padding-right: 132px
       border-left: 0
 
       .text
         position: relative
         font-size: 24px
         color: #11558f
+        padding-right: 132px
 
         &:before
           content: ""
@@ -1068,6 +1125,7 @@ input
   font-size: 24px
   color: #3d444d
   border-bottom: 2px solid $b
+  background: transparent
 
   &::placeholder
     line-height: 1.25
@@ -1143,12 +1201,12 @@ footer
     ul
       display: flex
       flex-wrap: wrap
-
       li, li a
         font-size: 21px
         font-weight: 600
         text-align: center
         color: #11558f
+        text-transform: uppercase
 
       li
         list-style: none
@@ -1210,7 +1268,8 @@ footer
     padding-top: 7px
     padding-bottom: 19px
     margin-top: 35px
-
+    .contacts
+      display: none
     .container
       display: flex
       justify-content: space-between
@@ -1411,7 +1470,7 @@ footer
     img
       width: 100%
       object-fit: cover
-      height: fit-content
+      height: 100%
   .left-block
     width: 50%
   .right-block
@@ -1584,6 +1643,7 @@ footer
   pointer-events: auto
 
 .swiper-container-init-mobile
+  width: 100%
   .swiper-wrapper
     height: auto
   .swiper-pagination

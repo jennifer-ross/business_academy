@@ -67,6 +67,25 @@ $(function () {
         }
     });
 
+    let sertificatsSwiper = new Swiper('.swiper-container-sertificat', {
+        direction: 'horizontal',
+        autoHeight: !0,
+        loop: !1,
+        centeredSlides: false,
+        allowTouchMove: true,
+        passiveListeners: false,
+        simulateTouch: true,
+        touchStartPreventDefault: false,
+        followFinger: false,
+        slidesPerView: 4,
+        slidesPerGroup: 4,
+        spaceBetween: 30,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
     // fix vertical height swiper sliders
     const swiperFix = (els) => {
         let count = 1;
@@ -84,6 +103,7 @@ $(function () {
     let Swipers = [];
     if (window.innerWidth <= 576) {
         reviewsSwiper.destroy();
+        sertificatsSwiper.destroy();
 
         let mobileSwipers = $('.swiper-container-init-mobile');
 
@@ -127,6 +147,7 @@ $(function () {
                     init: function () {
                         this.type = type;
                         this.currentSlide = 0;
+
                         switch (this.type) {
                             case "client" : {
                                 let elMultiplier = 9;
@@ -148,6 +169,7 @@ $(function () {
                             }
                             default: return;
                         }
+
                     },
                     slideChangeTransitionStart: function() {
                         switch (this.type) {
@@ -172,6 +194,7 @@ $(function () {
                     },
                     slideNextTransitionStart: function () {
                         this.currentSlide++;
+
                         switch (this.type) {
                             case "client" : {
                                 let elMultiplier = 9;
@@ -194,6 +217,7 @@ $(function () {
                     },
                     slidePrevTransitionStart: function () {
                         this.currentSlide--;
+
                         switch (this.type) {
                             case "client" : {
                                 let elMultiplier = 9;
@@ -254,25 +278,6 @@ $(function () {
             zoomOnTouch: false,
             zoomOnWheel: true,
         });
-    });
-
-    let sertificatsSwiper = new Swiper('.swiper-container-sertificat', {
-        direction: 'horizontal',
-        autoHeight: !0,
-        loop: !1,
-        centeredSlides: false,
-        allowTouchMove: true,
-        passiveListeners: false,
-        simulateTouch: true,
-        touchStartPreventDefault: false,
-        followFinger: false,
-        slidesPerView: 4,
-        slidesPerGroup: 4,
-        spaceBetween: 30,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
     });
 
     // let sw = new Swiper('.swiper-container-init-mobile2', {

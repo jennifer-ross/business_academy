@@ -249,6 +249,7 @@ $(function () {
             Swipers.push(mobileSwiper);
         });
         swiperFix(Swipers);
+
     }
 
     $('.swiper-container-reviews .swiper-slide').on('click', function () {
@@ -365,6 +366,7 @@ $(function () {
 
     window.itemsFilter = {
         filter: null,
+        swiperType: "filter",
         init: () => {
             let e = window.itemsFilter;
             e.filter = $('[data-filter]');
@@ -376,28 +378,61 @@ $(function () {
                 let filterKeys = v.find('[data-filter-key]');
                 let filterItemsContainer = $(v.attr('data-filter-items'));
                 let filterItems = filterItemsContainer.find(".item");
+                let select = v.find('select');
+
+                select.unbind('select');
                 filterKeys.unbind('click');
-                filterKeys.on('click', function () {
-                    let el = $(this);
-                    let key = el.attr('data-filter-key');
 
-                    if (el.hasClass('active')) {
-                        key = 0;
-                        filterKeys.removeClass('active');
-                    }else {
-                        filterKeys.removeClass('active');
-                        el.addClass('active');
-                    }
+                if (window.innerWidth <= 576) {
+                    select.on('change', function () {
+                        let el = select.find('option:selected');
+                        let key = el.attr('data-filter-key');
 
-                    if (key == 0 || key == 'all') {
-                        filterItems.css('display', 'flex');
-                        return;
-                    }
-                    filterItems.hide();
-                    let filtered = filterItemsContainer.find('[data-fkey="' + key + '"]');
-                    filtered.css('display','flex');
-                });
+                        e.filterItems('select', filterKeys, key, filterItems, filterItemsContainer, el);
+                    });
+                }else {
+                    filterKeys.on('click', function () {
+                        let el = $(this);
+                        let key = el.attr('data-filter-key');
+
+                        e.filterItems('click', filterKeys, key, filterItems, filterItemsContainer, el);
+                    });
+                }
             });
+        },
+        update: () => {
+            let e = window.itemsFilter;
+            if (Swipers.length <= 0 || window.innerWidth > 576) return;
+            Array.prototype.forEach.call(Swipers, function (v) {
+                if (v.type === e.swiperType) {
+                    v.update();
+                }
+            });
+        },
+        filterItems: (type, keys, key, items, container, el=null) => {
+            let e = window.itemsFilter;
+            console.log(type,type === 'click');
+
+            if (type === 'click') {
+                if (el.hasClass('active')) {
+                    key = 0;
+                    keys.removeClass('active');
+                }else {
+                    keys.removeClass('active');
+                    el.addClass('active');
+                }
+            }
+
+            if (key == 0 || key == 'all') {
+                items.css('display', 'flex');
+                e.update();
+                return;
+            }
+
+            items.hide();
+            let filtered = container.find('[data-fkey="' + key + '"]');
+            filtered.css('display','flex');
+            e.update();
         }
     };
 

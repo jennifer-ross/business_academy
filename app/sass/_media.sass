@@ -9,14 +9,14 @@
     padding-left: 0
     padding-right: 0
 
-@media screen and (max-width: 1399.98px)
+@media screen and (max-width: 1499.98px)
   .container
     width: 1140px
     max-width: 1140px
     padding-left: 0
     padding-right: 0
 
-@media screen and (max-width: 1199.98px)
+@media screen and (max-width: 1279.98px)
   .container
     width: 960px
     max-width: 960px
@@ -51,10 +51,149 @@
 
 // ≥1800px
 @media (max-width: 1799.98px)
-  .swiper-button-prev
-    //left: 18px
-  .swiper-button-next
-    //right: 18px
+
+  .clients-container
+    justify-content: center
+    .item
+      max-width: 11.5%
+
+  .subscribe-form-container
+    .subsc
+      margin-right: 2rem
+
+  .count-container
+    .item
+      max-width: 240px
+      .count
+        .bg
+          img
+            width: 100%
+
+  .services-container
+    .content
+      padding: 10px
+    .item
+      max-width: 306px
+
+  .seminars-container
+    .seminar
+      .content
+        padding: 7px 30px
+        .heading
+          padding-right: 0rem
+
+  .section
+    .left-to-right, .right-to-left
+      .right
+        width: 50%
+      .left
+        width: 50%
+        min-width: unset
+
+  .news-container
+    .news-item
+      &:last-child
+        display: none
+
+  .books-block
+    .section-content
+      .item
+        &:last-child
+          display: none
+
+  .slide-bg
+    .content
+      max-width: calc(758px + 43px)
+
+  .hit-container
+    .hit
+      left: -.5rem
+      transform: scale(.75)
+      top: -3rem
+    .right-block
+      .content
+        padding-right: 350px
+      &:after
+        right: 80px
+
+  footer
+    .services
+      justify-content: center
+      .serv-menu
+        width: 30%
+        margin-right: 20px
+        &:last-child
+          margin-right: 0
+
+  .header
+    .top-menu
+      .menu
+        .lower
+          .desc
+            margin-right: 20px
+          ul
+            li,li a
+              font-size: 13px
+            li
+              display: flex
+              align-items: center
+              margin: 0 9px
+        .upper
+          flex-direction: column
+          ul
+            justify-content: flex-end
+          .action-block
+            margin-bottom: 15px
+            display: flex
+            justify-content: flex-end
+
+// ≥1500px
+@media (max-width: 1499.98px)
+  .header
+    .top-menu
+      .logo
+        margin-right: 1rem
+        max-width: 205px
+        img
+          width: 100%
+      .menu
+        .lower
+          flex-direction: column
+          ul
+            justify-content: flex-end
+            width: 100%
+            li
+          .desc
+            width: 100%
+            max-width: unset
+            padding-right: 0
+            text-align: right
+            margin-bottom: 10px
+
+  .watch
+    width: 100%
+    display: flex
+    justify-content: center
+
+  .mobile-watch
+    display: none
+
+  .seminars-container
+    .seminar
+      .content
+        .heading
+          padding-bottom: 1rem
+        .seminar-date
+          .date
+            font-size: 40px
+      &:first-child
+        .heading
+          font-size: 26px
+          //padding-bottom: 0
+
+// ≥1280px
+@media (max-width: 1279.98px)
+  //
 
 // ≥1200px
 +media-breakpoint-down(lg)

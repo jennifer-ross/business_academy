@@ -248,6 +248,16 @@ $(function () {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
+            breakpoints: {
+                1500: {
+                    slidesPerView: 4,
+                    slidesPerGroup: 4,
+                },
+                577: {
+                    slidesPerView: 4,
+                    slidesPerGroup: 4,
+                }
+            }
         });
     };
     swipersInit();

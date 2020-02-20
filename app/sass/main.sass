@@ -95,7 +95,7 @@ ul
     background: #f9f9f9
     padding: 8px 0
 
-    .container
+    .container, .fluid-container
       display: flex
       justify-content: space-between
 
@@ -136,7 +136,7 @@ ul
       margin-left: 30px
 
   .top-menu
-    .container
+    .container, .fluid-container
       display: flex
 
     .logo
@@ -310,10 +310,10 @@ ul
     content: url("/img/arrow-left.svg")
 
 .swiper-button-prev
-  left: 68px
+  left: 1.5%
 
 .swiper-button-next
-  right: 68px
+  right: 1.5%
 
   &:after
     transform: rotate(180deg)
@@ -580,13 +580,13 @@ ul
   flex-wrap: wrap
 
   .seminar
-    flex: 1 1 auto
+    //flex: 1 1 auto
     position: relative
     margin-right: 20px
     margin-bottom: 20px
     border: solid 1px #dde8f1
-    max-width: 24.1%
-
+    //max-width: 24.05%
+    flex: 1 1 23%
     .bg
       object-fit: cover
       width: 100%
@@ -673,10 +673,12 @@ ul
 
     &:nth-child(2)
       max-width: 28.3%
+      flex: 1 1 33%
 
     &:nth-child(3)
       max-width: 28.3%
       margin-right: 0
+      flex: 1 1 33%
 
     &:last-child
       margin-right: 0
@@ -859,6 +861,7 @@ ul
     display: block !important
     width: auto
     height: auto
+    transform: translateY(-50%)
   .rating
     position: absolute
     right: 0
@@ -1032,7 +1035,7 @@ ul
     flex-wrap: wrap
 
   .item
-    flex: 1 1 auto
+    flex: 1 1 30%
     display: flex
     flex-direction: column
     margin-right: 30px
@@ -1159,7 +1162,17 @@ input
     font-weight: 600
     text-align: right
     color: #11558f
-    padding-right: 16rem
+    margin-right: 16rem
+    text-transform: uppercase
+    position: relative
+    &:after
+      content: ""
+      background: $r
+      width: 2px
+      height: calc(100% - 4rem)
+      position: absolute
+      right: -2rem
+      top: 2rem
 
   .subscribe-form
     width: 50%
@@ -1457,15 +1470,16 @@ footer
     padding-bottom: 30px
   .action
     display: flex
-    justify-content: center
-    padding-left: 260px
+    justify-content: flex-end
+    padding-right: 150px
+    //padding-left: 260px
     .btn
       padding-left: 120px
       padding-right: 120px
   .hit
     position: absolute
     top: -2rem
-    left: 15%
+    left: 6rem
   .left-block, .right-block
     position: relative
   .left-block .bg, .right-block .bg
@@ -1485,16 +1499,22 @@ footer
   .right-block
     width: 50%
     position: relative
+    display: flex
+    overflow: hidden
+    margin-top: 2%
+    margin-bottom: 2%
     &:after
       content: url("/img/hit-price.png")
       position: absolute
       bottom: -2rem
-      right: 200px
+      right: 160px
     .content
       font-size: 24px
       color: #ffffff
       text-transform: uppercase
-      padding-top: 60px
+      display: flex
+      flex-direction: column
+      align-self: center
       padding-left: 30px
       padding-right: 420px
       padding-bottom: 0
@@ -1588,6 +1608,8 @@ footer
     max-height: 202px
 
 .section-sertificats
+  .swiper-pagination
+    display: none
   .container
     overflow: hidden
   .section-content
@@ -1602,9 +1624,9 @@ footer
       content: '\F141'
 
   .swiper-button-prev
-    left: 55px
+    left: .85%
   .swiper-button-next
-    right: 55px
+    right: .85%
 
 .mobile-menu-btn
   display: none

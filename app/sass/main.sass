@@ -320,14 +320,20 @@ ul
 
 .slide-bg
   position: relative
-
+  .bg
+    position: absolute
+    width: 100%
+    height: 100%
+    left: 0
+    top: 0
+    object-fit: cover
   .content
     width: 100%
     height: auto
-    position: absolute
-    left: 0
-    top: 0
-    padding-left: 183px
+    //position: absolute
+    //left: 0
+    //top: 0
+    //padding-left: 183px
     padding-top: 61px
     padding-bottom: 56px
     max-width: calc(758px + 183px)
@@ -565,6 +571,9 @@ ul
 .section-slider
   padding-left: 0
   padding-right: 0
+  .swiper-container
+    min-height: 400px
+    height: 400px
 
 .seminars-container
   display: flex

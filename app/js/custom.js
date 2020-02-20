@@ -50,41 +50,7 @@ $(function () {
         },
     });
 
-    let reviewsSwiper = new Swiper('.swiper-container-reviews', {
-        spaceBetween: 20,
-        direction: 'horizontal',
-        autoHeight: !0,
-        loop: !1,
-        centeredSlides: false,
-        // freeMode: false,
-        slidesPerView: 5,
-        spaceBetween: 30,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        on: {
-        }
-    });
-
-    let sertificatsSwiper = new Swiper('.swiper-container-sertificat', {
-        direction: 'horizontal',
-        autoHeight: !0,
-        loop: !1,
-        centeredSlides: false,
-        allowTouchMove: true,
-        passiveListeners: false,
-        simulateTouch: true,
-        touchStartPreventDefault: false,
-        followFinger: false,
-        slidesPerView: 4,
-        slidesPerGroup: 4,
-        spaceBetween: 30,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
+    let mobileInit = false;
 
     // fix vertical height swiper sliders
     const swiperFix = (els) => {
@@ -101,156 +67,217 @@ $(function () {
     };
 
     let Swipers = [];
-    if (window.innerWidth <= 576) {
-        reviewsSwiper.destroy();
-        sertificatsSwiper.destroy();
 
-        let mobileSwipers = $('.swiper-container-init-mobile');
+    const onResizeFn = () => {
+        if (window.innerWidth <= 576 && !mobileInit) {
 
-        $.each(mobileSwipers, (k,v) => {
-            v = $(v);
-            let pagination = v.closest('.section-content').find('.swiper-pagination');
-            let type = v.attr('data-swiper-type') || null;
-            let slidesPerGroup = 1;
+            if (reviewsSwiper) reviewsSwiper.destroy();
+            if (sertificatsSwiper) sertificatsSwiper.destroy();
 
-            if (type === 'client') {
-                slidesPerGroup = 9;
-            }
+            let mobileSwipers = $('.swiper-container-init-mobile');
 
-            let elsHide = null;
-            let elsShow = null;
+            $.each(mobileSwipers, (k,v) => {
+                v = $(v);
+                let pagination = v.closest('.section-content').find('.swiper-pagination');
+                let type = v.attr('data-swiper-type') || null;
+                let slidesPerGroup = 1;
 
-            let mobileSwiper = new Swiper(v, {
-                direction: 'horizontal',
-                autoHeight: !0,
-                loop: !1,
-                centeredSlides: true,
-                allowTouchMove: true,
-                passiveListeners: false,
-                simulateTouch: true,
-                touchStartPreventDefault: false,
-                followFinger: false,
-                slidesPerView: 1,
-                spaceBetween: 60,
-                slidesPerGroup: slidesPerGroup,
-                calculateHeight: true,
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                pagination: {
-                    el: pagination || '.swiper-pagination',
-                    type: 'bullets',
-                    clickable: true,
-                },
-                on: {
-                    init: function () {
-                        this.type = type;
-                        this.currentSlide = 0;
-
-                        switch (this.type) {
-                            case "client" : {
-                                let elMultiplier = 9;
-                                let els = $(this.el).find('.swiper-slide');
-                                let curSlide = this.currentSlide;
-
-                                if (this.currentSlide <= 0) {
-                                    curSlide = 1;
-                                }
-                                let offset = curSlide * elMultiplier;
-                                let from = this.currentSlide * elMultiplier;
-                                let offsetE = els.slice(from,offset);
-
-                                if (offsetE.length === 0) {
-                                    offsetE = els.slice(offset);
-                                }
-                                elsHide = els;
-                                elsShow = offsetE;
-                            }
-                            default: return;
-                        }
-
-                    },
-                    slideChangeTransitionStart: function() {
-                        switch (this.type) {
-                            case "review" : {
-                                let el = $(this.$el).find('.swiper-slide-active');
-
-                                let more = el.find('.more');
-                                let moreText = more.find('.text');
-
-                                let detail = $('.review-detail');
-                                let text = detail.find('.text');
-
-                                text.html(moreText.html());
-
-                                return;
-                            }
-                            case "client" : {
-                                console.log(this.currentSlide);
-                            }
-                            default: return;
-                        }
-                    },
-                    slideNextTransitionStart: function () {
-                        this.currentSlide++;
-
-                        switch (this.type) {
-                            case "client" : {
-                                let elMultiplier = 9;
-                                let els = $(this.el).find('.swiper-slide');
-                                let curSlide = this.currentSlide;
-                                if (this.currentSlide <= 0) {
-                                    curSlide = 1;
-                                }
-                                let offset = curSlide * elMultiplier;
-                                let from = this.currentSlide * elMultiplier;
-                                let offsetE = els.slice(from,offset+elMultiplier);
-                                if (offsetE.length === 0) {
-                                    offsetE = els.slice(offset);
-                                }
-                                $(els).addClass('hide');
-                                $(offsetE).removeClass('hide');
-                            }
-                            default: return;
-                        }
-                    },
-                    slidePrevTransitionStart: function () {
-                        this.currentSlide--;
-
-                        switch (this.type) {
-                            case "client" : {
-                                let elMultiplier = 9;
-                                let els = $(this.el).find('.swiper-slide');
-                                let curSlide = this.currentSlide;
-                                if (this.currentSlide <= 0) {
-                                    curSlide = 1;
-                                }
-                                let offset = curSlide * elMultiplier;
-                                let from = this.currentSlide * elMultiplier;
-                                let offsetE = els.slice(from,offset-elMultiplier);
-                                if (offsetE.length === 0) {
-                                    offsetE = els.slice(offset);
-                                }
-                                $(els).removeClass('hide');
-                                $(offsetE).addClass('hide');
-                            }
-                            default: return;
-                        }
-                    },
+                if (type === 'client') {
+                    slidesPerGroup = 9;
                 }
+
+                let elsHide = null;
+                let elsShow = null;
+
+                let mobileSwiper = new Swiper(v, {
+                    direction: 'horizontal',
+                    autoHeight: !0,
+                    loop: !1,
+                    centeredSlides: true,
+                    allowTouchMove: true,
+                    passiveListeners: false,
+                    simulateTouch: true,
+                    touchStartPreventDefault: false,
+                    followFinger: false,
+                    slidesPerView: 1,
+                    spaceBetween: 60,
+                    slidesPerGroup: slidesPerGroup,
+                    calculateHeight: true,
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    pagination: {
+                        el: pagination || '.swiper-pagination',
+                        type: 'bullets',
+                        clickable: true,
+                    },
+                    on: {
+                        init: function () {
+                            this.type = type;
+                            this.currentSlide = 0;
+
+                            switch (this.type) {
+                                case "client" : {
+                                    let elMultiplier = 9;
+                                    let els = $(this.el).find('.swiper-slide');
+                                    let curSlide = this.currentSlide;
+
+                                    if (this.currentSlide <= 0) {
+                                        curSlide = 1;
+                                    }
+                                    let offset = curSlide * elMultiplier;
+                                    let from = this.currentSlide * elMultiplier;
+                                    let offsetE = els.slice(from,offset);
+
+                                    if (offsetE.length === 0) {
+                                        offsetE = els.slice(offset);
+                                    }
+                                    elsHide = els;
+                                    elsShow = offsetE;
+                                }
+                                default: return;
+                            }
+
+                        },
+                        slideChangeTransitionStart: function() {
+                            switch (this.type) {
+                                case "review" : {
+                                    let el = $(this.$el).find('.swiper-slide-active');
+
+                                    let more = el.find('.more');
+                                    let moreText = more.find('.text');
+
+                                    let detail = $('.review-detail');
+                                    let text = detail.find('.text');
+
+                                    text.html(moreText.html());
+
+                                    return;
+                                }
+                                case "client" : {
+                                    console.log(this.currentSlide);
+                                }
+                                default: return;
+                            }
+                        },
+                        slideNextTransitionStart: function () {
+                            this.currentSlide++;
+
+                            switch (this.type) {
+                                case "client" : {
+                                    slidesSlice(this.el, 'next');
+                                }
+                                default: return;
+                            }
+                        },
+                        slidePrevTransitionStart: function () {
+                            this.currentSlide--;
+
+                            switch (this.type) {
+                                case "client" : {
+                                    slidesSlice(this.el, 'next');
+                                }
+                                default: return;
+                            }
+                        },
+                    }
+                });
+                try {
+                    $(elsHide).addClass('hide');
+                    $(elsShow).removeClass('hide');
+                }catch (e) {
+
+                }
+                Swipers.push(mobileSwiper);
             });
-            try {
-                $(elsHide).addClass('hide');
-                $(elsShow).removeClass('hide');
-            }catch (e) {
-
+            swiperFix(Swipers);
+            mobileInit = true;
+        }else {
+            if (mobileInit) {
+                mobileInit = false;
+                Array.prototype.forEach.call(Swipers, v => {
+                    v.destroy();
+                });
+                Swipers = [];
+                swipersInit();
             }
-            Swipers.push(mobileSwiper);
-        });
-        swiperFix(Swipers);
+        }
+    };
+    window.onresize = onResizeFn;
 
-    }
+
+    let reviewsSwiper,sertificatsSwiper;
+    const swipersInit = () => {
+        if (window.innerWidth <= 576) {
+            onResizeFn();
+            return;
+        }
+
+        reviewsSwiper = new Swiper('.swiper-container-reviews', {
+            spaceBetween: 20,
+            direction: 'horizontal',
+            autoHeight: !0,
+            loop: !1,
+            centeredSlides: false,
+            // freeMode: false,
+            slidesPerView: 5,
+            spaceBetween: 30,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            on: {
+            }
+        });
+
+        sertificatsSwiper = new Swiper('.swiper-container-sertificat', {
+            direction: 'horizontal',
+            autoHeight: !0,
+            loop: !1,
+            centeredSlides: false,
+            allowTouchMove: true,
+            passiveListeners: false,
+            simulateTouch: true,
+            touchStartPreventDefault: false,
+            followFinger: false,
+            slidesPerView: 4,
+            slidesPerGroup: 4,
+            spaceBetween: 30,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    };
+    swipersInit();
+
+    const slidesSlice = (el, type) => {
+        let elMultiplier = 9;
+        let els = $(el).find('.swiper-slide');
+        let curSlide = this.currentSlide;
+        if (this.currentSlide <= 0) {
+            curSlide = 1;
+        }
+        let offset = curSlide * elMultiplier;
+        let from = this.currentSlide * elMultiplier;
+        let offsetE = undefined;
+        if (type === 'next') {
+            offsetE = els.slice(from, offset + elMultiplier);
+        }else {
+            offsetE = els.slice(from,offset-elMultiplier);
+        }
+        if (offsetE.length === 0) {
+            offsetE = els.slice(offset);
+        }
+        if (type === 'next') {
+            $(els).addClass('hide');
+            $(offsetE).removeClass('hide');
+        }else {
+            $(els).removeClass('hide');
+            $(offsetE).addClass('hide');
+        }
+    };
 
     $('.swiper-container-reviews .swiper-slide').on('click', function () {
         let el = $(this);

@@ -27,11 +27,11 @@ $(function () {
         }
     }
 
-    let productDetailSwiper = new Swiper('.swiper-container', {
+    const defaultSwiperOptions = {
         direction: 'horizontal',
         autoHeight: !0,
         loop: !1,
-        centeredSlides: true,
+        centeredSlides: false,
         allowTouchMove: true,
         passiveListeners: false,
         simulateTouch: true,
@@ -39,16 +39,12 @@ $(function () {
         followFinger: false,
         slidesPerView: 1,
         slidesPerGroup: 1,
+        spaceBetween: 30,
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
-        pagination: {
-            el: '.swiper-pagination',
-            type: 'bullets',
-            clickable: true,
-        },
-    });
+    };
 
     let mobileInit = false;
 
@@ -71,8 +67,16 @@ $(function () {
     const onResizeFn = () => {
         if (window.innerWidth <= 576 && !mobileInit) {
 
-            if (reviewsSwiper) reviewsSwiper.destroy();
-            if (sertificatsSwiper) sertificatsSwiper.destroy();
+            // if (reviewsSwiper) reviewsSwiper.destroy();
+            // if (sertificatsSwiper) sertificatsSwiper.destroy();
+            // if (servicesSwiper) servicesSwiper.destroy();
+            // if (countSwiper) countSwiper.destroy();
+            // if (newsSwiper) newsSwiper.destroy();
+
+            Array.prototype.forEach.call(desktopSwipers, v => {
+               if (v) v.destroy();
+            });
+            desktopSwipers = [];
 
             let mobileSwipers = $('.swiper-container-init-mobile');
 
@@ -207,29 +211,99 @@ $(function () {
     window.onresize = onResizeFn;
 
 
-    let reviewsSwiper,sertificatsSwiper;
+    let reviewsSwiper, sertificatsSwiper, servicesSwiper, countSwiper, newsSwiper, desktopSwipers, booksSwiper;
+    desktopSwipers = [];
+
     const swipersInit = () => {
         if (window.innerWidth <= 576) {
             onResizeFn();
             return;
         }
 
+        if (window.innerWidth <= 1500) {
+            servicesSwiper = new Swiper('.swiper-container-services',
+                Object.assign({}, defaultSwiperOptions, {
+                    slidesPerView: 3,
+                    slidesPerGroup: 3,
+                    spaceBetween: 80,
+                })
+            );
+            desktopSwipers.push(servicesSwiper);
+
+            countSwiper = new Swiper('.swiper-container-count',
+                Object.assign({}, defaultSwiperOptions, {
+                    slidesPerView: 4,
+                    slidesPerGroup: 4,
+                    spaceBetween: 50,
+                    on: {
+                        init: function () {
+                            let el = $(this.$el);
+                            let maxHeight = 0;
+                            let fixHeight = 30;
+                            Array.prototype.forEach.call(el.find('.item'), v => {
+                                let height = v.getBoundingClientRect().height;
+                                if (height > maxHeight) {
+                                    maxHeight = height;
+                                }
+                            });
+                            maxHeight += fixHeight;
+                            $(this.el).attr('style', 'height: ' + maxHeight + 'px;max-height: ' + maxHeight + 'px');
+                        }
+                    }
+                })
+            );
+            desktopSwipers.push(countSwiper);
+        }
+
+        if (window.innerWidth <= 1080) {
+            newsSwiper = new Swiper('.swiper-container-news',
+                Object.assign({}, defaultSwiperOptions,{
+                    slidesPerView: 3,
+                    slidesPerGroup: 3,
+                    spaceBetween: 55,
+                })
+            );
+            desktopSwipers.push(newsSwiper);
+
+            booksSwiper = new Swiper('.swiper-container-books',
+                Object.assign({}, defaultSwiperOptions, {
+                    slidesPerView: 5,
+                    slidesPerGroup: 5,
+                    spaceBetween: 30,
+                })
+            );
+            desktopSwipers.push(booksSwiper);
+        }
+
+        if (window.innerWidth <= 1400) {
+            swiperFix(desktopSwipers);
+        }
+
         reviewsSwiper = new Swiper('.swiper-container-reviews', {
-            spaceBetween: 20,
             direction: 'horizontal',
             autoHeight: !0,
             loop: !1,
             centeredSlides: false,
-            // freeMode: false,
+            freeMode: true,
             slidesPerView: 5,
             spaceBetween: 30,
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
-            on: {
+            breakpoints: {
+                1500: {
+                    slidesPerView: 5,
+                },
+                1280: {
+                    slidesPerView: 4,
+                },
+                577: {
+                    slidesPerView: 3,
+                }
             }
         });
+        desktopSwipers.push(reviewsSwiper);
 
         sertificatsSwiper = new Swiper('.swiper-container-sertificat', {
             direction: 'horizontal',
@@ -254,16 +328,17 @@ $(function () {
                     slidesPerGroup: 4,
                 },
                 577: {
-                    slidesPerView: 4,
-                    slidesPerGroup: 4,
+                    slidesPerView: 3,
+                    slidesPerGroup: 3,
                 }
             }
         });
+        desktopSwipers.push(servicesSwiper);
     };
     swipersInit();
 
     const slidesSlice = (el, type) => {
-        let elMultiplier = 9;
+        const elMultiplier = 9;
         let els = $(el).find('.swiper-slide');
         let curSlide = this.currentSlide;
         if (this.currentSlide <= 0) {

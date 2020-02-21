@@ -181,6 +181,11 @@
   .seminars-container
     .seminar
       .content
+        padding: 7px 20px
+        .action
+          .btn
+            span
+              font-size: 38px
         .heading
           padding-bottom: 1rem
         .seminar-date
@@ -191,9 +196,353 @@
           font-size: 26px
           //padding-bottom: 0
 
+  .section
+    .left-to-right,.right-to-left
+      .left
+        margin-right: 10px
+      .right
+        padding-right: 0
+        margin-left: 10px
+        .desc
+          font-size: 20px
+          line-height: 40px
+        .title
+          h1,h2,h3,h4,h5
+            font-size: 28px
+
+  .news-container
+    .news-item
+      max-width: 348px
+      .news-title
+        .title
+          h1,h2,h3,h4,h5
+            font-size: 22px
+
+  .nb-container
+    .section-title
+      h1,h2,h3,h4,h5
+        font-size: 30px
+
+  .news-block
+    max-width: 50%
+    width: 50%
+
+
+  .books-block
+    .section-content
+      .item
+        &:nth-last-of-type(2)
+          display: none
+
+  .section-reviews
+    .review-detail
+      .image
+        min-width: 45%
+      .review-content
+        .text
+          font-size: 20px
+
+  .hit-container
+    .hit
+      transform: scale(.65)
+      left: -1.5rem
+    .right-block
+      .content
+        font-size: 20px
+        padding-right: 220px
+      &:after
+        transform: scale(.8)
+        right: 0
+    .left-block
+      .content
+        padding-right: 50px
+    .action
+      padding-right: 80px
+
+  .section
+    .rtl-2
+      .right
+        width: 70%
+        padding-bottom: 2rem
+        padding-top: 0
+        .title
+          padding-bottom: 20px
+        .desc
+          margin-top: 20px
+          line-height: 36px
+
+  .section
+    padding: 10px 18px
+    padding-bottom: 20px
+
+  .section-services, .section-count
+    .swiper-button-next, .swiper-button-prev
+      display: block
+      width: auto
+      height: auto
+
+    .swiper-button-next
+      right: -5.75%
+      &:after
+        font-family: "Material Design Icons"
+        content: "\F142"
+        color: $r
+        font-size: 56px
+    .swiper-button-prev
+      left: -5.75%
+      &:after
+        font-family: "Material Design Icons"
+        content: "\F141"
+        color: $r
+        font-size: 56px
+
+  .services-container
+    .item
+      flex: none
+      max-width: unset
+
+  .count-container
+    .item
+      max-width: unset
+      .desc
+        font-size: 16px
+
+  .swiper-container-count, .swiper-container-services
+    overflow: hidden
+    .swiper-wrapper
+      overflow: unset
+
+  .clients-container
+    .item
+      max-width: 14.5%
+
+  .subscribe-form-container
+    .subsc
+      width: 45%
+      font-size: 28px
+      &:after
+        height: calc(100% - 3rem)
+        top: 1.5rem
+    .subscribe-form
+      width: 55%
+      padding: 0 6rem
+
+  footer
+    .fserv
+      padding: 0 20px
+      .item
+        max-width: 216px
+    .services
+      .serv-menu
+        width: 29%
+    .about-content
+      flex-wrap: wrap
+      justify-content: center
+      .logo
+        order: 1
+      .contacts
+        order: 2
+        flex: 1 1 auto
+        align-items: center
+      .socials
+        order: 3
+      .actions
+        width: 50%
+        order: 4
+        margin-top: 10px
+        justify-content: center
+        .title
+          justify-content: center
+          display: flex
+        .action
+          justify-content: center
+          display: flex
+
+  .section-slider
+    padding-left: 0
+    padding-right: 0
+
 // ≥1280px
 @media (max-width: 1279.98px)
-  //
+
+  .section
+    padding: 5px 18px
+    .section-title
+      padding-bottom: 10px
+      h1,h2,h3,h4,h5
+        font-size: 36px
+
+  .section-slider
+    padding-left: 0
+    padding-right: 0
+
+  .header
+    .top-menu
+      .menu
+        .lower
+          ul
+            li, li a
+              font-size: 12px
+
+  .swiper-button-next:after, .swiper-button-prev:after
+    transform: scale(.75)
+  .swiper-button-next
+    &:after
+      transform: scale(.75) rotate(180deg)
+
+  .section-slider
+    .swiper-container
+      height: 346px
+      min-height: 346px
+      .container
+        height: 100%
+        .content
+          height: 100%
+          display: flex
+          flex-direction: column
+          justify-content: center
+
+  .slide-bg
+    .action
+      .btn
+        font-size: 20px
+    .desc
+      font-size: 20px
+      padding-right: 0
+    .subtitle
+      font-size: 20px
+    .title
+      h1,h2,h3,h4,h5
+        font-size: 28px
+    .content
+      padding-top: 30px
+      padding-bottom: 30px
+      max-width: 50%
+
+
+  .seminars-container
+    .seminar
+      .content
+        padding: 7px 10px
+        .action
+          .btn
+            font-size: 16px
+            span
+              font-size: 32px
+        .heading
+          font-size: 19px
+        .seminar-date
+          .date
+            font-size: 34px
+          .position
+            font-size: 16px
+
+  .section
+    .section-action
+      .btn
+        font-size: 20px
+  .show-all
+    font-size: 20px
+
+  .section
+    .left-to-right
+      .right
+        .title
+          h1,h2,h3,h4,h5
+            font-size: 24px
+        .desc
+          font-size: 18px
+          line-height: 36px
+
+  .swiper-container-news
+    //overflow: hidden
+
+  .news-container
+    flex-wrap: nowrap
+    height: auto !important
+    .news-item
+      max-width: unset
+      flex: none
+      margin: 30px 0
+      &:last-child,&:nth-last-of-type(2)
+        display: flex
+      .desc
+        padding: 10px 15px
+      .bg
+        height: 100%
+      .news-title
+        padding: 20px 10px
+        padding-left: 40px
+        &:after
+          width: calc(100% - 15px)
+          left: 7.5px
+        .title
+          padding-left: 0
+          h1,h2,h3,h4,h5
+            font-size: 18px
+
+  .section-news
+    .section-content
+      overflow: hidden
+
+  .nb-container
+    flex-direction: column
+    .section-title
+      h1,h2,h3,h4,h5
+        font-size: 28px
+
+  .news-block, .books-block
+    width: 100%
+    max-width: 100%
+
+  .books-block
+    margin-top: 30px
+    .section-title
+      text-align: left
+      padding-bottom: 20px
+    .section-content
+      .item
+        &:last-child, &:nth-last-of-type(2)
+          display: flex
+
+
+  .section-reviews
+    padding-left: 0
+    padding-right: 0
+    .review-detail
+      .review-content
+        padding-left: 50px
+        .text
+          &:before
+            height: 60%
+            top: 50%
+            left: -50px
+            transform: translateY(-50%)
+    .rating
+      max-height: 145px
+    .swiper-button-prev
+      left: 0
+      &:after
+        font-size: 56px
+    .swiper-button-next
+      right: 0
+      &:after
+        font-size: 56px
+
+  .section-hit
+    padding-left: 0
+    padding-right: 0
+
+  .hit-container
+    flex-direction: column
+    .left-block,.right-block
+      width: 100%
+    .right-block
+      mt0
+    .action-ctn
+      align-items: center
+    .action
+      padding-right: 0
 
 // ≥1200px
 +media-breakpoint-down(lg)

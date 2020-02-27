@@ -3,13 +3,12 @@
 $(function () {
 
     Array.prototype.__proto__.findInstance = function(el) {
-        let value = false;
-        Array.prototype.forEach.call(this, (v, k) => {
-            if (v === el) {
-                value = k;
+        for (let i = 0;i < this.length;i++) {
+            if (this[i] === el) {
+               return i;
             }
-        });
-        return value;
+        }
+        return false;
     };
 
     const mobileBreakpoint = 640;

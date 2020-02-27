@@ -1,6 +1,16 @@
+Array.prototype.__proto__.findInstance = function(el) {
+    let value = false;
+    Array.prototype.forEach.call(this, (v, k) => {
+       if (v === el) {
+           value = k;
+       }
+    });
+    return value
+};
+
 $(function () {
 
-    const mobileBreakpoint = 576;
+    const mobileBreakpoint = 640;
 
     const defaultSwiperOptions = {
         direction: 'horizontal',
@@ -211,9 +221,14 @@ $(function () {
                             slidesPerGroup: 2,
                             spaceBetween: 30,
                         },
-                        0: {
+                        640: {
                             slidesPerView: 2,
                             slidesPerGroup: 2,
+                            spaceBetween: 30,
+                        },
+                        0: {
+                            slidesPerView: 1,
+                            slidesPerGroup: 1,
                         }
                     },
                 })
@@ -264,6 +279,8 @@ $(function () {
                 })
             );
             desktopSwipers.push(countSwiper);
+        } else {
+           // todo destroy swipers
         }
 
         if (window.innerWidth < 1280) {
@@ -288,9 +305,15 @@ $(function () {
                             slidesPerGroup: 2,
                             spaceBetween: 50,
                         },
-                        0: {
+                        640: {
                             slidesPerView: 2,
                             slidesPerGroup: 2,
+                            spaceBetween: 40,
+                        },
+                        0: {
+                            slidesPerView: 1,
+                            slidesPerGroup: 1,
+                            spaceBetween: 40,
                         }
                     }
                 })
@@ -318,14 +341,21 @@ $(function () {
                             slidesPerGroup: 4,
                             spaceBetween: 40,
                         },
+                        640: {
+                            slidesPerView: 3,
+                            slidesPerGroup: 3,
+                            spaceBetween: 40,
+                        },
                         0: {
-                            slidesPerView: 5,
-                            slidesPerGroup: 5,
+                            slidesPerView: 3,
+                            slidesPerGroup: 3,
                         }
                     }
                 })
             );
             desktopSwipers.push(booksSwiper);
+        } else {
+            // todo destroy swipers
         }
 
         reviewsSwiper = new Swiper('.swiper-container-reviews', {
@@ -393,9 +423,14 @@ $(function () {
                     slidesPerGroup: 2,
                     spaceBetween: 30,
                 },
-                577: {
+                640: {
                     slidesPerView: 2,
                     slidesPerGroup: 2,
+                    spaceBetween: 30,
+                },
+                0: {
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
                 }
             }
         });
@@ -668,6 +703,7 @@ $(function () {
             e.mobileMenu.animate({
                 [e.orientation]: 0,
             }, e.animationTime);
+            $('body').addClass('no-scroll');
         },
         close: () => {
             let e = window.mobileMenu;
@@ -675,6 +711,7 @@ $(function () {
             e.mobileMenu.animate({
                 [e.orientation]: -e.orientationBreakpoint + 'px',
             }, e.animationTime);
+            $('body').removeClass('no-scroll');
         }
     };
 

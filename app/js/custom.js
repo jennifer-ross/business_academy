@@ -1,32 +1,5 @@
 $(function () {
 
-    // let mobileMenu = reRenderMobileMneu($('.mobile-menu'));
-
-    function reRenderMobileMneu(mobileMenu) {
-        let mobileMenuVal = mobileMenu[0].innerHTML;
-        let mMenu = document.createElement('div');
-        mMenu.className = 'mobile-menu';
-        mMenu.innerHTML = mobileMenuVal;
-        document.body.append(mMenu);
-        mobileMenu.remove();
-        return $('.mobile-menu');
-    }
-
-    function toggleMenu(el) {
-        let menu = $(el);
-        let html = $('html');
-        let mBtn = $('.mobile-menu-btn .animated-icon');
-        if (menu.css('right') >= '0px' || menu.css('right') >= 0) {
-            menu.animate({right: '-9999px'});
-            mBtn.removeClass('open');
-            html.removeClass('no-scroll');
-        }else {
-            menu.animate({right: '0'});
-            mBtn.addClass('open');
-            html.addClass('no-scroll');
-        }
-    }
-
     const mobileBreakpoint = 576;
 
     const defaultSwiperOptions = {
@@ -50,12 +23,12 @@ $(function () {
 
     let mobileInit = false;
 
-    // fix vertical height swiper sliders
+    // fix height swiper sliders
     const swiperFix = (els) => {
         let count = 1;
         let swiperIntervalId = setInterval(function () {
             Array.prototype.forEach.call(els, (v) => {
-                v.update();
+                if (v) v.update();
             });
             if (count >= 3) {
                 clearInterval(swiperIntervalId);
@@ -197,7 +170,7 @@ $(function () {
             if (mobileInit) {
                 mobileInit = false;
                 Array.prototype.forEach.call(Swipers, v => {
-                    v.destroy();
+                    if(v) v.destroy();
                 });
                 Swipers = [];
                 swipersInit();
@@ -355,10 +328,6 @@ $(function () {
             desktopSwipers.push(booksSwiper);
         }
 
-        if (window.innerWidth <= 1400) {
-            swiperFix(desktopSwipers);
-        }
-
         reviewsSwiper = new Swiper('.swiper-container-reviews', {
             direction: 'horizontal',
             autoHeight: !0,
@@ -431,6 +400,10 @@ $(function () {
             }
         });
         desktopSwipers.push(servicesSwiper);
+
+        if (window.innerWidth <= 1400) {
+            swiperFix(desktopSwipers);
+        }
     };
     swipersInit();
 
@@ -490,36 +463,6 @@ $(function () {
         });
     });
 
-    // let sw = new Swiper('.swiper-container-init-mobile2', {
-    //     direction: 'horizontal',
-    //     autoHeight: !0,
-    //     loop: !1,
-    //     centeredSlides: true,
-    //     allowTouchMove: true,
-    //     passiveListeners: false,
-    //     simulateTouch: true,
-    //     touchStartPreventDefault: false,
-    //     followFinger: false,
-    //     slidesPerView: 9,
-    //     slidesPerGroup: 9,
-    //     spaceBetween: 0,
-    //     calculateHeight: true,
-    //     navigation: {
-    //         nextEl: '.swiper-button-next',
-    //         prevEl: '.swiper-button-prev',
-    //     },
-    //     pagination: {
-    //         el: '.swiper-pagination',
-    //         type: 'bullets',
-    //         clickable: true,
-    //     }
-    // });
-    // let items = $('.clients-swiper-container .item');
-    // items.hide();
-    // for (let i = 0;i<9;i++) {
-    //     $(items[i]).css('display', 'flex');
-    // }
-
     $.each($('.sertificat-slide'), function (k, v) {
         let el = $(this).find('img')[0];
         let viewer = new Viewer(el, {
@@ -541,12 +484,12 @@ $(function () {
     let clients = $('.clients-container .item');
     let clientsCnt = clients.length;
 
-
     window.submenu = {
         menu: null,
         subMenus: null,
         init: () => {
           let e = window.submenu;
+
           e.menu = $('.has-submenu');
           if (e.menu.length <= 0) {
               return;
@@ -578,6 +521,7 @@ $(function () {
         swiperType: "filter",
         init: () => {
             let e = window.itemsFilter;
+
             e.filter = $('[data-filter]');
             if (e.filter.length <= 0) {
                 return;
@@ -611,6 +555,7 @@ $(function () {
         },
         update: () => {
             let e = window.itemsFilter;
+
             if (Swipers.length <= 0 || window.innerWidth > mobileBreakpoint) return;
             Array.prototype.forEach.call(Swipers, function (v) {
                 if (v.type === e.swiperType) {
@@ -620,7 +565,6 @@ $(function () {
         },
         filterItems: (type, keys, key, items, container, el=null) => {
             let e = window.itemsFilter;
-            console.log(type,type === 'click');
 
             if (type === 'click') {
                 if (el.hasClass('active')) {
@@ -645,7 +589,138 @@ $(function () {
         }
     };
 
+    window.mobileMenu = {
+        openBtn: null,
+        closeBtn: null,
+        mobileMenu: null,
+        orientation: null,
+        orientationBreakpoint: 2000,
+        animationTime: 500,
+        init: () => {
+            let e = window.mobileMenu;
+
+            e.mobileMenu = $('.mobile-menu-slide');
+            if (e.mobileMenu.length <= 0) {
+                return;
+            }
+
+            e.orientation = e.mobileMenu.attr('data-menu-orientation') || 'left';
+
+            let left = "unset";
+            let right = "unset";
+
+            switch (e.orientation) {
+                case 'left':
+                {
+                    left = -e.orientationBreakpoint;
+                    break;
+                }
+                case 'right': {
+                    right = -e.orientationBreakpoint;
+                    break;
+                }
+                default: {
+                    e.orientation = 'left';
+                    left = -e.orientationBreakpoint;
+                }
+            }
+
+            let style = document.createElement('style');
+            style.id = 'mobile-menu-styles';
+            style.innerHTML = '.mobile-menu-slide {' +
+                    'display: flex;' +
+                    '-webkit-transition: all ' + e.animationTime + ';' +
+                    '-moz-transition: all ' + e.animationTime + ';' +
+                    '-ms-transition: all ' + e.animationTime + ';' +
+                    '-o-transition: all ' + e.animationTime + ';' +
+                    'transition: all ' + e.animationTime + ';' +
+                    'left: ' + left + ';' +
+                    'right: ' + right + ';' +
+                '}';
+            // document.body.prepend(style);
+            window.customStyles.append(style);
+
+            e.openBtn = $('.mobile-menu-btn');
+            e.closeBtn = $('.mobile-menu-btn--close');
+
+            e.openBtn.unbind('click');
+            e.closeBtn.unbind('click');
+
+            e.openBtn.on('click', function () {
+               e.toggleMenu();
+            });
+            e.closeBtn.on('click', function () {
+                e.toggleMenu();
+            });
+        },
+        toggleMenu: () => {
+            let e = window.mobileMenu;
+
+            if (parseInt(e.mobileMenu.css(e.orientation)) >= 0) {
+                e.close();
+            }else {
+                e.open();
+            }
+        },
+        open: () => {
+            let e = window.mobileMenu;
+
+            e.mobileMenu.animate({
+                [e.orientation]: 0,
+            }, e.animationTime);
+        },
+        close: () => {
+            let e = window.mobileMenu;
+
+            e.mobileMenu.animate({
+                [e.orientation]: -e.orientationBreakpoint + 'px',
+            }, e.animationTime);
+        }
+    };
+
+    window.customStyles = {
+        stylesContainer: null,
+        id: "theme_custom-styles",
+        styles: null,
+        init: () => {
+            let e = window.customStyles;
+
+            e.stylesContainer = $(e.id);
+
+            if (e.stylesContainer.length <= 0) {
+                let styles = document.createElement('div');
+                styles.id = e.id;
+                document.body.prepend(styles);
+                e.stylesContainer = $('#' + e.id);
+            }
+        },
+        append: (el) => {
+            let e = window.customStyles;
+
+            if (typeof(el) === "object") {
+                e.stylesContainer.append(el);
+                e.update();
+                return true;
+            }
+            return false;
+        },
+        update: () => {
+            let e = window.customStyles;
+            e.styles = e.stylesContainer.find('style');
+        }
+    };
+
+    window.popup = {
+        init: () => {
+
+        },
+    };
+
+    // always upper then other
+    window.customStyles.init();
+
     window.submenu.init();
     window.itemsFilter.init();
+    window.mobileMenu.init();
 
 });

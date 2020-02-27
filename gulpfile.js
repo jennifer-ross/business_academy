@@ -17,7 +17,7 @@ gulp.task('browser-sync', function() {
 	browserSync({
 		open: false,
 		socket: {
-			domain: "http://10.10.10.112:3000",
+			domain: "http://10.10.10.112:3002",
 		},
 		server: {
 			baseDir: 'app'

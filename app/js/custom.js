@@ -1,14 +1,16 @@
-Array.prototype.__proto__.findInstance = function(el) {
-    let value = false;
-    Array.prototype.forEach.call(this, (v, k) => {
-       if (v === el) {
-           value = k;
-       }
-    });
-    return value
-};
+"use strict";
 
 $(function () {
+
+    Array.prototype.__proto__.findInstance = function(el) {
+        let value = false;
+        Array.prototype.forEach.call(this, (v, k) => {
+            if (v === el) {
+                value = k;
+            }
+        });
+        return value;
+    };
 
     const mobileBreakpoint = 640;
 
@@ -280,7 +282,14 @@ $(function () {
             );
             desktopSwipers.push(countSwiper);
         } else {
-           // todo destroy swipers
+            if (countSwiper) {
+                countSwiper.destroy();
+                desktopSwipers.splice(desktopSwipers.findInstance(countSwiper), 1);
+            }
+            if (servicesSwiper) {
+                servicesSwiper.destroy();
+                desktopSwipers.splice(desktopSwipers.findInstance(servicesSwiper), 1);
+            }
         }
 
         if (window.innerWidth < 1280) {
@@ -355,7 +364,14 @@ $(function () {
             );
             desktopSwipers.push(booksSwiper);
         } else {
-            // todo destroy swipers
+            if (booksSwiper) {
+                booksSwiper.destroy();
+                desktopSwipers.splice(desktopSwipers.findInstance(booksSwiper), 1);
+            }
+            if (newsSwiper) {
+                newsSwiper.destroy();
+                desktopSwipers.splice(desktopSwipers.findInstance(newsSwiper), 1);
+            }
         }
 
         reviewsSwiper = new Swiper('.swiper-container-reviews', {

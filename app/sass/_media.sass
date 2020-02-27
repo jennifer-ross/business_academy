@@ -23,14 +23,14 @@
     padding-left: 0
     padding-right: 0
 
-@media screen and (max-width: 991.98px)
+@media screen and (max-width: 1079.98px)
   .container
     width: 720px
     max-width: 720px
     padding-left: 0
     padding-right: 0
 
-@media screen and (max-width: 767.98px)
+@media screen and (max-width: 829.98px)
   .container
     width: 540px
     max-width: 540px
@@ -366,7 +366,7 @@
 @media (max-width: 1279.98px)
 
   .section
-    padding: 5px 18px
+    padding: 10px 18px
     .section-title
       padding-bottom: 10px
       h1,h2,h3,h4,h5
@@ -538,11 +538,386 @@
     .left-block,.right-block
       width: 100%
     .right-block
-      mt0
+      margin-top: 0
+      margin-bottom: 0
+      &:after
+        transform: scale(1)
+        right: 180px
+      .content
+        padding-right: 420px
+        padding-top: 69px
+        padding-bottom: 105px
+        font-size: 24px
+        p
+          &:last-child
+            margin-bottom: 0
     .action-ctn
       align-items: center
     .action
       padding-right: 0
+
+  .section
+    .rtl-2
+      .left
+        margin-right: 0
+      .right
+        margin-left: 0
+        .desc
+          font-size: 18px
+          line-height: 34px
+
+  .custom-action
+    .right-action
+      max-width: 50%
+    .btn
+      font-size: 16px
+      padding: 3px 10px
+    p
+      font-size: 16px
+    .subtl
+      font-size: 20px
+
+  .services-container
+    .title
+      font-size: 24px
+    .content
+      padding: 10px 20px
+
+  .count-container
+    .item
+      .desc
+        padding: 0 .5rem
+      .count
+        .bg
+          img
+            height: calc(100% - 5px)
+
+  .clients-container
+    .item
+      max-width: 13.5%
+
+  .subscribe-form-container
+    .subsc
+      margin-right: 1rem
+      &:after
+        right: -1rem
+    .subscribe-form
+      padding: 0 4rem
+
+  .sertificat-slide
+    span
+      padding: 0 24px
+
+  footer
+    .address
+      margin-bottom: 10px
+    .policy
+      margin-bottom: 10px
+    .copyright-block
+      .container
+        flex-direction: column
+        text-align: center
+    .services
+      .serv-menu
+        width: 32%
+    .fserv
+      .item
+        max-width: 275px
+        margin-bottom: 20px
+        span
+          padding: 0 2rem
+
+  .section-news
+    .section-content
+      & > .container
+        //overflow: hidden
+  .swiper-container-news
+    overflow: hidden
+    padding-right: 1rem
+
+@media (max-width: 1200px)
+
+  .row-bg.el-image
+    background-position: 93.5% 100% !important
+
+@media (max-width: 1079.98px)
+  //.header
+  //  .top-menu
+  //    .menu
+  //      .lower
+  //        .desc
+  //          display: none
+  //      .upper
+  //        .btn
+  //          font-size: 14px
+  //          margin: 0 10px
+  //        .phone
+  //          font-size: 14px
+
+  .header
+    .left__head-menu
+      display: none
+    .eng-version
+      display: none
+    .top-head-menu
+      padding: 2px 0
+      .container
+        align-items: center
+    .top-menu
+      margin-top: 10px
+      .logo
+        max-width: 160px
+        margin-right: 0
+        img
+          max-width: 100%
+      .menu
+        justify-content: center
+        align-items: flex-end
+        .lower
+          display: none
+        .upper
+          .action-block
+            display: flex
+            flex-direction: column
+            margin-bottom: 0
+          .btn,ul
+            display: none
+          .phone
+            display: inline-flex
+            margin: 0
+
+  .mobile-menu-btn
+    display: block
+    font-size: 32px
+    color: $b
+
+  .slide-bg
+    .bg
+      object-position: 30% 100%
+    .content
+      max-width: 70%
+
+  .section
+    .section-title
+      padding-bottom: 10px
+      h1,h2,h3,h4,h5
+        font-size: 32px
+    .left-to-right
+      flex-direction: column
+      .right
+        width: 100%
+      .left
+        min-width: unset
+        width: 100%
+        margin-bottom: 10px
+        margin-right: 0
+        iframe
+          height: 300px
+      .right
+        margin-left: 0
+        .title
+          h1,h2,h3,h4,h5
+            font-size: 18px
+        .desc
+          font-size: 16px
+          line-height: normal
+
+  .section-seminars
+    padding: 5px 10px
+
+  .seminars-container
+    .seminar
+      margin-right: 15px
+      margin-bottom: 15px
+      .content
+        .action
+          .btn
+            font-size: 14px
+            span
+              font-size: 28px
+        .heading
+          font-size: 14px
+        .seminar-date
+          .position
+            font-size: 14px
+          .date
+            font-size: 23px
+
+  .news-container
+    .news-item
+      .news-title
+        padding-top: 30px
+        .date
+          bottom: 45%
+          font-size: 16px
+
+  .nb-container
+    .section-content
+      overflow: hidden
+
+  .section-reviews
+    .review-detail
+      flex-direction: column
+      .review-content
+        padding-top: 20px
+        padding-bottom: 20px
+        padding-left: 10px
+        border: solid 1px #dde8f1
+        .text
+          &:before
+            content: none
+
+  .section-reviews
+    .swiper-button-prev,.swiper-button-next
+      transform: none
+    .swiper-slide
+      max-width: unset
+    .review-slide
+      .img
+        height: 248px
+
+  .hit-container
+    .right-block
+      &:after
+        right: 60px
+      .content
+        padding-right: 335px
+        padding-bottom: 70px
+
+  .section
+    .rtl-2
+      .left
+        display: none
+      .right
+        padding-top: 0
+        padding-right: 0
+        padding-bottom: 0
+        width: 100%
+        .desc
+          font-size: 18px
+          line-height: normal
+        .title
+          h1,h2,h3,h4,h5
+            line-height: normal
+      .custom-action
+        flex-direction: column-reverse
+        margin-top: 0
+        .mobile-content
+          display: flex
+          flex-direction: column
+          justify-content: flex-end
+          margin-bottom: 2px
+          margin-right: 10px
+        .mobile-image
+          display: inline-flex
+          img
+            width: 100%
+        p
+          font-size: 12px
+          line-height: normal
+        .right-action
+          display: flex
+          margin: 0 auto
+          margin-bottom: 20px
+          .subtl
+            font-size: 18px
+        .left-action
+          display: flex
+          justify-content: center
+          margin-top: 10px
+          .btn
+            padding-left: 26px
+            padding-right: 26px
+
+  .section-videos
+    .section-action
+      margin-top: 10px
+    .item
+      flex: 1 1 50%
+      max-width: calc(50% - 15px)
+      &:nth-child(3n)
+        margin-right: 30px
+      &:nth-child(2n)
+        margin-right: 0
+    .filter-container
+      span
+        margin: 5.5px 7px
+        font-size: 16px
+
+  .section-services
+    .item
+      .content
+        width: 100%
+
+  .section-services, .section-count
+    .swiper-button-prev
+      left: -8%
+    .swiper-button-next
+      right: -8%
+
+  .clients-container
+    .item
+      max-width: 23.5%
+
+  .subscribe-form-container
+    flex-direction: column
+    align-items: center
+    padding: 10px 0 !important
+    .subsc
+      padding: 0
+      text-align: center
+      font-size: 18px
+      width: 70%
+    .subscribe-form
+      margin-top: 25px
+      padding: 0
+      width: 60%
+      .btn
+        width: 100%
+        margin-top: 20px
+      .desc
+        font-size: 12px
+        margin-bottom: 0
+
+  .section-sertificats
+    .swiper-button-prev
+      left: -0.5%
+    .swiper-button-next
+      right: -0.5%
+  .sertificat-slide
+    span
+      padding: 0 48px
+
+  footer
+    .services
+      display: none
+    .fserv
+      justify-content: center
+      flex-wrap: wrap
+      margin-top: 20px
+    .about
+      margin-top: 20px
+      .about-content
+        .contacts
+          width: 50%
+          align-items: flex-end
+          justify-content: center
+        .actions
+          display: none
+        .logo
+          width: 50%
+          display: flex
+          justify-content: center
+          align-items: center
+        .socials
+          width: 50%
+          margin-top: 10px
+          align-items: center
+          justify-content: flex-start
+    .menu
+      ul
+        li, li a
+          font-size: 14px
 
 // ≥1200px
 +media-breakpoint-down(lg)
@@ -558,6 +933,9 @@
 
 // ≥576px
 +media-breakpoint-down(xs)
+  //
+
+@media (max-width: 829.98px)
   .blue-link
     display: flex
     font-size: 18px !important

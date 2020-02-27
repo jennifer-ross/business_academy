@@ -27,6 +27,8 @@ $(function () {
         }
     }
 
+    const mobileBreakpoint = 576;
+
     const defaultSwiperOptions = {
         direction: 'horizontal',
         autoHeight: !0,
@@ -65,13 +67,7 @@ $(function () {
     let Swipers = [];
 
     const onResizeFn = () => {
-        if (window.innerWidth <= 576 && !mobileInit) {
-
-            // if (reviewsSwiper) reviewsSwiper.destroy();
-            // if (sertificatsSwiper) sertificatsSwiper.destroy();
-            // if (servicesSwiper) servicesSwiper.destroy();
-            // if (countSwiper) countSwiper.destroy();
-            // if (newsSwiper) newsSwiper.destroy();
+        if (window.innerWidth <= mobileBreakpoint && !mobileInit) {
 
             Array.prototype.forEach.call(desktopSwipers, v => {
                if (v) v.destroy();
@@ -215,7 +211,7 @@ $(function () {
     desktopSwipers = [];
 
     const swipersInit = () => {
-        if (window.innerWidth <= 576) {
+        if (window.innerWidth <= mobileBreakpoint) {
             onResizeFn();
             return;
         }
@@ -226,6 +222,27 @@ $(function () {
                     slidesPerView: 3,
                     slidesPerGroup: 3,
                     spaceBetween: 80,
+                    breakpoints: {
+                        1280: {
+                            slidesPerView: 3,
+                            slidesPerGroup: 3,
+                            spaceBetween: 80,
+                        },
+                        1080: {
+                            slidesPerView: 3,
+                            slidesPerGroup: 3,
+                            spaceBetween: 30,
+                        },
+                        830: {
+                            slidesPerView: 2,
+                            slidesPerGroup: 2,
+                            spaceBetween: 30,
+                        },
+                        0: {
+                            slidesPerView: 2,
+                            slidesPerGroup: 2,
+                        }
+                    },
                 })
             );
             desktopSwipers.push(servicesSwiper);
@@ -235,6 +252,27 @@ $(function () {
                     slidesPerView: 4,
                     slidesPerGroup: 4,
                     spaceBetween: 50,
+                    breakpoints: {
+                        1280: {
+                            slidesPerView: 4,
+                            slidesPerGroup: 4,
+                            spaceBetween: 50,
+                        },
+                        1080: {
+                            slidesPerView: 3,
+                            slidesPerGroup: 3,
+                            spaceBetween: 30,
+                        },
+                        830: {
+                            slidesPerView: 2,
+                            slidesPerGroup: 2,
+                            spaceBetween: 30,
+                        },
+                        0: {
+                            slidesPerView: 2,
+                            slidesPerGroup: 2,
+                        }
+                    },
                     on: {
                         init: function () {
                             let el = $(this.$el);
@@ -255,12 +293,33 @@ $(function () {
             desktopSwipers.push(countSwiper);
         }
 
-        if (window.innerWidth <= 1080) {
+        if (window.innerWidth < 1280) {
             newsSwiper = new Swiper('.swiper-container-news',
                 Object.assign({}, defaultSwiperOptions,{
                     slidesPerView: 3,
                     slidesPerGroup: 3,
                     spaceBetween: 55,
+                    breakpoints: {
+                        1280: {
+                            slidesPerView: 3,
+                            slidesPerGroup: 3,
+                            spaceBetween: 55,
+                        },
+                        1080: {
+                            slidesPerView: 3,
+                            slidesPerGroup: 3,
+                            spaceBetween: 30,
+                        },
+                        830: {
+                            slidesPerView: 2,
+                            slidesPerGroup: 2,
+                            spaceBetween: 50,
+                        },
+                        0: {
+                            slidesPerView: 2,
+                            slidesPerGroup: 2,
+                        }
+                    }
                 })
             );
             desktopSwipers.push(newsSwiper);
@@ -270,6 +329,27 @@ $(function () {
                     slidesPerView: 5,
                     slidesPerGroup: 5,
                     spaceBetween: 30,
+                    breakpoints: {
+                        1280: {
+                            slidesPerView: 5,
+                            slidesPerGroup: 5,
+                            spaceBetween: 30,
+                        },
+                        1080: {
+                            slidesPerView: 5,
+                            slidesPerGroup: 5,
+                            spaceBetween: 30,
+                        },
+                        830: {
+                            slidesPerView: 4,
+                            slidesPerGroup: 4,
+                            spaceBetween: 40,
+                        },
+                        0: {
+                            slidesPerView: 5,
+                            slidesPerGroup: 5,
+                        }
+                    }
                 })
             );
             desktopSwipers.push(booksSwiper);
@@ -298,8 +378,14 @@ $(function () {
                 1280: {
                     slidesPerView: 4,
                 },
-                577: {
+                1080: {
                     slidesPerView: 3,
+                },
+                830: {
+                    slidesPerView: 2,
+                },
+                577: {
+                    slidesPerView: 2,
                 }
             }
         });
@@ -326,10 +412,21 @@ $(function () {
                 1500: {
                     slidesPerView: 4,
                     slidesPerGroup: 4,
+                    spaceBetween: 30,
                 },
-                577: {
+                1280: {
                     slidesPerView: 3,
                     slidesPerGroup: 3,
+                    spaceBetween: 30,
+                },
+                830: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 2,
+                    spaceBetween: 30,
+                },
+                577: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 2,
                 }
             }
         });
@@ -495,7 +592,7 @@ $(function () {
                 select.unbind('select');
                 filterKeys.unbind('click');
 
-                if (window.innerWidth <= 576) {
+                if (window.innerWidth <= mobileBreakpoint) {
                     select.on('change', function () {
                         let el = select.find('option:selected');
                         let key = el.attr('data-filter-key');
@@ -514,7 +611,7 @@ $(function () {
         },
         update: () => {
             let e = window.itemsFilter;
-            if (Swipers.length <= 0 || window.innerWidth > 576) return;
+            if (Swipers.length <= 0 || window.innerWidth > mobileBreakpoint) return;
             Array.prototype.forEach.call(Swipers, function (v) {
                 if (v.type === e.swiperType) {
                     v.update();

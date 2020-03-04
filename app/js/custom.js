@@ -127,20 +127,16 @@ $(function () {
                         slideChangeTransitionStart: function() {
                             switch (this.type) {
                                 case "review" : {
-                                    let el = $(this.$el).find('.swiper-slide-active');
-
-                                    let more = el.find('.more');
-                                    let moreText = more.find('.text');
-
-                                    let detail = $('.review-detail');
-                                    let text = detail.find('.text');
-
-                                    text.html(moreText.html());
-
+                                    replaceDetailContent($(this.$el));
+                                    return;
+                                }
+                                case "audit-partners": {
+                                    replaceDetailContent($(this.$el));
                                     return;
                                 }
                                 case "client" : {
                                     console.log(this.currentSlide);
+                                    return;
                                 }
                                 default: return;
                             }
@@ -451,6 +447,13 @@ $(function () {
         });
         desktopSwipers.push(servicesSwiper);
 
+        let swiperAuditPartners = new Swiper('.swiper-container-audit-partners', Object.assign({}, defaultSwiperOptions, {
+            slidesPerView: 6,
+            slidesPerGroup: 1,
+            spaceBetween: 25,
+        }));
+        desktopSwipers.push(swiperAuditPartners);
+
         if (window.innerWidth <= 1400) {
             swiperFix(desktopSwipers);
         }
@@ -482,6 +485,18 @@ $(function () {
             $(els).removeClass('hide');
             $(offsetE).addClass('hide');
         }
+    };
+
+    const replaceDetailContent = (el) => {
+        el = $(this.$el).find('.swiper-slide-active');
+
+        let more = el.find('.more');
+        let moreText = more.find('.text');
+
+        let detail = $('.review-detail');
+        let text = detail.find('.text');
+
+        text.html(moreText.html());
     };
 
     $('.swiper-container-reviews .swiper-slide').on('click', function () {
@@ -762,6 +777,40 @@ $(function () {
         }
     };
 
+    window.checkboxSelect = {
+        selects: null,
+        init: () => {
+            let e = window.checkboxSelect;
+
+            e.selects = $('.checkbox-select');
+
+            if (e.selects.length <= 0) {
+                return;
+            }
+
+            Array.prototype.forEach.call(e.selects, (v,k) => {
+                v = $(v);
+               let elements = v.find('label');
+               let checkbox = v.find('input[type="checkbox"]');
+
+               checkbox.unbind('input');
+               checkbox.unbind('changed');
+
+               checkbox.on('input changed', function (ev) {
+                   e.onChange(ev, this, checkbox);
+               });
+               // console.log(elements, checkbox);
+            });
+        },
+        onChange: (event, target, elements) => {
+            let e = window.checkboxSelect;
+            target = $(target);
+            $(elements).prop('checked', false);
+            target.prop('checked', true);
+            // console.log(event, target, elements, target.prop('checked'));
+        }
+    };
+
     window.popup = {
         init: () => {
 
@@ -774,6 +823,8 @@ $(function () {
     window.submenu.init();
     window.itemsFilter.init();
     window.mobileMenu.init();
+    window.popup.init();
+    window.checkboxSelect.init();
 
     let $grid = $('.audit-container').masonry({
         itemSelector: '.grid-item',
@@ -781,5 +832,7 @@ $(function () {
         gutter: 30,
         fitWidth: true
     });
+
+    // let telMask = Inputmask({"mask": "(999) 999-9999"}).mask('[type="tel"]');
 
 });

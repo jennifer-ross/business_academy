@@ -5,7 +5,7 @@ $(function () {
     Array.prototype.__proto__.findInstance = function(el) {
         for (let i = 0;i < this.length;i++) {
             if (this[i] === el) {
-               return i;
+                return i;
             }
         }
         return false;
@@ -774,5 +774,12 @@ $(function () {
     window.submenu.init();
     window.itemsFilter.init();
     window.mobileMenu.init();
+
+    let $grid = $('.audit-container').masonry({
+        itemSelector: '.grid-item',
+        columnWidth: 366,
+        gutter: 30,
+        fitWidth: true
+    });
 
 });

@@ -48,6 +48,9 @@ a
   width: 100%
   padding: 0 1.875rem
 
+.full-width-container
+  width: 100%
+
 ul
   margin: 0
   padding: 0
@@ -1694,5 +1697,480 @@ footer
   top: 0
   display: none
   background: #fff
+
+.section-audit-head
+  .swiper-slide
+    height: auto
+  .swiper-container
+    max-height: unset
+    height: auto
+  .content
+    max-width: 750px
+    padding-top: 0
+  .slide-bg
+    .subtitle
+      font-size: 14px
+      line-height: 19px
+      color: #202B38
+      padding-top: 8px
+      margin-bottom: 30px
+    .desc
+      font-size: 14px
+      padding-bottom: 40px
+      line-height: 22px
+
+.count-image
+  .item
+    max-width: 368px
+    .bg
+      img
+        position: relative
+      .after
+        position: relative
+        &:after
+          position: absolute
+          bottom: -18px
+          left: 0
+          width: 100%
+          height: 1px
+          background: #8f1154
+          content: ""
+    .count
+      -webkit-text-fill-color: unset
+      background-image: unset
+      background-clip: unset
+      padding-bottom: 20px
+      display: flex
+      justify-content: center
+      align-items: center
+      .bg
+        width: auto
+        height: auto
+        left: 50%
+        transform: translateX(-50%)
+      &:after
+        content: unset
+      span
+        font-size: 60px
+        line-height: 70px
+        color: $r
+        filter: drop-shadow(-6px 6px 0px rgba(131, 198, 254, 0.402562)) drop-shadow( 0px 0px 8px #FFFFFF)
+        &:before
+          margin-top: -20px
+      .fas,.fab
+        font-size: 50px
+        margin-top: -20px
+
+.audit-count-section
+  padding-top: 60px
+
+$sz366: 366px
+$sz762: 762px
+
+.section-audit
+  .audit-container
+    //display: grid
+    //grid-template-columns: repeat(auto-fill, minmax(368px, auto))
+    //grid-template-rows: repeat(auto-fill, minmax(368px, auto))
+    //grid-gap: 15px
+    //grid-auto-flow: dense
+    .item
+      margin-bottom: 30px
+      border: 1px solid #11558F
+      display: flex
+      position: relative
+      .item-title
+        height: 50%
+        padding-left: 30px
+        padding-right: 30px
+        display: flex
+        flex-direction: column
+        justify-content: flex-end
+        align-items: flex-end
+        z-index: 2
+        font-weight: 600
+        font-size: 24px
+        line-height: 33px
+        text-align: right
+        text-transform: uppercase
+        color: #11558F
+        padding-bottom: 15px
+        position: relative
+        &:after
+          content: ""
+          position: absolute
+          bottom: 0
+          left: 30px
+          width: calc(100% - 30px * 2)
+          height: 2px
+          background: $r
+      .item-desc
+        height: 50%
+        background: #fff
+        font-weight: normal
+        font-size: 18px
+        line-height: 25px
+        color: #3D444D
+        text-shadow: 0px 0px 8px #FFFFFF
+        padding-top: 10px
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        &:before
+          background: linear-gradient(0deg, #FFFFFF 0%, rgba(255, 255, 255, 0.0001) 100%)
+          content: ""
+          position: absolute
+          top: 0
+          left: 0
+          width: 100%
+          height: 50%
+        p
+          padding-left: 30px
+          padding-right: 30px
+      .btn
+        font-weight: 600
+        font-size: 18px
+        line-height: 25px
+        text-align: right
+        text-transform: uppercase
+        color: #8F1154
+        display: flex
+        align-items: center
+        justify-content: flex-end
+        padding-bottom: 10px
+        padding-left: 10px
+        padding-right: 10px
+        span
+          color: $r
+          font-size: 30px
+          line-height: 35px
+          text-transform: uppercase
+      .bg
+        height: 100%
+        width: 100%
+        position: absolute
+        left: 0
+        top: 0
+        z-index: -1
+        img
+          width: 100%
+          height: auto
+          object-fit: cover
+    .item-small
+      flex-direction: column
+      justify-content: flex-end
+      .item-title
+        height: 50%
+        flex-direction: column
+        justify-content: flex-end
+        align-items: flex-end
+        text-align: right
+      .item-desc
+        height: 50%
+        background: #fff
+        font-weight: normal
+        font-size: 18px
+        line-height: 25px
+        color: #3D444D
+        text-shadow: 0px 0px 8px #FFFFFF
+        padding-top: 10px
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        &:before
+          background: linear-gradient(0deg, #FFFFFF 0%, rgba(255, 255, 255, 0.0001) 100%)
+          content: ""
+          position: absolute
+          top: 0
+          left: 0
+          width: 100%
+          height: 50%
+      //flex: 1 1
+      min-width: $sz366
+      min-height: $sz366
+      height: $sz366
+      width: $sz366
+      max-width: $sz366
+      max-height: $sz366
+    .item-medium
+      //flex: 1 1
+      min-width: $sz762
+      min-height: $sz366
+      max-width: $sz762
+      max-height: $sz366
+      height: $sz366
+      width: $sz762
+      flex-direction: row
+      justify-content: flex-end
+      &:before
+        background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0.0001) 100%)
+        content: ""
+        position: absolute
+        top: 0
+        left: 0
+        width: 50%
+        height: 100%
+      .item-content
+        width: 52%
+        height: 100%
+      .item-title
+        background: #fff
+        justify-content: center
+        text-align: center
+        align-items: center
+        padding-bottom: 0
+        height: 50%
+      .item-desc
+        height: 50%
+        &:before
+          content: unset
+    .item-large
+      flex-direction: column
+      min-width: $sz366
+      min-height: $sz762
+      height: $sz762
+      width: $sz366
+      max-width: $sz366
+      max-height: $sz762
+      .item-desc
+        padding-top: 30px
+    .item-header
+      min-width: $sz762
+      min-height: $sz366
+      max-width: $sz762
+      max-height: $sz366
+      height: $sz366
+      width: $sz762
+      border: 0
+      .item-title
+        justify-content: center
+        align-items: center
+        padding-bottom: 0
+        height: 100%
+        text-align: left
+        font-weight: 600
+        font-size: 36px
+        line-height: 49px
+        &:after
+          content: unset
+
+.step-container
+  display: flex
+  .item
+    flex: 1 1 auto
+    flex-direction: column
+    display: flex
+    position: relative
+    &:not(:last-child)
+      margin-right: 30px
+      &:after
+        content: "\F9C1"
+    &:last-child
+      &:after
+        content: "\F854"
+    &:after
+      position: absolute
+      z-index: -1
+      right: -4.25rem
+      top: 15%
+      height: 80%
+      width: 100%
+      display: inline-flex
+      justify-content: center
+      align-items: center
+      font: normal normal normal 24px/1 "Material Design Icons"
+      font-size: 240px
+      opacity: .06
+      color: #11558F
+      text-rendering: auto
+      line-height: inherit
+      -webkit-font-smoothing: antialiased
+      -moz-osx-font-smoothing: grayscale
+    .step
+      font-weight: bold
+      font-size: 60px
+      line-height: 89px
+      color: #11558F
+      padding-bottom: 15px
+      text-align: left
+      padding-left: 40px
+      font-family: Oswald
+      padding-top: 20px
+    .desc
+      p
+        margin-bottom: 5px
+        color: $r
+        font-size: 18px
+        line-height: 25px
+        text-transform: uppercase
+      ul
+        margin: 0
+        padding-left: 20px
+        li
+          font-weight: normal
+          font-size: 18px
+          line-height: 25px
+          color: #11558F
+
+.section-audit-result
+  padding-left: 0
+  padding-right: 0
+
+.audit-result-container
+  display: flex
+  .item
+    position: relative
+    width: calc(50% - 15px)
+    display: flex
+    justify-content: flex-end
+    padding-top: 30px
+    padding-bottom: 30px
+    padding-left: 30px
+    padding-right: 30px
+    .content
+      width: 55%
+    .icon
+      margin-right: 35px
+      display: flex
+      justify-content: center
+      align-items: center
+    .title
+      font-weight: bold
+      font-size: 36px
+      line-height: 49px
+      text-transform: uppercase
+      color: #8F1154
+    .desc
+      font-weight: 600
+      font-size: 18px
+      line-height: 29px
+      color: #11558F
+      margin-top: 30px
+      p
+        margin-bottom: 16px
+    .bg
+      position: absolute
+      width: 100%
+      height: 100%
+      left: 0
+      top: 0
+      z-index: -1
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+    &:last-child
+      margin-left: 30px
+      justify-content: flex-start
+      .icon
+        margin-right: 0
+        margin-left: 35px
+
+.container-order-service
+  display: flex
+  padding-top: 30px
+  padding-bottom: 30px
+  .item-container
+    width: 50%
+    &:last-child
+      display: flex
+      justify-content: center
+      align-items: center
+      .content
+        width: 528px
+        padding: 60px 30px
+        background: #FFFFFF
+        border: 1px solid #DDE8F1
+        box-shadow: 8px 8px 0px rgba(17, 85, 143, 0.600552)
+        p
+          margin-bottom: 0
+    ul
+      padding-left: 25px
+      li
+        color: $b
+        font-size: 24px
+        line-height: 48px
+    .item
+      color: $b
+      font-size: 24px
+      line-height: 33px
+      font-weight: 600
+      display: flex
+      justify-content: center
+      align-items: center
+      &:not(:last-child)
+        margin-bottom: 20px
+      span
+        color: $r
+        font-size: 72px
+        line-height: 84px
+        margin-right: 30px
+
+.section-subscribe-2
+  background: url("/img/subscribe-bg2.png") no-repeat
+  .subscribe-form-container
+    flex-direction: column
+    .subsc
+      width: 50%
+      text-align: center
+      margin-bottom: 40px
+      font-weight: normal
+    .subscribe-form
+      padding: 0 6rem
+
+.section-count-audit
+  padding-top: 60px
+  padding-bottom: 60px
+
+.section-reviews-audit
+  .section-content
+    position: relative
+    &:after
+      content: ""
+      left: 0
+      top: -30px
+      height: calc(50% + 30px)
+      width: 100%
+      position: absolute
+      background: #F6F9FB
+      z-index: -1
+  .review-detail
+    margin-top: 30px
+
+.auditors-lid-container
+  display: flex
+  .title
+    width: 40%
+    display: flex
+    justify-content: center
+    text-align: right
+    align-items: center
+    font-weight: normal
+    font-size: 60px
+    line-height: 100px
+    text-align: right
+    text-transform: uppercase
+    color: #11558F
+    position: relative
+    &:after
+      content: ""
+      position: absolute
+      right: -80px
+      top: 0
+      height: 100%
+      width: 2px
+      background: $r
+  .items-container
+    width: calc(60% - 160px)
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    margin-left: 160px
+    .item
+      width: 497px
+      height: 280.72px
+      &:not(:last-child)
+        margin-bottom: 30px
 
 @import media

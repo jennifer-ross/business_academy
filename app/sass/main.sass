@@ -2048,6 +2048,8 @@ $sz762: 762px
       margin-top: 30px
       p
         margin-bottom: 16px
+        &:last-child
+          margin-bottom: 0
     .bg
       position: absolute
       width: 100%
@@ -2061,7 +2063,10 @@ $sz762: 762px
         object-fit: cover
     &:last-child
       margin-left: 30px
-      justify-content: flex-start
+      justify-content: flex-end
+      flex-direction: row-reverse
+      .title
+        color: $b
       .icon
         margin-right: 0
         margin-left: 35px
@@ -2136,6 +2141,8 @@ $sz762: 762px
       z-index: -1
   .review-detail
     margin-top: 30px
+    .rating-mobile
+      display: none
 
 .auditors-lid-container
   display: flex
@@ -2174,7 +2181,7 @@ $sz762: 762px
         margin-bottom: 30px
 
 .container-auditors-partners
-  .slider-container
+  .swiper-container-audit-partners
     overflow: hidden
     margin-top: 30px
     margin-bottom: 60px
@@ -2188,7 +2195,7 @@ $sz762: 762px
       height: auto
     border: 1px solid #DDE8F1
     box-shadow: -6px 6px 0px rgba(17, 85, 143, 0.60088)
-  .swiper-slide-active
+  .active
     border: 1px solid #ECDAE3
     box-shadow: -6px 6px 0px rgba(143, 17, 84, 0.596673)
 
@@ -2204,6 +2211,8 @@ $sz762: 762px
     height: auto
     object-fit: cover
     margin-right: 30px
+    border: 1px solid #ECDAE3
+    box-shadow: -6px 6px 0px rgba(143, 17, 84, 0.596673)
   .text
     line-height: 34px
     color: #202B38
@@ -2321,14 +2330,61 @@ $sz762: 762px
     color: #11558F
     width: 100%
 
+.calc-audit-container
+  display: flex
+  justify-content: space-between
+  .form-container
+    width: 50%
+    margin-top: 30px
+  .form-subtitle
+    font-weight: normal
+    font-size: 18px
+    line-height: 34px
+    color: #202B38
+  .block-action
+    width: 40%
+    display: flex
+    justify-content: center
+    align-items: center
+    .content
+      background: #FFFFFF
+      border: 1px solid #DDE8F1
+      box-shadow: 8px 8px 0px rgba(17, 85, 143, 0.600552)
+      padding: 30px
+      width: 560px
+      .title
+        font-weight: 600
+        font-size: 24px
+        line-height: 34px
+        text-transform: uppercase
+        color: #11558F
+        a
+          color: $r
+          margin: 0 5px
+    .desc
+      margin-top: 60px
+      font-weight: normal
+      font-size: 18px
+      line-height: 34px
+      color: #202B38
+
 .calc-audit-form
-  width: 50%
+  width: 100%
+  .submit
+    text-align: right
+    display: flex
+    justify-content: flex-end
+    margin-top: 20px
+  .form-desc
+    margin-top: 15px
+    text-align: right
+    justify-content: flex-end
+    padding-left: 40%
   .group-1
     .field
       width: 30%
       &:last-child
         width: 47.5%
-
   .group-2
     .field
       width: 40%
@@ -2373,5 +2429,52 @@ $sz762: 762px
 .field-row.no-label
   margin-top: 40px
 
+form
+  .form-desc
+    font-weight: normal
+    font-size: 16px
+    line-height: 22px
+    color: #202B38
+    margin-top: 10px
+    display: flex
+  button
+    margin-top: 30px
+    border-radius: 2px
+    background-color: #8f1154
+    font-size: 18px
+    line-height: 1.67
+    display: flex
+    text-transform: uppercase
+    text-align: center
+    justify-content: center
+    color: #fff
+    padding: 0 45px
+    font-weight: normal
+
+.swiper-container-audit-partners
+  position: relative
+
+.container-auditors-partners .slider-container
+  position: relative
+  .swiper-button-next, .swiper-button-prev
+    display: block
+    width: auto
+    height: auto
+    transform: translateY(-50%)
+    top: 50%
+    margin-top: 0
+    &:after
+      content: "\F141"
+      font-family: "Material Design Icons"
+      font-size: 72px
+      line-height: 84px
+      text-transform: uppercase
+      color: #11558F
+  .swiper-button-prev
+    left: -11%
+  .swiper-button-next
+    right: -11%
+    &:after
+      content: "\F142"
 
 @import media

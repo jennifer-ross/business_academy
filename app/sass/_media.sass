@@ -752,7 +752,7 @@
           font-size: 16px
 
   .nb-container
-    .section-content
+    .swiper-container-books
       overflow: hidden
 
   .section-reviews
@@ -1063,11 +1063,8 @@
 +media-breakpoint-down(sm)
   //
 
-// ≥576px
-+media-breakpoint-down(xs)
-  //
-
 @media (max-width: 640.98px)
+
   .blue-link
     display: flex
     font-size: 18px !important
@@ -1224,7 +1221,7 @@
     .swiper-button-prev
       left: -10px
     .swiper-button-next
-      right: 0
+      right: -10px
       &:after
         content: '\F142'
 
@@ -1720,6 +1717,451 @@
     span
       margin-top: 10px
       padding: 0 20px
+
+
+  .count-image
+    .swiper-container-count, .swiper-container-init-mobile
+      padding-top: 20px
+      .item
+        .count
+          .bg
+            width: 100%
+            height: 77.6px
+
+// ≥576px
++media-breakpoint-down(xs)
+  .mobile-watch
+    width: 100%
+  .hit-container
+    .right-block
+      .content
+        padding-top: 40px
+        padding-bottom: 40px
+    .action
+      .btn
+        padding-left: 60px
+        padding-right: 60px
+
+  .section-audit
+    padding-bottom: 20px
+    .swiper-container-init-mobile .swiper-button-next
+      right: 0
+    .swiper-pagination
+      bottom: -20px !important
+    .audit-container
+      .item-header
+        display: none
+      .item
+        max-width: unset
+        width: auto
+        min-width: unset
+        //height: inherit
+        max-height: unset
+        min-height: unset
+        .item-title
+          font-size: 16px
+          line-height: 22px
+          padding-left: 10px
+          padding-right: 10px
+          &:after
+            width: calc(100% - 10px * 2)
+            left: 10px
+        .item-desc
+          p
+            font-size: 14px
+            line-height: 19px
+            padding-left: 10px
+            padding-right: 10px
+      .item-medium
+        display: flex
+        flex-direction: column
+        justify-content: flex-end
+        height: 420px
+        &:before
+          width: 100%
+          height: 50%
+          top: 0
+          left: 0
+          background: linear-gradient(0deg,#fff 0,rgba(255,255,255,.0001) 100%)
+        .bg
+          img
+            height: 50%
+            object-position: 0%
+        .item-content
+          width: 100%
+          height: 100%
+          .item-title
+            background: transparent
+            height: 50%
+            text-align: right
+            justify-content: flex-end
+            align-items: flex-end
+            padding-bottom: 10px
+          .item-desc
+            height: 50%
+    .swiper-container-init-mobile
+      padding: 0 25px !important
+
+  .step-container
+    flex-wrap: wrap
+    .item
+      width: 45%
+      &:after
+        font-size: 160px
+        right: -1.5rem
+        top: 20%
+      &:last-child
+        &:after
+          right: -.5rem
+      &:not(:last-child)
+        margin-right: 10px
+      &:nth-child(2)
+        margin-right: 0
+      .step
+        font-size: 36px
+        line-height: 53px
+      .desc
+        p
+          font-size: 14px
+          line-height: 19px
+        ul
+          li
+            font-size: 14px
+            line-height: 19px
+
+  .section-audit-result
+    padding-left: 0
+    padding-right: 0
+
+  .audit-result-container
+    flex-direction: column
+    .item
+      width: 100%
+      padding: 10px 5px
+      &:last-child
+        width: 100%
+        margin-left: 0
+        margin-top: 15px
+        .title
+          margin-left: 0
+          margin-right: 30%
+        .icon
+          left: unset
+          right: 5px
+      .title
+        font-size: 18px
+        line-height: 25px
+        width: 70%
+        margin-left: 30%
+        min-height: 50px
+        padding-top: 15px
+      .desc
+        margin-top: 15px
+        font-size: 14px
+        line-height: 19px
+      .icon
+        position: absolute
+        width: 80px
+        height: 71px
+        left: 5px
+        top: 5px
+        img
+          width: 100%
+          height: 100%
+      .content
+        width: 100%
+
+  .container-order-service
+    flex-direction: column
+    .item-container
+      width: 100%
+      .content
+        .item
+          display: flex
+          justify-content: flex-start
+      &:last-child
+        margin-top: 20px
+        .content
+          width: 95%
+          padding: 10px 20px
+          .item
+            font-size: 16px
+            line-height: 22px
+            span
+              font-size: 48px
+              line-height: 48px
+              margin-right: 20px
+      ul
+        padding-left: 15px
+        li
+          font-size: 14px
+          line-height: 19px
+
+  .section-subscribe-2
+    background-position-x: 90%
+    &:after
+      content: ""
+      background: linear-gradient(270deg, #DDE8F1 0%, rgba(221, 232, 241, 0.0001) 100%)
+      width: 100%
+      height: 100%
+      position: absolute
+      right: 0
+      top: 0
+      transform: rotate(180deg)
+      z-index: 0
+    .subscribe-form-container
+      z-index: 1
+      .subsc
+        font-size: 24px
+        line-height: 33px
+        width: 80%
+        margin-bottom: 0
+        &:after
+          content: unset
+      .subscribe-form
+        width: 80%
+        padding-left: 0
+        padding-right: 0
+
+  .auditors-lid-container
+    flex-direction: column
+    .title
+      width: 100%
+      font-size: 18px
+      line-height: 25px
+      text-align: left
+      padding-right: 2.5rem
+      margin-bottom: 15px
+      &:after
+        width: 100%
+        height: 2px
+        left: 0
+        bottom: -2px
+        top: unset
+    .items-container
+      width: 100%
+      margin-left: 0
+      .item
+        width: 100%
+        height: 164px
+        &:not(:last-child)
+          margin-bottom: 15px
+
+  .section-reviews-audit
+    .section-content
+      &:after
+        top: 0
+        left: -11px
+        width: calc(100% + 22px)
+        height: 65%
+
+  .section-reviews-audit
+    padding-left: 0
+    padding-right: 0
+    .review-detail-container
+      padding-left: 0 !important
+      padding-right: 0 !important
+    .action
+      display: none
+    .review-detail
+      margin-top: 0
+      .review-content
+        margin-top: 10px
+      .rating-mobile
+        display: block
+        background: transparent
+        z-index: 1
+        padding-top: 0
+        padding-right: 15px
+        & > span
+          color: $r
+          font-size: 38px
+          line-height: normal
+        .stars
+          flex-direction: column
+          span
+            color: $r
+            width: 19px
+            font-size: 20px
+      .image
+        display: block
+        position: relative
+        width: 90%
+        margin: 0 auto
+        &:after
+          background: linear-gradient(90deg, rgba(221, 232, 241, 0.0001) 3.44%, #DDE8F1 100%)
+          z-index: 0
+          content: ""
+          position: absolute
+          right: 0
+          top: 0
+          height: 100%
+          width: 100%
+
+  .container-auditors-partners
+    .slider-container
+      .swiper-button-next
+        color: #11558f
+        opacity: .2
+        line-height: normal
+        right: -10px
+        &:after
+          font-family: "Material Design Icons"
+          content: '\F142'
+          font-size: 36px
+      .swiper-button-prev
+        color: #11558f
+        opacity: .2
+        line-height: normal
+        left: -10px
+        &:after
+          font-family: "Material Design Icons"
+          content: '\F141'
+          font-size: 36px
+    .swiper-container-audit-partners
+      padding-right: 15px
+      padding-left: 35px
+      max-height: unset
+      height: auto
+      padding-bottom: 15px
+      margin-bottom: 0
+
+  .section-auditors-partners
+    padding-bottom: 20px
+
+  .auditors-partners-detail
+    width: 100%
+    .swiper-pagination
+      bottom: -15px !important
+      width: 100%
+      justify-content: center
+    .action
+      margin-top: 40px
+      .call, .call a
+        font-size: 18px
+        line-height: 25px
+      .btn
+        width: 100%
+        margin-top: 10px
+    img
+      display: none
+    .text
+      padding-left: 10px
+      padding-right: 10px
+      p
+        font-size: 14px
+        line-height: 19px
+      span
+        font-size: 16px
+        line-height: 19px
+        font-weight: 600
+
+  .calc-audit-container
+    flex-direction: column
+    .group-1
+      .field
+        width: 100%
+        &:last-child
+          width: 100%
+    .group-2
+      .field
+        width: 100%
+        &:not(:last-child)
+          margin-bottom: 50px
+        &:last-child
+          width: 100%
+    .form-subtitle
+      font-size: 14px
+      line-height: 19px
+    .form-container
+      width: 100%
+      margin-top: 0
+    .block-action
+      width: 95%
+      margin: 0 auto
+      .content
+        padding: 10px 22px
+        .title
+          font-size: 16px
+          line-height: 22px
+        .desc
+          margin-top: 32px
+          p
+            font-size: 14px
+            line-height: 19px
+            &:not(:last-child)
+              margin-bottom: .5rem
+
+  .group-field
+    flex-direction: column
+    padding-left: 0
+    padding-right: 0
+    padding-top: 0
+    padding-bottom: 0
+    background: transparent
+    .field
+      &:after
+        content: ""
+        left: -3px
+        top: 0
+        height: calc(100% + 10px)
+        width: calc(100% + 5px)
+        position: absolute
+        z-index: -1
+        background: #f6f9fb
+      & > label
+        top: -30px
+      &:not(:last-child)
+        margin-bottom: 60px
+
+  .field
+    position: relative
+    .input
+      input, input::placeholder
+        font-size: 16px
+        line-height: 22px
+    &:after
+      content: ""
+      left: -2px
+      top: 0
+      height: calc(100% + 10px)
+      width: calc(100% + 5px)
+      position: absolute
+      z-index: -1
+      background: #f6f9fb
+    & > label
+      font-size: 16px
+      line-height: 22px
+      top: -35px
+
+  .field-row
+    margin-top: 60px
+    padding-left: 0
+    padding-right: 0
+    background: transparent
+
+  .select-2
+    select
+      font-size: 16px
+      line-height: 22px
+
+  form
+    .form-desc
+      text-align: center !important
+      width: 100%
+      font-size: 12px
+      line-height: 16px
+      padding-left: 25px !important
+      padding-right: 25px !important
+    button
+      padding: 3px 15px
+
+  .subscribe-form-container .subsc
+    &:after
+      content: none
+
+  footer .about .about-content .socials
+    width: 100%
 
 /*==========  Mobile First  ==========*/
 

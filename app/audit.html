@@ -28,8 +28,7 @@
   <link rel="stylesheet" href="/css/template_styles.css">
 
   <script src="/js/jquery.js"></script>
-  <script src="/js/jquery.inputmask.js"></script>
-<!--  <script src="/js/inputmask.min.js"></script>-->
+  <script src="/js/jquery.inputmask.min.js"></script>
   <script src="/js/swiper.min.js"></script>
   <script src="/js/viewer.min.js"></script>
   <script src="/js/parallax.min.js"></script>
@@ -251,9 +250,10 @@
     <div class="section-title"><h2>Выберите нужный вам аудит</h2></div>
   </div>
   <div class="section-content">
-    <div class="container audit-container">
+      <div class="swiper-container-audit swiper-container-init-mobile container">
+          <div class="swiper-wrapper audit-container">
 
-      <div class="item grid-item item-small">
+      <div class="item swiper-slide grid-item item-small">
         <div class="bg">
           <img src="/img/audit-bg1.png" alt="">
         </div>
@@ -269,7 +269,7 @@
         </div>
       </div>
 
-      <div class="item grid-item item-medium">
+      <div class="item swiper-slide grid-item item-medium">
         <div class="bg">
           <img src="/img/audit-bg2.png" alt="">
         </div>
@@ -287,7 +287,7 @@
         </div>
       </div>
 
-      <div class="item grid-item item-large">
+      <div class="item swiper-slide grid-item item-large">
         <div class="bg">
           <img src="/img/audit-bg3.png" alt="">
         </div>
@@ -304,7 +304,7 @@
         </div>
       </div>
 
-      <div class="item grid-item item-medium">
+      <div class="item swiper-slide grid-item item-medium">
         <div class="bg">
           <img src="/img/audit-bg2.png" alt="">
         </div>
@@ -322,7 +322,7 @@
         </div>
       </div>
 
-      <div class="item grid-item item-small">
+      <div class="item swiper-slide grid-item item-small">
         <div class="bg">
           <img src="/img/audit-bg1.png" alt="">
         </div>
@@ -338,13 +338,13 @@
         </div>
       </div>
 
-      <div class="item grid-item item-header">
+      <div class="item swiper-slide grid-item item-header">
         <div class="item-content">
           <div class="item-title">Специально для застройщиков и НКО - аудит с глубоким знанием отраслевой специфики:</div>
         </div>
       </div>
 
-      <div class="item grid-item item-large">
+      <div class="item swiper-slide grid-item item-large">
         <div class="bg">
           <img src="/img/audit-bg3.png" alt="">
         </div>
@@ -361,7 +361,7 @@
         </div>
       </div>
 
-      <div class="grid-item item-small-2">
+      <div class="grid-item swiper-slide item-small-2">
         <div class="item item-small">
           <div class="bg">
             <img src="/img/audit-bg1.png" alt="">
@@ -394,7 +394,7 @@
         </div>
       </div>
 
-      <div class="item grid-item item-medium">
+      <div class="item grid-item swiper-slide item-medium">
         <div class="bg">
           <img src="/img/audit-bg2.png" alt="">
         </div>
@@ -411,7 +411,11 @@
           </div>
         </div>
       </div>
-
+      </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -492,7 +496,8 @@
       </div>
       <div class="item">
         <div class="bg"><img src="/img/audit_result_bg.png" alt=""></div>
-        <div class="content">
+          <div class="icon"><img src="/img/audit_result.png" alt=""></div>
+          <div class="content">
           <div class="title">
             ПО РЕЗУЛЬТАТАМ АУДИТА ВЫ ПОЛУЧИТЕ
           </div>
@@ -626,6 +631,16 @@
       <div class="review-detail">
         <div class="image">
           <img src="/img/review1.jpg" alt="">
+            <div class="rating rating-mobile">
+                <div class="stars">
+                    <span class="mdi mdi-star"></span>
+                    <span class="mdi mdi-star"></span>
+                    <span class="mdi mdi-star"></span>
+                    <span class="mdi mdi-star"></span>
+                    <span class="mdi mdi-star"></span>
+                </div>
+                <span>5</span>
+            </div>
         </div>
         <div class="review-content">
           <div class="swiper-pagination"></div>
@@ -675,7 +690,7 @@
                                                 <a href="tel:+74957480316">+7 495 748-03-16</a>
                                                 <span>Позвоните нам и задайте вопрос</span>
                                             </div>
-                                            <a href="#" class="btn">заказать аудит</a>
+                                            <div class="btn-container"><a href="#" class="btn">заказать аудит</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -697,7 +712,7 @@
                                                 <a href="tel:+74957480316">+7 495 748-03-16</a>
                                                 <span>Позвоните нам и задайте вопрос</span>
                                             </div>
-                                            <a href="#" class="btn">заказать аудит</a>
+                                            <div class="btn-container"><a href="#" class="btn">заказать аудит</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -719,7 +734,7 @@
                                                 <a href="tel:+74957480316">+7 495 748-03-16</a>
                                                 <span>Позвоните нам и задайте вопрос</span>
                                             </div>
-                                            <a href="#" class="btn">заказать аудит</a>
+                                            <div class="btn-container"><a href="#" class="btn">заказать аудит</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -741,7 +756,7 @@
                                                 <a href="tel:+74957480316">+7 495 748-03-16</a>
                                                 <span>Позвоните нам и задайте вопрос</span>
                                             </div>
-                                            <a href="#" class="btn">заказать аудит</a>
+                                            <div class="btn-container"><a href="#" class="btn">заказать аудит</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -763,7 +778,7 @@
                                                 <a href="tel:+74957480316">+7 495 748-03-16</a>
                                                 <span>Позвоните нам и задайте вопрос</span>
                                             </div>
-                                            <a href="#" class="btn">заказать аудит</a>
+                                            <div class="btn-container"><a href="#" class="btn">заказать аудит</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -774,7 +789,7 @@
                         <div class="swiper-slide item">
                             <div class="slide">
                                 <div class="more hidden">
-                                    <img src="/img/ap1.png" alt="">
+                                    <img src="/img/ap2.png" alt="">
                                     <div class="text">
                                         <p>
                                             <span>Екатерина Колчанова</span> Ведущий аудитор, квалификационный аттестат аудитора № 06-000165, является членом Саморегулируемой организации аудиторов Ассоциация «Содружество», сведения внесены в реестр аудиторов и аудиторских организаций ОРНЗ 21206029375.
@@ -785,7 +800,7 @@
                                                 <a href="tel:+74957480316">+7 495 748-03-16</a>
                                                 <span>Позвоните нам и задайте вопрос</span>
                                             </div>
-                                            <a href="#" class="btn">заказать аудит</a>
+                                            <div class="btn-container"><a href="#" class="btn">заказать аудит</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -798,7 +813,7 @@
                         <div class="swiper-slide item">
                             <div class="slide">
                                 <div class="more hidden">
-                                    <img src="/img/ap1.png" alt="">
+                                    <img src="/img/ap2.png" alt="">
                                     <div class="text">
                                         <p>
                                             <span>Екатерина Колчанова</span> Ведущий аудитор, квалификационный аттестат аудитора № 06-000165, является членом Саморегулируемой организации аудиторов Ассоциация «Содружество», сведения внесены в реестр аудиторов и аудиторских организаций ОРНЗ 21206029375.
@@ -809,7 +824,7 @@
                                                 <a href="tel:+74957480316">+7 495 748-03-16</a>
                                                 <span>Позвоните нам и задайте вопрос</span>
                                             </div>
-                                            <a href="#" class="btn">заказать аудит</a>
+                                            <div class="btn-container"><a href="#" class="btn">заказать аудит</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -831,7 +846,7 @@
                                                 <a href="tel:+74957480316">+7 495 748-03-16</a>
                                                 <span>Позвоните нам и задайте вопрос</span>
                                             </div>
-                                            <a href="#" class="btn">заказать аудит</a>
+                                            <div class="btn-container"><a href="#" class="btn">заказать аудит</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -842,7 +857,7 @@
                         <div class="swiper-slide item">
                             <div class="slide">
                                 <div class="more hidden">
-                                    <img src="/img/ap3.png" alt="">
+                                    <img src="/img/ap2.png" alt="">
                                     <div class="text">
                                         <p>
                                             <span>Екатерина Колчанова</span> Ведущий аудитор, квалификационный аттестат аудитора № 06-000165, является членом Саморегулируемой организации аудиторов Ассоциация «Содружество», сведения внесены в реестр аудиторов и аудиторских организаций ОРНЗ 21206029375.
@@ -853,29 +868,7 @@
                                                 <a href="tel:+74957480316">+7 495 748-03-16</a>
                                                 <span>Позвоните нам и задайте вопрос</span>
                                             </div>
-                                            <a href="#" class="btn">заказать аудит</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <img class="img" src="/img/ap3.png" alt="">
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide item">
-                            <div class="slide">
-                                <div class="more hidden">
-                                    <img src="/img/ap3.png" alt="">
-                                    <div class="text">
-                                        <p>
-                                            <span>Екатерина Колчанова</span> Ведущий аудитор, квалификационный аттестат аудитора № 06-000165, является членом Саморегулируемой организации аудиторов Ассоциация «Содружество», сведения внесены в реестр аудиторов и аудиторских организаций ОРНЗ 21206029375.
-                                            Имеет многолетний опыт проведения налоговых и аудиторских проверок. Автор множества публикаций по бухгалтерскому учету, аудиту, налогообложению.
-                                        </p>
-                                        <div class="action">
-                                            <div class="call">
-                                                <a href="tel:+74957480316">+7 495 748-03-16</a>
-                                                <span>Позвоните нам и задайте вопрос</span>
-                                            </div>
-                                            <a href="#" class="btn">заказать аудит</a>
+                                            <div class="btn-container"><a href="#" class="btn">заказать аудит</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -897,7 +890,29 @@
                                                 <a href="tel:+74957480316">+7 495 748-03-16</a>
                                                 <span>Позвоните нам и задайте вопрос</span>
                                             </div>
-                                            <a href="#" class="btn">заказать аудит</a>
+                                            <div class="btn-container"><a href="#" class="btn">заказать аудит</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img class="img" src="/img/ap3.png" alt="">
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide item">
+                            <div class="slide">
+                                <div class="more hidden">
+                                    <img src="/img/ap2.png" alt="">
+                                    <div class="text">
+                                        <p>
+                                            <span>Екатерина Колчанова</span> Ведущий аудитор, квалификационный аттестат аудитора № 06-000165, является членом Саморегулируемой организации аудиторов Ассоциация «Содружество», сведения внесены в реестр аудиторов и аудиторских организаций ОРНЗ 21206029375.
+                                            Имеет многолетний опыт проведения налоговых и аудиторских проверок. Автор множества публикаций по бухгалтерскому учету, аудиту, налогообложению.
+                                        </p>
+                                        <div class="action">
+                                            <div class="call">
+                                                <a href="tel:+74957480316">+7 495 748-03-16</a>
+                                                <span>Позвоните нам и задайте вопрос</span>
+                                            </div>
+                                            <div class="btn-container"><a href="#" class="btn">заказать аудит</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -909,6 +924,7 @@
                             <div class="slide">
                                 <div class="more hidden">
                                     <img src="/img/ap1.png" alt="">
+                                    <img src="/img/ap2.png" alt="">
                                     <div class="text">
                                         <p>
                                             <span>Екатерина Колчанова</span> Ведущий аудитор, квалификационный аттестат аудитора № 06-000165, является членом Саморегулируемой организации аудиторов Ассоциация «Содружество», сведения внесены в реестр аудиторов и аудиторских организаций ОРНЗ 21206029375.
@@ -919,7 +935,7 @@
                                                 <a href="tel:+74957480316">+7 495 748-03-16</a>
                                                 <span>Позвоните нам и задайте вопрос</span>
                                             </div>
-                                            <a href="#" class="btn">заказать аудит</a>
+                                            <div class="btn-container"><a href="#" class="btn">заказать аудит</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -928,12 +944,13 @@
                         </div>
 
                     </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
                 </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
             <div class="audit-part-detail-container">
                 <div class="auditors-partners-detail">
+                    <div class="swiper-pagination"></div>
                     <img src="/img/ap2.png" alt="">
                     <div class="text">
                         <p>
@@ -1027,139 +1044,160 @@
 </section>
 
 <section class="section section-calc-audit">
-    <div class="container">
+    <div class="container label-title">
         <div class="section-title"><h2>Рассчет стоимости аудита</h2></div>
     </div>
     <div class="section-content">
         <div class="container calc-audit-container">
-            <form action="" class="calc-audit-form">
-                <div class="field-row group-field group-1">
-                    <div class="field">
-                        <label>Вид аудита</label>
-                        <div class="select select-2 required">
-                            <select required>
-                                <option>Обязательный</option>
-                                <option>Вид 2</option>
-                                <option>Вид 3</option>
-                                <option>Вид 4</option>
-                                <option>Вид 5</option>
-                            </select>
-                            <span class="mdi mdi-chevron-down"></span>
+            <div class="form-container">
+                <div class="form-subtitle">
+                    Расчет автоматический, результат будет отправлен на email в течение 5 минут.
+                </div>
+                <form action="" class="calc-audit-form">
+                    <div class="field-row group-field group-1">
+                        <div class="field">
+                            <label>Вид аудита</label>
+                            <div class="select select-2 required">
+                                <select required>
+                                    <option>Обязательный</option>
+                                    <option>Вид 2</option>
+                                    <option>Вид 3</option>
+                                    <option>Вид 4</option>
+                                    <option>Вид 5</option>
+                                </select>
+                                <span class="mdi mdi-chevron-down"></span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Основной вид деятельности</label>
+                            <div class="input select select-2 required">
+                                <select required>
+                                    <option>Торговля</option>
+                                    <option>Вид 2</option>
+                                    <option>Вид 3</option>
+                                    <option>Вид 4</option>
+                                    <option>Вид 5</option>
+                                </select>
+                                <span class="mdi mdi-chevron-down"></span>
+                            </div>
                         </div>
                     </div>
-                    <div class="field">
-                        <label>Основной вид деятельности</label>
-                        <div class="input select select-2 required">
-                            <select required>
-                                <option>Торговля</option>
-                                <option>Вид 2</option>
-                                <option>Вид 3</option>
-                                <option>Вид 4</option>
-                                <option>Вид 5</option>
-                            </select>
-                            <span class="mdi mdi-chevron-down"></span>
+                    <div class="field-row">
+                        <div class="field">
+                            <label>Период проверки</label>
+                            <div class="checkbox-select">
+                                <label for="checkbox">
+                                    <input type="checkbox" id="checkbox" name="checkbox" value="Квартал">
+                                    <span>Квартал</span>
+                                </label>
+                                <label for="checkbox2">
+                                    <input type="checkbox" id="checkbox2" name="checkbox" value="Полугодие">
+                                    <span>Полугодие</span>
+                                </label>
+                                <label for="checkbox3">
+                                    <input type="checkbox" id="checkbox3" name="checkbox" value="9 месяцев">
+                                    <span>9 месяцев</span>
+                                </label>
+                                <label for="checkbox4">
+                                    <input type="checkbox" id="checkbox4" name="checkbox" value="Год">
+                                    <span>Год</span>
+                                </label>
+                                <label for="checkbox5">
+                                    <input type="checkbox" id="checkbox5" name="checkbox" value="2 года">
+                                    <span>2 года</span>
+                                </label>
+                                <label for="checkbox6">
+                                    <input type="checkbox" id="checkbox6" name="checkbox" value="3 года">
+                                    <span>3 года</span>
+                                </label>
+                            </div>
                         </div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field">
+                            <label>Объем выручки за период проверки</label>
+                            <div class="checkbox-select">
+                                <label for="checkbox11">
+                                    <input type="checkbox" id="checkbox11" name="checkbox" value="до 200 млн">
+                                    <span>до 200 млн</span>
+                                </label>
+                                <label for="checkbox12">
+                                    <input type="checkbox" id="checkbox12" name="checkbox" value="200-400 млн">
+                                    <span>200-400 млн</span>
+                                </label>
+                                <label for="checkbox13">
+                                    <input type="checkbox" id="checkbox13" name="checkbox" value="400 млн - 1 млрд">
+                                    <span>400 млн - 1 млрд</span>
+                                </label>
+                                <label for="checkbox14">
+                                    <input type="checkbox" id="checkbox14" name="checkbox" value="1-3 млрд">
+                                    <span>1-3 млрд</span>
+                                </label>
+                                <label for="checkbox15">
+                                    <input type="checkbox" id="checkbox15" name="checkbox" value="более 3 млрд">
+                                    <span>более 3 млрд</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field">
+                            <label>Количество бухгалтеров</label>
+                            <div class="checkbox-select">
+                                <label for="checkbox21">
+                                    <input type="checkbox" id="checkbox21" name="checkbox" value="1-2">
+                                    <span>1-2</span>
+                                </label>
+                                <label for="checkbox22">
+                                    <input type="checkbox" id="checkbox22" name="checkbox" value="3-4">
+                                    <span>3-4</span>
+                                </label>
+                                <label for="checkbox23">
+                                    <input type="checkbox" id="checkbox23" name="checkbox" value="5-6">
+                                    <span>5-6</span>
+                                </label>
+                                <label for="checkbox24">
+                                    <input type="checkbox" id="checkbox24" name="checkbox" value="7-8">
+                                    <span>7-8</span>
+                                </label>
+                                <label for="checkbox25">
+                                    <input type="checkbox" id="checkbox25" name="checkbox" value="9 и более">
+                                    <span>9 и более</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field-row no-label group-field group-2">
+                        <div class="field">
+                            <div class="input">
+                                <input type="email" placeholder="Электронный адрес" name="email">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="input">
+                                <input type="tel" placeholder="+7(___)___-__-__" name="phone">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="submit">
+                        <button type="submit" class="btn">рассчитать стоимость аудита</button>
+                    </div>
+                    <span class="form-desc">Отправляя свои данные, вы даёте согласие на обработку персональных данных</span>
+                </form>
+            </div>
+            <div class="block-action">
+                <div class="content">
+                    <div class="title">
+                        Получите расчет стоимости по телефону
+                        <a href="tel:+74957480316">+7 495 748-03-16</a>
+                    </div>
+                    <div class="desc">
+                        <p>Позвоните и мы проведем расчет с учетом всех возможных нюансов и пожеланий.</p>
+                        <p>По результатам аудиторских проверок предоставляются подробные отчеты с рекомендациями исправления ошибок.</p>
+                        <p>Отправка заявки ни к чему не обязывает. Персональные данные храним в тайне и не передаём 3-им лицам.</p>
                     </div>
                 </div>
-                <div class="field-row">
-                    <div class="field">
-                        <label>Период проверки</label>
-                        <div class="checkbox-select">
-                            <label for="checkbox">
-                                <input type="checkbox" id="checkbox" name="checkbox" value="Квартал">
-                                <span>Квартал</span>
-                            </label>
-                            <label for="checkbox2">
-                                <input type="checkbox" id="checkbox2" name="checkbox" value="Квартал">
-                                <span>Полугодие</span>
-                            </label>
-                            <label for="checkbox3">
-                                <input type="checkbox" id="checkbox3" name="checkbox" value="Квартал">
-                                <span>9 месяцев</span>
-                            </label>
-                            <label for="checkbox4">
-                                <input type="checkbox" id="checkbox4" name="checkbox" value="Квартал">
-                                <span>Год</span>
-                            </label>
-                            <label for="checkbox5">
-                                <input type="checkbox" id="checkbox5" name="checkbox" value="Квартал">
-                                <span>2 года</span>
-                            </label>
-                            <label for="checkbox6">
-                                <input type="checkbox" id="checkbox6" name="checkbox" value="Квартал">
-                                <span>3 года</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="field-row">
-                    <div class="field">
-                        <label>Объем выручки за период проверки</label>
-                        <div class="checkbox-select">
-                            <label for="checkbox11">
-                                <input type="checkbox" id="checkbox11" name="checkbox" value="до 200 млн">
-                                <span>до 200 млн</span>
-                            </label>
-                            <label for="checkbox12">
-                                <input type="checkbox" id="checkbox12" name="checkbox" value="200-400 млн">
-                                <span>200-400 млн</span>
-                            </label>
-                            <label for="checkbox13">
-                                <input type="checkbox" id="checkbox13" name="checkbox" value="00 млн - 1 млрд">
-                                <span>400 млн - 1 млрд</span>
-                            </label>
-                            <label for="checkbox14">
-                                <input type="checkbox" id="checkbox14" name="checkbox" value="1-3 млрд">
-                                <span>1-3 млрд</span>
-                            </label>
-                            <label for="checkbox15">
-                                <input type="checkbox" id="checkbox15" name="checkbox" value="более 3 млрд">
-                                <span>более 3 млрд</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="field-row">
-                    <div class="field">
-                        <label>Количество бухгалтеров</label>
-                        <div class="checkbox-select">
-                            <label for="checkbox21">
-                                <input type="checkbox" id="checkbox21" name="checkbox" value="1-2">
-                                <span>1-2</span>
-                            </label>
-                            <label for="checkbox22">
-                                <input type="checkbox" id="checkbox22" name="checkbox" value="3-4">
-                                <span>3-4</span>
-                            </label>
-                            <label for="checkbox23">
-                                <input type="checkbox" id="checkbox23" name="checkbox" value="5-6">
-                                <span>5-6</span>
-                            </label>
-                            <label for="checkbox24">
-                                <input type="checkbox" id="checkbox24" name="checkbox" value="7-8">
-                                <span>7-8</span>
-                            </label>
-                            <label for="checkbox25">
-                                <input type="checkbox" id="checkbox25" name="checkbox" value="9 и более">
-                                <span>9 и более</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="field-row no-label group-field group-2">
-                    <div class="field">
-                        <div class="input">
-                            <input type="email" placeholder="Электронный адрес" name="email">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="input">
-                            <input type="tel" placeholder="+7(___)___-__-__" name="phone">
-                        </div>
-                    </div>
-                </div>
-
-            </form>
+            </div>
         </div>
     </div>
 </section>

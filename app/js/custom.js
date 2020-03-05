@@ -2,14 +2,16 @@
 
 $(function () {
 
-    Array.prototype.__proto__.findInstance = function(el) {
-        for (let i = 0;i < this.length;i++) {
-            if (this[i] === el) {
-                return i;
-            }
-        }
-        return false;
-    };
+    $('[type="tel"]').inputmask({ mask: "+7(999)999-99-99"});
+
+    // Array.prototype.__proto__.findInstance = function(el) {
+    //     for (let i = 0;i < this.length;i++) {
+    //         if (this[i] === el) {
+    //             return i;
+    //         }
+    //     }
+    //     return false;
+    // };
 
     const mobileBreakpoint = 640;
 
@@ -32,6 +34,51 @@ $(function () {
         },
     };
 
+    $('.swiper-container-audit-partners .swiper-slide').on('click', function () {
+        let el = $(this);
+        let detail = $('.auditors-partners-detail');
+        $('.swiper-container-audit-partners .swiper-slide').removeClass('active')
+        el.addClass('active');
+        let img = $(detail).find('img');
+        let text = detail.find('.text');
+
+        let more = el.find('.more');
+        let moreImg = more.find('img');
+        let moreText = more.find('.text');
+
+        img.attr('src', moreImg.attr('src'));
+        text.html(moreText.html());
+    });
+
+    $('.swiper-container-reviews .swiper-slide').on('click', function () {
+        let el = $(this);
+        let detail = $('.review-detail');
+        let img = detail.find('.image img');
+        let text = detail.find('.text');
+
+        let more = el.find('.more');
+        let moreImg = more.find('img');
+        let moreText = more.find('.text');
+
+        img.attr('src', moreImg.attr('src'));
+        text.html(moreText.html());
+
+        let viewer = new Viewer(img[0], {
+            keyboard: false,
+            movable: false,
+            navbar: false,
+            rotatable: false,
+            scaleble: true,
+            slideOnTouch: false,
+            toggleOnDblclick: true,
+            toolbar: false,
+            tooltip: false,
+            zoomable: true,
+            zoomOnTouch: false,
+            zoomOnWheel: true,
+        });
+    });
+
     let mobileInit = false;
 
     // fix height swiper sliders
@@ -39,7 +86,18 @@ $(function () {
         let count = 1;
         let swiperIntervalId = setInterval(function () {
             Array.prototype.forEach.call(els, (v) => {
-                if (v) v.update();
+                if (v.length && v.length > 0) {
+                    Array.prototype.forEach.call(v, vv => {
+                        if (vv) vv.update();
+                    });
+                }else {
+                    console.log(v);
+                    try {
+                        if (v) v.update();
+                    }catch (e) {
+
+                    }
+                }
             });
             if (count >= 3) {
                 clearInterval(swiperIntervalId);
@@ -54,7 +112,16 @@ $(function () {
         if (window.innerWidth <= mobileBreakpoint && !mobileInit) {
 
             Array.prototype.forEach.call(desktopSwipers, v => {
-               if (v) v.destroy();
+                if (v.length && v.length > 0) {
+                    Array.prototype.forEach.call(v, vv => {
+                        if (vv) vv.destroy();
+                    });
+                }else {
+                    try {
+                        if (v) v.destroy();
+                    }catch (e) {
+                    }
+                }
             });
             desktopSwipers = [];
 
@@ -127,11 +194,11 @@ $(function () {
                         slideChangeTransitionStart: function() {
                             switch (this.type) {
                                 case "review" : {
-                                    replaceDetailContent($(this.$el));
+                                    replaceDetailContent($(this.$el), '.review-detail');
                                     return;
                                 }
                                 case "audit-partners": {
-                                    replaceDetailContent($(this.$el));
+                                    replaceDetailContent($(this.$el), '.auditors-partners-detail');
                                     return;
                                 }
                                 case "client" : {
@@ -146,7 +213,7 @@ $(function () {
 
                             switch (this.type) {
                                 case "client" : {
-                                    slidesSlice(this.el, 'next');
+                                    slidesSlice(this.el, 'next', this.currentSlide);
                                 }
                                 default: return;
                             }
@@ -156,7 +223,7 @@ $(function () {
 
                             switch (this.type) {
                                 case "client" : {
-                                    slidesSlice(this.el, 'next');
+                                    slidesSlice(this.el, 'prev', this.currentSlide);
                                 }
                                 default: return;
                             }
@@ -278,12 +345,12 @@ $(function () {
             desktopSwipers.push(countSwiper);
         } else {
             if (countSwiper) {
-                countSwiper.destroy();
-                desktopSwipers.splice(desktopSwipers.findInstance(countSwiper), 1);
+                // countSwiper.destroy();
+                // desktopSwipers.splice(desktopSwipers.indexOf(countSwiper), 1);
             }
             if (servicesSwiper) {
-                servicesSwiper.destroy();
-                desktopSwipers.splice(desktopSwipers.findInstance(servicesSwiper), 1);
+                // servicesSwiper.destroy();
+                // desktopSwipers.splice(desktopSwipers.indexOf(servicesSwiper), 1);
             }
         }
 
@@ -360,12 +427,12 @@ $(function () {
             desktopSwipers.push(booksSwiper);
         } else {
             if (booksSwiper) {
-                booksSwiper.destroy();
-                desktopSwipers.splice(desktopSwipers.findInstance(booksSwiper), 1);
+                // booksSwiper.destroy();
+                // desktopSwipers.splice(desktopSwipers.indexOf(booksSwiper), 1);
             }
             if (newsSwiper) {
-                newsSwiper.destroy();
-                desktopSwipers.splice(desktopSwipers.findInstance(newsSwiper), 1);
+                // newsSwiper.destroy();
+                // desktopSwipers.splice(desktopSwipers.indexOf(newsSwiper), 1);
             }
         }
 
@@ -451,24 +518,32 @@ $(function () {
             slidesPerView: 6,
             slidesPerGroup: 1,
             spaceBetween: 25,
+            on: {
+                init: function () {
+                    let items = $(this.$el).find('.item');
+                    $(items[0]).click();
+                }
+            }
         }));
         desktopSwipers.push(swiperAuditPartners);
 
         if (window.innerWidth <= 1400) {
+            console.log(desktopSwipers);
             swiperFix(desktopSwipers);
         }
     };
     swipersInit();
 
-    const slidesSlice = (el, type) => {
+    const slidesSlice = (el, type, currentSlide) => {
+        console.log(el, type);
         const elMultiplier = 9;
         let els = $(el).find('.swiper-slide');
-        let curSlide = this.currentSlide;
-        if (this.currentSlide <= 0) {
+        let curSlide = currentSlide;
+        if (currentSlide <= 0) {
             curSlide = 1;
         }
         let offset = curSlide * elMultiplier;
-        let from = this.currentSlide * elMultiplier;
+        let from = currentSlide * elMultiplier;
         let offsetE = undefined;
         if (type === 'next') {
             offsetE = els.slice(from, offset + elMultiplier);
@@ -487,46 +562,17 @@ $(function () {
         }
     };
 
-    const replaceDetailContent = (el) => {
+    const replaceDetailContent = (el, cl) => {
         el = $(this.$el).find('.swiper-slide-active');
 
         let more = el.find('.more');
         let moreText = more.find('.text');
 
-        let detail = $('.review-detail');
+        let detail = $(cl);
         let text = detail.find('.text');
 
         text.html(moreText.html());
     };
-
-    $('.swiper-container-reviews .swiper-slide').on('click', function () {
-        let el = $(this);
-        let detail = $('.review-detail');
-        let img = detail.find('.image img');
-        let text = detail.find('.text');
-
-        let more = el.find('.more');
-        let moreImg = more.find('img');
-        let moreText = more.find('.text');
-
-        img.attr('src', moreImg.attr('src'));
-        text.html(moreText.html());
-
-        let viewer = new Viewer(img[0], {
-            keyboard: false,
-            movable: false,
-            navbar: false,
-            rotatable: false,
-            scaleble: true,
-            slideOnTouch: false,
-            toggleOnDblclick: true,
-            toolbar: false,
-            tooltip: false,
-            zoomable: true,
-            zoomOnTouch: false,
-            zoomOnWheel: true,
-        });
-    });
 
     $.each($('.sertificat-slide'), function (k, v) {
         let el = $(this).find('img')[0];
@@ -779,28 +825,116 @@ $(function () {
 
     window.checkboxSelect = {
         selects: null,
+        cl: '.checkbox-select',
+        desktopRendered: false,
         init: () => {
             let e = window.checkboxSelect;
 
-            e.selects = $('.checkbox-select');
+            e.selects = $(e.cl);
 
             if (e.selects.length <= 0) {
                 return;
             }
 
+            e.breakpointRender();
+
+            $(window).on('resize', function () {
+                e.breakpointRender();
+            });
+
+        },
+        breakpointRender: () => {
+            let e = window.checkboxSelect;
+
+            if (window.innerWidth <= mobileBreakpoint) {
+                e.regenMobile();
+            }else {
+                e.regenDesktop();
+            }
+        },
+        regenDesktop: () => {
+            let e = window.checkboxSelect;
+
+            if (e.cl == ".checkbox-mb") {
+                Array.prototype.forEach.call(e.selects, (v,k) => {
+                    v = $(v);
+                    let select = v.find('select');
+                    let elements = select.find('option');
+
+                    Array.prototype.forEach.call(elements, (vv, kk) => {
+                        vv = $(vv);
+                        v.append("<label for='" + vv.attr('data-id') + "'><input type='checkbox' id='" + vv.attr('data-id') + "' name='" + vv.attr('data-name') + "' value='" + vv.val() + "'><span>" + vv.val() + "</span></label>");
+                    });
+
+                    v.removeClass('select select-2 checkbox-mb');
+                    v.addClass('checkbox-select');
+
+                    select.remove();
+                    v.find('span.mdi').remove();
+                });
+                e.cl = ".checkbox-select";
+            }
+
+            if (e.cl == ".checkbox-select" && e.desktopRendered == false) {
+                Array.prototype.forEach.call(e.selects, (v,k) => {
+                    v = $(v);
+                    let elements = v.find('label');
+                    let checkbox = v.find('input[type="checkbox"]');
+
+                    checkbox.unbind('input');
+                    checkbox.unbind('changed');
+
+                    checkbox.on('input changed', function (ev) {
+                        e.onChange(ev, this, checkbox);
+                    });
+                });
+
+                e.desktopRendered = true;
+            }
+        },
+        regenMobile: () => {
+            let e = window.checkboxSelect;
+
+            if (e.cl == ".checkbox-mb") {
+                return;
+            }
+
             Array.prototype.forEach.call(e.selects, (v,k) => {
                 v = $(v);
-               let elements = v.find('label');
-               let checkbox = v.find('input[type="checkbox"]');
+                let elements = $(v).find('label');
+                let checkbox = v.find('input[type="checkbox"]');
 
-               checkbox.unbind('input');
-               checkbox.unbind('changed');
+                e.cl = '.checkbox-mb';
 
-               checkbox.on('input changed', function (ev) {
-                   e.onChange(ev, this, checkbox);
-               });
-               // console.log(elements, checkbox);
+                v.addClass('select select-2 checkbox-mb');
+                v.removeClass('checkbox-select');
+
+                let select = document.createElement('select');
+                Array.prototype.forEach.call(elements, (vv,kk) => {
+                    vv = vv.querySelector('input');
+                    let option = document.createElement('option');
+                    option.value = vv.value;
+                    option.innerHTML = vv.value;
+
+                    let attr = document.createAttribute('data-name');
+                    attr.value = vv.name;
+
+                    let attr2 = document.createAttribute('data-id');
+                    attr2.value = vv.id;
+
+                    option.attributes.setNamedItem(attr);
+                    option.attributes.setNamedItem(attr2);
+                    select.append(option);
+                });
+
+                v.find('label').remove();
+
+                v.append(select);
+                v.append("<span class=\"mdi mdi-chevron-down\"></span>");
+
             });
+
+            e.desktopRendered = false;
         },
         onChange: (event, target, elements) => {
             let e = window.checkboxSelect;
@@ -826,13 +960,12 @@ $(function () {
     window.popup.init();
     window.checkboxSelect.init();
 
-    let $grid = $('.audit-container').masonry({
-        itemSelector: '.grid-item',
-        columnWidth: 366,
-        gutter: 30,
-        fitWidth: true
-    });
+    // let $grid = $('.audit-container').masonry({
+    //     itemSelector: '.grid-item',
+    //     columnWidth: 366,
+    //     gutter: 30,
+    //     fitWidth: true
+    // });
 
-    // let telMask = Inputmask({"mask": "(999) 999-9999"}).mask('[type="tel"]');
 
 });

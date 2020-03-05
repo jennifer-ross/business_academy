@@ -112,16 +112,21 @@ $(function () {
         if (window.innerWidth <= mobileBreakpoint && !mobileInit) {
 
             Array.prototype.forEach.call(desktopSwipers, v => {
-                if (v.length && v.length > 0) {
-                    Array.prototype.forEach.call(v, vv => {
-                        if (vv) vv.destroy();
-                    });
-                }else {
+                try {
+                    if (v.length && v.length > 0) {
+                        Array.prototype.forEach.call(v, vv => {
+                            if (vv) vv.destroy();
+                        });
+                    }else {
+                        if (v) v.destroy();
+                    }
+                }catch (e) {
                     try {
                         if (v) v.destroy();
                     }catch (e) {
                     }
                 }
+
             });
             desktopSwipers = [];
 
@@ -910,26 +915,14 @@ $(function () {
                 v.removeClass('checkbox-select');
 
                 let select = document.createElement('select');
+                v.append(select);
+                select = v.find('select');
                 Array.prototype.forEach.call(elements, (vv,kk) => {
                     vv = vv.querySelector('input');
-                    let option = document.createElement('option');
-                    option.value = vv.value;
-                    option.innerHTML = vv.value;
-
-                    let attr = document.createAttribute('data-name');
-                    attr.value = vv.name;
-
-                    let attr2 = document.createAttribute('data-id');
-                    attr2.value = vv.id;
-
-                    option.attributes.setNamedItem(attr);
-                    option.attributes.setNamedItem(attr2);
-                    select.append(option);
+                    select.append("<option data-name='" + vv.name + "' data-id='" + vv.id + "' value='" + vv.value + "'>" + vv.value + "</option>")
                 });
 
                 v.find('label').remove();
-
-                v.append(select);
                 v.append("<span class=\"mdi mdi-chevron-down\"></span>");
 
             });

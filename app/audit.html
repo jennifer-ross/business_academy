@@ -32,7 +32,9 @@
   <script src="/js/swiper.min.js"></script>
   <script src="/js/viewer.min.js"></script>
   <script src="/js/parallax.min.js"></script>
-  <script src="/js/masonry.pkgd.min.js"></script>
+  <script src="/js/freewall.js"></script>
+  <script src="/js/centering.js"></script>
+<!--  <script src="/js/masonry.pkgd.min.js"></script>-->
   <script src="/js/custom.js"></script>
 
 </head>
@@ -253,7 +255,7 @@
       <div class="swiper-container-audit swiper-container-init-mobile container">
           <div class="swiper-wrapper audit-container">
 
-      <div class="item swiper-slide grid-item item-small">
+      <div class="item swiper-slide grid-item item-small" data-packed>
         <div class="bg">
           <img src="/img/audit-bg1.png" alt="">
         </div>
@@ -269,7 +271,7 @@
         </div>
       </div>
 
-      <div class="item swiper-slide grid-item item-medium">
+      <div class="item swiper-slide grid-item item-medium" data-packed>
         <div class="bg">
           <img src="/img/audit-bg2.png" alt="">
         </div>
@@ -287,7 +289,7 @@
         </div>
       </div>
 
-      <div class="item swiper-slide grid-item item-large">
+      <div class="item swiper-slide grid-item item-large" data-packed>
         <div class="bg">
           <img src="/img/audit-bg3.png" alt="">
         </div>
@@ -304,7 +306,7 @@
         </div>
       </div>
 
-      <div class="item swiper-slide grid-item item-medium">
+      <div class="item swiper-slide grid-item item-medium" data-packed>
         <div class="bg">
           <img src="/img/audit-bg2.png" alt="">
         </div>
@@ -322,7 +324,7 @@
         </div>
       </div>
 
-      <div class="item swiper-slide grid-item item-small">
+      <div class="item swiper-slide grid-item item-small" data-packed>
         <div class="bg">
           <img src="/img/audit-bg1.png" alt="">
         </div>
@@ -338,79 +340,85 @@
         </div>
       </div>
 
-      <div class="item swiper-slide grid-item item-header">
+      <div class="item swiper-slide grid-item item-header" data-packed>
         <div class="item-content">
           <div class="item-title">Специально для застройщиков и НКО - аудит с глубоким знанием отраслевой специфики:</div>
         </div>
       </div>
 
-      <div class="item swiper-slide grid-item item-large">
-        <div class="bg">
-          <img src="/img/audit-bg3.png" alt="">
-        </div>
-        <div class="item-title">Аудит отчетности строительных организаций </div>
-        <div class="item-desc">
-          <p>
-            Позволяет застройщикам привлекать денежные средства по договорам долевого участия (Закон № 214-ФЗ).
-            Аудит проводят специалисты, имеющие опыт более 10 лет в аудите строительных компаний,
-            свои книги и публикации по учету и налогообложению в строительстве
-          </p>
-          <div class="action">
-            <a href="#" class="btn">подробнее <span class="mdi mdi-chevron-right"></span></a>
+
+              <div class="item grid-item swiper-slide item-medium" data-packed>
+                  <div class="bg">
+                      <img src="/img/audit-bg2.png" alt="">
+                  </div>
+                  <div class="item-content">
+                      <div class="item-title">Правовой аудит (due diligince)</div>
+                      <div class="item-desc">
+                          <p>
+                              Позволяет выявить скрытые резервы и риски в группе компаний.
+                              Является основой для оптимизации структуры и доходов бизнеса
+                          </p>
+                          <div class="action">
+                              <a href="#" class="btn">подробнее <span class="mdi mdi-chevron-right"></span></a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+
+
+          <div class="item swiper-slide grid-item item-large">
+              <div class="bg">
+                  <img src="/img/audit-bg3.png" alt="">
+              </div>
+              <div class="item-title">Аудит отчетности строительных организаций </div>
+              <div class="item-desc">
+                  <p>
+                      Позволяет застройщикам привлекать денежные средства по договорам долевого участия (Закон № 214-ФЗ).
+                      Аудит проводят специалисты, имеющие опыт более 10 лет в аудите строительных компаний,
+                      свои книги и публикации по учету и налогообложению в строительстве
+                  </p>
+                  <div class="action">
+                      <a href="#" class="btn">подробнее <span class="mdi mdi-chevron-right"></span></a>
+                  </div>
+              </div>
           </div>
-        </div>
+
+
+
+      <div class="grid-item swiper-slide item-small-2" data-packed>
+          <div class="item item-small">
+              <div class="bg">
+                  <img src="/img/audit-bg1.png" alt="">
+              </div>
+              <div class="item-title">налоговый аудит</div>
+              <div class="item-desc">
+                  <p>
+                      Снижает риски налогового контроля.
+                      Эффективен перед налоговыми проверками
+                  </p>
+                  <div class="action">
+                      <a href="#" class="btn">подробнее <span class="mdi mdi-chevron-right"></span></a>
+                  </div>
+              </div>
+          </div>
+          <div class="item item-small">
+              <div class="bg">
+                  <img src="/img/audit-bg1.png" alt="">
+              </div>
+              <div class="item-title">налоговый аудит</div>
+              <div class="item-desc">
+                  <p>
+                      Снижает риски налогового контроля.
+                      Эффективен перед налоговыми проверками
+                  </p>
+                  <div class="action">
+                      <a href="#" class="btn">подробнее <span class="mdi mdi-chevron-right"></span></a>
+                  </div>
+              </div>
+          </div>
       </div>
 
-      <div class="grid-item swiper-slide item-small-2">
-        <div class="item item-small">
-          <div class="bg">
-            <img src="/img/audit-bg1.png" alt="">
-          </div>
-          <div class="item-title">налоговый аудит</div>
-          <div class="item-desc">
-            <p>
-              Снижает риски налогового контроля.
-              Эффективен перед налоговыми проверками
-            </p>
-            <div class="action">
-              <a href="#" class="btn">подробнее <span class="mdi mdi-chevron-right"></span></a>
-            </div>
-          </div>
-        </div>
-        <div class="item item-small">
-          <div class="bg">
-            <img src="/img/audit-bg1.png" alt="">
-          </div>
-          <div class="item-title">налоговый аудит</div>
-          <div class="item-desc">
-            <p>
-              Снижает риски налогового контроля.
-              Эффективен перед налоговыми проверками
-            </p>
-            <div class="action">
-              <a href="#" class="btn">подробнее <span class="mdi mdi-chevron-right"></span></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="item grid-item swiper-slide item-medium">
-        <div class="bg">
-          <img src="/img/audit-bg2.png" alt="">
-        </div>
-        <div class="item-content">
-          <div class="item-title">Правовой аудит (due diligince)</div>
-          <div class="item-desc">
-            <p>
-              Позволяет выявить скрытые резервы и риски в группе компаний.
-              Является основой для оптимизации структуры и доходов бизнеса
-            </p>
-            <div class="action">
-              <a href="#" class="btn">подробнее <span class="mdi mdi-chevron-right"></span></a>
-            </div>
-          </div>
-        </div>
-      </div>
       </div>
           <div class="swiper-pagination"></div>
           <div class="swiper-button-prev"></div>

@@ -13,6 +13,20 @@ $(function () {
     //     return false;
     // };
 
+    let wall = new Freewall(".audit-container");
+    wall.reset({
+        selector: '.item',
+        animate: true,
+        gutterX: 30,
+        gutterY: 30,
+        cellW: 'auto',
+        cellH: 'auto',
+        onResize: function () {
+            wall.fitWidth();
+        }
+    });
+    wall.fitWidth();
+
     const mobileBreakpoint = 640;
 
     const defaultSwiperOptions = {
@@ -753,7 +767,7 @@ $(function () {
                     'left: ' + left + ';' +
                     'right: ' + right + ';' +
                 '}';
-            // document.body.prepend(style);
+
             window.customStyles.append(style);
 
             e.openBtn = $('.mobile-menu-btn');
@@ -893,7 +907,7 @@ $(function () {
                         e.onChange(ev, this, checkbox);
                     });
                 });
-
+                e.selects = $(e.cl);
                 e.desktopRendered = true;
             }
         },
@@ -927,6 +941,7 @@ $(function () {
 
             });
 
+            e.selects = $(e.cl);
             e.desktopRendered = false;
         },
         onChange: (event, target, elements) => {
@@ -934,7 +949,6 @@ $(function () {
             target = $(target);
             $(elements).prop('checked', false);
             target.prop('checked', true);
-            // console.log(event, target, elements, target.prop('checked'));
         }
     };
 
@@ -959,6 +973,5 @@ $(function () {
     //     gutter: 30,
     //     fitWidth: true
     // });
-
 
 });

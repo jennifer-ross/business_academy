@@ -1766,6 +1766,7 @@ footer
 
 $sz366: 366px
 $sz762: 762px
+$sz7622: 722px
 
 .section-audit
   .audit-container
@@ -1774,11 +1775,15 @@ $sz762: 762px
     //grid-template-rows: repeat(auto-fill, minmax(368px, auto))
     //grid-gap: 15px
     //grid-auto-flow: dense
+    display: inline-block
+    width: 100%
+    box-sizing: unset
     .item
-      margin-bottom: 30px
+      //margin-bottom: 30px
       border: 1px solid #11558F
       display: flex
       position: relative
+      margin: 0 0 30px
       .item-title
         height: 50%
         padding-left: 30px
@@ -1896,7 +1901,7 @@ $sz762: 762px
       //flex: 1 1
       min-width: $sz762
       min-height: $sz366
-      max-width: $sz762
+      max-width: $sz7622
       max-height: $sz366
       height: $sz366
       width: $sz762

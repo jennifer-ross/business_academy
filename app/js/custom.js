@@ -858,6 +858,10 @@ $(function () {
             }
             return false;
         },
+        remove: (id) => {
+          $('#' + id).remove();
+          window.customStyles.update();
+        },
         update: () => {
             let e = window.customStyles;
             e.styles = e.stylesContainer.find('style');
@@ -975,8 +979,117 @@ $(function () {
     };
 
     window.popup = {
+        popups: null,
+        currentPopup: null,
+        background: null,
+        offset: 0,
+        cl: 'popup-box',
+        callers: null,
+        headContainer: null,
+        container: null,
+        animationTime: 500,
         init: () => {
+            let e = window.popup;
 
+            e.popups = $('.' + e.cl);
+
+            if (e.popups.length <= 0) {
+                return;
+            }
+
+            if (!e.container) {
+                let container = document.createElement('div');
+                container.className = 'theme_popups-container';
+                document.body.prepend(container);
+                e.headContainer = $('.theme_popups-container');
+            }
+
+            if (!e.background) {
+                e.headContainer.append("<div class='popups-background'><div class='popups-container container'></div></div>");
+                e.background = $('.theme_popups-container .popups-background');
+                e.container = $('.theme_popups-container .popups-container');
+            }
+
+            e.background.on('click', e.closeActive);
+
+            Array.prototype.forEach.call(e.popups, (v, k) => {
+                e.container.append("<div class='" + v.className + "' id='" + v.id + "' data-offset-type='" + $(v).attr('data-offset-type') + "' data-offset='" + $(v).attr('data-offset') + "'>" + v.innerHTML + "</div>");
+                v.remove();
+            });
+            e.popups = $('.' + e.cl);
+
+            e.callers = $('[data-popup-target]');
+            e.callers.on('click', function (event) {
+                let el = $(this);
+                event.preventDefault();
+
+                let popupId = el.attr('data-popup-target');
+                e.show(popupId);
+            });
+        },
+        show: (popupId) => {
+            let e = window.popup;
+
+            let popup = $('#' + popupId);
+            e.currentPopup = popup;
+
+            let offsetEl = $(popup.attr('data-offset'));
+            let offset = null;
+            let offsetType = popup.attr('data-offset-type');
+            if (offsetEl) {
+
+                offset = e.getOffset(offsetEl[0], offsetType);
+
+                popup.css({
+                    top: offset.top,
+                    position: 'absolute',
+                });
+
+                let style = document.createElement('style');
+                style.id = 'popup-target-styles__' + popup[0].id;
+                style.innerHTML = popup.attr('data-offset') + ', ' + popup.attr('data-offset') + ' * {' +
+                    'z-index: 110;' +
+                    '}';
+
+                window.customStyles.append(style, 'popup-target-styles__' + popup[0].id);
+            }
+
+            popup.show();
+            $('html').addClass('no-scroll');
+            e.headContainer.fadeIn(e.animationTime);
+        },
+        close: (popupId) => {
+            let e = window.popup;
+
+            window.customStyles.remove('popup-target-styles__' + $('#' + popupId)[0].id);
+            e.headContainer.fadeOut(e.animationTime, () => {
+                $('html').removeClass('no-scroll');
+            });
+        },
+        closeActive: () => {
+            let e = window.popup;
+
+            if (e.currentPopup) {
+                e.currentPopup.hide();
+            }
+
+            window.customStyles.remove('popup-target-styles__' + e.currentPopup[0].id);
+            e.headContainer.fadeOut(e.animationTime, () => {
+                $('html').removeClass('no-scroll');
+            });
+        },
+        getOffset: (el, type) => {
+            let rect = el.getBoundingClientRect();
+
+            switch (type) {
+                case 'after' : {
+                    return {
+                        top: rect.top + rect.height,
+                    };
+                    break;
+                }
+                default: return false;
+            }
         },
     };
 

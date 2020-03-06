@@ -169,7 +169,50 @@
         min-width: $w366
         max-width: $w366
 
-// ≥1500px
+// ≥1700px
+@media (max-width: 1799.98px)
+  .audit-result-container
+    .item
+      .content
+        width: 60%
+
+  .section-subscribe-2
+    background-position-x: 50%
+
+  .auditors-lid-container
+    .items-container
+      width: 50%
+      margin-left: 0
+      padding-left: 60px
+    .title
+      width: 50%
+      &:after
+        right: -60px
+
+  .auditors-partners-detail
+    width: 80%
+
+  .calc-audit-container
+    .form-container
+      width: 53%
+
+  .calc-audit-form
+    .group-1
+      .field
+        width: 33%
+        &:last-child
+          width: 52%
+
+  .audit-count-section
+    .count-container
+      .item
+        max-width: 340px
+
+  .slide-bg
+    .bg
+      object-position: 30%
+
+// 1500px
 @media (max-width: 1499.98px)
   .header
     .top-menu
@@ -383,6 +426,108 @@
   .section-slider
     padding-left: 0
     padding-right: 0
+
+  .slide-bg
+    .bg
+      object-position: 20%
+
+  .audit-count-section
+    .count-container
+      .item
+        max-width: unset
+
+  .audit-count-section
+    .swiper-container-count
+      max-height: unset !important
+      height: auto !important
+      padding-top: 15px
+
+  .step-container
+    .item
+      &:after
+        font-size: 210px
+        right: -3.5rem
+
+  .audit-result-container
+    .item
+      padding-left: 20px
+      padding-right: 20px
+      padding-top: 20px
+      padding-bottom: 20px
+      &:last-child
+        .icon
+          left: auto
+          right: 15px
+      .content
+        width: 75%
+      .title
+        font-size: 28px
+        line-height: 41px
+      .desc
+        margin-top: 20px
+      .icon
+        position: absolute
+        left: 15px
+        top: 50%
+        transform: translateY(-50%)
+        width: 120px
+        height: 105px
+        img
+          width: 100%
+          height: 100%
+          object-fit: cover
+
+  .container-order-service
+    .item-container
+      width: 45%
+      ul
+        li
+          font-size: 20px
+      &:last-child
+        width: 55%
+        .content
+          width: 500px
+
+  .section-subscribe-2
+    background-position-x: 85%
+    .subscribe-form-container
+      .subsc
+        width: 55%
+
+  .auditors-lid-container
+    .title
+      font-size: 48px
+      line-height: 88px
+      &:after
+        right: -45px
+    .items-container
+      width: 40%
+      &:last-child
+        width: 60%
+
+  .auditors-partners-detail
+    width: 90%
+
+  .calc-audit-container
+    flex-direction: column
+    .submit
+      text-align: center
+      justify-content: center
+    .form-desc
+      padding-left: 0
+      justify-content: center
+      text-align: center
+    .form-subtitle
+      width: 100%
+      text-align: center
+    .form-container
+      width: 100%
+      .calc-audit-form
+        width: 80%
+        margin: 0 auto
+    .block-action
+      width: 100%
+      margin-top: 60px
 
 // ≥1280px
 @media (max-width: 1279.98px)
@@ -656,6 +801,130 @@
   .swiper-container-news
     overflow: hidden
     padding-right: 1rem
+
+  .count-image
+    .item
+      .count
+        .bg
+          width: 250px
+          height: 67px
+
+  .step-container
+    flex-wrap: wrap
+    .item
+      width: calc(50% - 30px)
+      &:after
+        font-size: 240px
+        right: -2.5rem
+
+  .section-audit-result
+    padding-left: 0
+    padding-right: 0
+  .audit-result-container
+    flex-direction: column
+    .item
+      width: 100%
+      padding: 30px
+      display: flex
+      align-items: center
+      .icon
+        position: relative
+        transform: none
+        top: unset
+        left: unset
+        width: 180px
+        height: 160px
+        img
+          object-fit: contain
+      //  width: 50%
+      //  display: flex
+      //  align-items: center
+      //  justify-content: flex-start
+      //  left: 0
+      //  img
+      //    width: 242px
+      //    height: 208px
+      .content
+        width: 50%
+      &:last-child
+        margin-left: 0
+        margin-top: 30px
+
+  .container-order-service
+    flex-direction: column
+    .item-container
+      width: 100%
+      &:last-child
+        width: 100%
+        margin-top: 30px
+        .content
+          width: 528px
+
+  .section-auditors-partners
+    .section-content
+      .swiper-button-prev
+        left: 0%
+        &:after
+          transform: scale(.75)
+          font-size: 56px
+      .swiper-button-next
+        right: 0%
+        &:after
+          transform: scale(.75)
+          font-size: 56px
+
+  .auditors-lid-container
+    flex-direction: column
+    .title
+      width: 100%
+      font-size: 32px
+      line-height: 54px
+      &:after
+        right: unset
+        bottom: 0
+        top: unset
+        width: 100%
+        height: 2px
+    .items-container
+      width: 100%
+      flex-direction: row
+      justify-content: space-between
+      .item
+        margin-bottom: 0
+        &:not(:last-child)
+          margin-bottom: 0
+        width: calc(50% - 15px)
+      &:last-child
+        margin-top: 30px
+        width: 100%
+        padding-left: 0
+
+  .auditors-partners-detail
+    width: 80%
+    flex-direction: column
+    img
+      align-self: center
+    .text
+      margin-top: 30px
+    .action
+      .btn-container
+        justify-content: center
+        .btn
+          width: 50%
+
+  .section-audit-head
+    .swiper-container
+      height: auto
+      min-height: 400px
+      .container
+        height: auto
+        .content
+          height: auto
+          padding-top: 0
+
+  .slide-bg
+    .bg
+      object-position: 35%
 
 @media (max-width: 1200px)
 
@@ -941,6 +1210,64 @@
         li, li a
           font-size: 14px
 
+  .slide-bg
+    .bg
+      object-position: 25%
+
+  .count-image
+    .item
+      .count
+        .bg
+          width: 100%
+          img
+            object-fit: cover
+
+  .step-container
+    .item
+      &:after
+        right: -4.5rem
+
+  .audit-result-container
+    .item
+      .content
+        width: 65%
+
+  .section-subscribe-2
+    .subscribe-form-container
+      .subsc
+        font-size: 26px
+        width: 100%
+        margin-right: 0
+        margin-bottom: 0
+        &:after
+          content: unset
+      .subscribe-form
+        margin-top: 25px
+        padding: 0
+        width: 60%
+
+  .auditors-lid-container
+    .items-container
+      .item
+        width: 100%
+        &:not(:last-child)
+          margin-right: 0
+          margin-bottom: 30px
+      &:last-child
+        flex-direction: column
+
+  .section-auditors-partners
+    .swiper-container-audit-partners
+      margin-bottom: 30px
+
+  .auditors-partners-detail
+    width: 90%
+
+  .calc-audit-container
+    .form-container
+      .calc-audit-form
+        width: 100%
+
 // ≥1200px
 +media-breakpoint-down(lg)
   //
@@ -1080,6 +1407,72 @@
           width: 50%
           margin-bottom: 10px
 
+  .step-container
+    .item
+      &:after
+        right: -2.5rem
+        font-size: 220px
+
+  .auditors-lid-container
+    .title
+      font-size: 26px
+      line-height: 46px
+
+  .section-auditors-partners
+    .section-content
+      .swiper-button-prev
+        left: -3%
+      .swiper-button-next
+        right: -3%
+
+  .auditors-partners-detail
+    width: 95%
+    .text
+      font-size: 18px
+      span
+        font-size: 20px
+    .action
+      .call, .call a
+        font-size: 20px
+      span
+        font-size: 20px
+      .btn-container
+        .btn
+          width: 60%
+
+  .field
+    & > label
+      font-size: 18px
+      top: -50px
+    .input
+      input, input::placeholder
+        font-size: 16px
+        line-height: 22px
+
+  .select-2
+    select
+      font-size: 16px
+      line-height: 22px
+
+  .checkbox-select
+    & > label
+      margin: 5px 0
+    span
+      font-size: 16px
+      line-height: 22px
+
+  .calc-audit-form
+    .group-2
+      .field
+        width: 40%
+    .group-1
+      .field
+        width: 40%
+
+  .calc-audit-container
+    .block-action
+      .content
+        width: 480px
 
 // ≥768px
 +media-breakpoint-down(sm)
@@ -1746,14 +2139,30 @@
       padding-top: 20px
       .item
         .count
+          padding-bottom: 30px
           .bg
-            width: 100%
+            width: 70vw
             height: 77.6px
+            .after
+              &:after
+                bottom: -24px
 
-// ≥576px
-+media-breakpoint-down(xs)
-  .mobile-watch
-    width: 100%
+  .section-audit-head
+    display: inline-flex
+    padding-left: 0
+    padding-right: 0
+    .slide-bg
+      .bg
+        object-position: 65%
+    .swiper-container
+      .container
+        width: 100% !important
+        max-width: 100% !important
+        background: rgba(#F2F5FA, .9)
+        .content
+          max-width: 100%
+          width: 100%
+
   .hit-container
     .right-block
       .content
@@ -1763,6 +2172,339 @@
       .btn
         padding-left: 60px
         padding-right: 60px
+
+  .section-audit
+    padding-bottom: 20px
+    .swiper-container-init-mobile .swiper-button-next
+      right: 0
+    .swiper-pagination
+      bottom: -20px !important
+    .audit-container
+      flex-wrap: unset
+      .item-header
+        display: none
+      .item
+        margin: 0
+        max-width: unset
+        width: auto
+        min-width: unset
+        //height: inherit
+        max-height: unset
+        min-height: unset
+        .item-title
+          font-size: 16px
+          line-height: 22px
+          padding-left: 10px
+          padding-right: 10px
+          &:after
+            width: calc(100% - 10px * 2)
+            left: 10px
+        .item-desc
+          p
+            font-size: 14px
+            line-height: 19px
+            padding-left: 10px
+            padding-right: 10px
+      .item-medium
+        display: flex
+        flex-direction: column
+        justify-content: flex-end
+        height: 420px
+        &:before
+          width: 100%
+          height: 50%
+          top: 0
+          left: 0
+          background: linear-gradient(0deg,#fff 0,rgba(255,255,255,.0001) 100%)
+        .bg
+          img
+            height: 50%
+            object-position: 0%
+        .item-content
+          width: 100%
+          height: 100%
+          .item-title
+            background: transparent
+            height: 50%
+            text-align: right
+            justify-content: flex-end
+            align-items: flex-end
+            padding-bottom: 10px
+          .item-desc
+            height: 50%
+    .swiper-container-init-mobile
+      padding: 0 25px !important
+
+  .step-container
+    flex-wrap: wrap
+    .item
+      width: 45%
+      &:after
+        font-size: 160px
+        right: -1.5rem
+        top: 20%
+      &:last-child
+        &:after
+          right: -.5rem
+      &:not(:last-child)
+        margin-right: 10px
+      &:nth-child(2)
+        margin-right: 0
+      .step
+        font-size: 36px
+        line-height: 53px
+      .desc
+        p
+          font-size: 14px
+          line-height: 19px
+        ul
+          li
+            font-size: 14px
+            line-height: 19px
+
+  .section-audit-result
+    padding-left: 0
+    padding-right: 0
+
+  .audit-result-container
+    flex-direction: column
+    .item
+      width: 100%
+      padding: 15px 15px
+      &:last-child
+        width: 100%
+        margin-left: 0
+        margin-top: 15px
+        .title
+          margin-left: 0
+          margin-right: 30%
+        .icon
+          left: unset
+          right: 5px
+      .title
+        font-size: 18px
+        line-height: 25px
+        width: 70%
+        margin-left: 30%
+        min-height: 50px
+        padding-top: 15px
+      .desc
+        margin-top: 15px
+        font-size: 14px
+        line-height: 19px
+      .icon
+        position: absolute
+        width: 80px
+        height: 71px
+        left: 5px
+        top: 5px
+        img
+          width: 100%
+          height: 100%
+      .content
+        width: 100%
+
+  .container-order-service
+    flex-direction: column
+    .item-container
+      width: 100%
+      .content
+        .item
+          display: flex
+          justify-content: flex-start
+      &:last-child
+        margin-top: 20px
+        .content
+          width: 95%
+          padding: 10px 20px
+          .item
+            font-size: 16px
+            line-height: 22px
+            span
+              font-size: 48px
+              line-height: 48px
+              margin-right: 20px
+      ul
+        padding-left: 15px
+        li
+          font-size: 14px
+          line-height: 19px
+
+  .section-subscribe-2
+    background-position-x: 90%
+    &:after
+      content: ""
+      background: linear-gradient(270deg, #DDE8F1 0%, rgba(221, 232, 241, 0.0001) 100%)
+      width: 100%
+      height: 100%
+      position: absolute
+      right: 0
+      top: 0
+      transform: rotate(180deg)
+      z-index: 0
+    .subscribe-form-container
+      z-index: 1
+      .subsc
+        font-size: 24px
+        line-height: 33px
+        width: 80%
+        margin-bottom: 0
+        &:after
+          content: unset
+      .subscribe-form
+        width: 80%
+        padding-left: 0
+        padding-right: 0
+
+  .auditors-lid-container
+    flex-direction: column
+    .title
+      width: 100%
+      font-size: 18px
+      line-height: 25px
+      text-align: left
+      padding-right: 2.5rem
+      margin-bottom: 15px
+      &:after
+        width: 100%
+        height: 2px
+        left: 0
+        bottom: -2px
+        top: unset
+    .items-container
+      width: 100%
+      margin-left: 0
+      &:last-child
+        margin-top: 0
+      .item
+        width: 100%
+        height: 164px
+        &:not(:last-child)
+          margin-bottom: 15px
+
+  .section-reviews-audit
+    .section-content
+      &:after
+        top: 0
+        left: -11px
+        width: calc(100% + 22px)
+        height: 65%
+
+  .section-reviews-audit
+    padding-left: 0
+    padding-right: 0
+    .review-detail-container
+      padding-left: 0 !important
+      padding-right: 0 !important
+    .action
+      display: none
+    .review-detail
+      margin-top: 0
+      .review-content
+        margin-top: 10px
+      .rating-mobile
+        display: block
+        background: transparent
+        z-index: 1
+        padding-top: 0
+        padding-right: 15px
+        & > span
+          color: $r
+          font-size: 38px
+          line-height: normal
+        .stars
+          flex-direction: column
+          span
+            color: $r
+            width: 19px
+            font-size: 20px
+      .image
+        display: block
+        position: relative
+        width: 90%
+        margin: 0 auto
+        &:after
+          background: linear-gradient(90deg, rgba(221, 232, 241, 0.0001) 3.44%, #DDE8F1 100%)
+          z-index: 0
+          content: ""
+          position: absolute
+          right: 0
+          top: 0
+          height: 100%
+          width: 100%
+
+  .container-auditors-partners
+    .slider-container
+      .swiper-button-next
+        color: #11558f
+        opacity: .2
+        line-height: normal
+        right: -10px
+        &:after
+          font-family: "Material Design Icons"
+          content: '\F142'
+          font-size: 36px
+      .swiper-button-prev
+        color: #11558f
+        opacity: .2
+        line-height: normal
+        left: -10px
+        &:after
+          font-family: "Material Design Icons"
+          content: '\F141'
+          font-size: 36px
+    .swiper-container-audit-partners
+      padding-right: 15px
+      padding-left: 35px
+      max-height: unset
+      height: auto
+      padding-bottom: 15px
+      margin-bottom: 0
+      width: 60%
+      margin: 0 auto
+
+  .section-auditors-partners
+    padding-bottom: 20px
+
+  .auditors-partners-detail
+    width: 100%
+    .swiper-pagination
+      bottom: -15px !important
+      width: 100%
+      justify-content: center
+    .action
+      margin-top: 40px
+      .call, .call a
+        font-size: 18px
+        line-height: 25px
+      .btn
+        width: 100%
+        margin-top: 10px
+    img
+      display: none
+    .text
+      padding-left: 10px
+      padding-right: 10px
+      p
+        font-size: 14px
+        line-height: 19px
+      span
+        font-size: 16px
+        line-height: 19px
+        font-weight: 600
+
+  .section-auditors-partners
+    .item
+      img
+        //height: 100%
+
+  footer .about .about-content .socials
+    width: 100%
+
+// ≥576px
++media-breakpoint-down(xs)
+  .mobile-watch
+    width: 100%
 
   .section-audit
     padding-bottom: 20px
@@ -2062,14 +2804,16 @@
       .call, .call a
         font-size: 18px
         line-height: 25px
-      .btn
-        width: 100%
-        margin-top: 10px
+      .btn-container
+        .btn
+          width: 100%
+          margin-top: 10px
     img
       display: none
     .text
       padding-left: 10px
       padding-right: 10px
+      margin-top: 0
       p
         font-size: 14px
         line-height: 19px
@@ -2184,6 +2928,10 @@
 
   footer .about .about-content .socials
     width: 100%
+
+  @media (max-width: 480px)
+    .container-auditors-partners .swiper-container-audit-partners
+      width: 90%
 
 /*==========  Mobile First  ==========*/
 

@@ -1764,9 +1764,9 @@ footer
 .audit-count-section
   padding-top: 60px
 
-$sz366: 366px
-$sz762: 762px
-$sz7622: 722px
+$sz366: 364px
+$sz762: 748px
+$sz7622: 748px
 
 .section-audit
   .audit-container
@@ -1775,7 +1775,8 @@ $sz7622: 722px
     //grid-template-rows: repeat(auto-fill, minmax(368px, auto))
     //grid-gap: 15px
     //grid-auto-flow: dense
-    display: inline-block
+    display: flex
+    flex-wrap: wrap
     width: 100%
     box-sizing: unset
     .item
@@ -1783,7 +1784,8 @@ $sz7622: 722px
       border: 1px solid #11558F
       display: flex
       position: relative
-      margin: 0 0 30px
+      margin: 0 10px
+      margin-bottom: 20px
       .item-title
         height: 50%
         padding-left: 30px
@@ -1859,7 +1861,7 @@ $sz7622: 722px
         z-index: -1
         img
           width: 100%
-          height: auto
+          height: 100%
           object-fit: cover
     .item-small
       flex-direction: column
@@ -1897,11 +1899,20 @@ $sz7622: 722px
       width: $sz366
       max-width: $sz366
       max-height: $sz366
+    .item-small-2
+      display: flex
+      flex-direction: column
+      min-width: $sz366
+      min-height: $sz762
+      height: $sz762
+      width: $sz366
+      max-width: $sz366
+      max-height: $sz762
     .item-medium
       //flex: 1 1
       min-width: $sz762
       min-height: $sz366
-      max-width: $sz7622
+      max-width: $sz762
       max-height: $sz366
       height: $sz366
       width: $sz762
@@ -1958,6 +1969,34 @@ $sz7622: 722px
         line-height: 49px
         &:after
           content: unset
+
+.row-line
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-start
+  margin-bottom: 20px
+  //&:last-child
+  //  margin-right: 20px !important
+  //  margin-left: 0 !important
+
+.row-column
+  display: flex
+  flex-wrap: wrap
+  flex: 1 1
+  .item
+    &:last-child
+      margin-bottom: 0 !important
+  .item
+    &:last-child, &:nth-last-child(2)
+      margin-bottom: 0 !important
+    &:last-child
+      margin-right: 0 !important
+    &:nth-child(2)
+      margin-right: 0 !important
+    &:first-child
+      margin-left: 20px !important
+    &:nth-last-child(2)
+      margin-left: 20px !important
 
 .step-container
   display: flex
@@ -2185,15 +2224,16 @@ $sz7622: 722px
       &:not(:last-child)
         margin-bottom: 30px
 
-.container-auditors-partners
+.section-auditors-partners
   .swiper-container-audit-partners
     overflow: hidden
     margin-top: 30px
     margin-bottom: 60px
-    max-height: 274px
-    height: 274px
+    max-height: 300px
+    //height: 274px
     padding-left: 10px
     width: calc(100% - 10px)
+    padding-bottom: 10px
   .item
     img
       width: 100%
@@ -2459,7 +2499,7 @@ form
 .swiper-container-audit-partners
   position: relative
 
-.container-auditors-partners .slider-container
+.section-auditors-partners .section-content
   position: relative
   .swiper-button-next, .swiper-button-prev
     display: block
@@ -2476,9 +2516,9 @@ form
       text-transform: uppercase
       color: #11558F
   .swiper-button-prev
-    left: -11%
+    left: 0%
   .swiper-button-next
-    right: -11%
+    right: 0%
     &:after
       content: "\F142"
 

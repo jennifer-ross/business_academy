@@ -13,19 +13,19 @@ $(function () {
     //     return false;
     // };
 
-    let wall = new Freewall(".audit-container");
-    wall.reset({
-        selector: '.item',
-        animate: true,
-        gutterX: 30,
-        gutterY: 30,
-        cellW: 'auto',
-        cellH: 'auto',
-        onResize: function () {
-            wall.fitWidth();
-        }
-    });
-    wall.fitWidth();
+    // let wall = new Freewall(".audit-container");
+    // wall.reset({
+    //     selector: '.grid-item',
+    //     animate: true,
+    //     gutterX: 30,
+    //     gutterY: 30,
+    //     cellW: 'auto',
+    //     cellH: 'auto',
+    //     onResize: function () {
+    //         wall.fitWidth();
+    //     }
+    // });
+    // wall.fitWidth();
 
     const mobileBreakpoint = 640;
 
@@ -542,6 +542,28 @@ $(function () {
                     let items = $(this.$el).find('.item');
                     $(items[0]).click();
                 }
+            },
+            breakpoints: {
+                1700: {
+                    slidesPerView: 6,
+                },
+                1280: {
+                    slidesPerView: 5,
+                },
+                1080: {
+                    slidesPerView: 4,
+                },
+                830: {
+                    slidesPerView: 3,
+                },
+                640: {
+                    slidesPerView: 2,
+                },
+                1: {
+                    slidesPerView: 1,
+                    width: 170,
+                    height: 192
+                }
             }
         }));
         desktopSwipers.push(swiperAuditPartners);
@@ -969,9 +991,10 @@ $(function () {
 
     // let $grid = $('.audit-container').masonry({
     //     itemSelector: '.grid-item',
-    //     columnWidth: 366,
-    //     gutter: 30,
-    //     fitWidth: true
+    //     // columnWidth: 366,
+    //     gutter: 0,
+    //     resize: true,
+    //     // fitWidth: true
     // });
 
 });

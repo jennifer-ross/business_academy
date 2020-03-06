@@ -528,6 +528,9 @@
     .block-action
       width: 100%
       margin-top: 60px
+  .section-description-container
+    .title
+      font-size: 50px
 
 // ≥1280px
 @media (max-width: 1279.98px)
@@ -915,7 +918,7 @@
   .section-audit-head
     .swiper-container
       height: auto
-      min-height: 400px
+      min-height: unset
       .container
         height: auto
         .content
@@ -925,6 +928,12 @@
   .slide-bg
     .bg
       object-position: 35%
+  .section-description-container
+    .title
+      width: 35%
+    .content
+      font-size: 20px
+      line-height: 32px
 
 @media (max-width: 1200px)
 
@@ -1267,6 +1276,16 @@
     .form-container
       .calc-audit-form
         width: 100%
+  .section-description-container
+    flex-direction: column
+    .title
+      width: 100%
+      text-align: right
+      padding-right: 0
+      justify-content: flex-end
+    .content
+      width: 100%
+
 
 // ≥1200px
 +media-breakpoint-down(lg)
@@ -1473,6 +1492,12 @@
     .block-action
       .content
         width: 480px
+  .section-description-container
+    .title
+      font-size: 36px
+      line-height: 54px
+    .content
+      font-size: 18px
 
 // ≥768px
 +media-breakpoint-down(sm)
@@ -2845,6 +2870,7 @@
     .block-action
       width: 95%
       margin: 0 auto
+      margin-top: 20px
       .content
         padding: 10px 22px
         .title
@@ -2929,9 +2955,17 @@
   footer .about .about-content .socials
     width: 100%
 
-  @media (max-width: 480px)
-    .container-auditors-partners .swiper-container-audit-partners
-      width: 90%
+  .section-description-container
+    .title
+      font-size: 24px
+      line-height: 33px
+    .content
+      font-size: 14px
+      line-height: 19px
+
+@media (max-width: 480px)
+  .container-auditors-partners .swiper-container-audit-partners
+    width: 90%
 
 /*==========  Mobile First  ==========*/
 

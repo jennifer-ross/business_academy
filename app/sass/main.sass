@@ -1703,6 +1703,7 @@ footer
     height: auto
   .swiper-container
     max-height: unset
+    min-height: unset
     height: auto
   .content
     max-width: 750px
@@ -2521,5 +2522,39 @@ form
     right: 0%
     &:after
       content: "\F142"
+
+.section-description-container
+  display: flex
+  justify-content: center
+  .title
+    font-weight: normal
+    font-size: 60px
+    line-height: 82px
+    text-align: right
+    text-transform: uppercase
+    color: $b
+    width: 30%
+    padding-right: 16px
+    position: relative
+    display: flex
+    align-items: center
+
+  .content, .content a
+    font-weight: normal
+    font-size: 24px
+    line-height: 36px
+    color: #202B38
+  .content
+    padding-left: 16px
+    width: 60%
+    position: relative
+    &:after
+      content: ""
+      position: absolute
+      left: 0
+      top: 0
+      height: 100%
+      width: 2px
+      background: $r
 
 @import media

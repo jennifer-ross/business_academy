@@ -3038,20 +3038,22 @@
       line-height: 19px
 
   .callback-form-container
-    width: 520px
-    max-width: 520px
-    padding-left: 72px
-    padding-right: 72px
-    padding-bottom: 30px
+    width: 100%
+    max-width: 100%
+    padding-left: 12px
+    padding-right: 12px
+    padding-bottom: 15px
+    padding-top: 45px
 
   .popup-box
+    width: calc(100% - 2rem)
     .title
-      font-size: 28px
-      line-height: 36px
+      font-size: 26px
+      line-height: 32px
 
   .label-placeholder
     & >.pl
-      font-size: 18px
+      font-size: 16px
 
   .close-popup
     width: 32px
@@ -3062,12 +3064,20 @@
       top: 14px
   .popup-box.closable
     .close-popup
-      right: 24px
-      top: 24px
+      right: 14px
+      top: 14px
+
+  .callback-form-container.thanks .content
+    padding-left: 10px
+    padding-right: 10px
 
 @media (max-width: 480px)
   .container-auditors-partners .swiper-container-audit-partners
     width: 90%
+
+@media (max-width: 400px)
+  .clients-brick-container .item .icon
+    width: 100%
 
 /*==========  Mobile First  ==========*/
 

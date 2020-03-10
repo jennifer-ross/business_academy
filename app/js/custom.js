@@ -633,6 +633,44 @@ $(function () {
         });
     });
 
+    const inputsUpdate = () => {
+        $.each($('.label-placeholder'), function (k, v) {
+            let el = $(this);
+            let inp = el.find('input');
+            let pl = el.find('.pl');
+
+            const focus = () => {
+                inp.on('focus focusIn input', function () {
+                    if (this.value) {
+                        pl.hide();
+                    }else {
+                        pl.show();
+                    }
+                });
+            };
+
+            const blur = () => {
+                inp.on('blur focusIn', function () {
+                    if (this.value) {
+                        pl.hide();
+                    }else {
+                        pl.show();
+                    }
+                });
+            };
+
+            inp.unbind('input',focus);
+            inp.unbind('focus',focus);
+            inp.unbind('focusIn',focus);
+
+            inp.unbind('blur',blur);
+            inp.unbind('focusOut',blur);
+
+            focus();
+            blur();
+        });
+    };
+
     let clients = $('.clients-container .item');
     let clientsCnt = clients.length;
 
@@ -990,6 +1028,8 @@ $(function () {
         animationTime: 500,
         replaceContainer: null,
         mmBreackpoint: 1080,
+        parseBool: null,
+        parseObj: null,
         init: () => {
             let e = window.popup;
 
@@ -998,6 +1038,26 @@ $(function () {
             if (e.popups.length <= 0) {
                 return;
             }
+
+            e.parseBool = (string) => {
+                switch(string.toLowerCase().trim()){
+                    case "true": case "yes": case "1": return true;
+                    case "false": case "no": case "0": case null: return false;
+                    default: return Boolean(string);
+                }
+            };
+
+            e.parseObj = (string) => {
+                string = string.split('{').join('');
+                string = string.split('}').join('');
+                let properties = string.split(',');
+                let obj = {};
+                properties.forEach(function(property) {
+                    let kv = property.split(':');
+                    obj[kv[0]] = kv[1];
+                });
+                return obj;
+            };
 
             if (!e.container) {
                 let container = document.createElement('div');
@@ -1012,21 +1072,16 @@ $(function () {
                 e.container = $('.theme_popups-container .popups-container');
             }
 
-            e.background.on('click', e.closeActive);
+            e.background.on('click', (evt) => {
+                if (evt.target == e.background[0]) {
+                    e.closeActive();
+                }
+            });
 
             Array.prototype.forEach.call(e.popups, (v, k) => {
                 e.append(v.id);
             });
             e.update();
-
-            e.callers = $('[data-popup-target]');
-            e.callers.on('click', function (event) {
-                let el = $(this);
-                event.preventDefault();
-
-                let popupId = el.attr('data-popup-target');
-                e.show(popupId);
-            });
 
             e.onResize();
         },
@@ -1037,17 +1092,26 @@ $(function () {
             let replace = false;
 
             if (popup.attr('data-replace') == 'true') {
+                let options = {
+                    id: 'popup_content_container',
+                    className: popup[0].className,
+                    closable: null,
+                    replace: popup.attr('data-replace') || false,
+                    offsetType: popup.attr('data-offset-type') || null,
+                    offset: popup.attr('data-offset') || null,
+                    html: popup[0].innerHTML,
+                    mmBreackpoint: popup.attr('data-mm-breackpoint') || false,
+                    closeAfter: popup.attr('data-close-after') || false
+                };
                 if (e.replaceContainer === null) {
-                    e.replaceContainer = e.create({
-                        id: 'popup_content_container',
-                        className: popup[0].className,
-                        closable: null,
-                        replace: popup.attr('data-replace') || false,
-                        offsetType: popup.attr('data-offset-type') || null,
-                        offset: popup.attr('data-offset') || null,
-                        html: popup[0].innerHTML,
-                        mmBreackpoint: popup.attr('data-mm-breackpoint') || false
-                    });
+                    e.replaceContainer = e.create(options);
+                }else {
+                    e.replaceContainer[0].className = options.className;
+                    e.replaceContainer.attr('data-replace', options.replace);
+                    e.replaceContainer.attr('data-offset-type', options.offsetType);
+                    e.replaceContainer.attr('data-offset', options.offset);
+                    e.replaceContainer.attr('data-mm-breackpoint', options.mmBreackpoint);
+                    e.replaceContainer.attr('data-close-after', options.closeAfter);
                 }
                 popup = e.replaceContainer;
                 replace = true;
@@ -1066,17 +1130,23 @@ $(function () {
                     position: 'absolute',
                 }));
 
-                let style = document.createElement('style');
-                style.id = 'popup-target-styles__' + popup[0].id;
-                style.innerHTML = popup.attr('data-offset') + ', ' + popup.attr('data-offset') + ' * {' +
-                    'z-index: 130;' +
-                    '}';
+                try {
+                    $(offsetEl);
 
-                window.customStyles.append(style, 'popup-target-styles__' + popup[0].id);
+                    let style = document.createElement('style');
+                    style.id = 'popup-target-styles__' + popup[0].id;
+                    style.innerHTML = popup.attr('data-offset') + ', ' + popup.attr('data-offset') + ' * {' +
+                        'z-index: 130;' +
+                        '}';
+
+                    window.customStyles.append(style, 'popup-target-styles__' + popup[0].id);
+                }catch (exp) {
+                }
             }
 
             if (replace) {
                 popup[0].innerHTML = $('#' + popupId)[0].innerHTML;
+                e.update();
             }
             popup.show();
             $('html').addClass('no-scroll');
@@ -1088,22 +1158,24 @@ $(function () {
             let el = $('#' + popupId);
             let v = el[0];
 
-            e.create({
+            let popup = e.create({
                 id: v.id,
                 className: v.className,
-                closable: el.attr('data-closeble'),
+                closable: el.attr('data-closable'),
                 replace: el.attr('data-replace') || false,
                 offsetType: el.attr('data-offset-type') || null,
                 offset: el.attr('data-offset') || null,
                 html: v.innerHTML,
-                mmBreackpoint: el.attr('data-mm-breackpoint') || false
+                mmBreackpoint: el.attr('data-mm-breackpoint') || false,
+                closeAfter: el.attr('data-close-after') || false
             });
             v.remove();
+            e.update();
         },
         create: (options) => {
             let e = window.popup;
 
-            e.container.append("<div class='" + options.className + (options.className == 'false' ? '' : ' closeble') + "' id='" + options.id + "' data-replace='" + options.replace + "' data-mm-breackpoint='" + options.mmBreackpoint + "' data-offset-type='" + options.offsetType + "' data-offset='" + options.offset + "'>" + options.html + "</div>");
+            e.container.append("<div class='" + options.className + (e.parseBool(options.className) == false ? '' : ' closable') + "' id='" + options.id + "' data-close-after='" + options.closeAfter + "' data-replace='" + options.replace + "' data-mm-breackpoint='" + options.mmBreackpoint + "' data-offset-type='" + options.offsetType + "' data-offset='" + options.offset + "'>" + options.html + "</div>");
 
             e.update();
 
@@ -1117,25 +1189,43 @@ $(function () {
                 $('html').removeClass('no-scroll');
             });
         },
-        closeActive: () => {
+        closeActive: (timeout) => {
             let e = window.popup;
 
-            if (e.currentPopup) {
-                e.currentPopup.attr('style', '');
-                e.currentPopup.hide();
-            }
+            const closeFn = () => {
+                if (e.currentPopup) {
+                    e.currentPopup.attr('style', '');
+                    e.currentPopup.hide();
+                }
 
-            window.customStyles.remove('popup-target-styles__' + e.currentPopup[0].id);
-            e.headContainer.fadeOut(e.animationTime, () => {
-                $('html').removeClass('no-scroll');
-            });
+                window.customStyles.remove('popup-target-styles__' + e.currentPopup[0].id);
+                e.headContainer.fadeOut(e.animationTime, () => {
+                    $('html').removeClass('no-scroll');
+                });
+
+                e.currentPopup = null;
+            };
+
+            let after = e.currentPopup.attr('data-close-after') || timeout;
+            if (after) {
+                setTimeout( closeFn,parseInt(after) * 1000);
+            }else {
+                closeFn();
+            }
         },
         getOffset: (el, type) => {
             try {
                 el = $(el)[0];
             }catch (e) {
                 try {
-                    return JSON.parse(el);
+                    let obj = window.popup.parseObj(el);
+                    if ((obj.hasOwnProperty('left') && obj.left === '50%') && (obj.hasOwnProperty('top') && obj.top === '50%')) {
+                        obj.transform = "translate(-50%, -50%)";
+                    }
+                    if (obj.hasOwnProperty('left') && obj.left === '50%') {
+                        obj.transform = "translateX(-50%)";
+                    }
+                    return obj;
                 }catch (e) {
                     return null
                 }
@@ -1169,6 +1259,28 @@ $(function () {
             let e = window.popup;
 
             e.popups = $('.' + e.cl);
+
+            Array.prototype.forEach.call(e.popups, v => {
+                v = $(v);
+                let closer = v.find('.close-popup');
+                closer.unbind('click');
+                closer.on('click', function () {
+                    e.closeActive();
+                });
+            });
+
+            e.callers = $('[data-popup-target]');
+            e.callers.unbind('click');
+
+            e.callers.on('click', function (event) {
+                let el = $(this);
+                event.preventDefault();
+
+                let popupId = el.attr('data-popup-target');
+                e.show(popupId);
+            });
+
+            inputsUpdate();
         },
         onResize: () => {
             let e = window.popup;
@@ -1180,10 +1292,12 @@ $(function () {
                     return;
                 }
 
-                if (window.innerWidth <= e.mmBreackpoint) {
+                if (e.parseBool(e.currentPopup.attr('data-mm-breackpoint')) === true && window.innerWidth <= e.mmBreackpoint) {
                     e.closeActive();
                 }else {
-                    e.show(popup[0].id);
+                    if (popup.is(':hidden')) {
+                        e.show(popup[0].id);
+                    }
                 }
 
                 let offsetEl = popup.attr('data-offset');

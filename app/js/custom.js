@@ -988,6 +988,7 @@ $(function () {
         headContainer: null,
         container: null,
         animationTime: 500,
+        replaceContainer: null,
         init: () => {
             let e = window.popup;
 
@@ -1013,10 +1014,9 @@ $(function () {
             e.background.on('click', e.closeActive);
 
             Array.prototype.forEach.call(e.popups, (v, k) => {
-                e.container.append("<div class='" + v.className + "' id='" + v.id + "' data-offset-type='" + $(v).attr('data-offset-type') + "' data-offset='" + $(v).attr('data-offset') + "'>" + v.innerHTML + "</div>");
-                v.remove();
+                e.append(v.id);
             });
-            e.popups = $('.' + e.cl);
+            e.update();
 
             e.callers = $('[data-popup-target]');
             e.callers.on('click', function (event) {
@@ -1033,30 +1033,76 @@ $(function () {
             let popup = $('#' + popupId);
             e.currentPopup = popup;
 
-            let offsetEl = $(popup.attr('data-offset'));
+            let replace = false;
+
+            if (popup.attr('data-replace') == 'true') {
+                if (e.replaceContainer === null) {
+                    e.replaceContainer = e.create({
+                        id: 'popup_content_container',
+                        className: popup[0].className,
+                        closable: null,
+                        replace: popup.attr('data-replace'),
+                        offsetType: popup.attr('data-offset-type'),
+                        offset: popup.attr('data-offset'),
+                        html: popup[0].innerHTML
+                    });
+                }
+                popup = e.replaceContainer;
+                replace = true;
+            }
+
+            let offsetEl = popup.attr('data-offset');
             let offset = null;
             let offsetType = popup.attr('data-offset-type');
             if (offsetEl) {
 
-                offset = e.getOffset(offsetEl[0], offsetType);
+                offset = e.getOffset(offsetEl, offsetType);
 
-                popup.css({
-                    top: offset.top,
+                popup.css(Object.assign({}, offset ,{
                     position: 'absolute',
-                });
+                }));
 
                 let style = document.createElement('style');
                 style.id = 'popup-target-styles__' + popup[0].id;
                 style.innerHTML = popup.attr('data-offset') + ', ' + popup.attr('data-offset') + ' * {' +
-                    'z-index: 110;' +
+                    'z-index: 130;' +
                     '}';
 
                 window.customStyles.append(style, 'popup-target-styles__' + popup[0].id);
             }
 
+            if (replace) {
+                popup[0].innerHTML = $('#' + popupId)[0].innerHTML;
+            }
             popup.show();
             $('html').addClass('no-scroll');
             e.headContainer.fadeIn(e.animationTime);
+        },
+        append: (popupId) => {
+            let e = window.popup;
+
+            let el = $('#' + popupId);
+            let v = el[0];
+
+            e.create({
+                id: v.id,
+                className: v.className,
+                closable: el.attr('data-closeble'),
+                replace: el.attr('data-replace'),
+                offsetType: el.attr('data-offset-type'),
+                offset: el.attr('data-offset'),
+                html: v.innerHTML
+            });
+            v.remove();
+        },
+        create: (options) => {
+            let e = window.popup;
+
+            e.container.append("<div class='" + options.className + (options.className == 'false' ? '' : ' closeble') + "' id='" + options.id + "' data-replace='" + options.replace + "' data-offset-type='" + options.offsetType + "' data-offset='" + options.offset + "'>" + options.html + "</div>");
+
+            e.update();
+
+            return $('#' + options.id);
         },
         close: (popupId) => {
             let e = window.popup;
@@ -1070,6 +1116,7 @@ $(function () {
             let e = window.popup;
 
             if (e.currentPopup) {
+                e.currentPopup.attr('style', '');
                 e.currentPopup.hide();
             }
 
@@ -1079,6 +1126,16 @@ $(function () {
             });
         },
         getOffset: (el, type) => {
+            try {
+                el = $(el)[0];
+            }catch (e) {
+                try {
+                    return JSON.parse(el);
+                }catch (e) {
+                    return null
+                }
+            }
+
             let rect = el.getBoundingClientRect();
 
             switch (type) {
@@ -1088,9 +1145,26 @@ $(function () {
                     };
                     break;
                 }
+                case 'before' : {
+                    return {
+                        top: rect.top,
+                    };
+                    break;
+                }
+                case 'center' : {
+                    return {
+                        top: rect.top + (rect.height / 2),
+                    };
+                    break;
+                }
                 default: return false;
             }
         },
+        update: () => {
+            let e = window.popup;
+
+            e.popups = $('.' + e.cl);
+        }
     };
 
     // always upper then other

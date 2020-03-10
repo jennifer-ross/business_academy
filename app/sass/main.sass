@@ -2575,19 +2575,83 @@ form
 
 .theme_popups-container
   width: 100vw
-  height: 100vh
+  min-height: 100vh
+  height: 100%
   position: fixed
-  z-index: 100
+  z-index: 120
   display: none
   .popups-background
     width: 100vw
     height: 100vh
     background: rgba(0,0,0,.2)
-    z-index: 101
+    z-index: 121
   .popups-container
     position: relative
     width: 100%
     height: 100%
-    z-index: 102
+    z-index: 122
+
+.seminars-popup
+  background: #fff
+  & > .container
+    display: flex
+  .discount-container
+    padding-top: 30px
+    padding-left: 145px
+    padding-right: 145px
+    padding-bottom: 60px
+    background: #F6F9FB
+  .discount
+    width: 100%
+    height: 237px
+    display: flex
+    justify-content: flex-end
+    img
+      object-fit: cover
+      width: 100%
+      height: 100%
+      margin: 0
+  .action
+    margin-top: 15px
+    .desc
+      font-weight: 600
+      font-size: 24px
+      line-height: 33px
+      text-align: right
+      text-transform: uppercase
+      color: #11558F
+      padding-left: 30px
+    .btn-container
+      display: flex
+      justify-content: flex-end
+    .btn
+      margin-top: 15px
+      border-radius: 2px
+      background-color: #8f1154
+      font-size: 18px
+      line-height: 1.67
+      display: flex
+      text-transform: uppercase
+      text-align: center
+      justify-content: center
+      color: #fff
+      padding: 0 45px
+      font-weight: normal
+  .menus-container
+    display: flex
+    padding-left: 132px
+    padding-top: 30px
+    padding-bottom: 90px
+    padding-right: 30px
+    ul
+      max-width: 366px
+      width: 366px
+      li, li a
+        font-weight: normal
+        font-size: 18px
+        line-height: 42px
+        color: #11558F
+      li
+        list-style: none
 
 @import media

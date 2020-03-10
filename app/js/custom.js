@@ -989,6 +989,7 @@ $(function () {
         container: null,
         animationTime: 500,
         replaceContainer: null,
+        mmBreackpoint: 1080,
         init: () => {
             let e = window.popup;
 
@@ -1041,10 +1042,11 @@ $(function () {
                         id: 'popup_content_container',
                         className: popup[0].className,
                         closable: null,
-                        replace: popup.attr('data-replace'),
-                        offsetType: popup.attr('data-offset-type'),
-                        offset: popup.attr('data-offset'),
-                        html: popup[0].innerHTML
+                        replace: popup.attr('data-replace') || false,
+                        offsetType: popup.attr('data-offset-type') || null,
+                        offset: popup.attr('data-offset') || null,
+                        html: popup[0].innerHTML,
+                        mmBreackpoint: popup.attr('data-mm-breackpoint') || false
                     });
                 }
                 popup = e.replaceContainer;
@@ -1090,17 +1092,18 @@ $(function () {
                 id: v.id,
                 className: v.className,
                 closable: el.attr('data-closeble'),
-                replace: el.attr('data-replace'),
-                offsetType: el.attr('data-offset-type'),
-                offset: el.attr('data-offset'),
-                html: v.innerHTML
+                replace: el.attr('data-replace') || false,
+                offsetType: el.attr('data-offset-type') || null,
+                offset: el.attr('data-offset') || null,
+                html: v.innerHTML,
+                mmBreackpoint: el.attr('data-mm-breackpoint') || false
             });
             v.remove();
         },
         create: (options) => {
             let e = window.popup;
 
-            e.container.append("<div class='" + options.className + (options.className == 'false' ? '' : ' closeble') + "' id='" + options.id + "' data-replace='" + options.replace + "' data-offset-type='" + options.offsetType + "' data-offset='" + options.offset + "'>" + options.html + "</div>");
+            e.container.append("<div class='" + options.className + (options.className == 'false' ? '' : ' closeble') + "' id='" + options.id + "' data-replace='" + options.replace + "' data-mm-breackpoint='" + options.mmBreackpoint + "' data-offset-type='" + options.offsetType + "' data-offset='" + options.offset + "'>" + options.html + "</div>");
 
             e.update();
 
@@ -1177,6 +1180,12 @@ $(function () {
                     return;
                 }
 
+                if (window.innerWidth <= e.mmBreackpoint) {
+                    e.closeActive();
+                }else {
+                    e.show(popup[0].id);
+                }
+
                 let offsetEl = popup.attr('data-offset');
                 let offset = null;
                 let offsetType = popup.attr('data-offset-type');
@@ -1189,9 +1198,7 @@ $(function () {
             };
 
             $(window).on('resize', function () {
-
                 resizeFn();
-
             });
             resizeFn();
         }

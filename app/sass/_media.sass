@@ -76,11 +76,11 @@
       max-width: 306px
 
   .seminars-container
-    .seminar
-      .content
-        padding: 7px 30px
-        .heading
-          padding-right: 0rem
+  .seminar
+    .content
+      padding: 7px 30px
+      .heading
+        padding-right: 0rem
 
   .section
     .left-to-right, .right-to-left
@@ -250,22 +250,22 @@
     display: none
 
   .seminars-container
-    .seminar
-      .content
-        padding: 7px 20px
-        .action
-          .btn
-            span
-              font-size: 38px
-        .heading
-          padding-bottom: 1rem
-        .seminar-date
-          .date
-            font-size: 40px
-      &:first-child
-        .heading
-          font-size: 26px
-          //padding-bottom: 0
+  .seminar
+    .content
+      padding: 7px 20px
+      .action
+        .btn
+          span
+            font-size: 38px
+      .heading
+        padding-bottom: 1rem
+      .seminar-date
+        .date
+          font-size: 40px
+    &:first-child
+      .heading
+        font-size: 26px
+        //padding-bottom: 0
 
   .section
     .left-to-right,.right-to-left
@@ -612,21 +612,21 @@
 
 
   .seminars-container
-    .seminar
-      .content
-        padding: 7px 10px
-        .action
-          .btn
-            font-size: 16px
-            span
-              font-size: 32px
-        .heading
-          font-size: 19px
-        .seminar-date
-          .date
-            font-size: 34px
-          .position
-            font-size: 16px
+  .seminar
+    .content
+      padding: 7px 10px
+      .action
+        .btn
+          font-size: 16px
+          span
+            font-size: 32px
+      .heading
+        font-size: 19px
+      .seminar-date
+        .date
+          font-size: 34px
+        .position
+          font-size: 16px
 
   .section
     .section-action
@@ -982,6 +982,14 @@
         font-size: 20px
         line-height: 26px
 
+  .section-books-brick
+    .items-container
+      .item
+        .icon
+          width: 265px
+          height: 265px
+          img
+
 @media (max-width: 1200px)
 
   .row-bg.el-image
@@ -1073,22 +1081,22 @@
     padding: 5px 10px
 
   .seminars-container
-    .seminar
-      margin-right: 15px
-      margin-bottom: 15px
-      .content
-        .action
-          .btn
-            font-size: 14px
-            span
-              font-size: 28px
-        .heading
+  .seminar
+    margin-right: 15px
+    margin-bottom: 15px
+    .content
+      .action
+        .btn
           font-size: 14px
-        .seminar-date
-          .position
-            font-size: 14px
-          .date
-            font-size: 23px
+          span
+            font-size: 28px
+      .heading
+        font-size: 14px
+      .seminar-date
+        .position
+          font-size: 14px
+        .date
+          font-size: 23px
 
   .news-container
     .news-item
@@ -1176,7 +1184,7 @@
             padding-left: 26px
             padding-right: 26px
 
-  .section-videos
+  .section-video,.section-books-brick
     .section-action
       margin-top: 10px
     .item
@@ -1360,24 +1368,24 @@
     margin-top: 10px
 
   .seminars-container
-    .seminar,.seminar:nth-child(2),.seminar:nth-child(3),.seminar:first-child
-      flex: none
-      width: 100%
-      max-width: 100%
-      margin-right: 0
-    .seminar
-      .content
-        padding: 20px
-        .action
-          .btn
-            font-size: 14px
-        .seminar-date
-          .date
-            font-size: 30px
-          .position
-            font-size: 16px
-        .heading
-          font-size: 18px
+  .seminar,.seminar:nth-child(2),.seminar:nth-child(3),.seminar:first-child
+    flex: none
+    width: 100%
+    max-width: 100%
+    margin-right: 0
+  .seminar
+    .content
+      padding: 20px
+      .action
+        .btn
+          font-size: 14px
+      .seminar-date
+        .date
+          font-size: 30px
+        .position
+          font-size: 16px
+      .heading
+        font-size: 18px
 
   .news-container
     .news-item
@@ -1572,6 +1580,13 @@
     .close-popup
       right: 24px
       top: 24px
+  .section-books-brick
+    .items-container
+      .item
+        max-width: 100%
+        .icon
+          width: 100%
+
 
 // ≥768px
 +media-breakpoint-down(sm)
@@ -1634,39 +1649,39 @@
 
   .seminars-container
     flex-direction: column
-    .seminar
-      width: 100%
+  .seminar
+    width: 100%
+    max-width: 100%
+    overflow: hidden
+    margin-right: 0
+    margin-bottom: 10px
+    display: none
+    &:first-child, &:nth-child(3), &:last-child, &:nth-child(2)
       max-width: 100%
-      overflow: hidden
-      margin-right: 0
-      margin-bottom: 10px
-      display: none
-      &:first-child, &:nth-child(3), &:last-child, &:nth-child(2)
-        max-width: 100%
-      &:first-child
-        border: none
-      &:nth-child(1),&:nth-child(2), &:nth-child(3)
-        display: flex
-      .bg
-      .content
-        padding: 7px 10px
-        padding-bottom: 7px
-        .action
-          .btn
-            font-size: 16px
-            span
-              font-size: 24px
-        .seminar-date
-          .date
-            font-size: 36px
-          .position
-            font-size: 16px
-            margin-left: 20px
-        .heading
+    &:first-child
+      border: none
+    &:nth-child(1),&:nth-child(2), &:nth-child(3)
+      display: flex
+    .bg
+    .content
+      padding: 7px 10px
+      padding-bottom: 7px
+      .action
+        .btn
           font-size: 16px
-          padding-bottom: 10px
-          padding-top: 10px
-          padding-right: 5rem
+          span
+            font-size: 24px
+      .seminar-date
+        .date
+          font-size: 36px
+        .position
+          font-size: 16px
+          margin-left: 20px
+      .heading
+        font-size: 16px
+        padding-bottom: 10px
+        padding-top: 10px
+        padding-right: 5rem
 
   .section-slider
     display: none
@@ -1986,7 +2001,7 @@
             padding-left: 26px
             padding-right: 26px
 
-  .section-videos
+  .section-videos,.section-books-brick
     .filter-container
       padding: 0
       .mobile-filter-container
@@ -2019,7 +2034,7 @@
       span
         display: none
 
-  .section-videos
+  .section-videos,.section-books-brick
     padding-bottom: 20px
     .swiper-pagination
       bottom: -12px !important
@@ -2618,6 +2633,20 @@
       .icon
         width: 140px
         height: 140px
+  .section-books-brick
+    .mobile-filter-container
+      margin-bottom: 15px
+      width: 100%
+    .items-container
+      flex-wrap: wrap
+      margin-top: 10px
+      .item
+        max-width: 100%
+        flex: 1 1 100%
+        margin-right: 0
+        margin-bottom: 10px
+        .icon
+          width: 100%
 
 // ≥576px
 +media-breakpoint-down(xs)

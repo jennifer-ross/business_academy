@@ -1026,13 +1026,13 @@ $(function () {
                 let popupId = el.attr('data-popup-target');
                 e.show(popupId);
             });
+
+            e.onResize();
         },
         show: (popupId) => {
             let e = window.popup;
 
             let popup = $('#' + popupId);
-            e.currentPopup = popup;
-
             let replace = false;
 
             if (popup.attr('data-replace') == 'true') {
@@ -1050,6 +1050,8 @@ $(function () {
                 popup = e.replaceContainer;
                 replace = true;
             }
+
+            e.currentPopup = popup;
 
             let offsetEl = popup.attr('data-offset');
             let offset = null;
@@ -1164,6 +1166,34 @@ $(function () {
             let e = window.popup;
 
             e.popups = $('.' + e.cl);
+        },
+        onResize: () => {
+            let e = window.popup;
+
+            const resizeFn = () => {
+                let popup = e.currentPopup;
+
+                if (!popup) {
+                    return;
+                }
+
+                let offsetEl = popup.attr('data-offset');
+                let offset = null;
+                let offsetType = popup.attr('data-offset-type');
+
+                offset = e.getOffset(offsetEl, offsetType);
+
+                popup.css(Object.assign({}, offset ,{
+                    position: 'absolute',
+                }));
+            };
+
+            $(window).on('resize', function () {
+
+                resizeFn();
+
+            });
+            resizeFn();
         }
     };
 

@@ -1198,7 +1198,9 @@ $(function () {
                     e.currentPopup.hide();
                 }
 
-                window.customStyles.remove('popup-target-styles__' + e.currentPopup[0].id);
+                if (e.currentPopup) {
+                    window.customStyles.remove('popup-target-styles__' + e.currentPopup[0].id);
+                }
                 e.headContainer.fadeOut(e.animationTime, () => {
                     $('html').removeClass('no-scroll');
                 });
@@ -1206,7 +1208,10 @@ $(function () {
                 e.currentPopup = null;
             };
 
-            let after = e.currentPopup.attr('data-close-after') || timeout;
+            let after = null;
+            if (e.currentPopup) {
+                after = e.currentPopup.attr('data-close-after') || timeout;
+            }
             if (after) {
                 setTimeout( closeFn,parseInt(after) * 1000);
             }else {

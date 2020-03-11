@@ -730,6 +730,7 @@ $(function () {
     window.itemsFilter = {
         filter: null,
         swiperType: "filter",
+        cntPerPage: 12,
         init: () => {
             let e = window.itemsFilter;
 
@@ -744,7 +745,10 @@ $(function () {
                 let filterItems = filterItemsContainer.find(".item");
                 let select = v.find('select');
 
-                let hasPaginator = v.attr('data-paginator');
+                let hasPaginator = window.helper.parseBool(v.attr('data-paginator'));
+                if (hasPaginator) {
+                    e.generatePag(filterItemsContainer, filterItems, v.attr('data-filter-items'));
+                }
 
                 select.unbind('select');
                 filterKeys.unbind('click');
@@ -754,14 +758,22 @@ $(function () {
                         let el = select.find('option:selected');
                         let key = el.attr('data-filter-key');
 
-                        e.filterItems('select', filterKeys, key, filterItems, filterItemsContainer, el);
+                        if (hasPaginator) {
+                            // e.filterItemsPag(filterItemsContainer);
+                        }else {
+                            e.filterItems('select', filterKeys, key, filterItems, filterItemsContainer, el);
+                        }
                     });
                 }else {
                     filterKeys.on('click', function () {
                         let el = $(this);
                         let key = el.attr('data-filter-key');
 
-                        e.filterItems('click', filterKeys, key, filterItems, filterItemsContainer, el);
+                        if (hasPaginator) {
+                            // e.filterItemsPag(filterItemsContainer);
+                        }else {
+                            e.filterItems('click', filterKeys, key, filterItems, filterItemsContainer, el);
+                        }
                     });
                 }
             });
@@ -775,6 +787,130 @@ $(function () {
                     v.update();
                 }
             });
+        },
+        generatePag: (container, items, className) => {
+            let e = window.itemsFilter;
+
+            let prev,next, pages, lastPage, paginator, spacer;
+
+            let count = items.length;
+            let cnt = e.cntPerPage;
+            let countPage = Math.ceil(count / cnt);
+
+            let pagContainer = container.parent();
+
+            pagContainer.append("<div class='paginator'></div>");
+
+            paginator = pagContainer.find('.paginator');
+            paginator.attr('data-cur-page', 1);
+            paginator.attr('data-container', className);
+            let currentPage = 1;
+
+            paginator.append("<span class='prev'><span class='mdi mdi-chevron-left'></span></span>");
+            paginator.append("<div class='pages'></div>");
+
+            let pagesContainer = pagContainer.find('.pages');
+
+            e.regenPages(countPage, pagesContainer, currentPage, paginator, items);
+
+            paginator.append("<spsan class='next'><span class='mdi mdi-chevron-right'></span></spsan>");
+
+            e.filterItemsPag(currentPage, items, countPage);
+            pagesContainer.find('[data-page="' + currentPage +'"]').addClass('active');
+        },
+        regenPages: (countPage, pagesContainer, currentPage, paginator, items) => {
+            pagesContainer.find('.page').remove();
+            pagesContainer.find('.spacer').remove();
+            let spBefore = false;
+            let hiddenItems = 0;
+            let e = window.itemsFilter;
+
+            console.log(countPage);
+
+            for (let i = 1; i <= countPage; i++) {
+                if (countPage && !spBefore && currentPage > 3) {
+                    pagesContainer.append("<span class='page' data-page='" + 1 + "'  id='page_" + 1 + "'>" + 1 + "</span>");
+                    pagesContainer.append("<span class='spacer'>...</span>");
+                    spBefore = true;
+                    continue;
+                }
+                if (spBefore && i < currentPage-4) {
+                    hiddenItems++;
+                    continue;
+                }
+
+                pagesContainer.append("<span class='page' data-page='" + i + "'  id='page_" + i + "'>" + i + "</span>");
+
+                if (((i >= hiddenItems+5) || (i >= currentPage+5) || (currentPage === 1 && i >= 5)) ) {
+                    pagesContainer.append("<span class='spacer'>...</span>");
+                    pagesContainer.append("<span class='page' data-page='" + countPage + "'  id='page_" + countPage + "'>" + countPage + "</span>");
+                    break;
+                }
+            }
+
+            let prev = paginator.find('.prev');
+            let next = paginator.find('.next');
+            let pages = pagesContainer.find('.page');
+
+            pages.unbind('click');
+            prev.unbind('click');
+            next.unbind('click');
+
+            pages.on('click', function () {
+                let page = $(this).attr('data-page');
+                // currentPage = parseInt(page);
+                let pagesContainer = $(this).parent();
+                let paginator = pagesContainer.parent();
+
+                paginator.attr('data-cur-page', page);
+                let items = $(paginator.attr('data-container')).find('.item');
+
+                pages.removeClass('active');
+                e.regenPages(countPage, pagesContainer, page, paginator, items);
+                pagesContainer.find('[data-page="' + page +'"]').addClass('active');
+                e.filterItemsPag(page, items, countPage);
+            });
+
+            prev.on('click', function () {
+                let page = --currentPage;
+                if (page <= 0) {
+                    page = 1;
+                }
+
+                let paginator = $(this).parent();
+                let pagesContainer = paginator.find('.pages');
+
+                paginator.attr('data-cur-page', page);
+                let items = $(paginator.attr('data-container')).find('.item');
+
+                console.log(paginator, pagesContainer, items);
+
+                paginator.attr('data-cur-page', page);
+                pages.removeClass('active');
+                e.regenPages(countPage, pagesContainer, page, paginator, items);
+                pagesContainer.find('[data-page="' + page +'"]').addClass('active');
+                e.filterItemsPag(page, items, countPage);
+            });
+
+            next.on('click', function () {
+                let page = ++currentPage;
+                if (page >= countPage) {
+                    page = countPage;
+                }
+                // currentPage = page;
+                paginator.attr('data-cur-page', page);
+                pages.removeClass('active');
+                e.regenPages(countPage, pagesContainer, page, paginator, items);
+                pagesContainer.find('[data-page="' + page +'"]').addClass('active');
+                e.filterItemsPag(page, items, countPage);
+            });
+        },
+        filterItemsPag: (page, items, countPage) => {
+            let e = window.itemsFilter;
+            if (countPage > 1) {
+                items.hide();
+                items.slice((page-1)*e.cntPerPage, page*e.cntPerPage).show();
+            }
         },
         filterItems: (type, keys, key, items, container, el=null) => {
             let e = window.itemsFilter;

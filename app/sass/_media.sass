@@ -168,6 +168,15 @@
         width: $w366
         min-width: $w366
         max-width: $w366
+  .section-slider-2
+    .slide-bg
+      .content
+        max-width: 500px
+  .section-visit-seminars
+    .container
+      .content-list
+        //width: 85%
+        //margin-right: -10%
 
 // ≥1700px
 @media (max-width: 1799.98px)
@@ -552,6 +561,21 @@
       .desc
         font-size: 20px
         line-height: 26px
+  .section-banner
+    padding-left: 0
+    padding-right: 0
+    .bg
+      object-position: 85%
+
+  .section-visit-seminars
+    .container
+      .title
+        font-size: 36px
+        line-height: 48px
+      .content-list
+        .seminar
+          &:nth-child(1), &:nth-child(2), &:nth-child(3)
+            flex: none
 
 // ≥1280px
 @media (max-width: 1279.98px)
@@ -990,6 +1014,26 @@
           height: 265px
           img
 
+  .section-slider-2
+    .slide-bg
+      .content
+        max-width: 400px
+  .section-banner
+    padding-left: 0
+    padding-right: 0
+    .section-content
+      max-height: 320px
+      height: 40%
+
+  .section-visit-seminars
+    .container
+      .content-list
+        .seminar
+          &:first-child
+            .content
+              .heading
+                font-size: 19px
+
 @media (max-width: 1200px)
 
   .row-bg.el-image
@@ -1340,7 +1384,38 @@
       justify-content: flex-end
     .content
       width: 100%
+  .section-slider-2
+    .slide-bg
+      .bg
+        object-position: 12%
+      .content
+  .section-banner
+    padding-left: 0
+    padding-right: 0
+    .section-content
+      max-height: 320px
+      height: 30%
 
+  .section-visit-seminars
+    .container
+      .title
+        width: 49%
+      .content-list
+        width: 50%
+
+  .section-visit-seminars
+    .container
+      .content-list
+        .seminar
+          font-size: 19px
+          &:nth-child(1), &:nth-child(2), &:nth-child(3)
+            .content
+              .heading
+                font-size: 19px
+          &:first-child
+            .content
+              .heading
+                font-size: 19px
 
 // ≥1200px
 +media-breakpoint-down(lg)
@@ -1586,7 +1661,20 @@
         max-width: 100%
         .icon
           width: 100%
-
+  .section-banner
+    padding-left: 0
+    padding-right: 0
+    .section-content
+      max-height: 320px
+      height: 28%
+    .bg
+      object-position: 75%
+  .section-visit-seminars
+    .container
+      .title
+        width: 39%
+      .content-list
+        width: 60%
 
 // ≥768px
 +media-breakpoint-down(sm)
@@ -2647,6 +2735,89 @@
         margin-bottom: 10px
         .icon
           width: 100%
+  .section-banner
+    padding-left: 0
+    padding-right: 0
+    .section-content
+      max-height: 116px
+      height: 100%
+    .bg
+      object-position: 75%
+
+  .section-visit-seminars
+    padding-bottom: 20px
+    .swiper-pagination
+      bottom: -10px !important
+    .section-content
+      .container
+        flex-direction: column
+        .title
+          width: 100%
+          font-weight: normal
+          font-size: 18px
+          line-height: 25px
+          text-transform: uppercase
+          color: #11558F
+          text-align: left
+          padding-right: 0
+          justify-content: flex-start
+          margin-bottom: 10px
+          &:after
+            content: none
+        .content-list
+          width: 60%
+          margin: 0 auto
+
+  .swiper-container-visit-seminars
+    max-height: unset
+    height: auto
+
+  .section-visit-seminars
+    .container
+      .content-list
+        .seminar
+          font-size: 16px
+          line-height: 22px
+          &:nth-child(1), &:nth-child(2), &:nth-child(3)
+            .content
+              .seminar-date
+                .date
+                  font-weight: normal
+                  font-size: 18px
+                  line-height: 25px
+                .position
+                  flex-direction: row
+                  font-weight: normal
+                  font-size: 18px
+                  line-height: 25px
+                  margin-left: 0
+                  span
+                    margin: 0 2.5px
+              .heading
+                font-size: 16px
+                line-height: 22px
+          &:first-child
+            .content
+              .seminar-date
+                .date
+                  font-weight: normal
+                  font-size: 18px
+                  line-height: 25px
+                .position
+                  flex-direction: row
+                  font-weight: normal
+                  font-size: 18px
+                  line-height: 25px
+                  margin-left: 0
+                  span
+                    margin: 0 2.5px
+              .heading
+                font-size: 16px
+                line-height: 22px
+
+  .section-visit-seminars
+    .swiper-pagination
+      display: block
 
 // ≥576px
 +media-breakpoint-down(xs)
@@ -3118,14 +3289,34 @@
   .callback-form-container.thanks .content
     padding-left: 10px
     padding-right: 10px
+  .section
+    .section-content
+      .container
+        .content-list
+          width: 90%
 
 @media (max-width: 480px)
   .container-auditors-partners .swiper-container-audit-partners
     width: 90%
 
+  .section
+    .section-content
+      .container
+        .content-list
+          width: 100%
+
 @media (max-width: 400px)
   .clients-brick-container .item .icon
     width: 100%
+
+  .section-banner
+    padding-left: 0
+    padding-right: 0
+    .section-content
+      max-height: 104px
+      height: 100%
+    .bg
+      object-position: 74%
 
 /*==========  Mobile First  ==========*/
 

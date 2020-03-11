@@ -273,7 +273,7 @@ $(function () {
     window.onresize = onResizeFn;
 
 
-    let reviewsSwiper, sertificatsSwiper, servicesSwiper, countSwiper, newsSwiper, desktopSwipers, booksSwiper;
+    let reviewsSwiper, sertificatsSwiper, servicesSwiper, countSwiper, newsSwiper, desktopSwipers, booksSwiper, visitSeminarSwiper;
     desktopSwipers = [];
 
     const swipersInit = () => {
@@ -362,6 +362,46 @@ $(function () {
                 })
             );
             desktopSwipers.push(countSwiper);
+
+            visitSeminarSwiper = new Swiper('.swiper-container-visit-seminars',
+                Object.assign({}, defaultSwiperOptions, {
+                    slidesPerView: 3,
+                    slidesPerGroup: 3,
+                    spaceBetween: 30,
+                    breakpoints: {
+                        1500: {
+                            slidesPerView: 3,
+                            slidesPerGroup: 3,
+                            spaceBetween: 30,
+                        },
+                        1280: {
+                            slidesPerView: 2,
+                            slidesPerGroup: 2,
+                            spaceBetween: 30,
+                        },
+                        1080: {
+                            slidesPerView: 2,
+                            slidesPerGroup: 2,
+                            spaceBetween: 30,
+                        },
+                        830: {
+                            slidesPerView: 1,
+                            slidesPerGroup: 1,
+                            spaceBetween: 30,
+                        },
+                        640: {
+                            slidesPerView: 1,
+                            slidesPerGroup: 1,
+                            spaceBetween: 40,
+                        },
+                        0: {
+                            slidesPerView: 1,
+                            slidesPerGroup: 1,
+                        }
+                    }
+                })
+            );
+            desktopSwipers.push(visitSeminarSwiper);
         } else {
             if (countSwiper) {
                 // countSwiper.destroy();

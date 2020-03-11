@@ -577,6 +577,11 @@
           &:nth-child(1), &:nth-child(2), &:nth-child(3)
             flex: none
 
+@media (max-width: 1400px)
+  .book-detail-popup
+    width: 980px
+    .content-container
+
 // ≥1280px
 @media (max-width: 1279.98px)
 
@@ -1033,6 +1038,15 @@
             .content
               .heading
                 font-size: 19px
+
+  .book-detail-popup
+    width: 768px
+    padding-right: 0px
+    .content-container
+      max-height: 500px
+      height: auto
+      overflow-y: auto
+      flex-direction: column
 
 @media (max-width: 1200px)
 
@@ -1675,6 +1689,19 @@
         width: 39%
       .content-list
         width: 60%
+
+  .book-detail-popup
+    width: 500px
+    padding-right: 0px
+    .title
+      font-size: 24px
+      line-height: 32px
+    .content
+      padding-left: 20px
+      padding-right: 20px
+      width: 100%
+    .btn
+      font-size: 14px
 
 // ≥768px
 +media-breakpoint-down(sm)
@@ -3295,6 +3322,10 @@
         .content-list
           width: 90%
 
+  .book-detail-popup
+    width: calc(100% - 2rem)
+    padding-right: 0px
+
 @media (max-width: 480px)
   .container-auditors-partners .swiper-container-audit-partners
     width: 90%
@@ -3304,6 +3335,12 @@
       .container
         .content-list
           width: 100%
+
+@media (max-width: 450px)
+  .book-detail-popup
+    .title
+      font-size: 20px
+      line-height: 26px
 
 @media (max-width: 400px)
   .clients-brick-container .item .icon

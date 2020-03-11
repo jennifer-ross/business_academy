@@ -674,6 +674,27 @@ $(function () {
     let clients = $('.clients-container .item');
     let clientsCnt = clients.length;
 
+    window.helper = {
+      parseBool: (string) => {
+          switch(string.toLowerCase().trim()){
+              case "true": case "yes": case "1": return true;
+              case "false": case "no": case "0": case null: return false;
+              default: return Boolean(string);
+          }
+      },
+      parseObj: (string) => {
+          string = string.split('{').join('');
+          string = string.split('}').join('');
+          let properties = string.split(',');
+          let obj = {};
+          properties.forEach(function(property) {
+              let kv = property.split(':');
+              obj[kv[0]] = kv[1];
+          });
+          return obj;
+      },
+    };
+
     window.submenu = {
         menu: null,
         subMenus: null,
@@ -722,6 +743,8 @@ $(function () {
                 let filterItemsContainer = $(v.attr('data-filter-items'));
                 let filterItems = filterItemsContainer.find(".item");
                 let select = v.find('select');
+
+                let hasPaginator = v.attr('data-paginator');
 
                 select.unbind('select');
                 filterKeys.unbind('click');
@@ -1028,8 +1051,6 @@ $(function () {
         animationTime: 500,
         replaceContainer: null,
         mmBreackpoint: 1080,
-        parseBool: null,
-        parseObj: null,
         init: () => {
             let e = window.popup;
 
@@ -1039,25 +1060,9 @@ $(function () {
                 return;
             }
 
-            e.parseBool = (string) => {
-                switch(string.toLowerCase().trim()){
-                    case "true": case "yes": case "1": return true;
-                    case "false": case "no": case "0": case null: return false;
-                    default: return Boolean(string);
-                }
-            };
+            e.parseBool = window.helper.parseBool;
 
-            e.parseObj = (string) => {
-                string = string.split('{').join('');
-                string = string.split('}').join('');
-                let properties = string.split(',');
-                let obj = {};
-                properties.forEach(function(property) {
-                    let kv = property.split(':');
-                    obj[kv[0]] = kv[1];
-                });
-                return obj;
-            };
+            e.parseObj = window.helper.parseObj;
 
             if (!e.container) {
                 let container = document.createElement('div');

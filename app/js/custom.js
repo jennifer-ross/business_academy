@@ -770,7 +770,7 @@ $(function () {
     window.itemsFilter = {
         filter: null,
         swiperType: "filter",
-        cntPerPage: 12,
+        cntPerPage: 3,
         init: () => {
             let e = window.itemsFilter;
 
@@ -851,10 +851,9 @@ $(function () {
 
             let pagesContainer = pagContainer.find('.pages');
 
+            paginator.append("<span class='next'><span class='mdi mdi-chevron-right'></span></span>");
+
             e.regenPages(countPage, pagesContainer, currentPage, paginator, items);
-
-            paginator.append("<spsan class='next'><span class='mdi mdi-chevron-right'></span></spsan>");
-
             e.filterItemsPag(currentPage, items, countPage);
             pagesContainer.find('[data-page="' + currentPage +'"]').addClass('active');
         },
@@ -891,6 +890,8 @@ $(function () {
             let prev = paginator.find('.prev');
             let next = paginator.find('.next');
             let pages = pagesContainer.find('.page');
+
+            console.log(prev,next);
 
             pages.unbind('click');
             prev.unbind('click');
@@ -937,7 +938,13 @@ $(function () {
                 if (page >= countPage) {
                     page = countPage;
                 }
-                // currentPage = page;
+
+                let paginator = $(this).parent();
+                let pagesContainer = paginator.find('.pages');
+
+                paginator.attr('data-cur-page', page);
+                let items = $(paginator.attr('data-container')).find('.item');
+
                 paginator.attr('data-cur-page', page);
                 pages.removeClass('active');
                 e.regenPages(countPage, pagesContainer, page, paginator, items);

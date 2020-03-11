@@ -1011,36 +1011,35 @@ ul
         object-fit: cover
         width: 100%
 
-.section-videos, .section-books-brick
+.section-videos, .section-books-brick, .section-publ-brick
   .section-action
     margin-top: 20px
 
-  .filter-container
+.filter-container
+  display: flex
+  flex-wrap: wrap
+  padding-right: 4rem
+
+  span
+    font-size: 18px
+    line-height: 1.89
+    color: #11558f
+    margin: 7.5px 15px
     display: flex
-    flex-wrap: wrap
-    padding-right: 4rem
+    border: 1px solid transparent
+    padding-right: 7px
+    padding-left: 7px
+    cursor: pointer
+    user-select: none
 
-    span
-      font-size: 18px
-      line-height: 1.89
-      color: #11558f
-      margin: 7.5px 15px
-      display: flex
-      border: 1px solid transparent
-      padding-right: 7px
-      padding-left: 7px
-      cursor: pointer
-      user-select: none
+  span.active
+    border-radius: 2px
+    border: solid 1px #dde8f1
+    color: #8f1154
 
-    span.active
-      border-radius: 2px
-      border: solid 1px #dde8f1
-      color: #8f1154
-
-  .items-container
-    display: flex
-    flex-wrap: wrap
-
+.items-container
+  display: flex
+  flex-wrap: wrap
   .item
     flex: 1 1 30%
     display: flex
@@ -2998,7 +2997,6 @@ input[type="checkbox"]
     padding: 4px 30px
     font-weight: normal
 
-
 .paginator
   display: flex
   justify-content: center
@@ -3009,6 +3007,7 @@ input[type="checkbox"]
   text-align: center
   text-transform: uppercase
   color: #11558F
+  user-select: none
   .page.active
     color: $r
   .page
@@ -3045,6 +3044,49 @@ input[type="checkbox"]
       line-height: normal
       opacity: 1
       color: $r
+
+.section-publ-brick
+  .items-container
+    .item
+      flex: 1 1 calc(33% - 60px)
+      margin-left: 15px
+      margin-right: 15px
+      margin-bottom: 30px
+      .date
+        font-weight: normal
+        font-size: 16px
+        line-height: 22px
+        text-transform: uppercase
+        color: #202B38
+        padding-bottom: 3px
+      .image
+        min-width: 234px
+        height: 168px
+        img
+          width: 100%
+          height: 100%
+          object-fit: cover
+      .detail
+        display: flex
+      .title
+        font-weight: normal
+        font-size: 24px
+        line-height: 33px
+        color: #11558F
+        text-align: left
+        padding-left: 30px
+        padding-top: 0
+      .desc
+        padding-top: 5px
+        font-size: 18px
+        line-height: 30px
+        color: #202B38
+        display: flex
+        flex-direction: column
+        .btn
+          font-size: 18px
+          text-decoration: underline !important
+          color: #8f1154
 
 .mobile-image
   display: none

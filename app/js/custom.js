@@ -778,8 +778,6 @@ $(function () {
                 let select = v.find('select');
 
                 let itemsObj = e.toObject(filterItems);
-                console.log(itemsObj);
-
                 let hasPaginator = window.helper.parseBool(v.attr('data-paginator'));
                 // if (hasPaginator) {
                 //     e.generatePag(filterItemsContainer, filterItems, v.attr('data-filter-items'), v.attr('data-count'));
@@ -823,8 +821,6 @@ $(function () {
                         e.regenPages( cnt, paginator.find('.pages') ,1, paginator, filterItems, itemsObj, searchDesc);
                         e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), filterItems, itemsObj, searchDesc);
                     }
-
-                    console.log(searchTitle,searchDate,searchDesc);
                 };
 
                 let search = $(v.attr('data-search'));
@@ -841,8 +837,6 @@ $(function () {
                         searchFn();
                     }
                 });
-
-                console.log(search);
 
                 select.unbind('select');
                 filterKeys.unbind('click');
@@ -1098,13 +1092,11 @@ $(function () {
                 Array.prototype.forEach.call(filterItemsObj.slice((page-1)*countPagePer, page*countPagePer), (v) => {
                     $(v.link).show();
                 });
-                console.log('filter', filterItemsObj);
             }else {
                 // filterItems.slice((page-1)*countPagePer).show();
                 Array.prototype.forEach.call(filterItemsObj.slice((page-1)*countPagePer), (v) => {
                     $(v.link).show();
                 });
-                console.log('filter2', filterItemsObj, filterItemsObj.slice((page-1)*countPagePer));
             }
         },
         filterItems: (type, keys, key, items, container, el=null) => {
@@ -1150,7 +1142,6 @@ $(function () {
             $(evt.target).hide();
         },
         toObject: (items) => {
-            console.log('items',items);
             if (items.hasOwnProperty('link')) return items;
             let obj = [];
             Array.prototype.forEach.call(items, (vv) => {

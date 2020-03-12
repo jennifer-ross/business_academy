@@ -770,12 +770,15 @@ $(function () {
             if (e.filter.length <= 0) {
                 return;
             }
-            Array.prototype.forEach.call(e.filter, function (v) {
+            Array.prototype.forEach.call(e.filter, function (v, k) {
                 v = $(v);
                 let filterKeys = v.find('[data-filter-key]');
                 let filterItemsContainer = $(v.attr('data-filter-items'));
                 let filterItems = filterItemsContainer.find(".item");
                 let select = v.find('select');
+
+                let itemsObj = e.toObject(filterItems);
+                console.log(itemsObj);
 
                 let hasPaginator = window.helper.parseBool(v.attr('data-paginator'));
                 // if (hasPaginator) {
@@ -783,6 +786,63 @@ $(function () {
                 // }
                 //
                 // let paginator = filterItemsContainer.parent().find('.paginator');
+
+                const searchFn = () => {
+                    let value = searchInp.val();
+                    let paginator = filterItemsContainer.parent().find('.paginator');
+                    let key = paginator.attr('data-key') || 0;
+
+                    let searchTitle = [];
+                    let searchDate = [];
+                    let searchDesc = [];
+                    Array.prototype.forEach.call(itemsObj, (elem) => {
+                        if (elem.title.includes(value) && (elem.key == key || key == 0 || key == '0')) searchTitle.push(elem);
+                        if (elem.date.includes(value) && (elem.key == key || key == 0 || key == '0')) searchDate.push(elem);
+                        if (elem.desc.includes(value) && (elem.key == key || key == 0 || key == '0')) searchDesc.push(elem);
+                    });
+
+                    let filterItemsObj = [];
+
+                    filterItems.hide();
+                    if (searchTitle.length > 0) {
+                        // filterItemsObj = e.toObject(searchTitle);
+                        let cnt = Math.ceil(filterItemsObj.length / v.attr('data-count'));
+
+                        e.regenPages( cnt, paginator.find('.pages') ,1, paginator, filterItems, itemsObj, searchTitle);
+                        e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), filterItems, itemsObj, searchTitle);
+                    }else if(searchDate.length > 0) {
+                        // filterItemsObj = e.toObject(searchDate);
+                        let cnt = Math.ceil(filterItemsObj.length / v.attr('data-count'));
+
+                        e.regenPages( cnt, paginator.find('.pages') ,1, paginator, filterItems, itemsObj, searchDate);
+                        e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), filterItems, itemsObj, searchDate);
+                    }else {
+                        // filterItemsObj = e.toObject(searchDesc);
+                        let cnt = Math.ceil(filterItemsObj.length / v.attr('data-count'));
+
+                        e.regenPages( cnt, paginator.find('.pages') ,1, paginator, filterItems, itemsObj, searchDesc);
+                        e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), filterItems, itemsObj, searchDesc);
+                    }
+
+                    console.log(searchTitle,searchDate,searchDesc);
+                };
+
+                let search = $(v.attr('data-search'));
+                search.attr('data-filter-items', v.attr('data-filter-items'));
+
+                let searchInp = search.find('input');
+                let searchBtn = search.find('.btn-search');
+                searchBtn.on('click', (evt) => {
+                    searchFn();
+                });
+
+                searchInp.on('keyup', (evt) => {
+                    if (evt.keyCode === 13) {
+                        searchFn();
+                    }
+                });
+
+                console.log(search);
 
                 select.unbind('select');
                 filterKeys.unbind('click');
@@ -800,12 +860,14 @@ $(function () {
                                 items = filterItemsContainer.find('[data-fkey="' + key +'"]');
                             }
 
-                            let cnt = Math.ceil(items.length / v.attr('data-count'));
                             let paginator = filterItemsContainer.parent().find('.paginator');
 
+                            let filterItemsObj = e.toObject(items);
+                            let cnt = Math.ceil(filterItemsObj.length / v.attr('data-count'));
+
                             paginator.attr('data-key', key);
-                            e.regenPages( cnt, paginator.find('.pages') ,1, paginator, items);
-                            e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), items);
+                            e.regenPages( cnt, paginator.find('.pages') ,1, paginator, items, itemsObj, filterItemsObj);
+                            e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), items, itemsObj, filterItemsObj);
                         }else {
                             e.filterItems('select', filterKeys, key, filterItems, filterItemsContainer, el);
                         }
@@ -833,12 +895,14 @@ $(function () {
                                 items = filterItemsContainer.find('[data-fkey="' + key +'"]');
                             }
 
-                            let cnt = Math.ceil(items.length / v.attr('data-count'));
+                            let filterItemsObj = e.toObject(items);
+
+                            let cnt = Math.ceil(filterItemsObj.length / v.attr('data-count'));
                             let paginator = filterItemsContainer.parent().find('.paginator');
 
                             paginator.attr('data-key', key);
-                            e.regenPages( cnt, paginator.find('.pages') ,1, paginator, items);
-                            e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), items);
+                            e.regenPages( cnt, paginator.find('.pages') ,1, paginator, items, itemsObj, filterItemsObj);
+                            e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), items, itemsObj, filterItemsObj);
                         }else {
                             e.filterItems('click', filterKeys, key, filterItems, filterItemsContainer, el);
                         }
@@ -854,7 +918,11 @@ $(function () {
                     e.onResize({target: $(v.attr('data-unhide'))}, hasPaginator, filterItemsContainer, filterItems,filterItemsContainer,v)
                 });
                 e.onResize({target: $(v.attr('data-unhide'))}, hasPaginator, filterItemsContainer, filterItems,filterItemsContainer,v);
+
             });
+        },
+        search: () => {
+
         },
         update: () => {
             let e = window.itemsFilter;
@@ -893,16 +961,18 @@ $(function () {
 
             paginator.append("<span class='next'><span class='mdi mdi-chevron-right'></span></span>");
 
-            e.regenPages(countPage, pagesContainer, currentPage, paginator, items);
-            e.filterItemsPag(currentPage, items, countPage, countPerPage, items);
+            e.regenPages(countPage, pagesContainer, currentPage, paginator, items, e.toObject(items), e.toObject(items));
+            e.filterItemsPag(currentPage, items, countPage, countPerPage, items, e.toObject(items), e.toObject(items));
             pagesContainer.find('[data-page="' + currentPage +'"]').addClass('active');
         },
-        regenPages: (countPage, pagesContainer, currentPage, paginator, items) => {
+        regenPages: (countPage, pagesContainer, currentPage, paginator, items, itemsObj, filterItemsObj) => {
             pagesContainer.find('.page').remove();
             pagesContainer.find('.spacer').remove();
             let spBefore = false;
             let hiddenItems = 0;
             let e = window.itemsFilter;
+
+            console.log(itemsObj);
 
             for (let i = 1; i <= countPage; i++) {
                 if (countPage && !spBefore && currentPage > 3) {
@@ -953,11 +1023,14 @@ $(function () {
                     filterItems = $(paginator.attr('data-container')).find('[data-fkey="' + key +'"]');
                 }
 
+                let itemsObj = e.toObject(items);
+                let filterItemsObj = e.toObject(filterItems);
+
                 paginator.attr('data-cur-page', page);
                 pages.removeClass('active');
-                e.regenPages(countPage, pagesContainer, page, paginator, items);
+                e.regenPages(countPage, pagesContainer, page, paginator, items, itemsObj, filterItemsObj);
                 pagesContainer.find('[data-page="' + page +'"]').addClass('active');
-                e.filterItemsPag(page, items, countPage, countPagePer, filterItems);
+                e.filterItemsPag(page, items, countPage, countPagePer, filterItems, itemsObj, filterItemsObj);
             });
 
             prev.on('click', function () {
@@ -980,11 +1053,14 @@ $(function () {
                     filterItems = $(paginator.attr('data-container')).find('[data-fkey="' + key +'"]');
                 }
 
+                let itemsObj = e.toObject(items);
+                let filterItemsObj = e.toObject(filterItems);
+
                 paginator.attr('data-cur-page', page);
                 pages.removeClass('active');
-                e.regenPages(countPage, pagesContainer, page, paginator, items);
+                e.regenPages(countPage, pagesContainer, page, paginator, items, itemsObj, filterItemsObj);
                 pagesContainer.find('[data-page="' + page +'"]').addClass('active');
-                e.filterItemsPag(page, items, countPage, countPagePer, filterItems);
+                e.filterItemsPag(page, items, countPage, countPagePer, filterItems, itemsObj, filterItemsObj);
             });
 
             next.on('click', function () {
@@ -1006,21 +1082,31 @@ $(function () {
                     filterItems = $(paginator.attr('data-container')).find('[data-fkey="' + key +'"]');
                 }
 
+                let itemsObj = e.toObject(items);
+                let filterItemsObj = e.toObject(filterItems);
+
                 paginator.attr('data-cur-page', page);
                 pages.removeClass('active');
-                e.regenPages(countPage, pagesContainer, page, paginator, items);
+                e.regenPages(countPage, pagesContainer, page, paginator, items, itemsObj, filterItemsObj);
                 pagesContainer.find('[data-page="' + page +'"]').addClass('active');
-                e.filterItemsPag(page, items, countPage, countPagePer, filterItems);
+                e.filterItemsPag(page, items, countPage, countPagePer, filterItems, itemsObj, filterItemsObj);
             });
         },
-        filterItemsPag: (page, items, countPage, countPagePer, filterItems) => {
+        filterItemsPag: (page, items, countPage, countPagePer, filterItems, itemsObj, filterItemsObj) => {
             let e = window.itemsFilter;
             items.hide();
             if (countPage > 1) {
-                console.log(filterItems);
-                filterItems.slice((page-1)*countPagePer, page*countPagePer).show();
+                // filterItems.slice((page-1)*countPagePer, page*countPagePer).show();
+                Array.prototype.forEach.call(filterItemsObj.slice((page-1)*countPagePer, page*countPagePer), (v) => {
+                    $(v.link).show();
+                });
+                console.log('filter', filterItemsObj);
             }else {
-                filterItems.slice((page-1)*countPagePer).show();
+                // filterItems.slice((page-1)*countPagePer).show();
+                Array.prototype.forEach.call(filterItemsObj.slice((page-1)*countPagePer), (v) => {
+                    $(v.link).show();
+                });
+                console.log('filter2', filterItemsObj, filterItemsObj.slice((page-1)*countPagePer));
             }
         },
         filterItems: (type, keys, key, items, container, el=null) => {
@@ -1064,6 +1150,22 @@ $(function () {
             }
 
             $(evt.target).hide();
+        },
+        toObject: (items) => {
+            console.log('items',items);
+            if (items.hasOwnProperty('link')) return items;
+            let obj = [];
+            Array.prototype.forEach.call(items, (vv) => {
+                vv = $(vv);
+                obj.push({
+                    date: vv.find('.date').text(),
+                    title: vv.find('.title').text(),
+                    key: vv.attr('data-fkey'),
+                    desc: vv.find('.desc').text(),
+                    link: vv[0]
+                });
+            });
+            return obj;
         },
         onResize: (evt, hasPaginator,filterItemsContainer, items, itemsContainer, v) => {
             let e = window.itemsFilter;

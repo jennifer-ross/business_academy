@@ -806,19 +806,19 @@ $(function () {
                     filterItems.hide();
                     if (searchTitle.length > 0) {
                         // filterItemsObj = e.toObject(searchTitle);
-                        let cnt = Math.ceil(filterItemsObj.length / v.attr('data-count'));
+                        let cnt = Math.ceil(searchTitle.length / v.attr('data-count'));
 
                         e.regenPages( cnt, paginator.find('.pages') ,1, paginator, filterItems, itemsObj, searchTitle);
                         e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), filterItems, itemsObj, searchTitle);
                     }else if(searchDate.length > 0) {
                         // filterItemsObj = e.toObject(searchDate);
-                        let cnt = Math.ceil(filterItemsObj.length / v.attr('data-count'));
+                        let cnt = Math.ceil(searchDate.length / v.attr('data-count'));
 
                         e.regenPages( cnt, paginator.find('.pages') ,1, paginator, filterItems, itemsObj, searchDate);
                         e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), filterItems, itemsObj, searchDate);
                     }else {
                         // filterItemsObj = e.toObject(searchDesc);
-                        let cnt = Math.ceil(filterItemsObj.length / v.attr('data-count'));
+                        let cnt = Math.ceil(searchDesc.length / v.attr('data-count'));
 
                         e.regenPages( cnt, paginator.find('.pages') ,1, paginator, filterItems, itemsObj, searchDesc);
                         e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), filterItems, itemsObj, searchDesc);
@@ -971,8 +971,6 @@ $(function () {
             let spBefore = false;
             let hiddenItems = 0;
             let e = window.itemsFilter;
-
-            console.log(itemsObj);
 
             for (let i = 1; i <= countPage; i++) {
                 if (countPage && !spBefore && currentPage > 3) {

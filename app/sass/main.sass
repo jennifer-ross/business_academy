@@ -76,10 +76,10 @@ ul
   width: 1550px
   max-width: 1550px
 
-.container.second
+.container2
   margin: 0 auto
-  width: 1510px
-  max-width: 1510px
+  width: 1026px
+  max-width: 1026px
 
 .fluid-container
   padding-left: 68px
@@ -89,7 +89,7 @@ ul
   overflow: hidden
   margin: 15px 0
 
-.header, .section, .footer, .swiper-slide, .container
+.header, .section, .footer, .swiper-slide, .container, .container2
   position: relative
 
 .header
@@ -3103,6 +3103,66 @@ input[type="checkbox"]
       display: flex
       //&:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7), &:nth-child(8), &:nth-child(9)
       //  display: flex
+
+.section-publ-detail
+  .section-title
+    h1,h2,h3,h4,h5
+      font-size: 36px
+      line-height: 49px
+  .section-content .container2
+    margin-top: 30px
+    & > p, & > span, & > img
+      margin-bottom: 30px
+      display: flex
+    & > p
+      font-size: 18px
+      line-height: 30px
+      color: #202B38
+      font-weight: normal
+    & > span
+      font-weight: normal
+      font-size: 24px
+      line-height: 30px
+      color: #11558F
+    & > .center
+      padding-left: 30px
+    & > .right
+      text-align: right
+      justify-content: flex-end
+    & > .italic
+      font-style: italic
+    & > img
+      max-width: 100%
+  .share
+    margin-bottom: 30px
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    span
+      font-weight: normal
+      font-size: 24px
+      line-height: 30px
+      color: #8F1154
+      margin-right: 30px
+    .share-items
+      display: flex
+      align-items: center
+      .item, .item a
+        color: #fff
+      .item
+        padding: 5px
+        background: #11558F
+        border-radius: 2px
+        width: 36px
+        height: 36px
+        display: flex
+        justify-content: center
+        align-items: center
+        i
+          font-size: 24px
+        &:not(:last-child)
+          margin-right: 30px
+
 
 .mobile-image
   display: none

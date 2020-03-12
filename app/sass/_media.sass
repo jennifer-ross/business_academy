@@ -178,7 +178,7 @@
         //width: 85%
         //margin-right: -10%
 
-// ≥1700px
+// ≥1800px
 @media (max-width: 1799.98px)
   .audit-result-container
     .item
@@ -232,6 +232,17 @@
         .image
           //max-width: calc(234px - (234px * 0.2))
           //max-height: calc(168px - (168px * 0.2))
+
+// 1700px
+@media (max-width: 1699.98px)
+  .section-publ-brick
+    .items-container
+      .item
+        .title
+          font-size: 20px
+          padding-left: 20px
+        .image
+          min-width: 210px
 
 // 1500px
 @media (max-width: 1499.98px)
@@ -582,6 +593,15 @@
         .seminar
           &:nth-child(1), &:nth-child(2), &:nth-child(3)
             flex: none
+  .section-publ-brick
+    .items-container
+      .item
+        max-width: calc(50% - 60px)
+        flex: 1 1 50%
+        .title
+          padding-left: 30px
+        .image
+          min-width: 234px
 
 @media (max-width: 1400px)
   .book-detail-popup
@@ -1054,6 +1074,16 @@
       overflow-y: auto
       flex-direction: column
 
+  .section-publ-brick
+    .items-container
+      .item
+        max-width: calc(50% - 60px)
+        flex: 1 1 50%
+        .title
+          padding-left: 20px
+        .image
+          min-width: 210px
+
 @media (max-width: 1200px)
 
   .row-bg.el-image
@@ -1436,6 +1466,17 @@
             .content
               .heading
                 font-size: 19px
+
+  .section-publ-brick
+    .items-container
+      .item
+        max-width: calc(100% - 60px)
+        flex: 1 1 100%
+        .title
+          padding-left: 30px
+          font-size: 24px
+        .image
+          min-width: 234px
 
 // ≥1200px
 +media-breakpoint-down(lg)
@@ -2852,6 +2893,20 @@
     .swiper-pagination
       display: block
 
+  .section-publ-brick
+    .pagination
+      display: flex
+    .section-action
+      display: none
+    .filter-container
+      padding-right: 0
+      padding-bottom: 15px
+      & > span
+        display: none
+    .mobile-filter-container
+      display: block
+      width: 100%
+
 // ≥576px
 +media-breakpoint-down(xs)
   .mobile-watch
@@ -3327,6 +3382,35 @@
       .container
         .content-list
           width: 90%
+
+  .section-publ-brick
+    .items-container
+      margin-top: 10px
+      .item
+        width: 100%
+        max-width: 100%
+        flex: 1 1 100%
+        margin-left: 0
+        margin-right: 0
+        margin-bottom: 10px
+        .date
+          font-size: 14px
+          line-height: 19px
+        .btn
+          font-size: 14px
+          line-height: 19px
+        .desc
+          font-size: 14px
+          line-height: 19px
+          color: #202B38
+        .title
+          padding-left: 10px
+          font-size: 18px
+          line-height: 25px
+          padding-bottom: 0
+        .image
+          min-width: 140px
+          height: 96px
 
   .book-detail-popup
     width: calc(100% - 2rem)

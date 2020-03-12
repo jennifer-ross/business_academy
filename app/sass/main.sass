@@ -3016,8 +3016,10 @@ input[type="checkbox"]
     margin: 0 5px
   .prev
     margin-right: 1rem
+    cursor: pointer
   .next
     margin-left: 1rem
+    cursor: pointer
 
 .swiper-container-visit-seminars
   max-height: 276px
@@ -3087,6 +3089,20 @@ input[type="checkbox"]
           font-size: 18px
           text-decoration: underline !important
           color: #8f1154
+
+.section-publ-brick
+  .items-container
+    margin-top: 30px
+    .item
+      display: none
+      margin-top: 0
+      &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7), &:nth-child(8), &:nth-child(9)
+        display: flex
+  .items-container.unhide
+    .item
+      display: flex
+      //&:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7), &:nth-child(8), &:nth-child(9)
+      //  display: flex
 
 .mobile-image
   display: none

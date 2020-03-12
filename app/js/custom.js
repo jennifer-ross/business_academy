@@ -100,17 +100,12 @@ $(function () {
         let count = 1;
         let swiperIntervalId = setInterval(function () {
             Array.prototype.forEach.call(els, (v) => {
-                if (v.length && v.length > 0) {
+                if (v && v['length'] && v.length > 0) {
                     Array.prototype.forEach.call(v, vv => {
-                        if (vv) vv.update();
+                        if (vv.hasOwnProperty('destroy')) vv.destroy();
                     });
                 }else {
-                    console.log(v);
-                    try {
-                        if (v) v.update();
-                    }catch (e) {
-
-                    }
+                    if (v && v.hasOwnProperty('destroy')) v.destroy();
                 }
             });
             if (count >= 3) {
@@ -126,21 +121,13 @@ $(function () {
         if (window.innerWidth <= mobileBreakpoint && !mobileInit) {
 
             Array.prototype.forEach.call(desktopSwipers, v => {
-                try {
-                    if (v.length && v.length > 0) {
-                        Array.prototype.forEach.call(v, vv => {
-                            if (vv) vv.destroy();
-                        });
-                    }else {
-                        if (v) v.destroy();
-                    }
-                }catch (e) {
-                    try {
-                        if (v) v.destroy();
-                    }catch (e) {
-                    }
+                if (v && v['length'] && v.length > 0) {
+                    Array.prototype.forEach.call(v, vv => {
+                        if (vv.hasOwnProperty('destroy')) vv.destroy();
+                    });
+                }else {
+                    if (v && v.hasOwnProperty('destroy')) v.destroy();
                 }
-
             });
             desktopSwipers = [];
 
@@ -221,7 +208,6 @@ $(function () {
                                     return;
                                 }
                                 case "client" : {
-                                    console.log(this.currentSlide);
                                     return;
                                 }
                                 default: return;
@@ -609,14 +595,12 @@ $(function () {
         desktopSwipers.push(swiperAuditPartners);
 
         if (window.innerWidth <= 1400) {
-            console.log(desktopSwipers);
             swiperFix(desktopSwipers);
         }
     };
     swipersInit();
 
     const slidesSlice = (el, type, currentSlide) => {
-        console.log(el, type);
         const elMultiplier = 9;
         let els = $(el).find('.swiper-slide');
         let curSlide = currentSlide;
@@ -786,9 +770,11 @@ $(function () {
                 let select = v.find('select');
 
                 let hasPaginator = window.helper.parseBool(v.attr('data-paginator'));
-                if (hasPaginator) {
-                    e.generatePag(filterItemsContainer, filterItems, v.attr('data-filter-items'));
-                }
+                // if (hasPaginator) {
+                //     e.generatePag(filterItemsContainer, filterItems, v.attr('data-filter-items'), v.attr('data-count'));
+                // }
+                //
+                // let paginator = filterItemsContainer.parent().find('.paginator');
 
                 select.unbind('select');
                 filterKeys.unbind('click');
@@ -799,7 +785,19 @@ $(function () {
                         let key = el.attr('data-filter-key');
 
                         if (hasPaginator) {
-                            // e.filterItemsPag(filterItemsContainer);
+                            let items = null;
+                            if (key == 0 || key == '0') {
+                                items = filterItems;
+                            }else {
+                                items = filterItemsContainer.find('[data-fkey="' + key +'"]');
+                            }
+
+                            let cnt = Math.ceil(items.length / v.attr('data-count'));
+                            let paginator = filterItemsContainer.parent().find('.paginator');
+
+                            paginator.attr('data-key', key);
+                            e.regenPages( cnt, paginator.find('.pages') ,1, paginator, items);
+                            e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), items);
                         }else {
                             e.filterItems('select', filterKeys, key, filterItems, filterItemsContainer, el);
                         }
@@ -811,11 +809,43 @@ $(function () {
 
                         if (hasPaginator) {
                             // e.filterItemsPag(filterItemsContainer);
+
+                            if (el.hasClass('active')) {
+                                key = 0;
+                                filterKeys.removeClass('active');
+                            }else {
+                                filterKeys.removeClass('active');
+                                el.addClass('active');
+                            }
+
+                            let items = null;
+                            if (key == 0 || key == '0') {
+                                items = filterItems;
+                            }else {
+                                items = filterItemsContainer.find('[data-fkey="' + key +'"]');
+                            }
+
+                            let cnt = Math.ceil(items.length / v.attr('data-count'));
+                            let paginator = filterItemsContainer.parent().find('.paginator');
+
+                            paginator.attr('data-key', key);
+                            e.regenPages( cnt, paginator.find('.pages') ,1, paginator, items);
+                            e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), items);
                         }else {
                             e.filterItems('click', filterKeys, key, filterItems, filterItemsContainer, el);
                         }
                     });
+
+                    let unhide = $(v.attr('data-unhide'));
+                    unhide.on('click', (evt) => {
+                        e.unhide(evt, hasPaginator, filterItemsContainer, filterItems, filterItemsContainer, v);
+                    })
                 }
+
+                $(window).on('resize', () => {
+                    e.onResize({target: $(v.attr('data-unhide'))}, hasPaginator, filterItemsContainer, filterItems,filterItemsContainer,v)
+                });
+                e.onResize({target: $(v.attr('data-unhide'))}, hasPaginator, filterItemsContainer, filterItems,filterItemsContainer,v);
             });
         },
         update: () => {
@@ -828,22 +858,24 @@ $(function () {
                 }
             });
         },
-        generatePag: (container, items, className) => {
+        generatePag: (container, items, className, countPerPage) => {
             let e = window.itemsFilter;
 
             let prev,next, pages, lastPage, paginator, spacer;
 
             let count = items.length;
-            let cnt = e.cntPerPage;
+            let cnt = countPerPage;
             let countPage = Math.ceil(count / cnt);
 
             let pagContainer = container.parent();
 
-            pagContainer.append("<div class='paginator'></div>");
+            pagContainer.append("<div class='paginator' style='display: none'></div>");
 
             paginator = pagContainer.find('.paginator');
             paginator.attr('data-cur-page', 1);
             paginator.attr('data-container', className);
+            paginator.attr('data-count', countPerPage);
+            paginator.attr('data-key', 0);
             let currentPage = 1;
 
             paginator.append("<span class='prev'><span class='mdi mdi-chevron-left'></span></span>");
@@ -854,7 +886,7 @@ $(function () {
             paginator.append("<span class='next'><span class='mdi mdi-chevron-right'></span></span>");
 
             e.regenPages(countPage, pagesContainer, currentPage, paginator, items);
-            e.filterItemsPag(currentPage, items, countPage);
+            e.filterItemsPag(currentPage, items, countPage, countPerPage, items);
             pagesContainer.find('[data-page="' + currentPage +'"]').addClass('active');
         },
         regenPages: (countPage, pagesContainer, currentPage, paginator, items) => {
@@ -863,8 +895,6 @@ $(function () {
             let spBefore = false;
             let hiddenItems = 0;
             let e = window.itemsFilter;
-
-            console.log(countPage);
 
             for (let i = 1; i <= countPage; i++) {
                 if (countPage && !spBefore && currentPage > 3) {
@@ -878,7 +908,11 @@ $(function () {
                     continue;
                 }
 
-                pagesContainer.append("<span class='page' data-page='" + i + "'  id='page_" + i + "'>" + i + "</span>");
+                if (i === currentPage) {
+                    pagesContainer.append("<span class='page active' data-page='" + i + "'  id='page_" + i + "'>" + i + "</span>");
+                }else {
+                    pagesContainer.append("<span class='page' data-page='" + i + "'  id='page_" + i + "'>" + i + "</span>");
+                }
 
                 if (((i >= hiddenItems+5) || (i >= currentPage+5) || (currentPage === 1 && i >= 5)) ) {
                     pagesContainer.append("<span class='spacer'>...</span>");
@@ -891,8 +925,6 @@ $(function () {
             let next = paginator.find('.next');
             let pages = pagesContainer.find('.page');
 
-            console.log(prev,next);
-
             pages.unbind('click');
             prev.unbind('click');
             next.unbind('click');
@@ -903,13 +935,21 @@ $(function () {
                 let pagesContainer = $(this).parent();
                 let paginator = pagesContainer.parent();
 
-                paginator.attr('data-cur-page', page);
                 let items = $(paginator.attr('data-container')).find('.item');
+                let countPagePer = paginator.attr('data-count');
+                let key = paginator.attr('data-key');
+                let filterItems = null;
+                if (key == 0 || key == '0') {
+                    filterItems = items;
+                }else {
+                    filterItems = $(paginator.attr('data-container')).find('[data-fkey="' + key +'"]');
+                }
 
+                paginator.attr('data-cur-page', page);
                 pages.removeClass('active');
                 e.regenPages(countPage, pagesContainer, page, paginator, items);
                 pagesContainer.find('[data-page="' + page +'"]').addClass('active');
-                e.filterItemsPag(page, items, countPage);
+                e.filterItemsPag(page, items, countPage, countPagePer, filterItems);
             });
 
             prev.on('click', function () {
@@ -923,14 +963,20 @@ $(function () {
 
                 paginator.attr('data-cur-page', page);
                 let items = $(paginator.attr('data-container')).find('.item');
-
-                console.log(paginator, pagesContainer, items);
+                let countPagePer = paginator.attr('data-count');
+                let key = paginator.attr('data-key');
+                let filterItems = null;
+                if (key == 0 || key == '0') {
+                    filterItems = items;
+                }else {
+                    filterItems = $(paginator.attr('data-container')).find('[data-fkey="' + key +'"]');
+                }
 
                 paginator.attr('data-cur-page', page);
                 pages.removeClass('active');
                 e.regenPages(countPage, pagesContainer, page, paginator, items);
                 pagesContainer.find('[data-page="' + page +'"]').addClass('active');
-                e.filterItemsPag(page, items, countPage);
+                e.filterItemsPag(page, items, countPage, countPagePer, filterItems);
             });
 
             next.on('click', function () {
@@ -942,21 +988,31 @@ $(function () {
                 let paginator = $(this).parent();
                 let pagesContainer = paginator.find('.pages');
 
-                paginator.attr('data-cur-page', page);
                 let items = $(paginator.attr('data-container')).find('.item');
+                let countPagePer = paginator.attr('data-count');
+                let key = paginator.attr('data-key');
+                let filterItems = null;
+                if (key == 0 || key == '0') {
+                    filterItems = items;
+                }else {
+                    filterItems = $(paginator.attr('data-container')).find('[data-fkey="' + key +'"]');
+                }
 
                 paginator.attr('data-cur-page', page);
                 pages.removeClass('active');
                 e.regenPages(countPage, pagesContainer, page, paginator, items);
                 pagesContainer.find('[data-page="' + page +'"]').addClass('active');
-                e.filterItemsPag(page, items, countPage);
+                e.filterItemsPag(page, items, countPage, countPagePer, filterItems);
             });
         },
-        filterItemsPag: (page, items, countPage) => {
+        filterItemsPag: (page, items, countPage, countPagePer, filterItems) => {
             let e = window.itemsFilter;
+            items.hide();
             if (countPage > 1) {
-                items.hide();
-                items.slice((page-1)*e.cntPerPage, page*e.cntPerPage).show();
+                console.log(filterItems);
+                filterItems.slice((page-1)*countPagePer, page*countPagePer).show();
+            }else {
+                filterItems.slice((page-1)*countPagePer).show();
             }
         },
         filterItems: (type, keys, key, items, container, el=null) => {
@@ -982,6 +1038,31 @@ $(function () {
             let filtered = container.find('[data-fkey="' + key + '"]');
             filtered.css('display','flex');
             e.update();
+        },
+        unhide: (evt, hasPaginator,filterItemsContainer, items, itemsContainer, v) => {
+            let e = window.itemsFilter;
+            if (evt.hasOwnProperty('preventDefault')) evt.preventDefault();
+
+            itemsContainer.addClass('unhide');
+
+            if (hasPaginator) {
+                e.generatePag(filterItemsContainer, items, v.attr('data-filter-items'), v.attr('data-count'));
+            }
+
+            let paginator = filterItemsContainer.parent().find('.paginator');
+
+            if (hasPaginator) {
+                paginator.show();
+            }
+
+            $(evt.target).hide();
+        },
+        onResize: (evt, hasPaginator,filterItemsContainer, items, itemsContainer, v) => {
+            let e = window.itemsFilter;
+            let hasGen = $(v.attr('data-filter-items')).parent().find('.paginator').length > 0 ? true : false;
+            if (!hasGen && window.innerWidth <= mobileBreakpoint) {
+                e.unhide(evt, hasPaginator,filterItemsContainer, items, itemsContainer, v);
+            }
         }
     };
 

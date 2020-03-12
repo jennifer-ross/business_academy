@@ -695,6 +695,12 @@ $(function () {
         });
     };
 
+    $('.show-more').on('click', function (e) {
+       e.preventDefault();
+       $($(this).parents()[2]).find('.items-container').addClass('unhide');
+       $(this).hide();
+    });
+
     let clients = $('.clients-container .item');
     let clientsCnt = clients.length;
 

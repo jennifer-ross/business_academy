@@ -1011,7 +1011,7 @@ ul
         object-fit: cover
         width: 100%
 
-.section-videos, .section-books-brick, .section-publ-brick
+.section-videos, .section-books-brick, .section-publ-brick, .section-read-more
   .section-action
     margin-top: 20px
 
@@ -3047,10 +3047,10 @@ input[type="checkbox"]
       opacity: 1
       color: $r
 
-.section-publ-brick
+.section-publ-brick, .section-read-more
   .items-container
     .item
-      flex: 1 1 calc(33% - 60px)
+      flex: 1 1 calc(33% - 30px)
       margin-left: 15px
       margin-right: 15px
       margin-bottom: 30px
@@ -3090,7 +3090,7 @@ input[type="checkbox"]
           text-decoration: underline !important
           color: #8f1154
 
-.section-publ-brick
+.section-publ-brick, .section-read-more
   .items-container
     margin-top: 30px
     .item
@@ -3163,6 +3163,15 @@ input[type="checkbox"]
         &:not(:last-child)
           margin-right: 30px
 
+.section-read-more
+  .items-container
+    .item
+      display: none !important
+      &:nth-child(1), &:nth-child(2), &:nth-child(3)
+        display: flex !important
+  .items-container.unhide
+    .item
+      display: flex !important
 
 .mobile-image
   display: none

@@ -706,6 +706,8 @@ $(function () {
 
     window.helper = {
       parseBool: (string) => {
+          if (string == undefined) return false;
+
           switch(string.toLowerCase().trim()){
               case "true": case "yes": case "1": return true;
               case "false": case "no": case "0": case null: return false;
@@ -1077,7 +1079,7 @@ $(function () {
         closeBtn: null,
         mobileMenu: null,
         orientation: null,
-        orientationBreakpoint: 2000,
+        orientationBreakpoint: 9000,
         animationTime: 500,
         init: () => {
             let e = window.mobileMenu;
@@ -1364,6 +1366,9 @@ $(function () {
             let e = window.popup;
 
             let popup = $('#' + popupId);
+
+            if (popup && popup.length <= 0) return;
+
             let replace = false;
 
             if (popup.attr('data-replace') == 'true') {

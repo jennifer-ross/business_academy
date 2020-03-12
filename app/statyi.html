@@ -104,7 +104,7 @@
               </div>
               <ul>
                 <li><a href="#" data-popup-target="seminars">Семинары и курсы</a></li>
-                <li><a href="#">Консалтинг</a></li>
+                <li><a href="#" data-popup-target="c">Консалтинг</a></li>
                 <li><a href="#">Аудит</a></li>
                 <li><a href="#">Бухучет</a></li>
                 <li><a href="#">Налоговое планирование</a></li>
@@ -237,7 +237,10 @@
 
 <section class="section section-articles-brick">
     <div class="container label-title">
-        <div class="filter-container" data-count="18" data-paginator="true" data-filter data-filter-items=".section-publ-brick .items-container" data-unhide=".section-publ-brick .section-action .btn">
+        <div class="search-filter">
+            <input type="search" name="search-articles"><button class="btn-search" type="button">поиск</button>
+        </div>
+        <div class="filter-container" data-count="18" data-paginator="true" data-search=".section-articles-brick .search-filter" data-filter data-filter-items=".section-articles-brick .items-container" data-unhide=".section-articles-brick .section-action .btn">
             <span data-filter-key="0" class="active">Все</span>
             <span data-filter-key="1">Бухгалтерский и налоговый учет</span>
             <span data-filter-key="2">Налоговый семинар по НДС</span>
@@ -290,10 +293,10 @@
             <div class="">
                 <div class="items-container">
                     <div class="item" data-fkey="1">
-                        <div class="date">12.10.2019</div>
+                        <div class="date">12.10.2018</div>
                         <div class="detail">
                             <div class="image"><img src="/img/publ1.png" alt=""></div>
-                            <div class="title">Удержания из зарплаты выросли в 2019 году</div>
+                            <div class="title">Удержания из зарплаты выросли в 2018 году</div>
                         </div>
                         <div class="desc">
                             Роструд России в информационном сообщении на своем сайте напомнил про два способа оплаты труд сотрудникам, которые выполняют...
@@ -690,7 +693,7 @@
         </div>
     </div>
     <div class="section-action">
-        <a href="#" class="btn"><span class="mdi mdi-chevron-double-down"></span>показать еще<span class="mdi mdi-chevron-double-down"></span></a>
+        <a href="#" class="btn show-more"><span class="mdi mdi-chevron-double-down"></span>показать еще<span class="mdi mdi-chevron-double-down"></span></a>
     </div>
 </section>
 

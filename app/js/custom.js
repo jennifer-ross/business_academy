@@ -961,13 +961,13 @@ $(function () {
                 self['searchInp'] = self.search.find('input');
                 self['searchBtn'] = self.search.find('.btn-search');
 
-                self.searchBtn.on('click', (evt) => {
-                    e.search();
+                self.searchBtn.on('click', function (evt) {
+                    e.search(k, evt, this);
                 });
 
-                self.searchInp.on('keyup', (evt) => {
+                self.searchInp.on('keyup', function (evt) {
                     if (evt.keyCode === 13) {
-                        e.search();
+                        e.search(k, evt, this);
                     }
                 });
 
@@ -1013,8 +1013,10 @@ $(function () {
                         self.count = Math.ceil(self.filteredItems.length / self.dataCount);
                         self.currentPage = 1;
 
+                        console.log('s', self);
+
                         if (self.hasSearch) {
-                            e.search();
+                            e.search(k, {}, _this);
                         }else {
                             e.generatePages(k);
                             e.filterItems2(k);
@@ -1052,18 +1054,17 @@ $(function () {
 
             if (hasGen) {
                 self.paginator.dom = paginator;
-                self.hasPaginator = hasGen;
             }
 
             if (!hasGen && window.innerWidth > mobileBreakpoint) {
                 self.filterContainer.addClass('unhide');
 
-                // if (!hasGen) {
+                if (self.hasPaginator) {
                     // e.generatePag(filterItemsContainer, items, v.attr('data-filter-items'), v.attr('data-count'));
                     self.paginator = e.generatePagination(k);
                     self.hasPaginator = true;
                     self.paginator.dom.show();
-                // }
+                }
 
                 $(evt.target).hide();
             }
@@ -1161,7 +1162,6 @@ $(function () {
 
                 let page = parseInt(el.attr('data-page'));
 
-                console.log(self);
                 if (type === 'prev') {
                     page = --self.currentPage;
                     if (page <= 0) {
@@ -1235,6 +1235,9 @@ $(function () {
 
             self.key = key;
 
+            console.log(key, self,el);
+            e.unhide2({target: self.unhide}, k);
+
             if (type === 'click') {
                 if (el.hasClass('active')) {
                     key = 0;
@@ -1257,14 +1260,14 @@ $(function () {
                 $(v.link).hide();
             });
 
-            self.filteredItems = self.filterContainer.find('[data-fkey="' + key + '"]');
+            self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + key + '"]'));
 
             Array.prototype.forEach.call(self.filteredItems, (v) => {
                 $(v.link).css('display', 'flex');
             });
             e.update();
         },
-        search: (k, _this) => {
+        search: (k, evt, _this) => {
             let e = window.itemsFilter;
             let self = e.filters[k];
 
@@ -1283,40 +1286,32 @@ $(function () {
 
             if (!value) return;
 
-            let paginator = filterItemsContainer.parent().find('.paginator');
-            let key = paginator.attr('data-key') || 0;
+            let key = self.key || 0;
 
             let searchTitle = [];
             let searchDate = [];
             let searchDesc = [];
-            Array.prototype.forEach.call(itemsObj, (elem) => {
+            Array.prototype.forEach.call(self.items, (elem) => {
                 if (elem.title.includes(value) && (elem.key == key || key == 0 || key == '0')) searchTitle.push(elem);
                 if (elem.date.includes(value) && (elem.key == key || key == 0 || key == '0')) searchDate.push(elem);
                 if (elem.desc.includes(value) && (elem.key == key || key == 0 || key == '0')) searchDesc.push(elem);
             });
 
-            let filterItemsObj = [];
-
-            filterItems.hide();
             if (searchTitle.length > 0) {
-                // filterItemsObj = e.toObject(searchTitle);
-                let cnt = Math.ceil(searchTitle.length / v.attr('data-count'));
-
-                e.regenPages( cnt, paginator.find('.pages') ,1, paginator, filterItems, itemsObj, searchTitle);
-                e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), filterItems, itemsObj, searchTitle);
+                self.filteredItems = searchTitle;
+                self.hasSearch = true;
             }else if(searchDate.length > 0) {
-                // filterItemsObj = e.toObject(searchDate);
-                let cnt = Math.ceil(searchDate.length / v.attr('data-count'));
-
-                e.regenPages( cnt, paginator.find('.pages') ,1, paginator, filterItems, itemsObj, searchDate);
-                e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), filterItems, itemsObj, searchDate);
+                self.filteredItems = searchDate;
+                self.hasSearch = true;
+            }else if(searchDesc.length > 0) {
+                self.filteredItems = searchDesc;
+                self.hasSearch = true;
             }else {
-                // filterItemsObj = e.toObject(searchDesc);
-                let cnt = Math.ceil(searchDesc.length / v.attr('data-count'));
-
-                e.regenPages( cnt, paginator.find('.pages') ,1, paginator, filterItems, itemsObj, searchDesc);
-                e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), filterItems, itemsObj, searchDesc);
+                self.hasSearch = false;
+                // hide paginator & show empty result
             }
+            e.generatePages(k);
+            e.filterItems2(k);
         },
         update: () => {
             let e = window.itemsFilter;

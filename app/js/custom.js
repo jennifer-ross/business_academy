@@ -769,166 +769,6 @@ $(function () {
             if (e.filter.length <= 0) {
                 return;
             }
-            // Array.prototype.forEach.call(e.filter, function (v, k) {
-            //     v = $(v);
-            //     let filterKeys = v.find('[data-filter-key]');
-            //     let filterItemsContainer = $(v.attr('data-filter-items'));
-            //     let filterItems = filterItemsContainer.find(".item");
-            //     let select = v.find('select');
-            //
-            //     let itemsObj = e.toObject(filterItems);
-            //     let hasPaginator = window.helper.parseBool(v.attr('data-paginator'));
-            //     // if (hasPaginator) {
-            //     //     e.generatePag(filterItemsContainer, filterItems, v.attr('data-filter-items'), v.attr('data-count'));
-            //     // }
-            //     //
-            //     // let paginator = filterItemsContainer.parent().find('.paginator');
-            //
-            //     const searchFn = (inpValue=null) => {
-            //         e.unhide({target: $(v.attr('data-unhide'))}, hasPaginator, filterItemsContainer, filterItems,filterItemsContainer,v);
-            //
-            //         let value = "";
-            //         if (!inpValue) {
-            //             value = searchInp.val();
-            //         }else {
-            //             value = inpValue;
-            //         }
-            //         filterItemsContainer.attr('data-search-val', value);
-            //
-            //         if (!value) return;
-            //
-            //         let paginator = filterItemsContainer.parent().find('.paginator');
-            //         let key = paginator.attr('data-key') || 0;
-            //
-            //         let searchTitle = [];
-            //         let searchDate = [];
-            //         let searchDesc = [];
-            //         Array.prototype.forEach.call(itemsObj, (elem) => {
-            //             if (elem.title.includes(value) && (elem.key == key || key == 0 || key == '0')) searchTitle.push(elem);
-            //             if (elem.date.includes(value) && (elem.key == key || key == 0 || key == '0')) searchDate.push(elem);
-            //             if (elem.desc.includes(value) && (elem.key == key || key == 0 || key == '0')) searchDesc.push(elem);
-            //         });
-            //
-            //         let filterItemsObj = [];
-            //
-            //         filterItems.hide();
-            //         if (searchTitle.length > 0) {
-            //             // filterItemsObj = e.toObject(searchTitle);
-            //             let cnt = Math.ceil(searchTitle.length / v.attr('data-count'));
-            //
-            //             e.regenPages( cnt, paginator.find('.pages') ,1, paginator, filterItems, itemsObj, searchTitle);
-            //             e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), filterItems, itemsObj, searchTitle);
-            //         }else if(searchDate.length > 0) {
-            //             // filterItemsObj = e.toObject(searchDate);
-            //             let cnt = Math.ceil(searchDate.length / v.attr('data-count'));
-            //
-            //             e.regenPages( cnt, paginator.find('.pages') ,1, paginator, filterItems, itemsObj, searchDate);
-            //             e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), filterItems, itemsObj, searchDate);
-            //         }else {
-            //             // filterItemsObj = e.toObject(searchDesc);
-            //             let cnt = Math.ceil(searchDesc.length / v.attr('data-count'));
-            //
-            //             e.regenPages( cnt, paginator.find('.pages') ,1, paginator, filterItems, itemsObj, searchDesc);
-            //             e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), filterItems, itemsObj, searchDesc);
-            //         }
-            //     };
-            //
-            //     let search = $(v.attr('data-search'));
-            //     search.attr('data-filter-items', v.attr('data-filter-items'));
-            //
-            //     let searchInp = search.find('input');
-            //     let searchBtn = search.find('.btn-search');
-            //     searchBtn.on('click', (evt) => {
-            //         searchFn();
-            //     });
-            //
-            //     searchInp.on('keyup', (evt) => {
-            //         if (evt.keyCode === 13) {
-            //             searchFn();
-            //         }
-            //     });
-            //
-            //     select.unbind('select');
-            //     filterKeys.unbind('click');
-            //
-            //     if (window.innerWidth <= mobileBreakpoint) {
-            //         select.on('change', function () {
-            //             let el = select.find('option:selected');
-            //             let key = el.attr('data-filter-key');
-            //
-            //             if (hasPaginator) {
-            //                 let items = null;
-            //                 if (key == 0 || key == '0') {
-            //                     items = filterItems;
-            //                 }else {
-            //                     items = filterItemsContainer.find('[data-fkey="' + key +'"]');
-            //                 }
-            //
-            //                 let paginator = filterItemsContainer.parent().find('.paginator');
-            //
-            //                 let filterItemsObj = e.toObject(items);
-            //                 let cnt = Math.ceil(filterItemsObj.length / v.attr('data-count'));
-            //
-            //                 paginator.attr('data-key', key);
-            //                 e.regenPages( cnt, paginator.find('.pages') ,1, paginator, items, itemsObj, filterItemsObj);
-            //                 e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), items, itemsObj, filterItemsObj);
-            //
-            //                 searchFn(filterItemsContainer.attr('data-search-val'));
-            //             }else {
-            //                 e.filterItems('select', filterKeys, key, filterItems, filterItemsContainer, el);
-            //             }
-            //         });
-            //     }else {
-            //         filterKeys.on('click', function () {
-            //             let el = $(this);
-            //             let key = el.attr('data-filter-key');
-            //
-            //             if (hasPaginator) {
-            //                 // e.filterItemsPag(filterItemsContainer);
-            //
-            //                 if (el.hasClass('active')) {
-            //                     key = 0;
-            //                     filterKeys.removeClass('active');
-            //                 }else {
-            //                     filterKeys.removeClass('active');
-            //                     el.addClass('active');
-            //                 }
-            //
-            //                 let items = null;
-            //                 if (key == 0 || key == '0') {
-            //                     items = filterItems;
-            //                 }else {
-            //                     items = filterItemsContainer.find('[data-fkey="' + key +'"]');
-            //                 }
-            //
-            //                 let filterItemsObj = e.toObject(items);
-            //
-            //                 let cnt = Math.ceil(filterItemsObj.length / v.attr('data-count'));
-            //                 let paginator = filterItemsContainer.parent().find('.paginator');
-            //
-            //                 paginator.attr('data-key', key);
-            //                 e.regenPages( cnt, paginator.find('.pages') ,1, paginator, items, itemsObj, filterItemsObj);
-            //                 e.filterItemsPag(1, filterItems, cnt, v.attr('data-count'), items, itemsObj, filterItemsObj);
-            //
-            //                 searchFn(filterItemsContainer.attr('data-search-val'));
-            //             }else {
-            //                 e.filterItems('click', filterKeys, key, filterItems, filterItemsContainer, el);
-            //             }
-            //         });
-            //
-            //         let unhide = $(v.attr('data-unhide'));
-            //         unhide.on('click', (evt) => {
-            //             e.unhide(evt, hasPaginator, filterItemsContainer, filterItems, filterItemsContainer, v);
-            //         })
-            //     }
-            //
-            //     $(window).on('resize', () => {
-            //         e.onResize({target: $(v.attr('data-unhide'))}, hasPaginator, filterItemsContainer, filterItems,filterItemsContainer,v)
-            //     });
-            //     e.onResize({target: $(v.attr('data-unhide'))}, hasPaginator, filterItemsContainer, filterItems,filterItemsContainer,v);
-            //
-            // });
-
 
             Array.prototype.forEach.call(e.filter, function (v, k) {
                 v = $(v);
@@ -971,6 +811,14 @@ $(function () {
                     }
                 });
 
+                self.searchInp.on('input', function (evt) {
+                    let value = $(this).val();
+                    self.searchVal = value;
+                    if (!value) {
+                        self.hasSearch = false;
+                    }
+                });
+
                 self.select.unbind('select');
                 self.filterKeys.unbind('click');
 
@@ -990,11 +838,10 @@ $(function () {
                     if (self.hasPaginator) {
 
                         if (type === 'click') {
+                            self.filterKeys.removeClass('active');
                             if (el.hasClass('active')) {
                                 key = 0;
-                                self.filterKeys.removeClass('active');
                             }else {
-                                self.filterKeys.removeClass('active');
                                 el.addClass('active');
                             }
                         }
@@ -1012,8 +859,6 @@ $(function () {
 
                         self.count = Math.ceil(self.filteredItems.length / self.dataCount);
                         self.currentPage = 1;
-
-                        console.log('s', self);
 
                         if (self.hasSearch) {
                             e.search(k, {}, _this);
@@ -1060,7 +905,6 @@ $(function () {
                 self.filterContainer.addClass('unhide');
 
                 if (self.hasPaginator) {
-                    // e.generatePag(filterItemsContainer, items, v.attr('data-filter-items'), v.attr('data-count'));
                     self.paginator = e.generatePagination(k);
                     self.hasPaginator = true;
                     self.paginator.dom.show();
@@ -1108,6 +952,11 @@ $(function () {
         generatePages: (k) => {
             let e = window.itemsFilter;
             let self = e.filters[k];
+
+            if (!self.paginator.dom) {
+                // e.generatePagination(k);
+                e.unhide2({traget: null}, k);
+            }
 
             self.paginator.pagesContainer.find('.page').remove();
             self.paginator.pagesContainer.find('.spacer').remove();
@@ -1235,7 +1084,6 @@ $(function () {
 
             self.key = key;
 
-            console.log(key, self,el);
             e.unhide2({target: self.unhide}, k);
 
             if (type === 'click') {
@@ -1273,8 +1121,6 @@ $(function () {
 
             e.unhide2({target: self.unhide}, k);
 
-            // e.unhide({target: $(v.attr('data-unhide'))}, hasPaginator, filterItemsContainer, filterItems,filterItemsContainer,v);
-
             let value = "";
             if (!self.searchVal) {
                 value = self.searchInp.val();
@@ -1284,7 +1130,10 @@ $(function () {
 
             self.searchVal = value;
 
-            if (!value) return;
+            if (!value) {
+                self.hasSearch = false;
+                return;
+            }
 
             let key = self.key || 0;
 
@@ -1323,224 +1172,7 @@ $(function () {
                 }
             });
         },
-        // generatePag: (container, items, className, countPerPage) => {
-        //     let e = window.itemsFilter;
-        //
-        //     let prev,next, pages, lastPage, paginator, spacer;
-        //
-        //     let count = items.length;
-        //     let cnt = countPerPage;
-        //     let countPage = Math.ceil(count / cnt);
-        //
-        //     let pagContainer = container.parent();
-        //
-        //     pagContainer.append("<div class='paginator' style='display: none'></div>");
-        //
-        //     paginator = pagContainer.find('.paginator');
-        //     paginator.attr('data-cur-page', 1);
-        //     paginator.attr('data-container', className);
-        //     paginator.attr('data-count', countPerPage);
-        //     paginator.attr('data-key', 0);
-        //     let currentPage = 1;
-        //
-        //     paginator.append("<span class='prev'><span class='mdi mdi-chevron-left'></span></span>");
-        //     paginator.append("<div class='pages'></div>");
-        //
-        //     let pagesContainer = pagContainer.find('.pages');
-        //
-        //     paginator.append("<span class='next'><span class='mdi mdi-chevron-right'></span></span>");
-        //
-        //     e.regenPages(countPage, pagesContainer, currentPage, paginator, items, e.toObject(items), e.toObject(items));
-        //     e.filterItemsPag(currentPage, items, countPage, countPerPage, items, e.toObject(items), e.toObject(items));
-        //     pagesContainer.find('[data-page="' + currentPage +'"]').addClass('active');
-        //
-        //     return paginator;
-        // },
-        // regenPages: (countPage, pagesContainer, currentPage, paginator, items, itemsObj, filterItemsObj) => {
-        //     pagesContainer.find('.page').remove();
-        //     pagesContainer.find('.spacer').remove();
-        //     let spBefore = false;
-        //     let hiddenItems = 0;
-        //     let e = window.itemsFilter;
-        //
-        //     for (let i = 1; i <= countPage; i++) {
-        //         if (countPage && !spBefore && currentPage > 3) {
-        //             pagesContainer.append("<span class='page' data-page='" + 1 + "'  id='page_" + 1 + "'>" + 1 + "</span>");
-        //             pagesContainer.append("<span class='spacer'>...</span>");
-        //             spBefore = true;
-        //             continue;
-        //         }
-        //         if (spBefore && i < currentPage-4) {
-        //             hiddenItems++;
-        //             continue;
-        //         }
-        //
-        //         if (i === currentPage) {
-        //             pagesContainer.append("<span class='page active' data-page='" + i + "'  id='page_" + i + "'>" + i + "</span>");
-        //         }else {
-        //             pagesContainer.append("<span class='page' data-page='" + i + "'  id='page_" + i + "'>" + i + "</span>");
-        //         }
-        //
-        //         if (((i >= hiddenItems+5) || (i >= currentPage+5) || (currentPage === 1 && i >= 5)) ) {
-        //             pagesContainer.append("<span class='spacer'>...</span>");
-        //             pagesContainer.append("<span class='page' data-page='" + countPage + "'  id='page_" + countPage + "'>" + countPage + "</span>");
-        //             break;
-        //         }
-        //     }
-        //
-        //     let prev = paginator.find('.prev');
-        //     let next = paginator.find('.next');
-        //     let pages = pagesContainer.find('.page');
-        //
-        //     pages.unbind('click');
-        //     prev.unbind('click');
-        //     next.unbind('click');
-        //
-        //     pages.on('click', function () {
-        //         let page = $(this).attr('data-page');
-        //         // currentPage = parseInt(page);
-        //         let pagesContainer = $(this).parent();
-        //         let paginator = pagesContainer.parent();
-        //
-        //         let items = $(paginator.attr('data-container')).find('.item');
-        //         let countPagePer = paginator.attr('data-count');
-        //         let key = paginator.attr('data-key');
-        //         let filterItems = null;
-        //         if (key == 0 || key == '0') {
-        //             filterItems = items;
-        //         }else {
-        //             filterItems = $(paginator.attr('data-container')).find('[data-fkey="' + key +'"]');
-        //         }
-        //
-        //         let itemsObj = e.toObject(items);
-        //         let filterItemsObj = e.toObject(filterItems);
-        //
-        //         paginator.attr('data-cur-page', page);
-        //         pages.removeClass('active');
-        //         e.regenPages(countPage, pagesContainer, page, paginator, items, itemsObj, filterItemsObj);
-        //         pagesContainer.find('[data-page="' + page +'"]').addClass('active');
-        //         e.filterItemsPag(page, items, countPage, countPagePer, filterItems, itemsObj, filterItemsObj);
-        //     });
-        //
-        //     prev.on('click', function () {
-        //         let page = --currentPage;
-        //         if (page <= 0) {
-        //             page = 1;
-        //         }
-        //
-        //         let paginator = $(this).parent();
-        //         let pagesContainer = paginator.find('.pages');
-        //
-        //         paginator.attr('data-cur-page', page);
-        //         let items = $(paginator.attr('data-container')).find('.item');
-        //         let countPagePer = paginator.attr('data-count');
-        //         let key = paginator.attr('data-key');
-        //         let filterItems = null;
-        //         if (key == 0 || key == '0') {
-        //             filterItems = items;
-        //         }else {
-        //             filterItems = $(paginator.attr('data-container')).find('[data-fkey="' + key +'"]');
-        //         }
-        //
-        //         let itemsObj = e.toObject(items);
-        //         let filterItemsObj = e.toObject(filterItems);
-        //
-        //         paginator.attr('data-cur-page', page);
-        //         pages.removeClass('active');
-        //         e.regenPages(countPage, pagesContainer, page, paginator, items, itemsObj, filterItemsObj);
-        //         pagesContainer.find('[data-page="' + page +'"]').addClass('active');
-        //         e.filterItemsPag(page, items, countPage, countPagePer, filterItems, itemsObj, filterItemsObj);
-        //     });
-        //
-        //     next.on('click', function () {
-        //         let page = ++currentPage;
-        //         if (page >= countPage) {
-        //             page = countPage;
-        //         }
-        //
-        //         let paginator = $(this).parent();
-        //         let pagesContainer = paginator.find('.pages');
-        //
-        //         let items = $(paginator.attr('data-container')).find('.item');
-        //         let countPagePer = paginator.attr('data-count');
-        //         let key = paginator.attr('data-key');
-        //         let filterItems = null;
-        //         if (key == 0 || key == '0') {
-        //             filterItems = items;
-        //         }else {
-        //             filterItems = $(paginator.attr('data-container')).find('[data-fkey="' + key +'"]');
-        //         }
-        //
-        //         let itemsObj = e.toObject(items);
-        //         let filterItemsObj = e.toObject(filterItems);
-        //
-        //         paginator.attr('data-cur-page', page);
-        //         pages.removeClass('active');
-        //         e.regenPages(countPage, pagesContainer, page, paginator, items, itemsObj, filterItemsObj);
-        //         pagesContainer.find('[data-page="' + page +'"]').addClass('active');
-        //         e.filterItemsPag(page, items, countPage, countPagePer, filterItems, itemsObj, filterItemsObj);
-        //     });
-        // },
-        // filterItemsPag: (page, items, countPage, countPagePer, filterItems, itemsObj, filterItemsObj) => {
-        //     let e = window.itemsFilter;
-        //     items.hide();
-        //     if (countPage > 1) {
-        //         // filterItems.slice((page-1)*countPagePer, page*countPagePer).show();
-        //         Array.prototype.forEach.call(filterItemsObj.slice((page-1)*countPagePer, page*countPagePer), (v) => {
-        //             $(v.link).show();
-        //         });
-        //     }else {
-        //         // filterItems.slice((page-1)*countPagePer).show();
-        //         Array.prototype.forEach.call(filterItemsObj.slice((page-1)*countPagePer), (v) => {
-        //             $(v.link).show();
-        //         });
-        //     }
-        // },
-        filterItems: (type, keys, key, items, container, el=null) => {
-            let e = window.itemsFilter;
 
-            if (type === 'click') {
-                if (el.hasClass('active')) {
-                    key = 0;
-                    keys.removeClass('active');
-                }else {
-                    keys.removeClass('active');
-                    el.addClass('active');
-                }
-            }
-
-            if (key == 0 || key == 'all') {
-                items.css('display', 'flex');
-                e.update();
-                return;
-            }
-
-            items.hide();
-            let filtered = container.find('[data-fkey="' + key + '"]');
-            filtered.css('display','flex');
-            e.update();
-        },
-        // unhide: (evt, hasPaginator,filterItemsContainer, items, itemsContainer, v) => {
-        //     let e = window.itemsFilter;
-        //     if (evt.hasOwnProperty('preventDefault')) evt.preventDefault();
-        //
-        //     let hasGen = $(v.attr('data-filter-items')).parent().find('.paginator').length > 0 ? true : false;
-        //     if (!hasGen && window.innerWidth > mobileBreakpoint) {
-        //         itemsContainer.addClass('unhide');
-        //
-        //         if (hasPaginator) {
-        //             e.generatePag(filterItemsContainer, items, v.attr('data-filter-items'), v.attr('data-count'));
-        //         }
-        //
-        //         let paginator = filterItemsContainer.parent().find('.paginator');
-        //
-        //         if (hasPaginator) {
-        //             paginator.show();
-        //         }
-        //
-        //         $(evt.target).hide();
-        //     }
-        // },
         toObject: (items) => {
             if (items.hasOwnProperty('link')) return items;
             let obj = [];
@@ -1860,6 +1492,7 @@ $(function () {
             let popup = $('#' + popupId);
 
             if (popup && popup.length <= 0) return;
+            if (e.currentPopup && popup[0].id === e.currentPopup.attr('data-caller')) e.closeActive();
 
             let replace = false;
 
@@ -1873,7 +1506,8 @@ $(function () {
                     offset: popup.attr('data-offset') || null,
                     html: popup[0].innerHTML,
                     mmBreackpoint: popup.attr('data-mm-breackpoint') || false,
-                    closeAfter: popup.attr('data-close-after') || false
+                    closeAfter: popup.attr('data-close-after') || false,
+                    callerId: popup[0].id
                 };
                 if (e.replaceContainer === null) {
                     e.replaceContainer = e.create(options);
@@ -1884,6 +1518,7 @@ $(function () {
                     e.replaceContainer.attr('data-offset', options.offset);
                     e.replaceContainer.attr('data-mm-breackpoint', options.mmBreackpoint);
                     e.replaceContainer.attr('data-close-after', options.closeAfter);
+                    e.replaceContainer.attr('data-caller', options.callerId);
                 }
                 popup = e.replaceContainer;
                 replace = true;
@@ -1939,7 +1574,8 @@ $(function () {
                 offset: el.attr('data-offset') || null,
                 html: v.innerHTML,
                 mmBreackpoint: el.attr('data-mm-breackpoint') || false,
-                closeAfter: el.attr('data-close-after') || false
+                closeAfter: el.attr('data-close-after') || false,
+                callerId: el.attr('data-caller') || false
             });
             v.remove();
             e.update();
@@ -1947,7 +1583,7 @@ $(function () {
         create: (options) => {
             let e = window.popup;
 
-            e.container.append("<div class='" + options.className + (e.parseBool(options.className) == false ? '' : ' closable') + "' id='" + options.id + "' data-close-after='" + options.closeAfter + "' data-replace='" + options.replace + "' data-mm-breackpoint='" + options.mmBreackpoint + "' data-offset-type='" + options.offsetType + "' data-offset='" + options.offset + "'>" + options.html + "</div>");
+            e.container.append("<div class='" + options.className + (e.parseBool(options.className) == false ? '' : ' closable') + "' id='" + options.id + "' data-caller='" + options.callerId + "' data-close-after='" + options.closeAfter + "' data-replace='" + options.replace + "' data-mm-breackpoint='" + options.mmBreackpoint + "' data-offset-type='" + options.offsetType + "' data-offset='" + options.offset + "'>" + options.html + "</div>");
 
             e.update();
 
@@ -1973,6 +1609,7 @@ $(function () {
                 if (e.currentPopup) {
                     window.customStyles.remove('popup-target-styles__' + e.currentPopup[0].id);
                 }
+                window.customStyles.remove('popup-target-styles__popup_content_container');
                 e.headContainer.fadeOut(e.animationTime, () => {
                     $('html').removeClass('no-scroll');
                 });
@@ -2104,12 +1741,23 @@ $(function () {
     window.popup.init();
     window.checkboxSelect.init();
 
-    // let $grid = $('.audit-container').masonry({
-    //     itemSelector: '.grid-item',
-    //     // columnWidth: 366,
-    //     gutter: 0,
-    //     resize: true,
-    //     // fitWidth: true
-    // });
+    let $grid = null;
+
+    const onResizeMasonry = () => {
+        if (window.innerWidth <= mobileBreakpoint) {
+            $grid.destroy()
+        }else {
+            $grid = $('.audit-container').masonry({
+                itemSelector: '.grid-item',
+                // columnWidth: 366,
+                gutter: 0,
+                resize: true,
+                fitWidth: true
+            });
+        }
+    };
+
+    $(window).on('resize', onResizeMasonry);
+    onResizeMasonry();
 
 });

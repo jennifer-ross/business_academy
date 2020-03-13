@@ -1331,16 +1331,17 @@
             padding-left: 26px
             padding-right: 26px
 
-  .section-video,.section-books-brick
+  .section-videos,.section-books-brick
     .section-action
       margin-top: 10px
-    .item
-      flex: 1 1 50%
-      max-width: calc(50% - 15px)
-      &:nth-child(3n)
-        margin-right: 30px
-      &:nth-child(2n)
-        margin-right: 0
+    .items-container
+      .item
+        flex: 1 1 50%
+        max-width: calc(50% - 30px)
+        &:nth-child(3n)
+          margin-right: 15px
+        &:nth-child(2n)
+          margin-right: 15px
     .filter-container
       span
         margin: 5.5px 7px
@@ -1608,12 +1609,14 @@
   .section-videos
     .filter-container
       padding-right: 0
-    .item
-      flex: 1 1 100%
-      margin-right: 0
-      max-width: 100%
-      &:nth-child(3n)
+    .items-container
+      .item
+        flex: 1 1 100%
         margin-right: 0
+        margin-left: 0
+        max-width: 100%
+        &:nth-child(3n)
+          margin-right: 0
 
 
   .services-container
@@ -2249,7 +2252,7 @@
       .mobile-filter-container
         position: relative
         display: block
-        margin-bottom: 10px
+        width: 100%
         span.mdi
           pointer-events: none
           position: absolute
@@ -2285,16 +2288,17 @@
       display: none
     .items-container
       flex-wrap: unset
-    .item
-      max-width: unset
-      margin-right: 0
-      flex: none
-      .content
-        width: 100%
-        height: 163px
-        min-height: 163px
-      .title
-        font-size: 14px
+      .item
+        max-width: unset
+        margin-right: 0
+        margin-left: 0
+        flex: none
+        .content
+          width: 100%
+          height: 163px
+          min-height: 163px
+        .title
+          font-size: 14px
 
   .section-services
     .swiper-pagination
@@ -2987,10 +2991,6 @@
     .mobile-filter-container
       display: block
       width: 100%
-      margin-bottom: 10px
-
-  .section .rtl-2 .custom-action .right-action
-    max-width: 90%
 
 // ≥576px
 +media-breakpoint-down(xs)

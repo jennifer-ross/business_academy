@@ -652,22 +652,24 @@ $(function () {
                 breakpoints: {
                     1500: {
                         slidesPerView: 3,
+                        spaceBetween: 30,
                     },
                     1280: {
-                        slidesPerView: 5,
+                        slidesPerView: 2,
+                        spaceBetween: 30,
                     },
                     1080: {
-                        slidesPerView: 4,
+                        slidesPerView: 2,
+                        spaceBetween: 30,
                     },
                     830: {
-                        slidesPerView: 3,
-                    },
-                    577: {
                         slidesPerView: 2,
+                        spaceBetween: 30,
                     },
                     0: {
                         slidesPerView: 1,
                         slidesPerGroup: 1,
+                        spaceBetween: 60,
                     }
                 }
             })

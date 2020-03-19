@@ -3274,12 +3274,48 @@ input[type="checkbox"]
 
 .videos-container
   .item
-    height: 285px
+    display: flex
+    justify-content: center
+    flex-direction: column
+    text-align: center
+    iframe
+      height: 285px
+    .desc
+      margin-top: 15px
+      font-weight: normal
+      font-size: 18px
+      line-height: 25px
+      color: #202B38
 
 .section-video-slide
+  padding-bottom: 60px
+  .section-action
+    width: 100%
+    display: flex
+    justify-content: center
+  .section-content
+    position: relative
+    padding-bottom: 30px
+    padding-top: 30px
+    &:before, &:after
+      content: ""
+      width: 150%
+      left: -25%
+      top: 0
+      position: absolute
+      height: 100%
+      background: #F6F9FB
+      z-index: -1
+    &:before
+      height: 1px
+      background: #DDE8F1
+      z-index: 0
   .swiper-pagination
     bottom: -30px !important
     padding-right: 0
+    width: 100%
+    display: flex
+    justify-content: center
 
 .mobile-image
   display: none

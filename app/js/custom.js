@@ -1320,13 +1320,13 @@ $(function () {
             style.id = 'mobile-menu-styles';
             style.innerHTML = '.mobile-menu-slide {' +
                     'display: flex;' +
-                    '-webkit-transition: all ' + e.animationTime + ';' +
-                    '-moz-transition: all ' + e.animationTime + ';' +
-                    '-ms-transition: all ' + e.animationTime + ';' +
-                    '-o-transition: all ' + e.animationTime + ';' +
-                    'transition: all ' + e.animationTime + ';' +
-                    'left: ' + left + ';' +
-                    'right: ' + right + ';' +
+                    '-webkit-transition: all ' + e.animationTime + 's;' +
+                    '-moz-transition: all ' + e.animationTime + 's;' +
+                    '-ms-transition: all ' + e.animationTime + 's;' +
+                    '-o-transition: all ' + e.animationTime + 's;' +
+                    'transition: all ' + e.animationTime + 's;' +
+                    'left: ' + left + 'px;' +
+                    'right: ' + right + 'px;' +
                 '}';
 
             window.customStyles.append(style);

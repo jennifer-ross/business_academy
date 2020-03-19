@@ -1321,30 +1321,30 @@ $(function () {
             switch (e.orientation) {
                 case 'left':
                 {
-                    left = -e.orientationBreakpoint;
+                    left = -e.orientationBreakpoint + 'px';
                     break;
                 }
                 case 'right': {
-                    right = -e.orientationBreakpoint;
+                    right = -e.orientationBreakpoint + 'px';
                     break;
                 }
                 default: {
                     e.orientation = 'left';
-                    left = -e.orientationBreakpoint;
+                    left = -e.orientationBreakpoint + 'px';
                 }
             }
 
             let style = document.createElement('style');
             style.id = 'mobile-menu-styles';
             style.innerHTML = '.mobile-menu-slide {' +
-                    'display: flex;' +
-                    '-webkit-transition: all ' + e.animationTime + 's;' +
-                    '-moz-transition: all ' + e.animationTime + 's;' +
-                    '-ms-transition: all ' + e.animationTime + 's;' +
-                    '-o-transition: all ' + e.animationTime + 's;' +
-                    'transition: all ' + e.animationTime + 's;' +
-                    'left: ' + left + 'px;' +
-                    'right: ' + right + 'px;' +
+                    'display: flex !important;' +
+                    '-webkit-transition: all ' + e.animationTime + ';' +
+                    '-moz-transition: all ' + e.animationTime + ';' +
+                    '-ms-transition: all ' + e.animationTime + ';' +
+                    '-o-transition: all ' + e.animationTime + ';' +
+                    'transition: all ' + e.animationTime + ';' +
+                    'left: ' + left + ';' +
+                    'right: ' + right + ';' +
                 '}';
 
             window.customStyles.append(style);

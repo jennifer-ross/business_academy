@@ -267,6 +267,12 @@
         .title-container
           padding-left: 20px
 
+  .section-404
+    .section-content
+      .container
+        .form-404
+          width: calc(60% - 30px)
+
 // 1500px
 @media (max-width: 1499.98px)
   .header
@@ -671,6 +677,12 @@
 
   .section-video-slide
     padding-bottom: 60px
+
+  .section-404
+    .section-content
+      .container
+        .form-title
+          font-size: 21px
 
 @media (max-width: 1400px)
   .book-detail-popup
@@ -1169,6 +1181,22 @@
       iframe
         height: 245px
 
+  .section-404
+    .section-content
+      .container
+        .title
+          font-size: 120px
+          width: calc(30% - 20px)
+          padding-right: 20px
+          position: relative
+        .form-404
+          width: calc(60% - 20px)
+          padding-left: 20px
+        .form-title
+          font-size: 18px
+          line-height: 24px
+          margin-bottom: 20px
+
 @media (max-width: 1200px)
 
   .row-bg.el-image
@@ -1579,6 +1607,36 @@
     .item
       iframe
         height: 200px
+
+  .section-404
+    .section-content
+      .container
+        flex-direction: column
+        .title
+          font-size: 120px
+          line-height: 120px
+          width: 100%
+          padding-right: 0
+          text-align: center
+          margin-bottom: 20px
+          &:after
+            content: unset
+        .form-404
+          width: calc(100% - 20px)
+          padding-left: 20px
+        .form-title
+          font-size: 18px
+          line-height: 24px
+          margin-bottom: 20px
+          position: relative
+          &:after
+            content: ""
+            position: absolute
+            left: -10px
+            height: 100%
+            width: 2px
+            top: 0
+            background: $b
 
 // ≥1200px
 +media-breakpoint-down(lg)
@@ -3685,6 +3743,27 @@
 
   .custom-action .right-action
     max-width: 90%
+
+  .section-404
+    .section-content
+      .container
+        .search-filter
+          margin: 0
+        .title
+          font-size: 60px
+          line-height: 82px
+          margin-bottom: 10px
+        .form-title
+          font-size: 16px
+          line-height: 22px
+          margin-bottom: 16px
+        .form-404
+          width: calc(100% - 10px)
+          padding-left: 10px
+          input
+            display: none
+          button
+            width: 100%
 
 @media (max-width: 480px)
   .container-auditors-partners .swiper-container-audit-partners

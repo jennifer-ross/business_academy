@@ -1624,7 +1624,7 @@ $(function () {
 
                     let style = document.createElement('style');
                     style.id = 'popup-target-styles__' + popup[0].id;
-                    style.innerHTML = popup.attr('data-offset') + ', ' + popup.attr('data-offset') + ' * {' +
+                    style.innerHTML = popup.attr('data-offset') + ' {' +
                         'z-index: 130;' +
                         '}';
 
@@ -1771,6 +1771,18 @@ $(function () {
             e.callers.on('click', function (event) {
                 let el = $(this);
                 event.preventDefault();
+
+                if (e.currentPopup && !$('[data-popup-target="' + e.currentPopup.attr('data-caller') + '"]').hasClass('active')) {
+                    e.callers.removeClass('active');
+                    el.addClass('active');
+                }else {
+                    if (!el.hasClass('active')) {
+                        e.callers.removeClass('active');
+                        el.addClass('active');
+                    }else {
+                        el.removeClass('active');
+                    }
+                }
 
                 let popupId = el.attr('data-popup-target');
                 e.show(popupId);

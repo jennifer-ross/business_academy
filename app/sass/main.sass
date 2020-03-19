@@ -195,6 +195,9 @@ ul
           left: calc(-50% + 1.5rem)
           display: none
           margin-top: 20px
+          z-index: 99999 !important
+          *
+            z-index: 99999 !important
           &:before
             content: ""
             top: 0
@@ -286,7 +289,17 @@ ul
             font-size: 16px
             color: $b
             font-weight: 600
-          .active
+          li a:not(.watch).active
+            color: $r
+            position: relative
+            &:after
+              width: 100%
+              background: $r
+              height: 2px
+              position: absolute
+              left: 0
+              bottom: 0
+              content: ""
 
 
 .swiper-pagination-bullet
@@ -497,7 +510,7 @@ ul
       padding-right: 20px
       padding-top: 5rem
       padding-bottom: 4rem
-      .desc, .desc a, .desc li, .desc b, .desc strong, .desc span
+      .desc, .desc a, .desc li, .desc b, .desc strong, .desc span, .desc i
         line-height: 1.67
         font-size: 18px
         display: flex
@@ -2276,10 +2289,10 @@ $sz7622: 748px
     display: flex
     flex-direction: column
     justify-content: space-between
-    p
+    p, a, li, b, strong, i
       font-size: 20px
       margin-bottom: 0
-    span
+    span, span a
       font-size: 24px
       font-weight: bold
       color: $b
@@ -3121,7 +3134,7 @@ input[type="checkbox"]
     & > p, & > span, & > img
       margin-bottom: 30px
       display: flex
-    & > p
+    & > p, & > p a, & > p li, & > p b, & > p strong, & > p i
       font-size: 18px
       line-height: 30px
       color: #202B38

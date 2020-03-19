@@ -4203,6 +4203,51 @@ input[type="checkbox"]
 .discounts-container
   margin-top: 15px
 
+.discounts-container
+  .item
+    display: flex
+    justify-content: center
+    .content
+      display: flex
+      align-items: center
+      width: 50%
+      padding-left: 30px
+    .title
+      width: 30%
+      font-weight: bold
+      font-size: 48px
+      line-height: 65px
+      text-align: right
+      text-transform: uppercase
+      padding-top: 43px
+      padding-bottom: 43px
+    .desc
+      font-weight: normal
+      font-size: 36px
+      line-height: 49px
+      color: #FFFFFF
+      ul
+        li
+          list-style: none
+          position: relative
+          &:before
+            padding-right: 10px
+            font-size: 36px
+            content: "\F135"
+            font-family: "Material Design Icons"
+    .bg
+      position: absolute
+      width: 100%
+      height: 100%
+      z-index: -1
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+  .discount2
+    .title
+      color: #FFFFFF
+
 .mobile-image
   display: none
 

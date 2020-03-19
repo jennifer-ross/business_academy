@@ -639,14 +639,35 @@
         line-height: 45px
     .section-content .container-2
       & > p, & > span, & > img
-      & > p, & > p a, & > p li, & > p b, & > p strong, & > p i
+      p, p a, p li,p b, p strong, p i
         font-size: 16px
         line-height: 30px
+      .image-txt
+        flex-direction: column
+        align-items: center
+        p, p a,p li, p b, p strong, p i
+          font-size: 16px
+          line-height: 30px
+        .image
+          width: 80%
+          max-width: 80%
+          min-width: 80%
+          margin-bottom: 30px
+          img
+        .text
+          padding-left: 0
       & > span
         font-size: 20px
         line-height: 30px
       & > .center
         padding-left: 30px
+
+  .section-publ-article
+    .section-content
+      .container-2
+        span
+          font-size: 20px
+          line-height: 30px
 
   .section-video-slide
     padding-bottom: 60px
@@ -1845,14 +1866,37 @@
       & > p, & > span, & > img
         margin-bottom: 20px
         display: flex
-      & > p, & > p a, & > p li, & > p b, & > p strong, & > p i
+      p, p a, p li, p b, p strong, p i
         font-size: 14px
         line-height: 24px
-      & > span
+      .image-txt
+        flex-direction: column
+        align-items: center
+        p, p a,p li, p b, p strong, p i
+          font-size: 14px
+          line-height: 24px
+        .image
+          width: 60%
+          max-width: 60%
+          min-width: 60%
+          margin-bottom: 30px
+          img
+        .text
+          padding-left: 0
+      span
         font-size: 18px
         line-height: 24px
       & > .center
         padding-left: 20px
+
+  .section-publ-article
+    .section-content
+      .container-2
+        p
+          display: block
+        span
+          font-size: 18px
+          line-height: 24px
 
   .videos-container
     .item
@@ -3041,6 +3085,27 @@
         text-align: center
         color: #202B38
 
+  .section-publ-detail
+    .section-content .container-2
+      p, p a, p li, p b, p strong, p i
+      .image-txt
+        p, p a,p li, p b, p strong, p i
+          font-size: 14px
+          line-height: 19px
+        .image
+          width: 80%
+          max-width: 80%
+          min-width: 80%
+          img
+        .text
+
+  .section-publ-article
+    .section-content
+      .container-2
+        p
+          display: block
+        span
+
 // ≥576px
 +media-breakpoint-down(xs)
   .mobile-watch
@@ -3567,10 +3632,20 @@
       & > p, & > span, & > img
         margin-bottom: 10px
         display: flex
-      & > p, & > p a, & > p li, & > p b, & > p strong, & > p i
+      p, p a,p li, p b, p strong, p i
         font-size: 14px
         line-height: 19px
-      & > span
+      .image-txt
+        margin-bottom: 10px
+        p, p a,p li, p b, p strong, p i
+          font-size: 14px
+          line-height: 19px
+        .image
+          width: 80%
+          max-width: 80%
+          min-width: 80%
+          margin-bottom: 10px
+      span
         font-size: 16px
         line-height: 22px
       & > .center
@@ -3599,6 +3674,14 @@
           &:not(:last-child)
             margin-right: 21px
 
+  .section-publ-article
+    .section-content
+      .container-2
+        p
+          display: block
+        span
+          font-size: 16px
+          line-height: 22px
 
   .custom-action .right-action
     max-width: 90%
@@ -3617,6 +3700,15 @@
     .item
       iframe
         height: 166px
+
+  .section-publ-detail
+    .section-title
+    .section-content .container-2
+      .image-txt
+        .image
+          //width: 95%
+          //max-width: 95%
+          //min-width: 95%
 
 @media (max-width: 450px)
   .book-detail-popup

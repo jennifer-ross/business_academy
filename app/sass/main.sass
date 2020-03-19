@@ -3163,16 +3163,37 @@ input[type="checkbox"]
     & > p, & > span, & > img
       margin-bottom: 30px
       display: flex
-    & > p, & > p a, & > p li, & > p b, & > p strong, & > p i
+    p, p a, p li,p b, p strong, p i
       font-size: 18px
       line-height: 30px
       color: #202B38
       font-weight: normal
-    & > span
+    span
       font-weight: normal
       font-size: 24px
       line-height: 30px
       color: #11558F
+    .image-txt
+      display: flex
+      margin-bottom: 30px
+      position: relative
+      width: 100%
+      p:last-child
+        margin-bottom: 0
+      p, p a,p li, p b, p strong, p i
+        font-size: 21px
+        line-height: 34px
+      .image
+        width: 50%
+        max-width: 50%
+        min-width: 50%
+        img
+          width: 100%
+          object-fit: contain
+      .text
+        display: flex
+        flex-direction: column
+        padding-left: 30px
     & > .center
       padding-left: 30px
     & > .right
@@ -3357,6 +3378,30 @@ input[type="checkbox"]
     width: 100%
     display: flex
     justify-content: center
+
+.section-publ-article
+  .section-content
+    .container-2
+      .info
+        display: flex
+        justify-content: flex-end
+        align-items: flex-end
+        margin-top: 30px
+        flex-direction: column
+        text-align: right
+      & > p, & > span, & > img
+       margin-bottom: 15px
+      p
+        display: block
+        a
+          color: $b
+          text-decoration: underline !important
+      span
+        font-weight: normal
+        font-size: 24px
+        line-height: 30px
+        color: #11558F
+        padding-right: 5px
 
 .mobile-image
   display: none

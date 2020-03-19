@@ -1707,6 +1707,17 @@ footer
   .swiper-button-prev,.swiper-button-next
     display: none
 
+.mobile-menu-btn--close
+  position: absolute
+  right: 1rem
+  top: .25rem
+  width: 24px
+  height: 24px
+  &:after
+    font-family: "Material Design Icons"
+    content: "\F156"
+    color: $b
+    font-size: 36px
 
 .mobile-menu-slide
   position: fixed
@@ -1716,6 +1727,24 @@ footer
   top: 0
   display: none
   background: #fff
+  flex-direction: column
+  padding-left: 1rem
+  padding-right: 1rem
+  padding-top: 1rem
+  padding-bottom: 0
+  overflow-y: auto
+  li
+    list-style: none
+  & > ul
+    margin-bottom: 1rem
+    ul
+      padding-left: 1.5rem
+
+  li, li a
+    font-weight: normal
+    font-size: 18px
+    line-height: 28px
+    color: #3D444D
 
 .section-audit-head
   .swiper-slide

@@ -777,9 +777,10 @@ $(function () {
         });
     };
 
-    $('.show-more').on('click', function (e) {
+    $('.show-more, .show-all').on('click', function (e) {
        e.preventDefault();
        $($(this).parents()[2]).find('.items-container').addClass('unhide');
+       $($(this).parents()[2]).find('.seminars-container').addClass('unhide');
        $(this).hide();
     });
 

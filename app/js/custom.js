@@ -259,7 +259,7 @@ $(function () {
     window.onresize = onResizeFn;
 
 
-    let reviewsSwiper, sertificatsSwiper, servicesSwiper, countSwiper, newsSwiper, desktopSwipers, booksSwiper, visitSeminarSwiper;
+    let reviewsSwiper, sertificatsSwiper, servicesSwiper, countSwiper, newsSwiper, desktopSwipers, booksSwiper, visitSeminarSwiper, allBooksSwiper, videosSwiper;
     desktopSwipers = [];
 
     const swipersInit = () => {
@@ -513,6 +513,48 @@ $(function () {
         });
         desktopSwipers.push(reviewsSwiper);
 
+        allBooksSwiper = new Swiper('.section-books .books-container', Object.assign({}, defaultSwiperOptions, {
+                slidesPerView: 6,
+                slidesPerGroup: 1,
+                spaceBetween: 30,
+                navigation: {
+                    nextEl: '.section-books .swiper-button-next',
+                    prevEl: '.section-books .swiper-button-prev',
+                },
+                pagination: {
+                    el: '.section-books .swiper-pagination',
+                    type: 'bullets',
+                    clickable: true,
+                },
+                breakpoints: {
+                    1500: {
+                        slidesPerView: 6,
+                    },
+                    1280: {
+                        slidesPerView: 5,
+                        slidesPerGroup: 5,
+                    },
+                    1080: {
+                        slidesPerView: 4,
+                        slidesPerGroup: 4,
+                    },
+                    830: {
+                        slidesPerView: 3,
+                        slidesPerGroup: 3,
+                    },
+                    577: {
+                        slidesPerView: 2,
+                        slidesPerGroup: 2,
+                    },
+                    0: {
+                        slidesPerView: 1,
+                        slidesPerGroup: 1,
+                    }
+                }
+            })
+        );
+        desktopSwipers.push(allBooksSwiper);
+
         sertificatsSwiper = new Swiper('.swiper-container-sertificat', {
             direction: 'horizontal',
             autoHeight: !0,
@@ -593,6 +635,44 @@ $(function () {
             }
         }));
         desktopSwipers.push(swiperAuditPartners);
+
+        videosSwiper = new Swiper('.section-video-slide .videos-container', Object.assign({}, defaultSwiperOptions, {
+                slidesPerView: 3,
+                slidesPerGroup: 3,
+                spaceBetween: 30,
+                navigation: {
+                    nextEl: '.section-video-slide .swiper-button-next',
+                    prevEl: '.section-video-slide .swiper-button-prev',
+                },
+                pagination: {
+                    el: '.section-video-slide .swiper-pagination',
+                    type: 'bullets',
+                    clickable: true,
+                },
+                breakpoints: {
+                    1500: {
+                        slidesPerView: 3,
+                    },
+                    1280: {
+                        slidesPerView: 5,
+                    },
+                    1080: {
+                        slidesPerView: 4,
+                    },
+                    830: {
+                        slidesPerView: 3,
+                    },
+                    577: {
+                        slidesPerView: 2,
+                    },
+                    0: {
+                        slidesPerView: 1,
+                        slidesPerGroup: 1,
+                    }
+                }
+            })
+        );
+        desktopSwipers.push(videosSwiper);
 
         if (window.innerWidth <= 1400) {
             swiperFix(desktopSwipers);
@@ -1745,7 +1825,9 @@ $(function () {
 
     const onResizeMasonry = () => {
         if (window.innerWidth <= mobileBreakpoint) {
-            $grid.destroy()
+            if ($grid && $grid.hasOwnProperty('destroy')) {
+                $grid.destroy();
+            }
         }else {
             $grid = $('.audit-container').masonry({
                 itemSelector: '.grid-item',

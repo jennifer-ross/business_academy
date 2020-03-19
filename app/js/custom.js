@@ -676,6 +676,23 @@ $(function () {
         );
         desktopSwipers.push(videosSwiper);
 
+        let descountSwiper = new Swiper('.section-discounts .discounts-container', Object.assign({}, defaultSwiperOptions, {
+                slidesPerView: 1,
+                slidesPerGroup: 1,
+                spaceBetween: 30,
+                navigation: {
+                    nextEl: '.section-discounts .swiper-button-next',
+                    prevEl: '.section-discounts .swiper-button-prev',
+                },
+                pagination: {
+                    el: '.section-discounts .swiper-pagination',
+                    type: 'bullets',
+                    clickable: true,
+                },
+            })
+        );
+        desktopSwipers.push(descountSwiper);
+
         if (window.innerWidth <= 1400) {
             swiperFix(desktopSwipers);
         }

@@ -2975,6 +2975,82 @@ input[type="checkbox"]
             &:after
               content: none
 
+.visit-seminars-2
+  background: url("../img/visit-seminars-bg2.png") no-repeat
+  background-size: cover
+  .content-list
+    position: relative
+  .swiper-container-visit-seminars
+    overflow: hidden
+  .seminar
+    .content
+      display: flex
+      justify-content: center
+      align-items: center
+  .swiper-button-next, .swiper-button-prev
+    display: block
+    line-height: 84px
+    text-transform: uppercase
+    color: #8F1154
+    width: auto
+    height: auto
+    &:after
+      font-size: 72px
+      font-family: "Material Design Icons"
+      content: '\F141'
+  .swiper-button-prev
+    left: -9%
+  .swiper-button-next
+    right: -12%
+    &:after
+      content: '\F142'
+  .container
+    .title-container
+      width: 25%
+      margin-right: 130px
+      .action
+        display: flex
+        justify-content: flex-end
+        .btn
+          border-radius: 2px
+          background-color: #8f1154
+          font-size: 18px
+          line-height: 1.67
+          display: flex
+          text-transform: uppercase
+          text-align: center
+          justify-content: center
+          color: #fff
+          padding: 0 45px
+          font-weight: normal
+      .title
+        font-size: 36px
+        line-height: 49px
+        margin: 0
+        width: 100%
+        margin-bottom: 5px
+        &:after
+          content: none
+      .text, .text a, .text b,.text i,.text strong, .text li
+        text-align: right
+        font-weight: normal
+        font-size: 18px
+        line-height: 30px
+        color: #202B38
+      .text
+        margin-bottom: 15px
+        position: relative
+        &:after
+          content: ""
+          right: -15px
+          width: 2px
+          height: 100%
+          top: 0
+          position: absolute
+          background: $r
+        span
+          color: $b
+
 .section-banner
   padding-left: 0
   padding-right: 0
@@ -4120,6 +4196,12 @@ input[type="checkbox"]
           max-width: calc(20% - 30px)
           margin-left: 40px
           margin-right: 40px
+
+.ltr
+  flex-direction: row !important
+
+.discounts-container
+  margin-top: 15px
 
 .mobile-image
   display: none

@@ -717,6 +717,50 @@ $(function () {
         );
         desktopSwipers.push(descountSwiper);
 
+        let visitSeminarSwiper2 = new Swiper('.visit-seminars-2 .swiper-container-visit-seminars',
+            Object.assign({}, defaultSwiperOptions, {
+                slidesPerView: 3,
+                slidesPerGroup: 1,
+                spaceBetween: 30,
+                navigation: {
+                    nextEl: '.visit-seminars-2 .swiper-button-next',
+                    prevEl: '.visit-seminars-2 .swiper-button-prev',
+                },
+                breakpoints: {
+                    1500: {
+                        slidesPerView: 3,
+                        slidesPerGroup: 1,
+                        spaceBetween: 30,
+                    },
+                    1280: {
+                        slidesPerView: 2,
+                        slidesPerGroup: 2,
+                        spaceBetween: 30,
+                    },
+                    1080: {
+                        slidesPerView: 2,
+                        slidesPerGroup: 2,
+                        spaceBetween: 30,
+                    },
+                    830: {
+                        slidesPerView: 1,
+                        slidesPerGroup: 1,
+                        spaceBetween: 30,
+                    },
+                    640: {
+                        slidesPerView: 1,
+                        slidesPerGroup: 1,
+                        spaceBetween: 40,
+                    },
+                    0: {
+                        slidesPerView: 1,
+                        slidesPerGroup: 1,
+                    }
+                }
+            })
+        );
+        desktopSwipers.push(visitSeminarSwiper2);
+
         if (window.innerWidth <= 1400) {
             swiperFix(desktopSwipers);
         }

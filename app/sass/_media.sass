@@ -1781,6 +1781,9 @@
       .content-list
         .seminar
           font-size: 19px
+          .content
+            .heading
+              font-size: 19px
           &:nth-child(1), &:nth-child(2), &:nth-child(3)
             .content
               .heading
@@ -2395,6 +2398,25 @@
     margin-right: 0
     margin-bottom: 10px
     display: none
+    .content
+      padding: 7px 10px
+      padding-bottom: 7px
+      .action
+        .btn
+          font-size: 16px
+          span
+            font-size: 24px
+      .seminar-date
+        .date
+          font-size: 36px
+        .position
+          font-size: 16px
+          margin-left: 20px
+      .heading
+        font-size: 16px
+        padding-bottom: 10px
+        padding-top: 10px
+        padding-right: 5rem
     &:first-child, &:nth-child(3), &:last-child, &:nth-child(2)
       max-width: 100%
     &:first-child
@@ -3431,6 +3453,23 @@
         .seminar
           font-size: 16px
           line-height: 22px
+          .content
+            .seminar-date
+              .date
+                font-weight: normal
+                font-size: 18px
+                line-height: 25px
+              .position
+                flex-direction: row
+                font-weight: normal
+                font-size: 18px
+                line-height: 25px
+                margin-left: 0
+                span
+                  margin: 0 2.5px
+            .heading
+              font-size: 16px
+              line-height: 22px
           &:nth-child(1), &:nth-child(2), &:nth-child(3)
             .content
               .seminar-date
@@ -4297,9 +4336,9 @@
       &:after
         //font-size: 48px
     .swiper-button-prev
-      left: -10.5%
+      left: -12%
     .swiper-button-next
-      right: -10.5%
+      right: -12%
     .section-content
       .container
         .content-list

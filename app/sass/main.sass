@@ -1777,6 +1777,10 @@ footer
 .count-image
   .item
     max-width: 368px
+    .desc
+      font-size: 16px
+      line-height: 22px
+      padding: 0 .25rem
     .bg
       img
         position: relative
@@ -1819,6 +1823,18 @@ footer
       .fas,.fab
         font-size: 50px
         margin-top: -20px
+
+.count-image2
+  .item
+    .count
+      &:after
+        content: ""
+        position: absolute
+        bottom: 7px
+        left: 3rem
+        height: 1px
+        background: $r
+        width: calc(100% - 6rem)
 
 .audit-count-section
   padding-top: 60px
@@ -2995,8 +3011,15 @@ input[type="checkbox"]
     display: none
   .container
     .content-list
+      width: 69%
       .seminar
         display: flex
+        flex: none
+        max-width: unset
+        height: 100%
+        &:nth-child(1), &:nth-child(2), &:nth-child(3)
+          flex: none
+          max-width: unset
         .content
           .seminar-date
             display: none

@@ -3731,6 +3731,66 @@ input[type="checkbox"]
 .mobile-degree
   display: none
 
+.section-title-text
+  margin-bottom: 60px
+  .section-content
+    .container
+      display: flex
+      justify-content: center
+      .title-container
+        width: 35%
+      .title
+        text-align: right
+        text-transform: uppercase
+        color: #11558F
+        font-weight: normal
+        font-size: 36px
+        line-height: 49px
+        padding-right: 15px
+        position: relative
+        &:before
+          content: ""
+          right: 0
+          top: 0
+          position: absolute
+          height: 100%
+          width: 2px
+          background: $r
+        span
+          font-weight: 600
+          font-size: 48px
+          line-height: 65px
+      .text
+        width: 65%
+        font-weight: normal
+        font-size: 18px
+        line-height: 32px
+        padding-left: 15px
+        position: relative
+        span
+          font-weight: bold
+          font-size: 20px
+
+.section-requisites
+  margin-bottom: 150px
+  .section-content
+    margin-top: 15px
+    .container
+      display: flex
+      justify-content: space-between
+    .requisite-block
+      font-size: 18px
+      line-height: 30px
+      font-weight: normal
+      p
+        margin-bottom: 0
+      span
+        font-weight: 600
+        color: $b
+      &:not(:last-child)
+        width: 50%
+      width: calc(50% - 30px)
+
 .mobile-image
   display: none
 

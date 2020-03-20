@@ -314,6 +314,12 @@
       width: 45%
       .desc
 
+  .section-title-text
+    .section-content
+      .container
+        .title-container
+          width: 40%
+
 // 1500px
 @media (max-width: 1499.98px)
   .header
@@ -779,6 +785,23 @@
     .right
       width: 50%
       .desc
+
+  .section-requisites
+    margin-bottom: 60px
+    .section-content
+      .requisite-block
+        font-size: 16px
+        line-height: 28px
+
+  .section-title-text
+    .section-content
+      .container
+        .title
+          font-size: 28px
+          line-height: 40px
+          span
+            font-size: 36px
+            line-height: 56px
 
 @media (max-width: 1400px)
   .book-detail-popup
@@ -1362,6 +1385,27 @@
     font-size: 28px
     line-height: 36px
 
+  .section-requisites
+    margin-bottom: 60px
+    .section-content
+      .requisite-block
+        font-size: 16px
+        line-height: 28px
+
+  .section-title-text
+    .section-content
+      .container
+        .text
+          font-size: 16px
+          line-height: 28px
+        .title
+          font-size: 22px
+          line-height: 36px
+          span
+            font-size: 28px
+            line-height: 36px
+
+
 @media (max-width: 1200px)
 
   .row-bg.el-image
@@ -1879,6 +1923,40 @@
     display: block
     margin-bottom: 20px
 
+  .section-requisites
+    .section-content
+      .container
+        flex-direction: column
+      .requisite-block
+        width: 100%
+        &:not(:last-child)
+          width: 100%
+          margin-bottom: 15px
+
+  .section-title-text
+    .section-content
+      .container
+        flex-direction: column
+        .title-container
+          width: 100%
+          display: flex
+          justify-content: flex-end
+          .title
+            padding-right: 0
+            &:before
+              content: none
+        .text
+          width: 100%
+          &:before
+            content: ""
+            position: absolute
+            left: 0
+            top: 0
+            height: 100%
+            width: 2px
+            background: $r
+
+
 // ≥1200px
 +media-breakpoint-down(lg)
   //
@@ -2243,6 +2321,11 @@
     .right
       .degree-block
       .desc
+
+  .section-requisites
+    .section-content
+      .requisite-block
+        font-size: 15px
 
 // ≥768px
 +media-breakpoint-down(sm)
@@ -3534,6 +3617,30 @@
             &:before
               padding-right: 5px
               font-size: 20px
+
+  .section-title-text
+    margin-bottom: 15px
+    .section-content
+      .container
+        .title-container
+        .text
+          font-size: 14px
+          line-height: 19px
+          padding-left: 10px
+        .title
+          font-size: 18px
+          line-height: 25px
+          span
+            font-size: 18px
+            line-height: 25px
+
+  .section-requisites
+    margin-bottom: 15px
+    .section-content
+      margin-top: 0
+      .requisite-block
+        font-size: 14px
+        line-height: 19px
 
 // ≥576px
 +media-breakpoint-down(xs)

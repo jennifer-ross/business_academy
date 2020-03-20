@@ -274,6 +274,10 @@ $(function () {
                     slidesPerView: 3,
                     slidesPerGroup: 3,
                     spaceBetween: 80,
+                    navigation: {
+                        nextEl: '.section-services .swiper-button-next',
+                        prevEl: '.section-services .swiper-button-prev',
+                    },
                     breakpoints: {
                         1280: {
                             slidesPerView: 3,
@@ -309,6 +313,10 @@ $(function () {
                     slidesPerView: 4,
                     slidesPerGroup: 4,
                     spaceBetween: 50,
+                    navigation: {
+                        nextEl: '.section-count .swiper-button-next',
+                        prevEl: '.section-count .swiper-button-prev',
+                    },
                     breakpoints: {
                         1280: {
                             slidesPerView: 4,
@@ -354,6 +362,10 @@ $(function () {
                     slidesPerView: 3,
                     slidesPerGroup: 3,
                     spaceBetween: 30,
+                    navigation: {
+                        nextEl: '.section-visit-seminars .swiper-button-next',
+                        prevEl: '.section-visit-seminars .swiper-button-prev',
+                    },
                     breakpoints: {
                         1500: {
                             slidesPerView: 3,
@@ -405,6 +417,10 @@ $(function () {
                     slidesPerView: 3,
                     slidesPerGroup: 3,
                     spaceBetween: 55,
+                    navigation: {
+                        nextEl: '.section-news .swiper-button-next',
+                        prevEl: '.section-news .swiper-button-prev',
+                    },
                     breakpoints: {
                         1280: {
                             slidesPerView: 3,
@@ -441,6 +457,10 @@ $(function () {
                     slidesPerView: 5,
                     slidesPerGroup: 5,
                     spaceBetween: 30,
+                    navigation: {
+                        nextEl: '.books-block .swiper-button-next',
+                        prevEl: '.books-block .swiper-button-prev',
+                    },
                     breakpoints: {
                         1280: {
                             slidesPerView: 5,
@@ -490,8 +510,8 @@ $(function () {
             slidesPerView: 5,
             spaceBetween: 30,
             navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                nextEl: '.section-reviews .swiper-button-next',
+                prevEl: '.section-reviews .swiper-button-prev',
             },
             breakpoints: {
                 1500: {
@@ -569,8 +589,8 @@ $(function () {
             slidesPerGroup: 4,
             spaceBetween: 30,
             navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                nextEl: '.section-sertificats .swiper-button-next',
+                prevEl: '.section-sertificats .swiper-button-prev',
             },
             breakpoints: {
                 1500: {
@@ -605,6 +625,10 @@ $(function () {
             slidesPerView: 6,
             slidesPerGroup: 1,
             spaceBetween: 25,
+            navigation: {
+                nextEl: '.section-auditors-partners .swiper-button-next',
+                prevEl: '.section-auditors-partners .swiper-button-prev',
+            },
             on: {
                 init: function () {
                     let items = $(this.$el).find('.item');

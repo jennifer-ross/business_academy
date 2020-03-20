@@ -309,6 +309,11 @@
             .action
               display: none
 
+  .ltr, .section .right-to-left.ltr
+    .right
+      width: 45%
+      .desc
+
 // 1500px
 @media (max-width: 1499.98px)
   .header
@@ -765,6 +770,15 @@
           li
             &:before
               font-size: 28px
+
+  .ltr, .section .right-to-left.ltr
+    .left
+      img
+        max-width: 100%
+        object-fit: contain
+    .right
+      width: 50%
+      .desc
 
 @media (max-width: 1400px)
   .book-detail-popup
@@ -1333,6 +1347,21 @@
             &:before
               font-size: 28px
 
+  .ltr, .section .right-to-left.ltr
+    .left
+      img
+        max-width: 100%
+        object-fit: contain
+    .right
+      width: 50%
+      .desc
+        font-size: 16px
+        line-height: 28px
+
+  .degree-block .uppercase-name, .section .rtl-2 .right .desc .degree-block .uppercase-name
+    font-size: 28px
+    line-height: 36px
+
 @media (max-width: 1200px)
 
   .row-bg.el-image
@@ -1824,6 +1853,32 @@
           li
             &:before
 
+  .ltr, .section .right-to-left.ltr
+    flex-direction: column !important
+    .left
+      display: flex
+      flex-direction: column
+      width: 100%
+      align-items: flex-end
+      img
+        max-width: 50%
+        object-fit: contain
+    .right
+      width: 100%
+      .degree-block
+        display: none
+      .desc
+        font-size: 16px
+        line-height: 28px
+
+  .degree-block .uppercase-name, .section .rtl-2 .right .desc .degree-block .uppercase-name
+    font-size: 28px
+    line-height: 36px
+
+  .mobile-degree
+    display: block
+    margin-bottom: 20px
+
 // ≥1200px
 +media-breakpoint-down(lg)
   //
@@ -2179,6 +2234,15 @@
         ul
           li
             &:before
+
+  .ltr, .section .right-to-left.ltr
+    .left
+      width: 100%
+      img
+        max-width: 60%
+    .right
+      .degree-block
+      .desc
 
 // ≥768px
 +media-breakpoint-down(sm)
@@ -4071,6 +4135,30 @@
             display: none
           button
             width: 100%
+
+  .ltr, .section .right-to-left.ltr
+    .left
+      width: 100%
+      img
+        max-width: 60%
+    .right
+      .degree-block
+      .desc
+        font-size: 14px
+        line-height: 19px
+
+  .mobile-degree
+    font-size: 18px
+    line-height: 25px
+
+  .degree-block , .section .rtl-2 .right .desc
+    font-size: 14px
+    line-height: 19px
+
+  .degree-block .uppercase-name, .section .rtl-2 .right .desc .degree-block .uppercase-name
+    font-size: 18px
+    line-height: 25px
+    margin-right: 10px
 
 @media (max-width: 480px)
   .container-auditors-partners .swiper-container-audit-partners

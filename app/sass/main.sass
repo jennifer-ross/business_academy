@@ -2996,6 +2996,7 @@ input[type="checkbox"]
   .container
     .content-list
       .seminar
+        display: flex
         .content
           .seminar-date
             display: none
@@ -3625,8 +3626,14 @@ input[type="checkbox"]
           margin-left: 40px
           margin-right: 40px
 
-.ltr
+.ltr, .section .right-to-left.ltr
   flex-direction: row !important
+  justify-content: space-between
+  .right
+    width: 40%
+    .desc
+      font-size: 18px
+      line-height: 36px
 
 .discounts-container
   margin-top: 15px
@@ -3712,6 +3719,17 @@ input[type="checkbox"]
       .btn
         color: $r
         border: 2px solid #8F1154
+
+.degree-block .uppercase-name, .section .rtl-2 .right .desc .degree-block .uppercase-name
+  font-style: normal
+  font-weight: 400
+  font-size: 36px
+  line-height: 49px
+  margin-right: 25px
+  color: #11558f
+
+.mobile-degree
+  display: none
 
 .mobile-image
   display: none

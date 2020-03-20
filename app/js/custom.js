@@ -638,7 +638,7 @@ $(function () {
 
         videosSwiper = new Swiper('.section-video-slide .videos-container', Object.assign({}, defaultSwiperOptions, {
                 slidesPerView: 3,
-                slidesPerGroup: 3,
+                slidesPerGroup: 1,
                 spaceBetween: 30,
                 navigation: {
                     nextEl: '.section-video-slide .swiper-button-next',
@@ -798,6 +798,7 @@ $(function () {
        e.preventDefault();
        $($(this).parents()[2]).find('.items-container').addClass('unhide');
        $($(this).parents()[2]).find('.seminars-container').addClass('unhide');
+       $($(this).parents()[2]).find('.clients-brick-container').addClass('unhide');
        $(this).hide();
     });
 

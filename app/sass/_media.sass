@@ -293,6 +293,22 @@
       .content
         width: 60%
 
+  .visit-seminars-2
+    .container
+      .content-list
+        .seminar
+          &:first-child
+            .content
+              .heading
+                font-size: 18px
+          .heading
+            font-size: 18px
+          .content
+            .seminar-date
+              display: none
+            .action
+              display: none
+
 // 1500px
 @media (max-width: 1499.98px)
   .header
@@ -705,6 +721,50 @@
       .container
         .form-title
           font-size: 21px
+
+  .clients-brick-container
+    .item
+      flex: 1 1 calc(33% - 60px)
+      max-width: calc(36% - 60px)
+
+  .visit-seminars-2
+    .swiper-button-prev
+      left: -11%
+    .swiper-button-next
+      right: -9.5%
+    .container
+      .title-container
+        width: 27%
+        min-width: 27%
+        .text
+          font-size: 16px
+      .content-list
+        width: 65%
+        .seminar
+          height: 276px
+    .swiper-container-visit-seminars
+
+  .section-discounts
+    padding-bottom: 60px
+  .discounts-container
+    .item
+      .title
+        width: 35%
+        font-size: 38px
+        line-height: 57px
+        width: 35%
+      .content
+        width: 55%
+      .action
+        .btn
+          font-size: 20px
+      .desc
+        font-size: 28px
+        line-height: 42px
+        ul
+          li
+            &:before
+              font-size: 28px
 
 @media (max-width: 1400px)
   .book-detail-popup
@@ -1219,6 +1279,60 @@
           line-height: 24px
           margin-bottom: 20px
 
+  .clients-brick-container
+    .item
+      flex: 1 1 calc(50% - 60px)
+      max-width: calc(56% - 60px)
+
+  .visit-seminars-2
+    .title-mobile
+      display: flex
+      margin-bottom: 10px
+      font-weight: normal
+      font-size: 28px
+      line-height: 36px
+      text-align: right
+      text-transform: uppercase
+      color: #11558F
+    .container
+      flex-direction: column
+      .title-container
+        margin-top: 15px
+        order: 2
+        margin-right: 0
+        width: 60%
+        .text
+          text-align: left
+        .action
+          justify-content: center
+        .title
+          display: none
+      .content-list
+        order: 1
+        width: 90%
+        flex-direction: column
+
+  .section-discounts
+    padding-bottom: 60px
+  .discounts-container
+    .item
+      .title
+        font-size: 30px
+        line-height: 47px
+        width: 30%
+      .content
+        width: 60%
+      .action
+        .btn
+          font-size: 20px
+      .desc
+        font-size: 24px
+        line-height: 36px
+        ul
+          li
+            &:before
+              font-size: 28px
+
 @media (max-width: 1200px)
 
   .row-bg.el-image
@@ -1660,6 +1774,56 @@
             top: 0
             background: $b
 
+  .auditors-partners-detail
+    img
+      width: 326px
+      min-width: 326px
+
+  .visit-seminars-2
+    .swiper-button-prev
+      left: -30%
+    .swiper-button-next
+      right: -30%
+    .container
+      .content-list
+        width: 80%
+      .title-container
+        width: 80%
+
+  .section-discounts
+    padding-bottom: 60px
+  .discounts-container
+    .item
+      flex-direction: column
+      .title
+        width: 100%
+        text-align: right
+        padding-left: 41px
+        padding-right: 58px
+        padding-top: 20px
+        padding-bottom: 20px
+      .content
+        padding-top: 0
+        padding-bottom: 20px
+        width: 100%
+        padding-left: 41px
+        padding-right: 58px
+        flex-direction: column
+        align-items: flex-start
+      .action
+        margin-top: 20px
+        justify-content: center
+        margin-left: 0
+        width: 100%
+        display: flex
+        .btn
+      .desc
+        padding-top: 0
+        padding-bottom: 0
+        ul
+          li
+            &:before
+
 // ≥1200px
 +media-breakpoint-down(lg)
   //
@@ -1982,6 +2146,39 @@
     .item
       iframe
         height: 245px
+
+  .clients-brick-container
+    .item
+      flex: 1 1 calc(100% - 60px)
+      max-width: 100%
+
+
+  .visit-seminars-2
+    .swiper-button-prev
+      left: -15%
+    .swiper-button-next
+      right: -15%
+    .container
+      .content-list
+        width: 90%
+      .title-container
+        width: 90%
+
+  .section-discounts
+    padding-bottom: 60px
+  .discounts-container
+    .item
+      .title
+        font-size: 28px
+        line-height: 42px
+      .content
+      .action
+        .btn
+          width: 100%
+      .desc
+        ul
+          li
+            &:before
 
 // ≥768px
 +media-breakpoint-down(sm)
@@ -3186,6 +3383,94 @@
           display: block
         span
 
+  .visit-seminars-2
+    .title-mobile
+      margin-left: calc(-10% + 1rem)
+      font-size: 18px
+      line-height: 25px
+    .swiper-pagination
+      display: none
+    .swiper-button-prev, .swiper-button-next
+      &:after
+        font-size: 48px
+    .swiper-container-visit-seminars
+      padding: 0
+    .swiper-button-prev
+      left: -9%
+    .swiper-button-next
+      right: -9%
+    .section-content
+      .container
+        .content-list
+          width: 90%
+          .seminar
+            height: auto
+            .content
+              justify-content: space-between
+              align-items: flex-start
+            .seminar-date
+              display: flex
+            .action
+              align-self: flex-end
+              display: flex
+        .title-container
+          width: 90%
+          .action
+            justify-content: flex-end
+            .btn
+              font-size: 18px
+              line-height: 30px
+              width: 100%
+          .text
+            text-align: right
+            font-size: 14px
+            line-height: 19px
+            &:after
+              content: none
+
+  .section-discounts
+    padding-bottom: 30px
+    .section-content
+      .container
+        padding-left: 0
+        padding-right: 0
+    .swiper-pagination
+      bottom: -16px !important
+    .swiper-button-next, .swiper-button-prev
+      display: block
+      color: #fff
+      opacity: .4
+      font-size: 36px
+      margin: 0
+      top: 50%
+      width: auto
+      height: auto
+      transform: translateY(-50%)
+    .swiper-button-next
+      right: -1%
+    .swiper-button-prev
+      left: -1%
+  .discounts-container
+    position: relative
+    padding: 0
+    .item
+      .title
+        font-size: 24px
+        line-height: 34px
+      .content
+      .action
+        .btn
+          width: 100%
+          font-size: 18px
+      .desc
+        font-size: 18px
+        line-height: 24px
+        ul
+          li
+            &:before
+              padding-right: 5px
+              font-size: 20px
+
 // ≥576px
 +media-breakpoint-down(xs)
   .mobile-watch
@@ -3810,6 +4095,52 @@
           //width: 95%
           //max-width: 95%
           //min-width: 95%
+
+  .visit-seminars-2
+    .swiper-container-visit-seminars
+    .swiper-button-prev, .swiper-button-next
+      &:after
+        //font-size: 48px
+    .swiper-button-prev
+      left: -10.5%
+    .swiper-button-next
+      right: -10.5%
+    .section-content
+      .container
+        .content-list
+          width: 90%
+        .title-container
+          width: 90%
+          .action
+          .text
+            &:after
+
+@media (max-width: 545px)
+  .discounts-container
+    .item
+      .title
+        font-size: 18px
+        line-height: 25px
+        padding-left: 30px
+        padding-right: 30px
+        padding-top: 15px
+        padding-bottom: 15px
+      .content
+        padding-left: 30px
+        padding-right: 30px
+      .action
+        margin-top: 15px
+        .btn
+          width: 100%
+          font-size: 18px
+      .desc
+        font-size: 16px
+        line-height: 19px
+        ul
+          li
+            &:before
+              padding-right: 5px
+              font-size: 16px
 
 @media (max-width: 450px)
   .book-detail-popup

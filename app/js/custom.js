@@ -780,6 +780,10 @@ $(function () {
         });
     });
 
+    const phoneFieldsUpdate = () => {
+        $('[type="tel"]').inputmask({ mask: "+7(999)999-99-99"});
+    };
+
     const inputsUpdate = () => {
         $.each($('.label-placeholder'), function (k, v) {
             let el = $(this);
@@ -792,6 +796,10 @@ $(function () {
                         pl.hide();
                     }else {
                         pl.show();
+                    }
+
+                    if (this.type === 'tel') {
+                        pl.hide();
                     }
                 });
             };
@@ -806,6 +814,22 @@ $(function () {
                 });
             };
 
+            const hover = () => {
+                inp.on('mouseover', function () {
+                    if (this.type === 'tel') {
+                        pl.hide();
+                    }
+                });
+            };
+
+            const unhover = () => {
+                inp.on('mouseleave', function () {
+                    if (this.type === 'tel' && this.value === '' && !$(this).is(':focus')) {
+                        pl.show();
+                    }
+                });
+            };
+
             inp.unbind('input',focus);
             inp.unbind('focus',focus);
             inp.unbind('focusIn',focus);
@@ -813,8 +837,13 @@ $(function () {
             inp.unbind('blur',blur);
             inp.unbind('focusOut',blur);
 
+            inp.unbind('mouseover',hover);
+            inp.unbind('mouseleave',hover);
+
             focus();
             blur();
+            hover();
+            unhover();
         });
     };
 
@@ -1832,6 +1861,7 @@ $(function () {
             });
 
             inputsUpdate();
+            phoneFieldsUpdate();
         },
         onResize: () => {
             let e = window.popup;

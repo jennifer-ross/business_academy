@@ -1053,7 +1053,7 @@ ul
         object-fit: cover
         width: 100%
 
-.section-videos, .section-books-brick, .section-publ-brick, .section-read-more, .section-articles-brick
+.section-videos, .section-books-brick, .section-publ-brick, .section-read-more, .section-articles-brick, .section-reviews-filter
   .section-action
     margin-top: 20px
 
@@ -1599,7 +1599,7 @@ footer
       margin-left: 0
       margin-right: 15px
 
-.hit-container .right-block .left-block, .discount-hit
+.hit-container .left-block .action-ctn, .discount-hit
   .content, .content .desc
     display: flex
     justify-content: flex-end
@@ -3642,8 +3642,8 @@ input[type="checkbox"]
     .container
       position: relative
       padding-bottom: 15px
-      padding-left: 30px
-      padding-right: 30px
+      padding-left: 0px
+      padding-right: 0px
       &:after
         content: ""
         width: 100%
@@ -3669,8 +3669,8 @@ input[type="checkbox"]
           display: flex
           justify-content: center
           max-width: calc(20% - 30px)
-          margin-left: 40px
-          margin-right: 40px
+          margin-left: 30px
+          margin-right: 30px
 
 .ltr, .section .right-to-left.ltr
   flex-direction: row !important
@@ -4038,6 +4038,76 @@ input[type="checkbox"]
         line-height: 49px
         color: #11558F
         margin-bottom: 5px
+
+
+.anchor-menu-filter
+  .section-content
+    .container
+      &:last-child
+        &:after
+          content: none
+      &:not(:first-child)
+        padding-top: 15px
+
+.filter-tab
+  display: flex
+  align-items: center
+  .desc
+    font-size: 21px
+    line-height: 29px
+    text-align: right
+    text-transform: uppercase
+    color: #11558F
+    margin-right: 30px
+    width: 15%
+  .filter-tab-container
+    display: flex
+    flex-wrap: wrap
+    width: 85%
+    span
+      border: 1px solid #DDE8F1
+      font-size: 24px
+      line-height: 33px
+      text-align: center
+      color: #11558F
+      padding-left: 45px
+      padding-right: 45px
+      padding-top: 3px
+      padding-bottom: 5px
+      cursor: pointer
+      &:not(:last-child)
+        margin-right: 30px
+    span.active
+      color: $r
+
+.filter-container-subfilter
+  .subfilter
+    margin-top: 15px
+    margin-bottom: 15px
+    display: flex
+    flex-wrap: wrap
+    span
+      display: flex
+      justify-content: center
+      align-items: center
+      flex: 1 1 auto
+      max-width: calc(25% - 15px)
+      font-size: 18px
+      line-height: 25px
+      text-align: center
+      text-transform: uppercase
+      color: #11558F
+      padding-top: 6px
+      padding-bottom: 5px
+      padding-left: 50px
+      padding-right: 50px
+      border: 1px solid #DDE8F1
+      cursor: pointer
+      &:not(:last-child)
+        margin-right: 30px
+    span.active
+      border: 1px solid #11558F
+      color: $r
 
 .mobile-image
   display: none

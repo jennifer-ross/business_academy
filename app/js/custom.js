@@ -979,9 +979,13 @@ $(function () {
                     hasPaginator: window.helper.parseBool(v.attr('data-paginator')),
                     search: $(v.attr('data-search')),
                     key: 0,
+                    skey: 0,
                     paginator: {
                         dom: null,
                     },
+                    subfilter: v.find('.subfilter'),
+                    subfilterKeys: v.find('[data-sfilter-key]'),
+                    hasSubfilter: window.helper.parseBool(v.attr('data-subfilter')),
                     filteredItems: [],
                     count: 0,
                     dataCount: v.attr('data-count'),
@@ -998,6 +1002,8 @@ $(function () {
                 self.search.attr('data-filter-items', v.attr('data-filter-items'));
                 self['searchInp'] = self.search.find('input');
                 self['searchBtn'] = self.search.find('.btn-search');
+
+                console.log(self);
 
                 self.searchBtn.on('click', function (evt) {
                     e.search(k, evt, this);
@@ -1020,7 +1026,7 @@ $(function () {
                 self.select.unbind('select');
                 self.filterKeys.unbind('click');
 
-                const filterChangeFn = (type, _this=null) => {
+                const filterChangeFn = (type, _this=null, subfilter=false) => {
                     let el = null;
 
                     if (type === 'select') {
@@ -1029,25 +1035,60 @@ $(function () {
                         el = $(_this);
                     }
 
-                    let key = el.attr('data-filter-key');
+                    let key = parseInt(el.attr('data-filter-key'));
+                    let skey = parseInt(el.attr('data-sfilter-key'));
 
-                    self.key = key;
+                    self.key = key || self.key || 0;
+                    self.skey = skey || self.skey || 0;
 
                     if (self.hasPaginator) {
 
                         if (type === 'click') {
-                            self.filterKeys.removeClass('active');
-                            if (el.hasClass('active')) {
-                                key = 0;
+                            if (self.hasSubfilter && subfilter) {
+                                if (el.hasClass('active')) {
+                                    self.subfilterKeys.removeClass('active');
+                                    self.key = 0;
+                                    self.skey = 0;
+
+                                    self.filterKeys.removeClass('active');
+                                    self.filter.find('[data-filter-key="' + self.key +'"]').addClass('active');
+                                } else {
+                                    self.subfilterKeys.removeClass('active');
+                                    self.subfilter.find('[data-sfilter-key="' + self.skey + '"]').addClass('active');
+
+                                    self.filterKeys.removeClass('active');
+                                    self.filter.find('[data-filter-key="' + self.key +'"]').addClass('active');
+                                }
                             }else {
-                                el.addClass('active');
+                                if (el.hasClass('active')) {
+                                    self.filterKeys.removeClass('active');
+                                    self.key = 0;
+
+                                    self.filterKeys.removeClass('active');
+                                    self.filter.find('[data-filter-key="' + self.key +'"]').addClass('active');
+                                }else {
+                                    self.filterKeys.removeClass('active');
+                                    self.filter.find('[data-filter-key="' + self.key +'"]').addClass('active');
+                                }
                             }
                         }
 
-                        if (key == 0 || key == '0') {
-                            self.filteredItems = self.items;
+                        if (self.hasSubfilter) {
+                            if (self.key === 0 && self.skey === 0) {
+                                self.filteredItems = self.items;
+                            }else if (self.skey === 0) {
+                                self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"]'));
+                            }else if(self.key === 0) {
+                                self.filteredItems = e.toObject(self.filterContainer.find('[data-skey="' + self.skey + '"]'));
+                            }else {
+                                self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"][data-skey="' + self.skey + '"]'));
+                            }
                         }else {
-                            self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + key +'"]'));
+                            if (self.key === 0) {
+                                self.filteredItems = self.items;
+                            }else {
+                                self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"]'));
+                            }
                         }
 
                         let paginator = self.filterContainer.parent().find('.paginator');
@@ -1076,6 +1117,10 @@ $(function () {
                 }else {
                     self.filterKeys.on('click', function () {
                         filterChangeFn('click', this);
+                    });
+
+                    self.subfilterKeys.on('click', function () {
+                        filterChangeFn('click', this, true);
                     });
 
                     self.unhide.on('click', (evt) => {
@@ -1371,12 +1416,27 @@ $(function () {
         update: () => {
             let e = window.itemsFilter;
 
-            if (Swipers.length <= 0 || window.innerWidth > mobileBreakpoint) return;
-            Array.prototype.forEach.call(Swipers, function (v) {
-                if (v.type === e.swiperType) {
-                    v.update();
-                }
-            });
+            if (Swipers.length <= 0 || window.innerWidth > mobileBreakpoint) {
+                Array.prototype.forEach.call(desktopSwipers, function (v) {
+                    if (v && v['length'] && v.length > 0) {
+                        Array.prototype.forEach.call(v, vv => {
+                            if (vv.hasOwnProperty('update')) vv.update();
+                        });
+                    }else {
+                        if (v && v.hasOwnProperty('update')) v.update();
+                    }
+                });
+            }else {
+                Array.prototype.forEach.call(Swipers, function (v) {
+                    if (v && v['length'] && v.length > 0) {
+                        Array.prototype.forEach.call(v, vv => {
+                            if (vv.hasOwnProperty('update')) vv.update();
+                        });
+                    }else {
+                        if (v && v.hasOwnProperty('update')) v.update();
+                    }
+                });
+            }
         },
         reset: () => {
           let e = window.itemsFilter;

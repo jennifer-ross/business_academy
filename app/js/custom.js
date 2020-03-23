@@ -1038,8 +1038,20 @@ $(function () {
                     let key = parseInt(el.attr('data-filter-key'));
                     let skey = parseInt(el.attr('data-sfilter-key'));
 
-                    self.key = key || self.key || 0;
-                    self.skey = skey || self.skey || 0;
+                    if (key === 0 && !key) {
+                        key = 0;
+                    }else if(!key) {
+                        key = self.key;
+                    }
+
+                    if (skey === 0) {
+                        skey = 0;
+                    }else if (!skey) {
+                        skey = self.skey;
+                    }
+
+                    self.key = key;
+                    self.skey = skey;
 
                     if (self.hasPaginator) {
 
@@ -1049,27 +1061,19 @@ $(function () {
                                     self.subfilterKeys.removeClass('active');
                                     self.key = 0;
                                     self.skey = 0;
-
-                                    self.filterKeys.removeClass('active');
-                                    self.filter.find('[data-filter-key="' + self.key +'"]').addClass('active');
                                 } else {
                                     self.subfilterKeys.removeClass('active');
                                     self.subfilter.find('[data-sfilter-key="' + self.skey + '"]').addClass('active');
-
-                                    self.filterKeys.removeClass('active');
-                                    self.filter.find('[data-filter-key="' + self.key +'"]').addClass('active');
                                 }
+                                self.filterKeys.removeClass('active');
+                                self.filter.find('[data-filter-key="' + self.key +'"]').addClass('active');
                             }else {
                                 if (el.hasClass('active')) {
                                     self.filterKeys.removeClass('active');
                                     self.key = 0;
-
-                                    self.filterKeys.removeClass('active');
-                                    self.filter.find('[data-filter-key="' + self.key +'"]').addClass('active');
-                                }else {
-                                    self.filterKeys.removeClass('active');
-                                    self.filter.find('[data-filter-key="' + self.key +'"]').addClass('active');
                                 }
+                                self.filterKeys.removeClass('active');
+                                self.filter.find('[data-filter-key="' + self.key +'"]').addClass('active');
                             }
                         }
 

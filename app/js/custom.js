@@ -1118,18 +1118,26 @@ $(function () {
 
             let pagContainer = self.filterContainer.parent();
 
-            pagContainer.append("<div class='paginator' style='display: none'></div>");
+            if (pagContainer.find('.paginator').length === 0) {
+                pagContainer.append("<div class='paginator' style='display: none'></div>");
+            }
 
             let paginator = pagContainer.find('.paginator');
             paginator.attr('data-cur-page', 1);
             let currentPage = 1;
 
-            paginator.append("<span class='prev' data-key='" + k + "'><span class='mdi mdi-chevron-left'></span></span>");
-            paginator.append("<div class='pages' data-key='" + k + "'></div>");
+            if (paginator.find('.prev').length === 0) {
+                paginator.append("<span class='prev' data-key='" + k + "'><span class='mdi mdi-chevron-left'></span></span>");
+            }
+            if (paginator.find('.pages').length === 0) {
+                paginator.append("<div class='pages' data-key='" + k + "'></div>");
+            }
 
             let pagesContainer = pagContainer.find('.pages');
 
-            paginator.append("<span class='next' data-key='" + k + "'><span class='mdi mdi-chevron-right'></span></span>");
+            if (paginator.find('.next').length === 0) {
+                paginator.append("<span class='next' data-key='" + k + "'><span class='mdi mdi-chevron-right'></span></span>");
+            }
 
             self.currentPage = 1;
             self['paginator'] = {
@@ -1370,7 +1378,28 @@ $(function () {
                 }
             });
         },
+        reset: () => {
+          let e = window.itemsFilter;
+          Array.prototype.forEach.call(e.filters, v => {
+             v.filterKeys.unbind('click');
+             v.select.unbind('change');
+             v.select.unbind('input');
 
+             if (v.hasPaginator) {
+                 v.paginator.prevBtn.unbind('click');
+                 v.paginator.nextBtn.unbind('click');
+                 v.paginator.pages.unbind('click');
+             }
+          });
+          e.filters = [];
+          e.init();
+          Array.prototype.forEach.call(e.filters, (v, k) => {
+              if (!v.filterContainer.hasClass('unhide')) {
+                  v.filterContainer.addClass('unhide');
+              }
+              e.generatePagination(k);
+          });
+        },
         toObject: (items) => {
             if (items.hasOwnProperty('link')) return items;
             let obj = [];

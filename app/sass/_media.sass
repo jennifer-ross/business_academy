@@ -289,6 +289,29 @@
       right: -8%
 
   .discounts-container
+    .item.discount-hit
+      .action
+        .btn
+      .image
+        width: 30%
+        img
+      .content
+        width: 70%
+        padding-right: 50px
+        .desc
+          padding-right: 0
+          .left-path,.right-path
+            .title
+      .items-container
+        .text
+          &:after
+        .icon-public
+          span
+          p
+            i
+        p
+        .item
+
     .item
       .content
         width: 60%
@@ -767,6 +790,27 @@
   .section-discounts
     padding-bottom: 60px
   .discounts-container
+    .item.discount-hit
+      .action
+        .btn
+          font-size: 18px
+      .image
+        img
+          max-width: 180px
+      .content
+        padding-right: 30px
+        .desc
+          .left-path,.right-path
+            .title
+      .items-container
+        .text
+          &:after
+        .icon-public
+          span
+          p
+            i
+        p
+        .item
     .item
       .title
         width: 35%
@@ -1381,6 +1425,42 @@
   .section-discounts
     padding-bottom: 60px
   .discounts-container
+    .item-discount
+      .text, .text p, .text a,.text b, .text strong, .text i, .text li, .text span
+        font-size: 16px
+        line-height: 24px
+    .item.discount-hit
+      .action
+        .btn
+          font-size: 18px
+      .image
+        display: none
+        img
+          max-width: 180px
+      .content
+        padding-top: 15px
+        width: 100%
+        justify-content: space-around
+        padding-left: 15px
+        padding-right: 15px
+        .desc
+          width: 100%
+          justify-content: center
+          .left-path,.right-path
+            max-width: 100%
+            width: 100%
+            .title
+              padding-right: 0
+              padding-left: 0
+      .items-container
+        .text
+          &:after
+        .icon-public
+          span
+          p
+            i
+        p
+        .item
     .item
       .title
         font-size: 30px
@@ -2418,6 +2498,36 @@
   .section-discounts
     padding-bottom: 60px
   .discounts-container
+    .item.discount-hit
+      .action
+        .btn
+          font-size: 18px
+      .image
+        img
+      .content
+        padding-top: 15px
+        justify-content: center
+        padding-left: 15px
+        padding-right: 15px
+        .desc
+          .right-path
+            align-items: flex-start
+          .left-path
+            align-items: flex-end
+          .left-path,.right-path
+            .title
+              font-size: 20px
+              line-height: 28px
+      .items-container
+        display: flex
+        flex-direction: column
+        justify-content: center
+        .icon-public
+          margin-bottom: 15px
+        p
+          font-size: 16px
+          i
+            font-size: 20px
     .item
       .title
         font-size: 28px
@@ -3767,6 +3877,15 @@
   .discounts-container
     position: relative
     padding: 0
+    .item-discount
+      .text
+        padding-top: 5px
+        padding-bottom: 5px
+      .text, .text p, .text a, .text li, .text b, .text strong, .text i, .text span
+        font-size: 14px
+        line-height: 19px
+      &:not(:last-child)
+        margin-bottom: 10px
     .item
       .title
         font-size: 24px
@@ -4487,6 +4606,63 @@
     font-size: 18px
     line-height: 25px
     margin-right: 10px
+
+@media (max-width: 565px)
+  .discounts-container
+    .item.discount-hit
+      .action
+        .btn
+          font-size: 18px
+      .image
+        img
+      .content
+        padding-top: 15px
+        justify-content: center
+        padding-left: 0
+        padding-right: 0
+        .desc
+          .right-path
+            align-items: flex-start
+            padding-left: 5px
+            .items-container
+              margin-top: 0
+              align-items: flex-start
+              span
+                margin-right: 5px
+          .left-path
+            padding-right: 5px
+            align-items: flex-end
+            .items-container
+              span
+                margin-left: 5px
+          .left-path,.right-path
+            .title
+              font-size: 18px
+              line-height: 25px
+      .items-container
+        display: flex
+        flex-direction: column
+        justify-content: center
+        span
+          font-size: 24px
+          line-height: 24px
+        .icon-public
+          margin-bottom: 0
+          p
+            align-items: flex-end
+            font-size: 12px
+            line-height: 16px
+            &:last-child
+              margin-bottom: 0
+            i
+              font-size: 18px
+              line-height: 25px
+        p
+          font-size: 12px
+          line-height: 16px
+          i
+            font-size: 18px
+            line-height: 25px
 
 @media (max-width: 480px)
   .container-auditors-partners .swiper-container-audit-partners

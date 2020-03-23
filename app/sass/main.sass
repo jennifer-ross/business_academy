@@ -338,6 +338,18 @@ ul
 
 .slide-bg
   position: relative
+  .container,.container-2
+    z-index: 1
+  &:after
+    content: ""
+    position: absolute
+    bottom: -1px
+    left: 0
+    width: 100%
+    height: 100%
+    max-height: 90px
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.0001) 0%, #FFFFFF 100%)
+    z-index: 0
   .bg
     position: absolute
     width: 100%
@@ -1559,68 +1571,69 @@ footer
       font-weight: 600
       span
         font-weight: bold
-  .items-container
-    margin-top: 15px
-    max-width: 265px
-    p
-      font-size: 18px
-      font-weight: 600
-      text-align: right
-      color: #11558f
-      display: flex
-      align-items: center
+.hit-container .items-container, .discount-hit .items-container, .discounts-container .discount-hit .items-container
+  margin-top: 15px
+  max-width: 265px
+  p
+    font-size: 18px
+    font-weight: 600
+    text-align: right
+    color: #11558f
+    display: flex
+    align-items: center
+  span
+    font-size: 36px
+    font-weight: normal
+    text-align: right
+    color: #8f1154
+    margin-left: 15px
+  i
+    font-style: normal
+    font-size: 24px
+    color: #8f1154
+    margin-right: 5px
+  .icon-public
+    display: flex
+    align-items: center
     span
-      font-size: 36px
-      font-weight: normal
+      margin-left: 0
+      margin-right: 15px
+
+.hit-container .right-block .left-block, .discount-hit
+  .content, .content .desc
+    display: flex
+    justify-content: flex-end
+    padding-top: 60px
+    padding-bottom: 0
+    padding-right: 120px
+    .left-path
       text-align: right
-      color: #8f1154
-      margin-left: 15px
-    i
-      font-style: normal
-      font-size: 24px
-      color: #8f1154
-      margin-right: 5px
-    .icon-public
+      padding-right: 15px
+      position: relative
       display: flex
-      align-items: center
-      span
-        margin-left: 0
-        margin-right: 15px
-  .left-block
-    .content
-      display: flex
-      justify-content: flex-end
-      padding-top: 60px
-      padding-bottom: 0
-      padding-right: 120px
-      .left-path
-        text-align: right
-        padding-right: 15px
-        position: relative
-        display: flex
-        flex-direction: column
-        align-items: flex-end
-        &:after
-          content: ""
-          width: 2px
-          background: $r
-          right: 0
-          position: absolute
-          height: 100%
-          top: 0
-        .title
-          max-width: 234px
-          justify-content: flex-end
-      .right-path
-        padding-left: 15px
+      flex-direction: column
+      align-items: flex-end
+      &:after
+        content: ""
+        width: 2px
+        background: $r
+        right: 0
+        position: absolute
+        height: 100%
+        top: 0
       .title
-        font-size: 24px
-        font-weight: bold
-        color: #8f1154
-        text-transform: uppercase
-        min-height: 66px
-        display: flex
-        align-items: flex-end
+        max-width: 234px
+        justify-content: flex-end
+    .right-path
+      padding-left: 15px
+    .title
+      font-size: 24px
+      font-weight: bold
+      color: #8f1154
+      text-transform: uppercase
+      min-height: 66px
+      display: flex
+      align-items: flex-end
 
 .sertificat-slide
   display: flex
@@ -3683,9 +3696,83 @@ input[type="checkbox"]
 
 .discounts-container
   overflow: hidden
+  .item.discount-hit
+    .action
+      .btn
+        background: $r
+        color: #fff
+        border: 1px solid $r
+    .image
+      width: 25%
+      display: flex
+      align-items: center
+      justify-content: center
+      img
+        max-width: 250px
+        object-fit: contain
+    .content
+      width: 60%
+      padding-right: 0
+      padding-top: 0
+      padding-left: 0
+      .desc
+        .left-path,.right-path
+          position: relative
+          .title
+            line-height: 33px
+            padding-top: 0
+            padding-bottom: 0
+
+    .items-container
+      height: calc(100% - 4rem)
+      .text
+        &:after
+          content: none
+      .icon-public
+        display: flex
+        align-items: center
+        span
+          margin-left: 0
+          margin-right: 15px
+        p
+          line-height: 25px
+          font-size: 18px
+          color: $b
+          i
+            font-style: normal
+            font-size: 24px
+            color: #8f1154
+            margin-right: 5px
+      p
+        line-height: 25px
+      .item
+        display: flex
+        flex-direction: row
+  .item-discount
+    .text
+      padding-top: 15px
+      padding-bottom: 15px
+      position: relative
+      &:after
+        content: ""
+        position: absolute
+        left: 0
+        bottom: 0
+        width: 100%
+        height: 2px
+        background: $r
+      ul,ol
+        padding-left: 1.5rem
+    .text, .text p, .text a, .text li, .text b, .text strong, .text i, .text span
+      font-size: 18px
+      line-height: 30px
+      color: #202B38
+    &:not(:last-child)
+      margin-bottom: 30px
   .item
     display: flex
     justify-content: center
+    position: relative
     .content
       display: flex
       align-items: center

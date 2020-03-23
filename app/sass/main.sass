@@ -3835,8 +3835,6 @@ input[type="checkbox"]
     flex-direction: column
     justify-content: flex-start
   .right-path
-    padding-top: 30px
-    padding-bottom: 30px
     width: 56%
     padding-left: 15px
     display: flex
@@ -3844,19 +3842,30 @@ input[type="checkbox"]
     justify-content: flex-start
     .image
       max-width: 762px
-      img
+      height: 100%
+      display: flex
+      align-items: center
+      & > img
+        padding-top: 30px
+        padding-bottom: 30px
         max-width: 100%
         object-fit: contain
     .bg
       position: absolute
       right: -12%
       z-index: -1
-  .title
+      height: 100%
+      img
+        object-fit: cover
+        height: 100%
+  .title,.mobile-title
     font-weight: 600
     font-size: 36px
     line-height: 49px
     color: #11558F
     margin-bottom: 30px
+  .mobile-title
+    display: none
   .text
     padding-left: 30px
     position: relative

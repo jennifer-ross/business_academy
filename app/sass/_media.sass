@@ -812,6 +812,16 @@
             font-size: 36px
             line-height: 56px
 
+  .mresult-container
+    .left-path
+      width: 50%
+    .right-path
+      width: 50%
+      .image
+        img
+      .bg
+        right: -16%
+
 @media (max-width: 1400px)
   .book-detail-popup
     width: 980px
@@ -1414,6 +1424,29 @@
             font-size: 28px
             line-height: 36px
 
+  .mresult-container
+    flex-direction: column-reverse
+    .left-path
+      width: 100%
+      margin-top: 30px
+      padding-right: 0
+      .title
+        display: none
+    .right-path
+      padding-left: 0
+      width: 100%
+      flex-direction: column
+      position: relative
+      .mobile-title
+        display: block
+      .image
+        position: relative
+        img
+      .bg
+        height: 100%
+        right: -15%
+        img
+          width: 120%
 
 @media (max-width: 1200px)
 
@@ -1969,6 +2002,27 @@
             background: $r
 
 
+  .mresult-container
+    flex-direction: column-reverse
+    .text
+      padding-left: 15px
+    .left-path
+      width: 100%
+      margin-top: 15px
+      .title
+        display: none
+    .right-path
+      .mobile-title
+        margin-bottom: 15px
+        font-size: 28px
+        line-height: 36px
+      .image
+        & > img
+          padding-top: 15px
+          padding-bottom: 15px
+      .bg
+        img
+
 // ≥1200px
 +media-breakpoint-down(lg)
   //
@@ -2338,6 +2392,19 @@
     .section-content
       .requisite-block
         font-size: 15px
+
+  .mresult-container
+    .text
+    .left-path
+      .title
+    .right-path
+      .mobile-title
+      .image
+        & > img
+      .bg
+        width: 100%
+        right: -25%
+        img
 
 // ≥768px
 +media-breakpoint-down(sm)
@@ -3689,6 +3756,32 @@
       .requisite-block
         font-size: 14px
         line-height: 19px
+
+
+  .mresult-container
+    .text
+      font-size: 14px
+      line-height: 18px
+      padding-left: 7px
+    .left-path
+      margin-top: 10px
+      .title
+    .right-path
+      .mobile-title
+        font-size: 18px
+        line-height: 25px
+        text-align: left
+        width: 100%
+        margin-bottom: 10px
+      .image
+        & > img
+          max-width: 85%
+          padding-top: 10px
+          padding-bottom: 10px
+      .bg
+        width: 100%
+        right: -25%
+        img
 
 // ≥576px
 +media-breakpoint-down(xs)

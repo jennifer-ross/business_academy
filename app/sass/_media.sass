@@ -822,6 +822,16 @@
       .bg
         right: -16%
 
+  .section-par
+    .section-par-container
+      .section-left-par
+        width: 30%
+        padding-right: 20px
+        .container-par
+          padding-right: 10px
+      .section-right-par
+        width: 75%
+
 @media (max-width: 1400px)
   .book-detail-popup
     width: 980px
@@ -1448,6 +1458,24 @@
         img
           width: 120%
 
+  .section-par
+    .section-par-container
+      flex-direction: column
+      .section-left-par
+        width: 100%
+        margin-bottom: 20px
+        padding-right: 0
+        .mobile-par-container
+          display: block
+          select
+            font-size: 20px
+        .container-par
+          display: none
+        .title
+          display: none
+      .section-right-par
+        width: 100%
+
 @media (max-width: 1200px)
 
   .row-bg.el-image
@@ -2022,6 +2050,30 @@
           padding-bottom: 15px
       .bg
         img
+
+
+  .section-par
+    .section-par-container
+      .container-par
+        padding-left: 15px
+        padding-right: 15px
+        padding-bottom: 10px
+        p,b,strong,span,li,i
+          font-size: 16px
+          line-height: 28px
+        .subtitle
+          font-size: 20px
+          line-height: 36px
+      .section-left-par
+        .mobile-par-container
+          select
+            font-size: 18px
+        .container-par
+        .title
+      .section-right-par
+        .title
+          font-size: 28px
+          line-height: 36px
 
 // ≥1200px
 +media-breakpoint-down(lg)
@@ -3782,6 +3834,34 @@
         width: 100%
         right: -25%
         img
+
+  .section-par
+    .section-content
+      margin-top: 0
+    .section-par-container
+      .container-par
+        padding-left: 10px
+        padding-right: 10px
+        padding-bottom: 10px
+        &:not(:last-child)
+          margin-bottom: 5px
+        p,b,strong,span,li,i
+          font-size: 14px
+          line-height: 19px
+        .subtitle
+          font-size: 18px
+          line-height: 24px
+      .section-left-par
+        margin-bottom: 10px
+        .mobile-par-container
+          select
+            font-size: 18px
+        .container-par
+        .title
+      .section-right-par
+        .title
+          font-size: 18px
+          line-height: 25px
 
 // ≥576px
 +media-breakpoint-down(xs)

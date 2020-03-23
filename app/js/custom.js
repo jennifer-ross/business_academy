@@ -1059,12 +1059,12 @@ $(function () {
                             if (self.hasSubfilter && subfilter) {
                                 if (el.hasClass('active')) {
                                     self.subfilterKeys.removeClass('active');
-                                    self.key = 0;
                                     self.skey = 0;
                                 } else {
                                     self.subfilterKeys.removeClass('active');
                                     self.subfilter.find('[data-sfilter-key="' + self.skey + '"]').addClass('active');
                                 }
+                                self.key = 0;
                                 self.filterKeys.removeClass('active');
                                 self.filter.find('[data-filter-key="' + self.key +'"]').addClass('active');
                             }else {
@@ -1456,6 +1456,10 @@ $(function () {
                  v.paginator.prevBtn.unbind('click');
                  v.paginator.nextBtn.unbind('click');
                  v.paginator.pages.unbind('click');
+             }
+
+             if (v.hasSubfilter) {
+                 v.subfilterKeys.unbind('click');
              }
           });
           e.filters = [];

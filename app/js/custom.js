@@ -1120,15 +1120,18 @@ $(function () {
                     });
                 }else {
                     self.filterKeys.on('click', function () {
+                        e.unhide2({target: self.unhide}, k);
                         filterChangeFn('click', this);
                     });
 
                     self.subfilterKeys.on('click', function () {
+                        e.unhide2({target: self.unhide}, k);
+
                         filterChangeFn('click', this, true);
                     });
 
                     self.unhide.on('click', (evt) => {
-                        e.unhide2(evt, self.key);
+                        e.unhide2(evt, k);
                     });
                 }
                 self.filteredItems = Array.from(self.items);

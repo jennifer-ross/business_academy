@@ -1161,6 +1161,7 @@ $(function () {
                     let lp = new Lightpick({
                         field: self.dateFilter.input[0],
                         singleDate: false,
+                        hideOnBodyClick: false,
                         onSelect: function(start, end) {
                             console.log(start, end);
                             self.dateVal = start + end;
@@ -1171,7 +1172,8 @@ $(function () {
 
                     self.dateFilter.btn.on('click', function (e) {
                        let self = window.itemsFilter.filters[$(this).attr('data-key')];
-                        self.dateFilterPick.show();
+                        e.preventDefault();
+                       self.dateFilterPick.show({target: self.dateFilter.input[0]});
                     });
                 }
 

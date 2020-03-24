@@ -195,6 +195,9 @@ ul
           left: calc(-50% + 1.5rem)
           display: none
           margin-top: 20px
+          z-index: 99999 !important
+          *
+            z-index: 99999 !important
           &:before
             content: ""
             top: 0
@@ -286,7 +289,17 @@ ul
             font-size: 16px
             color: $b
             font-weight: 600
-          .active
+          li a:not(.watch).active
+            color: $r
+            position: relative
+            &:after
+              width: 100%
+              background: $r
+              height: 2px
+              position: absolute
+              left: 0
+              bottom: 0
+              content: ""
 
 
 .swiper-pagination-bullet
@@ -325,6 +338,18 @@ ul
 
 .slide-bg
   position: relative
+  .container,.container-2
+    z-index: 1
+  &:after
+    content: ""
+    position: absolute
+    bottom: -1px
+    left: 0
+    width: 100%
+    height: 100%
+    max-height: 90px
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.0001) 0%, #FFFFFF 100%)
+    z-index: 0
   .bg
     position: absolute
     width: 100%
@@ -497,13 +522,12 @@ ul
       padding-right: 20px
       padding-top: 5rem
       padding-bottom: 4rem
-      .desc
+      .desc, .desc a, .desc li, .desc b, .desc strong, .desc span, .desc i
         line-height: 1.67
         font-size: 18px
         display: flex
         flex-direction: column
         margin-top: 30px
-
         .subtl
 
         .align-right
@@ -583,6 +607,9 @@ ul
 .seminars-container
   display: flex
   flex-wrap: wrap
+.seminars-container.unhide
+  .seminar
+    display: flex
 
 .seminar
   //flex: 1 1 auto
@@ -592,6 +619,21 @@ ul
   border: solid 1px #dde8f1
   //max-width: 24.05%
   flex: 1 1 23%
+  max-width: 24%
+  display: none
+  &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7)
+    display: flex
+  &:not(:first-child)
+    &:after
+      content: ""
+      position: absolute
+      width: 100%
+      height: 100%
+      background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0.695804) 100%)
+      opacity: 0.9
+      top: 0
+      left: 0
+      z-index: -1
   .bg
     object-fit: cover
     width: 100%
@@ -628,8 +670,8 @@ ul
       font-size: 21px
       font-weight: bold
       color: $r
-      padding-right: 5rem
-      padding-bottom: 50px
+      padding-right: 3rem
+      padding-bottom: 30px
       padding-top: 15px
 
     .action
@@ -1011,7 +1053,7 @@ ul
         object-fit: cover
         width: 100%
 
-.section-videos, .section-books-brick, .section-publ-brick, .section-read-more, .section-articles-brick
+.section-videos, .section-books-brick, .section-publ-brick, .section-read-more, .section-articles-brick, .section-reviews-filter
   .section-action
     margin-top: 20px
 
@@ -1129,6 +1171,8 @@ ul
     font-size: 14px
     color: #202b38
     text-align: center
+    img
+      object-fit: contain
 
 input
   width: 100%
@@ -1527,68 +1571,69 @@ footer
       font-weight: 600
       span
         font-weight: bold
-  .items-container
-    margin-top: 15px
-    max-width: 265px
-    p
-      font-size: 18px
-      font-weight: 600
-      text-align: right
-      color: #11558f
-      display: flex
-      align-items: center
+.hit-container .items-container, .discount-hit .items-container, .discounts-container .discount-hit .items-container
+  margin-top: 15px
+  max-width: 265px
+  p
+    font-size: 18px
+    font-weight: 600
+    text-align: right
+    color: #11558f
+    display: flex
+    align-items: center
+  span
+    font-size: 36px
+    font-weight: normal
+    text-align: right
+    color: #8f1154
+    margin-left: 15px
+  i
+    font-style: normal
+    font-size: 24px
+    color: #8f1154
+    margin-right: 5px
+  .icon-public
+    display: flex
+    align-items: center
     span
-      font-size: 36px
-      font-weight: normal
+      margin-left: 0
+      margin-right: 15px
+
+.hit-container .left-block .action-ctn, .discount-hit
+  .content, .content .desc
+    display: flex
+    justify-content: flex-end
+    padding-top: 60px
+    padding-bottom: 0
+    padding-right: 120px
+    .left-path
       text-align: right
-      color: #8f1154
-      margin-left: 15px
-    i
-      font-style: normal
-      font-size: 24px
-      color: #8f1154
-      margin-right: 5px
-    .icon-public
+      padding-right: 15px
+      position: relative
       display: flex
-      align-items: center
-      span
-        margin-left: 0
-        margin-right: 15px
-  .left-block
-    .content
-      display: flex
-      justify-content: flex-end
-      padding-top: 60px
-      padding-bottom: 0
-      padding-right: 120px
-      .left-path
-        text-align: right
-        padding-right: 15px
-        position: relative
-        display: flex
-        flex-direction: column
-        align-items: flex-end
-        &:after
-          content: ""
-          width: 2px
-          background: $r
-          right: 0
-          position: absolute
-          height: 100%
-          top: 0
-        .title
-          max-width: 234px
-          justify-content: flex-end
-      .right-path
-        padding-left: 15px
+      flex-direction: column
+      align-items: flex-end
+      &:after
+        content: ""
+        width: 2px
+        background: $r
+        right: 0
+        position: absolute
+        height: 100%
+        top: 0
       .title
-        font-size: 24px
-        font-weight: bold
-        color: #8f1154
-        text-transform: uppercase
-        min-height: 66px
-        display: flex
-        align-items: flex-end
+        max-width: 234px
+        justify-content: flex-end
+    .right-path
+      padding-left: 15px
+    .title
+      font-size: 24px
+      font-weight: bold
+      color: #8f1154
+      text-transform: uppercase
+      min-height: 66px
+      display: flex
+      align-items: flex-end
 
 .sertificat-slide
   display: flex
@@ -1682,6 +1727,17 @@ footer
   .swiper-button-prev,.swiper-button-next
     display: none
 
+.mobile-menu-btn--close
+  position: absolute
+  right: 1rem
+  top: .25rem
+  width: 24px
+  height: 24px
+  &:after
+    font-family: "Material Design Icons"
+    content: "\F156"
+    color: $b
+    font-size: 36px
 
 .mobile-menu-slide
   position: fixed
@@ -1691,6 +1747,24 @@ footer
   top: 0
   display: none
   background: #fff
+  flex-direction: column
+  padding-left: 1rem
+  padding-right: 1rem
+  padding-top: 1rem
+  padding-bottom: 0
+  overflow-y: auto
+  li
+    list-style: none
+  & > ul
+    margin-bottom: 1rem
+    ul
+      padding-left: 1.5rem
+
+  li, li a
+    font-weight: normal
+    font-size: 18px
+    line-height: 28px
+    color: #3D444D
 
 .section-audit-head
   .swiper-slide
@@ -1717,6 +1791,10 @@ footer
 .count-image
   .item
     max-width: 368px
+    .desc
+      font-size: 16px
+      line-height: 22px
+      padding: 0 .25rem
     .bg
       img
         position: relative
@@ -1760,6 +1838,18 @@ footer
         font-size: 50px
         margin-top: -20px
 
+.count-image2
+  .item
+    .count
+      &:after
+        content: ""
+        position: absolute
+        bottom: 9px
+        left: 3rem
+        height: 1px
+        background: $r
+        width: calc(100% - 6rem)
+
 .audit-count-section
   padding-top: 60px
 
@@ -1769,11 +1859,6 @@ $sz7622: 748px
 
 .section-audit
   .audit-container
-    //display: grid
-    //grid-template-columns: repeat(auto-fill, minmax(368px, auto))
-    //grid-template-rows: repeat(auto-fill, minmax(368px, auto))
-    //grid-gap: 15px
-    //grid-auto-flow: dense
     display: flex
     flex-wrap: wrap
     width: 100%
@@ -2228,15 +2313,18 @@ $sz7622: 748px
     overflow: hidden
     margin-top: 30px
     margin-bottom: 60px
-    max-height: 300px
+    max-height: unset
     //height: 274px
     padding-left: 10px
     width: calc(100% - 10px)
     padding-bottom: 10px
   .item
+    .slide
+      height: 330px
     img
       width: 100%
-      height: auto
+      height: 100%
+      object-fit: cover
     border: 1px solid #DDE8F1
     box-shadow: -6px 6px 0px rgba(17, 85, 143, 0.60088)
   .active
@@ -2250,8 +2338,10 @@ $sz7622: 748px
 .auditors-partners-detail
   display: flex
   width: 70%
+  max-width: 1085px
   img
     width: 366px
+    min-width: 366px
     height: auto
     object-fit: cover
     margin-right: 30px
@@ -2264,10 +2354,12 @@ $sz7622: 748px
     display: flex
     flex-direction: column
     justify-content: space-between
-    p
+    ul,ol
+      padding-left: 1.5rem
+    p, a, li, b, strong, i
       font-size: 20px
       margin-bottom: 0
-    span
+    span, span a
       font-size: 24px
       font-weight: bold
       color: $b
@@ -2795,13 +2887,16 @@ input[type="checkbox"]
   .item
     flex-direction: column
     flex: 1 1 calc(25% - 60px)
+    max-width: calc(27% - 60px)
     padding: 30px
-    display: flex
+    display: none
     align-items: center
     border: 1px solid #DDE8F1
     margin-right: 15px
     margin-left: 15px
     margin-bottom: 30px
+    &:nth-child(1),&:nth-child(2),&:nth-child(3), &:nth-child(4),&:nth-child(5),&:nth-child(6),&:nth-child(7),&:nth-child(8),&:nth-child(9),&:nth-child(10),&:nth-child(11),&:nth-child(12)
+      display: flex
     //&:nth-child(4n)
     //  margin-right: 0
     .title
@@ -2824,10 +2919,13 @@ input[type="checkbox"]
       margin-bottom: 17px
       padding-top: 15px
       img
-        width: 100%
-        height: 100%
+        max-width: 100%
         object-fit: contain
-  
+
+.clients-brick-container.unhide
+  .item
+    display: flex
+
 .section-books-brick
   .items-container
     margin-top: 30px
@@ -2919,6 +3017,117 @@ input[type="checkbox"]
               font-size: 21px
             &:after
               content: none
+
+.visit-seminars-2
+  background: url("../img/visit-seminars-bg2.png") no-repeat
+  background-size: cover
+  .title-mobile
+    display: none
+  .container
+    .content-list
+      width: 69%
+      .seminar
+        display: flex
+        flex: none
+        max-width: unset
+        height: 100%
+        .content
+          .heading
+            font-size: 18px
+        &:first-child
+          .content
+            .heading
+              font-size: 18px
+        &:nth-child(1), &:nth-child(2), &:nth-child(3)
+          flex: none
+          max-width: unset
+        .content
+          .heading
+            font-size: 18px
+          .seminar-date
+            display: none
+          .action
+            display: none
+
+  .content-list
+    position: relative
+  .swiper-container-visit-seminars
+    overflow: hidden
+  .seminar
+    .content
+      display: flex
+      justify-content: center
+      align-items: center
+  .swiper-button-next, .swiper-button-prev
+    display: block
+    line-height: 84px
+    text-transform: uppercase
+    color: #8F1154
+    width: auto
+    height: auto
+    top: 50%
+    transform: translateY(-50%)
+    margin: 0
+    &:after
+      font-size: 72px
+      font-family: "Material Design Icons"
+      content: '\F141'
+  .swiper-button-prev
+    left: -9%
+  .swiper-button-next
+    right: -12%
+    &:after
+      content: '\F142'
+  .container
+    .title-container
+      width: 25%
+      margin-right: 130px
+      .action
+        display: flex
+        justify-content: flex-end
+        .btn
+          border-radius: 2px
+          background-color: #8f1154
+          font-size: 18px
+          line-height: 1.67
+          display: flex
+          text-transform: uppercase
+          text-align: center
+          justify-content: center
+          color: #fff
+          padding: 0 45px
+          font-weight: normal
+      .title
+        font-size: 36px
+        line-height: 49px
+        margin: 0
+        width: 100%
+        margin-bottom: 5px
+        &:after
+          content: none
+      .text, .text a, .text b,.text i,.text strong, .text li
+        text-align: right
+        font-weight: normal
+        font-size: 18px
+        line-height: 30px
+        color: #202B38
+      .text
+        margin-bottom: 15px
+        position: relative
+        &:after
+          content: ""
+          right: -15px
+          width: 2px
+          height: 100%
+          top: 0
+          position: absolute
+          background: $r
+        span
+          color: $b
+
+.relative
+  position: relative
+  width: 100%
 
 .section-banner
   padding-left: 0
@@ -3109,16 +3318,37 @@ input[type="checkbox"]
     & > p, & > span, & > img
       margin-bottom: 30px
       display: flex
-    & > p
+    p, p a, p li,p b, p strong, p i
       font-size: 18px
       line-height: 30px
       color: #202B38
       font-weight: normal
-    & > span
+    span
       font-weight: normal
       font-size: 24px
       line-height: 30px
       color: #11558F
+    .image-txt
+      display: flex
+      margin-bottom: 30px
+      position: relative
+      width: 100%
+      p:last-child
+        margin-bottom: 0
+      p, p a,p li, p b, p strong, p i
+        font-size: 21px
+        line-height: 34px
+      .image
+        width: 50%
+        max-width: 50%
+        min-width: 50%
+        img
+          width: 100%
+          object-fit: contain
+      .text
+        display: flex
+        flex-direction: column
+        padding-left: 30px
     & > .center
       padding-left: 30px
     & > .right
@@ -3188,9 +3418,10 @@ input[type="checkbox"]
   border: 2px solid #11558F
   border-radius: 2px
   padding-left: 30px
-  padding-right: 8px
+  padding-right: 37px
   position: relative
   display: flex
+  background: #fff
   &:after
     content: "\F349"
     font-family: "Material Design Icons"
@@ -3199,7 +3430,9 @@ input[type="checkbox"]
     text-transform: uppercase
     color: #8F1154
     display: inline-block
-    margin-left: 7px
+    //margin-left: 7px
+    position: absolute
+    right: 7px
 
 .section-articles-brick
   .items-container
@@ -3229,6 +3462,810 @@ input[type="checkbox"]
         color: #8F1154
       .title
         padding-left: 0
+
+.section-books
+  padding-bottom: 60px
+  .section-action, .section-action .container
+    display: flex
+    justify-content: flex-end
+  .section-content
+    position: relative
+  .swiper-pagination
+    display: flex
+    justify-content: center
+    padding-right: 0
+    width: 100%
+    bottom: -30px !important
+
+.books-container
+  padding-top: 60px
+  padding-bottom: 30px
+  overflow: hidden
+  .item
+    display: flex
+    justify-content: center
+    .image
+      max-width: 248px
+      max-height: 220px
+      position: relative
+    img
+      object-fit: contain
+      width: 100%
+      height: 100%
+
+.videos-container
+  .item
+    display: flex
+    justify-content: center
+    flex-direction: column
+    text-align: center
+    iframe
+      height: 285px
+    .desc
+      margin-top: 15px
+      font-weight: normal
+      font-size: 18px
+      line-height: 25px
+      color: #202B38
+
+.section-video-slide
+  padding-bottom: 60px
+  .section-action
+    width: 100%
+    display: flex
+    justify-content: center
+  .section-content
+    position: relative
+    padding-bottom: 30px
+    padding-top: 30px
+    &:before, &:after
+      content: ""
+      width: 150%
+      left: -25%
+      top: 0
+      position: absolute
+      height: 100%
+      background: #F6F9FB
+      z-index: -1
+    &:before
+      height: 1px
+      background: #DDE8F1
+      z-index: 0
+  .swiper-pagination
+    bottom: -30px !important
+    padding-right: 0
+    width: 100%
+    display: flex
+    justify-content: center
+
+.section-publ-article
+  .section-content
+    .container-2
+      .info
+        display: flex
+        justify-content: flex-end
+        align-items: flex-end
+        margin-top: 30px
+        flex-direction: column
+        text-align: right
+      & > p, & > span, & > img
+       margin-bottom: 15px
+      p
+        display: block
+        a
+          color: $b
+          text-decoration: underline !important
+      span
+        font-weight: normal
+        font-size: 24px
+        line-height: 30px
+        color: #11558F
+        padding-right: 5px
+
+.section-404
+  .section-content
+    .container
+      display: flex
+      justify-content: center
+      .title
+        font-weight: normal
+        font-size: 160px
+        line-height: 218px
+        text-align: right
+        color: #8F1154
+        width: calc(30% - 30px)
+        padding-right: 30px
+        position: relative
+        &:after
+          content: ""
+          width: 2px
+          background: $b
+          height: calc(100% - 3rem)
+          position: absolute
+          right: 0
+          top: 1.5rem
+      .search-filter
+        margin-bottom: 0
+      .form-404
+        width: calc(50% - 30px)
+        padding-left: 30px
+        margin-bottom: 0
+        display: flex
+        flex-direction: column
+        justify-content: center
+        button
+          margin-top: 0
+      .form-title
+        font-weight: normal
+        font-size: 24px
+        line-height: 33px
+        color: #11558F
+        margin-bottom: 30px
+        p:last-child
+          margin-bottom: 0
+
+.seminar-name
+  font-weight: 600
+  font-size: 24px
+  line-height: 33px
+  color: $b
+  margin-bottom: 30px
+
+.section-seminar-head
+  .title
+    margin-bottom: 30px
+    h1,h2,h3,h4,h5
+      font-weight: bold
+      font-size: 60px
+      line-height: 82px
+
+.descr-block, .schedule-block
+  &:not(:last-child)
+    margin-bottom: 60px
+
+.events-block
+  .events-block__item
+    margin-bottom: 0
+    &:not(:last-child)
+      margin-bottom: 30px
+
+.delimiter-small
+  color: $b
+
+.split-line
+  height: 86px
+
+.section-menu
+  margin-bottom: 60px
+  margin-top: 60px
+  .section-content
+    .container
+      position: relative
+      padding-bottom: 15px
+      padding-left: 0px
+      padding-right: 0px
+      &:after
+        content: ""
+        width: 100%
+        height: 2px
+        background: $r
+        position: absolute
+        left: 0
+        bottom: 0
+      li
+        list-style: none
+      li, li a
+        font-weight: 600
+        font-size: 21px
+        line-height: 29px
+        text-align: center
+        text-transform: uppercase
+        color: #11558F
+      ul
+        display: flex
+        justify-content: center
+        flex-wrap: wrap
+        li
+          display: flex
+          justify-content: center
+          max-width: calc(20% - 30px)
+          margin-left: 30px
+          margin-right: 30px
+
+.ltr, .section .right-to-left.ltr
+  flex-direction: row !important
+  justify-content: space-between
+  .right
+    width: 40%
+    .desc
+      font-size: 18px
+      line-height: 36px
+
+.discounts-container
+  margin-top: 15px
+
+.section-discounts
+  padding-bottom: 60px
+  .swiper-pagination
+    padding-right: 0
+    width: 100%
+    justify-content: center
+    bottom: -35px !important
+  .swiper-button-next, .swiper-button-prev
+    display: none
+
+.discounts-container
+  overflow: hidden
+  .item.discount-hit
+    .action
+      .btn
+        background: $r
+        color: #fff
+        border: 1px solid $r
+    .image
+      width: 25%
+      display: flex
+      align-items: center
+      justify-content: center
+      img
+        max-width: 250px
+        object-fit: contain
+    .content
+      width: 60%
+      padding-right: 0
+      padding-top: 0
+      padding-left: 0
+      .desc
+        .left-path,.right-path
+          position: relative
+          .title
+            line-height: 33px
+            padding-top: 0
+            padding-bottom: 0
+
+    .items-container
+      height: calc(100% - 4rem)
+      .text
+        &:after
+          content: none
+      .icon-public
+        display: flex
+        align-items: center
+        span
+          margin-left: 0
+          margin-right: 15px
+        p
+          line-height: 25px
+          font-size: 18px
+          color: $b
+          i
+            font-style: normal
+            font-size: 24px
+            color: #8f1154
+            margin-right: 5px
+      p
+        line-height: 25px
+      .item
+        display: flex
+        flex-direction: row
+  .item-discount
+    .text
+      padding-top: 15px
+      padding-bottom: 15px
+      position: relative
+      &:after
+        content: ""
+        position: absolute
+        left: 0
+        bottom: 0
+        width: 100%
+        height: 2px
+        background: $r
+      ul,ol
+        padding-left: 1.5rem
+    .text, .text p, .text a, .text li, .text b, .text strong, .text i, .text span
+      font-size: 18px
+      line-height: 30px
+      color: #202B38
+    &:not(:last-child)
+      margin-bottom: 30px
+  .item
+    display: flex
+    justify-content: center
+    position: relative
+    .content
+      display: flex
+      align-items: center
+      justify-content: space-between
+      width: 50%
+      padding-left: 30px
+    .action
+      margin-left: 30px
+      .btn
+        font-weight: normal
+        font-size: 24px
+        line-height: 30px
+        text-align: center
+        text-transform: uppercase
+        color: #FFFFFF
+        padding-left: 20px
+        padding-right: 20px
+        border: 2px solid #FFFFFF
+        box-sizing: border-box
+        border-radius: 2px
+    .title
+      width: 30%
+      font-weight: bold
+      font-size: 48px
+      line-height: 65px
+      text-align: right
+      text-transform: uppercase
+      padding-top: 43px
+      padding-bottom: 43px
+    .desc
+      font-weight: normal
+      font-size: 36px
+      line-height: 49px
+      color: #FFFFFF
+      padding-top: 43px
+      padding-bottom: 43px
+      ul
+        li
+          list-style: none
+          position: relative
+          &:before
+            padding-right: 10px
+            font-size: 36px
+            content: "\F135"
+            font-family: "Material Design Icons"
+    .bg
+      position: absolute
+      width: 100%
+      height: 100%
+      z-index: -1
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+  .discount2,.discount3
+    .title
+      color: #FFFFFF
+  .discount
+    .title
+      color: $r
+    .desc
+      color: $b
+    .action
+      .btn
+        color: $r
+        border: 2px solid #8F1154
+
+.degree-block .uppercase-name, .section .rtl-2 .right .desc .degree-block .uppercase-name
+  font-style: normal
+  font-weight: 400
+  font-size: 36px
+  line-height: 49px
+  margin-right: 25px
+  color: #11558f
+
+.mobile-degree
+  display: none
+
+.section-title-text
+  margin-bottom: 60px
+  .section-content
+    .container
+      display: flex
+      justify-content: center
+      .title-container
+        width: 35%
+      .title
+        text-align: right
+        text-transform: uppercase
+        color: #11558F
+        font-weight: normal
+        font-size: 36px
+        line-height: 49px
+        padding-right: 15px
+        position: relative
+        &:before
+          content: ""
+          right: 0
+          top: 0
+          position: absolute
+          height: 100%
+          width: 2px
+          background: $r
+        span
+          font-weight: 600
+          font-size: 48px
+          line-height: 65px
+      .text
+        width: 65%
+        font-weight: normal
+        font-size: 18px
+        line-height: 32px
+        padding-left: 15px
+        position: relative
+        span
+          font-weight: bold
+          font-size: 20px
+
+.section-requisites
+  margin-bottom: 150px
+  .section-content
+    margin-top: 15px
+    .container
+      display: flex
+      justify-content: space-between
+    .requisite-block
+      font-size: 18px
+      line-height: 30px
+      font-weight: normal
+      p
+        margin-bottom: 0
+      span
+        font-weight: 600
+        color: $b
+      &:not(:last-child)
+        width: 50%
+      width: calc(50% - 30px)
+
+.section-mresult
+  padding-top: 0
+  padding-bottom: 0
+.mresult-container
+  display: flex
+  .left-path
+    width: 44%
+    padding-right: 15px
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+  .right-path
+    width: 56%
+    padding-left: 15px
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    .image
+      max-width: 762px
+      height: 100%
+      display: flex
+      align-items: center
+      & > img
+        padding-top: 30px
+        padding-bottom: 30px
+        max-width: 100%
+        object-fit: contain
+    .bg
+      position: absolute
+      right: -12%
+      z-index: -1
+      height: 100%
+      img
+        object-fit: cover
+        height: 100%
+  .title,.mobile-title
+    font-weight: 600
+    font-size: 36px
+    line-height: 49px
+    color: #11558F
+    margin-bottom: 30px
+  .mobile-title
+    display: none
+  .text
+    padding-left: 30px
+    position: relative
+    &:after
+      content: ""
+      background: $r
+      position: absolute
+      width: 2px
+      left: 0
+      top: 0
+      height: 100%
+    ul,ol
+      padding-left: 1.5rem
+  .text, .text a,.text li, .text b,.text strong,.text span
+    font-weight: normal
+    font-size: 16px
+    line-height: 24px
+
+.mobile-par-container
+  display: none
+.mobile-par
+
+.section-par
+  .section-content
+    margin-top: 30px
+  .section-par-container
+    display: flex
+    .container-par
+      border: 1px solid #DDE8F1
+      padding-left: 30px
+      padding-right: 30px
+      padding-top: 2px
+      padding-bottom: 15px
+      display: flex
+      flex-direction: column
+      .subtitle
+        color: $b
+        font-size: 24px
+        line-height: 48px
+      .mb
+        margin-bottom: 1.5rem
+      p
+        margin-bottom: 0
+      ul,ol
+        padding-left: 1.5rem
+      p,b,strong,span,li,i
+        font-size: 18px
+        line-height: 36px
+        color: #202B38
+      span
+        color: $b
+        font-weight: 600
+      &:not(:last-child)
+        margin-bottom: 20px
+    ul,ol
+      padding-left: 1.5rem
+    .section-left-par
+      width: 25%
+      padding-right: 30px
+      .container-par
+        padding-left: 0
+        padding-top: 26px
+        padding-bottom: 26px
+        height: calc(100% - 54px)
+      li
+        padding-bottom: 15px
+      li,p,b,strong,a,i,span
+        font-size: 18px
+        line-height: 25px
+        color: #202B38
+        font-weight: normal
+      .title
+        font-size: 36px
+        line-height: 49px
+        text-transform: uppercase
+        color: #11558F
+        margin-bottom: 5px
+    .section-right-par
+      width: 75%
+      .title
+        font-size: 36px
+        line-height: 49px
+        color: #11558F
+        margin-bottom: 5px
+
+
+.anchor-menu-filter
+  .section-content
+    .container
+      &:last-child
+        &:after
+          content: none
+      &:not(:first-child)
+        padding-top: 15px
+
+.filter-tab
+  display: flex
+  align-items: center
+  .desc
+    font-size: 21px
+    line-height: 29px
+    text-align: right
+    text-transform: uppercase
+    color: #11558F
+    margin-right: 30px
+    width: 15%
+  .filter-tab-container
+    display: flex
+    flex-wrap: wrap
+    width: 85%
+    span
+      border: 1px solid #DDE8F1
+      font-size: 24px
+      line-height: 33px
+      text-align: center
+      color: #11558F
+      padding-left: 45px
+      padding-right: 45px
+      padding-top: 3px
+      padding-bottom: 5px
+      cursor: pointer
+      &:not(:last-child)
+        margin-right: 30px
+    span.active
+      color: $r
+
+.filter-container-subfilter
+  .subfilter
+    margin-top: 15px
+    margin-bottom: 15px
+    display: flex
+    flex-wrap: wrap
+    span
+      display: flex
+      justify-content: center
+      align-items: center
+      flex: 1 1 auto
+      max-width: 30%
+      font-size: 18px
+      line-height: 25px
+      text-align: center
+      text-transform: uppercase
+      color: #11558F
+      padding-top: 6px
+      padding-bottom: 5px
+      padding-left: 50px
+      padding-right: 50px
+      border: 1px solid #DDE8F1
+      cursor: pointer
+      &:not(:last-child)
+        margin-right: 30px
+    span.active
+      border: 1px solid #11558F
+      color: $r
+
+.section-reports, .section-photo
+  padding-left: 0
+  padding-right: 0
+  padding-bottom: 60px
+  .swiper-button-next, .swiper-button-prev
+    display: block
+    margin: 0
+    top: 120px
+    width: auto
+    height: auto
+    &:after
+      color: #fff
+      font-size: 72px
+      line-height: 84px
+  .swiper-button-next
+    right: 1.5%
+    &:after
+      content: "\F142"
+      font-family: "Material Design Icons"
+  .swiper-button-prev
+    left: 1.5%
+    &:after
+      content: "\F141"
+      font-family: "Material Design Icons"
+  .swiper-pagination
+    display: flex
+    padding-right: 0
+    justify-content: center
+    bottom: -30px !important
+  .section-content
+    background: #F6F9FB
+    border: 1px solid #DDE8F1
+    padding-left: 22px
+    padding-right: 22px
+    padding-top: 5px
+    position: relative
+  .swiper-container-reports
+    position: relative
+  .item
+    .image
+      display: flex
+      justify-content: center
+      img
+        width: 100%
+        object-fit: cover
+        max-width: 555px
+        height: 280px
+        max-height: 280px
+    .date
+      font-size: 18px
+      line-height: 25px
+      color: #202B38
+      padding-bottom: 4px
+    .desc
+      padding-top: 10px
+      padding-bottom: 15px
+      font-size: 18px
+      line-height: 25px
+      text-align: right
+      color: #202B38
+
+.section-photo
+  padding-bottom: 60px
+  .swiper-button-next, .swiper-button-prev
+    top: 50%
+    transform: translateY(-50%)
+  .section-content
+    padding-top: 30px
+    padding-bottom: 30px
+  .swiper-pagination
+    bottom: -60px !important
+  .item
+    .image
+      img
+        height: 248px
+        width: 100%
+        max-width: 366px
+
+
+.articles-bg
+  padding-left: 0
+  padding-right: 0
+  .section-content
+    padding-left: 22px
+    padding-right: 22px
+    margin-top: 20px
+    padding-top: 30px
+    padding-bottom: 30px
+    border: 1px solid #DDE8F1
+    background: url("/img/articles-bg.jpg") no-repeat
+    background-size: 100% 100%
+
+.section-articles
+  padding-bottom: 60px
+  .swiper-button-next, .swiper-button-prev
+    display: none
+    width: auto
+    margin: 0
+    height: auto
+  .swiper-button-next
+    &:after
+      content: "\F142"
+      font-family: "Material Design Icons"
+  .swiper-button-prev
+    &:after
+      content: "\F141"
+      font-family: "Material Design Icons"
+  .swiper-pagination
+    display: flex
+    width: 100%
+    justify-content: center
+    padding-right: 0
+    left: 0
+
+.swiper-container-articles
+  margin: 0 auto
+  overflow: hidden
+  .item
+    display: flex
+    .date
+      display: none
+      font-size: 12px
+      line-height: 16px
+      color: #8F1154
+    .title
+      font-size: 24px
+      line-height: 33px
+      text-transform: uppercase
+      color: $b
+      padding-bottom: 15px
+      position: relative
+      &:after
+        content: ""
+        width: 100%
+        position: absolute
+        height: 2px
+        background: $r
+        left: 0
+        bottom: 0
+    .desc
+      font-size: 18px
+      line-height: 30px
+      padding-top: 10px
+    .action
+      .btn
+        color: $r
+        text-decoration: underline !important
+    .image
+      width: 100%
+      min-width: 365px
+      max-width: 365px
+      margin-right: 30px
+      height: 274px
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
 
 .mobile-image
   display: none

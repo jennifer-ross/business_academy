@@ -248,6 +248,10 @@
           //max-width: calc(234px - (234px * 0.2))
           //max-height: calc(168px - (168px * 0.2))
 
+  .visit-seminars-2
+    .swiper-button-next
+      right: -9%
+
 // 1700px
 @media (max-width: 1699.98px)
   .section-publ-brick, .section-read-more, .section-articles-brick
@@ -266,6 +270,101 @@
           padding-left: 0
         .title-container
           padding-left: 20px
+
+  .section-404
+    .section-content
+      .container
+        .form-404
+          width: calc(60% - 30px)
+
+  .visit-seminars-2
+    .container
+      .title-container
+        width: 25%
+        min-width: 25%
+        margin-right: 100px
+
+  .visit-seminars-2
+    .swiper-button-next
+      right: -8%
+
+  .discounts-container
+    .item.discount-hit
+      .action
+        .btn
+      .image
+        width: 30%
+        img
+      .content
+        width: 70%
+        padding-right: 50px
+        .desc
+          padding-right: 0
+          .left-path,.right-path
+            .title
+      .items-container
+        .text
+          &:after
+        .icon-public
+          span
+          p
+            i
+        p
+        .item
+
+    .item
+      .content
+        width: 60%
+
+  .visit-seminars-2
+    .container
+      .content-list
+        .seminar
+          &:first-child
+            .content
+              .heading
+                font-size: 18px
+          .heading
+            font-size: 18px
+          .content
+            .seminar-date
+              display: none
+            .action
+              display: none
+
+  .ltr, .section .right-to-left.ltr
+    .right
+      width: 45%
+      .desc
+
+  .section-title-text
+    .section-content
+      .container
+        .title-container
+          width: 40%
+
+  .mresult-container
+    .left-path
+    .right-path
+      .image
+        img
+      .bg
+        right: -14%
+        z-index: -1
+  .swiper-container-articles
+    .item
+      .title
+        font-size: 24px
+        line-height: 33px
+        padding-bottom: 15px
+      .desc
+        font-size: 18px
+        line-height: 30px
+      .image
+        min-width: 305px
+        max-width: 305px
+        margin-right: 15px
+        height: 234px
 
 // 1500px
 @media (max-width: 1499.98px)
@@ -387,9 +486,11 @@
         padding-top: 0
         .title
           padding-bottom: 20px
-        .desc
+        .desc, .desc a, .desc li, .desc b, .desc strong, .desc span, .desc i
           margin-top: 20px
           line-height: 36px
+
+
 
   .section
     padding: 10px 18px
@@ -639,14 +740,188 @@
         line-height: 45px
     .section-content .container-2
       & > p, & > span, & > img
-      & > p
+      p, p a, p li,p b, p strong, p i
         font-size: 16px
         line-height: 30px
+      .image-txt
+        flex-direction: column
+        align-items: center
+        p, p a,p li, p b, p strong, p i
+          font-size: 16px
+          line-height: 30px
+        .image
+          width: 80%
+          max-width: 80%
+          min-width: 80%
+          margin-bottom: 30px
+          img
+        .text
+          padding-left: 0
       & > span
         font-size: 20px
         line-height: 30px
       & > .center
         padding-left: 30px
+
+  .section-publ-article
+    .section-content
+      .container-2
+        span
+          font-size: 20px
+          line-height: 30px
+
+  .section-video-slide
+    padding-bottom: 60px
+
+  .section-404
+    .section-content
+      .container
+        .form-title
+          font-size: 21px
+
+  .clients-brick-container
+    .item
+      flex: 1 1 calc(33% - 60px)
+      max-width: calc(36% - 60px)
+
+  .visit-seminars-2
+    .swiper-button-prev
+      left: -11%
+    .swiper-button-next
+      right: -9.5%
+    .container
+      .title-container
+        width: 27%
+        min-width: 27%
+        .text
+          font-size: 16px
+      .content-list
+        width: 65%
+        .seminar
+          height: 276px
+    .swiper-container-visit-seminars
+
+  .section-discounts
+    padding-bottom: 60px
+  .discounts-container
+    .item.discount-hit
+      .action
+        .btn
+          font-size: 18px
+      .image
+        img
+          max-width: 180px
+      .content
+        padding-right: 30px
+        .desc
+          .left-path,.right-path
+            .title
+      .items-container
+        .text
+          &:after
+        .icon-public
+          span
+          p
+            i
+        p
+        .item
+    .item
+      .title
+        width: 35%
+        font-size: 38px
+        line-height: 57px
+        width: 35%
+      .content
+        width: 55%
+      .action
+        .btn
+          font-size: 20px
+      .desc
+        font-size: 28px
+        line-height: 42px
+        ul
+          li
+            &:before
+              font-size: 28px
+
+  .ltr, .section .right-to-left.ltr
+    .left
+      img
+        max-width: 100%
+        object-fit: contain
+    .right
+      width: 50%
+      .desc
+
+  .section-requisites
+    margin-bottom: 60px
+    .section-content
+      .requisite-block
+        font-size: 16px
+        line-height: 28px
+
+  .section-title-text
+    .section-content
+      .container
+        .title
+          font-size: 28px
+          line-height: 40px
+          span
+            font-size: 36px
+            line-height: 56px
+
+  .mresult-container
+    .left-path
+      width: 50%
+    .right-path
+      width: 50%
+      .image
+        img
+      .bg
+        right: -16%
+
+  .section-par
+    .section-par-container
+      .section-left-par
+        width: 30%
+        padding-right: 20px
+        .container-par
+          padding-right: 10px
+      .section-right-par
+        width: 75%
+
+  .section-reports, .section-photo
+    padding-left: 0
+    padding-right: 0
+    padding-bottom: 60px
+  .filter-container-subfilter
+    .subfilter
+      span
+        max-width: 30%
+        font-size: 16px
+        line-height: 19px
+  .articles-bg
+    padding-left: 0
+    padding-right: 0
+  .section-articles
+    padding-bottom: 60px
+  .swiper-container-articles
+    .item
+      flex-direction: column
+      .title
+        font-size: 20px
+        line-height: 28px
+      .desc
+        font-size: 16px
+        line-height: 28px
+      .image
+        max-width: 100%
+        min-width: 100%
+        margin-bottom: 15px
+        margin-right: 0
+        img
+          object-fit: contain
+
 
 @media (max-width: 1400px)
   .book-detail-popup
@@ -853,7 +1128,7 @@
         margin-right: 0
       .right
         margin-left: 0
-        .desc
+        .desc, .desc a, .desc li, .desc b, .desc strong, .desc span, .desc i
           font-size: 18px
           line-height: 34px
 
@@ -1137,6 +1412,241 @@
         .title-container
           padding-left: 20px
 
+  .section-video-slide
+    padding-bottom: 60px
+
+  .videos-container
+    .item
+      iframe
+        height: 245px
+
+  .section-404
+    .section-content
+      .container
+        .title
+          font-size: 120px
+          width: calc(30% - 20px)
+          padding-right: 20px
+          position: relative
+        .form-404
+          width: calc(60% - 20px)
+          padding-left: 20px
+        .form-title
+          font-size: 18px
+          line-height: 24px
+          margin-bottom: 20px
+
+  .clients-brick-container
+    .item
+      flex: 1 1 calc(50% - 60px)
+      max-width: calc(56% - 60px)
+
+  .visit-seminars-2
+    .title-mobile
+      display: flex
+      margin-bottom: 10px
+      font-weight: normal
+      font-size: 28px
+      line-height: 36px
+      text-align: right
+      text-transform: uppercase
+      color: #11558F
+    .container
+      flex-direction: column
+      .title-container
+        margin-top: 15px
+        order: 2
+        margin-right: 0
+        width: 60%
+        .text
+          text-align: left
+        .action
+          justify-content: center
+        .title
+          display: none
+      .content-list
+        order: 1
+        width: 90%
+        flex-direction: column
+
+  .section-discounts
+    padding-bottom: 60px
+  .discounts-container
+    .item-discount
+      .text, .text p, .text a,.text b, .text strong, .text i, .text li, .text span
+        font-size: 16px
+        line-height: 24px
+    .item.discount-hit
+      .action
+        .btn
+          font-size: 18px
+      .image
+        display: none
+        img
+          max-width: 180px
+      .content
+        padding-top: 15px
+        width: 100%
+        justify-content: space-around
+        padding-left: 15px
+        padding-right: 15px
+        .desc
+          width: 100%
+          justify-content: center
+          .left-path,.right-path
+            max-width: 100%
+            width: 100%
+            .title
+              padding-right: 0
+              padding-left: 0
+      .items-container
+        .text
+          &:after
+        .icon-public
+          span
+          p
+            i
+        p
+        .item
+    .item
+      .title
+        font-size: 30px
+        line-height: 47px
+        width: 30%
+      .content
+        width: 60%
+      .action
+        .btn
+          font-size: 20px
+      .desc
+        font-size: 24px
+        line-height: 36px
+        ul
+          li
+            &:before
+              font-size: 28px
+
+  .ltr, .section .right-to-left.ltr
+    .left
+      img
+        max-width: 100%
+        object-fit: contain
+    .right
+      width: 50%
+      .desc
+        font-size: 16px
+        line-height: 28px
+
+  .degree-block .uppercase-name, .section .rtl-2 .right .desc .degree-block .uppercase-name
+    font-size: 28px
+    line-height: 36px
+
+  .section-requisites
+    margin-bottom: 60px
+    .section-content
+      .requisite-block
+        font-size: 16px
+        line-height: 28px
+
+  .section-title-text
+    .section-content
+      .container
+        .text
+          font-size: 16px
+          line-height: 28px
+        .title
+          font-size: 22px
+          line-height: 36px
+          span
+            font-size: 28px
+            line-height: 36px
+
+  .mresult-container
+    flex-direction: column-reverse
+    .left-path
+      width: 100%
+      margin-top: 30px
+      padding-right: 0
+      .title
+        display: none
+    .right-path
+      padding-left: 0
+      width: 100%
+      flex-direction: column
+      position: relative
+      .mobile-title
+        display: block
+      .image
+        position: relative
+        img
+      .bg
+        height: 100%
+        right: -15%
+        img
+          width: 120%
+
+  .section-par
+    .section-par-container
+      flex-direction: column
+      .section-left-par
+        width: 100%
+        margin-bottom: 20px
+        padding-right: 0
+        .mobile-par-container
+          display: block
+          select
+            font-size: 20px
+        .container-par
+          display: none
+        .title
+          display: none
+      .section-right-par
+        width: 100%
+  .section-reports, .section-photo
+    padding-left: 0
+    padding-right: 0
+    padding-bottom: 60px
+    .item
+      .image
+        img
+      .date
+        font-size: 16px
+        line-height: 19px
+      .desc
+        font-size: 16px
+        line-height: 19px
+
+  .filter-container-subfilter
+    .subfilter
+      margin-bottom: 0
+      span
+        padding-left: 30px
+        padding-right: 30px
+        flex: 1 1 50%
+        max-width: calc(50% - 7.5px)
+        margin-bottom: 15px
+        margin-right: 15px
+        &:not(:last-child)
+          margin-right: 15px
+        &:nth-of-type(2n)
+          margin-right: 0
+
+  .section-articles-brick .filter-container, .section-books-brick .filter-container, .section-publ-brick .filter-container, .section-read-more .filter-container, .section-reviews-filter .filter-container, .section-videos .filter-container
+    padding-right: 0
+  .filter-tab
+    .filter-tab-container
+      span
+        font-size: 20px
+        line-height: 28px
+        padding-left: 30px
+        padding-right: 30px
+        flex: 1 1 auto
+  .articles-bg
+    padding-left: 0
+    padding-right: 0
+  .section-articles
+    padding-bottom: 60px
+
 @media (max-width: 1200px)
 
   .row-bg.el-image
@@ -1295,7 +1805,7 @@
         padding-right: 0
         padding-bottom: 0
         width: 100%
-        .desc
+        .desc, .desc a, .desc li, .desc b, .desc strong, .desc span, .desc i
           font-size: 18px
           line-height: normal
         .title
@@ -1512,6 +2022,9 @@
       .content-list
         .seminar
           font-size: 19px
+          .content
+            .heading
+              font-size: 19px
           &:nth-child(1), &:nth-child(2), &:nth-child(3)
             .content
               .heading
@@ -1539,6 +2052,224 @@
           padding-left: 0
         .title-container
           padding-left: 30px
+
+  .section-video-slide
+    padding-bottom: 60px
+
+  .videos-container
+    .item
+      iframe
+        height: 200px
+
+  .section-404
+    .section-content
+      .container
+        flex-direction: column
+        .title
+          font-size: 120px
+          line-height: 120px
+          width: 100%
+          padding-right: 0
+          text-align: center
+          margin-bottom: 20px
+          &:after
+            content: unset
+        .form-404
+          width: calc(100% - 20px)
+          padding-left: 20px
+        .form-title
+          font-size: 18px
+          line-height: 24px
+          margin-bottom: 20px
+          position: relative
+          &:after
+            content: ""
+            position: absolute
+            left: -10px
+            height: 100%
+            width: 2px
+            top: 0
+            background: $b
+
+  .auditors-partners-detail
+    img
+      width: 326px
+      min-width: 326px
+
+  .visit-seminars-2
+    .swiper-button-prev
+      left: -30%
+    .swiper-button-next
+      right: -30%
+    .container
+      .content-list
+        width: 80%
+      .title-container
+        width: 80%
+
+  .section-discounts
+    padding-bottom: 60px
+  .discounts-container
+    .item
+      flex-direction: column
+      .title
+        width: 100%
+        text-align: right
+        padding-left: 41px
+        padding-right: 58px
+        padding-top: 20px
+        padding-bottom: 20px
+      .content
+        padding-top: 0
+        padding-bottom: 20px
+        width: 100%
+        padding-left: 41px
+        padding-right: 58px
+        flex-direction: column
+        align-items: flex-start
+      .action
+        margin-top: 20px
+        justify-content: center
+        margin-left: 0
+        width: 100%
+        display: flex
+        .btn
+      .desc
+        padding-top: 0
+        padding-bottom: 0
+        ul
+          li
+            &:before
+
+  .ltr, .section .right-to-left.ltr
+    flex-direction: column !important
+    .left
+      display: flex
+      flex-direction: column
+      width: 100%
+      align-items: flex-end
+      img
+        max-width: 50%
+        object-fit: contain
+    .right
+      width: 100%
+      .degree-block
+        display: none
+      .desc
+        font-size: 16px
+        line-height: 28px
+
+  .degree-block .uppercase-name, .section .rtl-2 .right .desc .degree-block .uppercase-name
+    font-size: 28px
+    line-height: 36px
+
+  .mobile-degree
+    display: block
+    margin-bottom: 20px
+
+  .section-requisites
+    .section-content
+      .container
+        flex-direction: column
+      .requisite-block
+        width: 100%
+        &:not(:last-child)
+          width: 100%
+          margin-bottom: 15px
+
+  .section-title-text
+    .section-content
+      .container
+        flex-direction: column
+        .title-container
+          width: 100%
+          display: flex
+          justify-content: flex-end
+          .title
+            padding-right: 0
+            &:before
+              content: none
+        .text
+          width: 100%
+          &:before
+            content: ""
+            position: absolute
+            left: 0
+            top: 0
+            height: 100%
+            width: 2px
+            background: $r
+
+
+  .mresult-container
+    flex-direction: column-reverse
+    .text
+      padding-left: 15px
+    .left-path
+      width: 100%
+      margin-top: 15px
+      .title
+        display: none
+    .right-path
+      .mobile-title
+        margin-bottom: 15px
+        font-size: 28px
+        line-height: 36px
+      .image
+        & > img
+          padding-top: 15px
+          padding-bottom: 15px
+      .bg
+        img
+
+
+  .section-par
+    .section-par-container
+      .container-par
+        padding-left: 15px
+        padding-right: 15px
+        padding-bottom: 10px
+        p,b,strong,span,li,i
+          font-size: 16px
+          line-height: 28px
+        .subtitle
+          font-size: 20px
+          line-height: 36px
+      .section-left-par
+        .mobile-par-container
+          select
+            font-size: 18px
+        .container-par
+        .title
+      .section-right-par
+        .title
+          font-size: 28px
+          line-height: 36px
+
+  .filter-tab
+    .desc
+      font-size: 18px
+      line-height: 24px
+    .filter-tab-container
+      span
+        font-size: 20px
+        line-height: 28px
+        padding-left: 15px
+        padding-right: 15px
+        &:not(:last-child)
+          margin-right: 0
+        margin-bottom: 15px
+  .articles-bg
+    .section-content
+      background-size: cover
+  .swiper-container-articles
+    .item
+      flex-direction: row
+      .image
+        max-width: 305px
+        min-width: 305px
+        margin-bottom: 0
+        margin-right: 15px
 
 // ≥1200px
 +media-breakpoint-down(lg)
@@ -1703,12 +2434,14 @@
     width: 95%
     .text
       font-size: 18px
+      p, a, b, strong, li, i
+        font-size: 18px
       span
         font-size: 20px
     .action
       .call, .call a
         font-size: 20px
-      span
+      span, span a
         font-size: 20px
       .btn-container
         .btn
@@ -1824,14 +2557,193 @@
       & > p, & > span, & > img
         margin-bottom: 20px
         display: flex
-      & > p
+      p, p a, p li, p b, p strong, p i
         font-size: 14px
         line-height: 24px
-      & > span
+      .image-txt
+        flex-direction: column
+        align-items: center
+        p, p a,p li, p b, p strong, p i
+          font-size: 14px
+          line-height: 24px
+        .image
+          width: 60%
+          max-width: 60%
+          min-width: 60%
+          margin-bottom: 30px
+          img
+        .text
+          padding-left: 0
+      span
         font-size: 18px
         line-height: 24px
       & > .center
         padding-left: 20px
+
+  .section-publ-article
+    .section-content
+      .container-2
+        p
+          display: block
+        span
+          font-size: 18px
+          line-height: 24px
+
+  .videos-container
+    .item
+      iframe
+        height: 245px
+
+  .clients-brick-container
+    .item
+      flex: 1 1 calc(100% - 60px)
+      max-width: 100%
+
+
+  .visit-seminars-2
+    .swiper-button-prev
+      left: -15%
+    .swiper-button-next
+      right: -15%
+    .container
+      .content-list
+        width: 90%
+      .title-container
+        width: 90%
+
+  .section-discounts
+    padding-bottom: 60px
+  .discounts-container
+    .item.discount-hit
+      .action
+        .btn
+          font-size: 18px
+      .image
+        img
+      .content
+        padding-top: 15px
+        justify-content: center
+        padding-left: 15px
+        padding-right: 15px
+        .desc
+          .right-path
+            align-items: flex-start
+          .left-path
+            align-items: flex-end
+          .left-path,.right-path
+            .title
+              font-size: 20px
+              line-height: 28px
+      .items-container
+        display: flex
+        flex-direction: column
+        justify-content: center
+        .icon-public
+          margin-bottom: 15px
+        p
+          font-size: 16px
+          i
+            font-size: 20px
+    .item
+      .title
+        font-size: 28px
+        line-height: 42px
+      .content
+      .action
+        .btn
+          width: 100%
+      .desc
+        ul
+          li
+            &:before
+
+  .ltr, .section .right-to-left.ltr
+    .left
+      width: 100%
+      img
+        max-width: 60%
+    .right
+      .degree-block
+      .desc
+
+  .section-requisites
+    .section-content
+      .requisite-block
+        font-size: 15px
+
+  .mresult-container
+    .text
+    .left-path
+      .title
+    .right-path
+      .mobile-title
+      .image
+        & > img
+      .bg
+        width: 100%
+        right: -25%
+        img
+  .section-reports, .section-photo
+    padding-left: 0
+    padding-right: 0
+    padding-bottom: 60px
+    .swiper-button-next
+      right: 6.5%
+    .swiper-button-prev
+      left: 6.5%
+  .section-photo
+    .item
+      .image
+        img
+          max-width: 100%
+  .filter-container-subfilter
+    .subfilter
+      margin-bottom: 0
+      span
+        margin-bottom: 7.5px
+        margin-right: 7.5px
+        margin-left: 7.5px
+        max-width: unset
+        flex: 2 1 auto
+        &:not(:last-child)
+          margin-right: 7.5px
+          margin-left: 7.5px
+        &:nth-of-type(2n)
+          margin-right: 7.5px
+          margin-left: 7.5px
+  .filter-tab
+    .desc
+      font-size: 18px
+      line-height: 24px
+      margin-right: 15px
+      width: 20%
+    .filter-tab-container
+      width: 80%
+      span
+        font-size: 20px
+        line-height: 28px
+        padding-left: 15px
+        padding-right: 15px
+        &:not(:last-child)
+          margin-right: 0
+        margin-bottom: 15px
+  .articles-bg
+    .section-content
+      padding-top: 10px
+      padding-bottom: 10px
+      background-size: cover
+  .swiper-container-articles
+    .item
+      flex-direction: column
+      .title
+        padding-bottom: 10px
+      .desc
+        padding-top: 10px
+      .image
+        max-width: 100%
+        min-width: 100%
+        margin-right: 0
+        margin-bottom: 10px
 
 // ≥768px
 +media-breakpoint-down(sm)
@@ -1901,6 +2813,25 @@
     margin-right: 0
     margin-bottom: 10px
     display: none
+    .content
+      padding: 7px 10px
+      padding-bottom: 7px
+      .action
+        .btn
+          font-size: 16px
+          span
+            font-size: 24px
+      .seminar-date
+        .date
+          font-size: 36px
+        .position
+          font-size: 16px
+          margin-left: 20px
+      .heading
+        font-size: 16px
+        padding-bottom: 10px
+        padding-top: 10px
+        padding-right: 5rem
     &:first-child, &:nth-child(3), &:last-child, &:nth-child(2)
       max-width: 100%
     &:first-child
@@ -2209,7 +3140,7 @@
         padding-top: 0
         padding-right: 0
         padding-bottom: 0
-        .desc
+        .desc, .desc a, .desc li, .desc b, .desc strong, .desc span, .desc i
           margin-top: 10px
           font-size: 14px
           line-height: normal
@@ -2846,10 +3777,10 @@
     .text
       padding-left: 10px
       padding-right: 10px
-      p
+      p, a, strong, b, li, i
         font-size: 14px
         line-height: 19px
-      span
+      span, span a
         font-size: 16px
         line-height: 19px
         font-weight: 600
@@ -2937,6 +3868,23 @@
         .seminar
           font-size: 16px
           line-height: 22px
+          .content
+            .seminar-date
+              .date
+                font-weight: normal
+                font-size: 18px
+                line-height: 25px
+              .position
+                flex-direction: row
+                font-weight: normal
+                font-size: 18px
+                line-height: 25px
+                margin-left: 0
+                span
+                  margin: 0 2.5px
+            .heading
+              font-size: 16px
+              line-height: 22px
           &:nth-child(1), &:nth-child(2), &:nth-child(3)
             .content
               .seminar-date
@@ -2991,6 +3939,310 @@
     .mobile-filter-container
       display: block
       width: 100%
+
+  .section-books
+    .section-action
+      margin-top: 10px
+    .swiper-pagination
+      bottom: 10px !important
+
+  .section-video-slide
+    padding-bottom: 20px
+    .swiper-pagination
+      bottom: -20 !important
+    .section-content
+      padding-top: 8px
+      padding-bottom: 8px
+
+  .videos-container
+    .item
+      .desc
+        font-weight: normal
+        font-size: 14px
+        line-height: 19px
+        text-align: center
+        color: #202B38
+
+  .section-publ-detail
+    .section-content .container-2
+      p, p a, p li, p b, p strong, p i
+      .image-txt
+        p, p a,p li, p b, p strong, p i
+          font-size: 14px
+          line-height: 19px
+        .image
+          width: 80%
+          max-width: 80%
+          min-width: 80%
+          img
+        .text
+
+  .section-publ-article
+    .section-content
+      .container-2
+        p
+          display: block
+        span
+
+  .visit-seminars-2
+    .title-mobile
+      margin-left: calc(-10% + 1rem)
+      font-size: 18px
+      line-height: 25px
+    .swiper-pagination
+      display: none
+    .swiper-button-prev, .swiper-button-next
+      &:after
+        font-size: 48px
+    .swiper-container-visit-seminars
+      padding: 0
+    .swiper-button-prev
+      left: -9%
+    .swiper-button-next
+      right: -9%
+    .section-content
+      .container
+        .content-list
+          width: 90%
+          .seminar
+            height: auto
+            .content
+              justify-content: space-between
+              align-items: flex-start
+            .seminar-date
+              display: flex
+            .action
+              align-self: flex-end
+              display: flex
+        .title-container
+          width: 90%
+          .action
+            justify-content: flex-end
+            .btn
+              font-size: 18px
+              line-height: 30px
+              width: 100%
+          .text
+            text-align: right
+            font-size: 14px
+            line-height: 19px
+            &:after
+              content: none
+
+  .section-discounts
+    padding-bottom: 30px
+    .section-content
+      .container
+        padding-left: 0
+        padding-right: 0
+    .swiper-pagination
+      bottom: -16px !important
+    .swiper-button-next, .swiper-button-prev
+      display: block
+      color: #fff
+      opacity: .4
+      font-size: 36px
+      margin: 0
+      top: 50%
+      width: auto
+      height: auto
+      transform: translateY(-50%)
+    .swiper-button-next
+      right: -1%
+    .swiper-button-prev
+      left: -1%
+  .discounts-container
+    position: relative
+    padding: 0
+    .item-discount
+      .text
+        padding-top: 5px
+        padding-bottom: 5px
+      .text, .text p, .text a, .text li, .text b, .text strong, .text i, .text span
+        font-size: 14px
+        line-height: 19px
+      &:not(:last-child)
+        margin-bottom: 10px
+    .item
+      .title
+        font-size: 24px
+        line-height: 34px
+      .content
+      .action
+        .btn
+          width: 100%
+          font-size: 18px
+      .desc
+        font-size: 18px
+        line-height: 24px
+        ul
+          li
+            &:before
+              padding-right: 5px
+              font-size: 20px
+
+  .section-title-text
+    margin-bottom: 15px
+    .section-content
+      .container
+        .title-container
+        .text
+          font-size: 14px
+          line-height: 19px
+          padding-left: 10px
+        .title
+          font-size: 18px
+          line-height: 25px
+          span
+            font-size: 18px
+            line-height: 25px
+
+  .section-requisites
+    margin-bottom: 15px
+    .section-content
+      margin-top: 0
+      .requisite-block
+        font-size: 14px
+        line-height: 19px
+
+
+  .mresult-container
+    .text
+      font-size: 14px
+      line-height: 18px
+      padding-left: 7px
+    .left-path
+      margin-top: 10px
+      .title
+    .right-path
+      .mobile-title
+        font-size: 18px
+        line-height: 25px
+        text-align: left
+        width: 100%
+        margin-bottom: 10px
+      .image
+        & > img
+          max-width: 85%
+          padding-top: 10px
+          padding-bottom: 10px
+      .bg
+        width: 100%
+        right: -25%
+        img
+
+  .section-par
+    .section-content
+      margin-top: 0
+    .section-par-container
+      .container-par
+        padding-left: 10px
+        padding-right: 10px
+        padding-bottom: 10px
+        &:not(:last-child)
+          margin-bottom: 5px
+        p,b,strong,span,li,i
+          font-size: 14px
+          line-height: 19px
+        .subtitle
+          font-size: 18px
+          line-height: 24px
+      .section-left-par
+        margin-bottom: 10px
+        .mobile-par-container
+          select
+            font-size: 18px
+        .container-par
+        .title
+      .section-right-par
+        .title
+          font-size: 18px
+          line-height: 25px
+  .section-reports, .section-photo
+    padding-left: 0
+    padding-right: 0
+    padding-bottom: 30px
+    .swiper-pagination
+      bottom: -20px !important
+    .section-content
+      padding-top: 3px
+      padding-left: 6px
+      padding-right: 6px
+    .swiper-container-init-mobile
+    .swiper-button-next, .swiper-button-prev
+      top: 50%
+      transform: translateY(-50%)
+      &:after
+        font-size: 36px
+        line-height: 36px
+        color: $b
+        opacity: .2
+    .swiper-button-next
+      right: -6px
+    .swiper-button-prev
+      left: -6px
+    .item
+      .date
+        padding-bottom: 0
+        font-size: 12px
+        line-height: 16px
+      .desc
+        padding-bottom: 5px
+        font-size: 14px
+        line-height: 19px
+        text-align: center
+  .section-reports
+    .section-content
+      .container
+        padding-top: 0
+        padding-bottom: 0
+  .section-photo
+    .section-content
+      padding-top: 0
+      padding-bottom: 0
+  .section-videos-wrap
+    .items-container
+      flex-wrap: wrap
+  .section-articles
+    padding-bottom: 30px
+    padding-left: 0
+    padding-right: 0
+    .swiper-button-next, .swiper-button-prev
+      display: block
+      top: 50%
+      transform: translateY(-50%)
+      &:after
+        font-size: 36px
+        line-height: 36px
+        color: $b
+        opacity: .2
+    .swiper-button-next
+      right: -6px
+    .swiper-button-prev
+      left: -6px
+    .swiper-pagination
+      bottom: -20px !important
+    .section-content
+      margin-top: 0
+      padding-left: 0
+      padding-right: 0
+      position: relative
+
+  .swiper-container-articles
+    .item
+      .date
+        display: flex
+      .title
+        font-size: 16px
+        line-height: 22px
+      .action
+        display: inline-block
+      .desc
+        font-size: 16px
+        line-height: 22px
+      .image
+        display: none
+
 
 // ≥576px
 +media-breakpoint-down(xs)
@@ -3305,10 +4557,10 @@
       padding-left: 10px
       padding-right: 10px
       margin-top: 0
-      p
+      p, a, b, strong, li, i
         font-size: 14px
         line-height: 19px
-      span
+      span, span a
         font-size: 16px
         line-height: 19px
         font-weight: 600
@@ -3518,10 +4770,20 @@
       & > p, & > span, & > img
         margin-bottom: 10px
         display: flex
-      & > p
+      p, p a,p li, p b, p strong, p i
         font-size: 14px
         line-height: 19px
-      & > span
+      .image-txt
+        margin-bottom: 10px
+        p, p a,p li, p b, p strong, p i
+          font-size: 14px
+          line-height: 19px
+        .image
+          width: 80%
+          max-width: 80%
+          min-width: 80%
+          margin-bottom: 10px
+      span
         font-size: 16px
         line-height: 22px
       & > .center
@@ -3550,9 +4812,139 @@
           &:not(:last-child)
             margin-right: 21px
 
+  .section-publ-article
+    .section-content
+      .container-2
+        p
+          display: block
+        span
+          font-size: 16px
+          line-height: 22px
 
   .custom-action .right-action
     max-width: 90%
+
+  .section-404
+    .section-content
+      .container
+        .search-filter
+          margin: 0
+        .title
+          font-size: 60px
+          line-height: 82px
+          margin-bottom: 10px
+        .form-title
+          font-size: 16px
+          line-height: 22px
+          margin-bottom: 16px
+        .form-404
+          width: calc(100% - 10px)
+          padding-left: 10px
+          input
+            display: none
+          button
+            width: 100%
+
+  .ltr, .section .right-to-left.ltr
+    .left
+      width: 100%
+      img
+        max-width: 60%
+    .right
+      .degree-block
+      .desc
+        font-size: 14px
+        line-height: 19px
+
+  .mobile-degree
+    font-size: 18px
+    line-height: 25px
+
+  .degree-block , .section .rtl-2 .right .desc
+    font-size: 14px
+    line-height: 19px
+
+  .degree-block .uppercase-name, .section .rtl-2 .right .desc .degree-block .uppercase-name
+    font-size: 18px
+    line-height: 25px
+    margin-right: 10px
+  .filter-tab
+    flex-direction: column
+    .desc
+      font-size: 16px
+      line-height: 22px
+      margin-right: 0
+      width: 100%
+      text-align: left
+      margin-bottom: 5px
+    .filter-tab-container
+      width: 100%
+      span
+        font-size: 18px
+        line-height: 25px
+        padding-left: 15px
+        padding-right: 15px
+        width: 100%
+        &:not(:last-child)
+          margin-right: 0
+        margin-bottom: 15px
+
+@media (max-width: 565px)
+  .discounts-container
+    .item.discount-hit
+      .action
+        .btn
+          font-size: 18px
+      .image
+        img
+      .content
+        padding-top: 15px
+        justify-content: center
+        padding-left: 0
+        padding-right: 0
+        .desc
+          .right-path
+            align-items: flex-start
+            padding-left: 5px
+            .items-container
+              margin-top: 0
+              align-items: flex-start
+              span
+                margin-right: 5px
+          .left-path
+            padding-right: 5px
+            align-items: flex-end
+            .items-container
+              span
+                margin-left: 5px
+          .left-path,.right-path
+            .title
+              font-size: 18px
+              line-height: 25px
+      .items-container
+        display: flex
+        flex-direction: column
+        justify-content: center
+        span
+          font-size: 24px
+          line-height: 24px
+        .icon-public
+          margin-bottom: 0
+          p
+            align-items: flex-end
+            font-size: 12px
+            line-height: 16px
+            &:last-child
+              margin-bottom: 0
+            i
+              font-size: 18px
+              line-height: 25px
+        p
+          font-size: 12px
+          line-height: 16px
+          i
+            font-size: 18px
+            line-height: 25px
 
 @media (max-width: 480px)
   .container-auditors-partners .swiper-container-audit-partners
@@ -3563,6 +4955,86 @@
       .container
         .content-list
           width: 100%
+
+  .videos-container
+    .item
+      iframe
+        height: 166px
+
+  .section-publ-detail
+    .section-title
+    .section-content .container-2
+      .image-txt
+        .image
+          //width: 95%
+          //max-width: 95%
+          //min-width: 95%
+
+  .visit-seminars-2
+    .swiper-container-visit-seminars
+    .swiper-button-prev, .swiper-button-next
+      &:after
+        //font-size: 48px
+    .swiper-button-prev
+      left: -12%
+    .swiper-button-next
+      right: -12%
+    .section-content
+      .container
+        .content-list
+          width: 90%
+        .title-container
+          width: 90%
+          .action
+          .text
+            &:after
+
+  .filter-container-subfilter
+    .subfilter
+      margin-bottom: 0
+      span
+        font-size: 14px
+        line-height: 19px
+        padding-left: 10px
+        padding-right: 10px
+        margin-bottom: 10px
+        margin-right: 5px
+        margin-left: 5px
+        max-width: unset
+        flex: 2 1 auto
+        &:not(:last-child)
+          margin-right: 5px
+          margin-left: 5px
+        &:nth-of-type(2n)
+          margin-right: 5px
+          margin-left: 5px
+
+@media (max-width: 545px)
+  .discounts-container
+    .item
+      .title
+        font-size: 18px
+        line-height: 25px
+        padding-left: 30px
+        padding-right: 30px
+        padding-top: 15px
+        padding-bottom: 15px
+      .content
+        padding-left: 30px
+        padding-right: 30px
+      .action
+        margin-top: 15px
+        .btn
+          width: 100%
+          font-size: 18px
+      .desc
+        font-size: 16px
+        line-height: 19px
+        ul
+          li
+            &:before
+              padding-right: 5px
+              font-size: 16px
 
 @media (max-width: 450px)
   .book-detail-popup

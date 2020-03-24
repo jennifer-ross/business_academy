@@ -1229,22 +1229,28 @@ $(function () {
                     self.select.on('change', function () {
                         filterChangeFn('select');
                     });
+
+                    if (self.hasPaginator) {
+                        e.generatePagination(k);
+                        e.unhide2({target: null}, k);
+                        filterChangeFn('click', undefined, true);
+                    }
                 }else {
                     self.filterKeys.on('click', function () {
                         e.unhide2({target: self.unhide}, k);
                         filterChangeFn('click', this);
                     });
 
-                    self.subfilterKeys.on('click', function () {
-                        e.unhide2({target: self.unhide}, k);
-
-                        filterChangeFn('click', this, true);
-                    });
-
                     self.unhide.on('click', (evt) => {
                         e.unhide2(evt, k);
                     });
                 }
+
+                self.subfilterKeys.on('click', function () {
+                    e.unhide2({target: self.unhide}, k);
+                    filterChangeFn('click', this, true);
+                });
+
                 self.filteredItems = Array.from(self.items);
             });
         },
@@ -1272,6 +1278,8 @@ $(function () {
                 }
 
                 $(evt.target).hide();
+            }else {
+                self.paginator.dom.show();
             }
         },
         generatePagination: (k) => {
@@ -1324,7 +1332,7 @@ $(function () {
 
             if (!self.paginator.dom) {
                 // e.generatePagination(k);
-                e.unhide2({traget: null}, k);
+                e.unhide2({target: null}, k);
             }
 
             self.paginator.pagesContainer.find('.page').remove();

@@ -4091,7 +4091,7 @@ input[type="checkbox"]
       justify-content: center
       align-items: center
       flex: 1 1 auto
-      max-width: calc(25% - 15px)
+      max-width: 30%
       font-size: 18px
       line-height: 25px
       text-align: center
@@ -4108,6 +4108,84 @@ input[type="checkbox"]
     span.active
       border: 1px solid #11558F
       color: $r
+
+.section-reports, .section-photo
+  padding-left: 0
+  padding-right: 0
+  padding-bottom: 60px
+  .swiper-button-next, .swiper-button-prev
+    display: block
+    margin: 0
+    top: 120px
+    width: auto
+    height: auto
+    &:after
+      color: #fff
+      font-size: 72px
+      line-height: 84px
+  .swiper-button-next
+    right: 1.5%
+    &:after
+      content: "\F142"
+      font-family: "Material Design Icons"
+  .swiper-button-prev
+    left: 1.5%
+    &:after
+      content: "\F141"
+      font-family: "Material Design Icons"
+  .swiper-pagination
+    display: flex
+    padding-right: 0
+    justify-content: center
+    bottom: -30px !important
+  .section-content
+    background: #F6F9FB
+    border: 1px solid #DDE8F1
+    padding-left: 22px
+    padding-right: 22px
+    padding-top: 5px
+    position: relative
+  .swiper-container-reports
+    position: relative
+  .item
+    .image
+      display: flex
+      justify-content: center
+      img
+        width: 100%
+        object-fit: cover
+        max-width: 555px
+        height: 280px
+        max-height: 280px
+    .date
+      font-size: 18px
+      line-height: 25px
+      color: #202B38
+      padding-bottom: 4px
+    .desc
+      padding-top: 10px
+      padding-bottom: 15px
+      font-size: 18px
+      line-height: 25px
+      text-align: right
+      color: #202B38
+
+.section-photo
+  padding-bottom: 60px
+  .swiper-button-next, .swiper-button-prev
+    top: 50%
+    transform: translateY(-50%)
+  .section-content
+    padding-top: 30px
+    padding-bottom: 30px
+  .swiper-pagination
+    bottom: -60px !important
+  .item
+    .image
+      img
+        height: 248px
+        width: 100%
+        max-width: 366px
 
 .mobile-image
   display: none

@@ -876,6 +876,17 @@
       .section-right-par
         width: 75%
 
+  .section-reports, .section-photo
+    padding-left: 0
+    padding-right: 0
+    padding-bottom: 60px
+  .filter-container-subfilter
+    .subfilter
+      span
+        max-width: 30%
+        font-size: 16px
+        line-height: 19px
+
 @media (max-width: 1400px)
   .book-detail-popup
     width: 980px
@@ -1555,6 +1566,45 @@
           display: none
       .section-right-par
         width: 100%
+  .section-reports, .section-photo
+    padding-left: 0
+    padding-right: 0
+    padding-bottom: 60px
+    .item
+      .image
+        img
+      .date
+        font-size: 16px
+        line-height: 19px
+      .desc
+        font-size: 16px
+        line-height: 19px
+
+  .filter-container-subfilter
+    .subfilter
+      margin-bottom: 0
+      span
+        padding-left: 30px
+        padding-right: 30px
+        flex: 1 1 50%
+        max-width: calc(50% - 7.5px)
+        margin-bottom: 15px
+        margin-right: 15px
+        &:not(:last-child)
+          margin-right: 15px
+        &:nth-of-type(2n)
+          margin-right: 0
+
+  .section-articles-brick .filter-container, .section-books-brick .filter-container, .section-publ-brick .filter-container, .section-read-more .filter-container, .section-reviews-filter .filter-container, .section-videos .filter-container
+    padding-right: 0
+  .filter-tab
+    .filter-tab-container
+      span
+        font-size: 20px
+        line-height: 28px
+        padding-left: 30px
+        padding-right: 30px
+        flex: 1 1 auto
 
 @media (max-width: 1200px)
 
@@ -2155,6 +2205,20 @@
           font-size: 28px
           line-height: 36px
 
+  .filter-tab
+    .desc
+      font-size: 18px
+      line-height: 24px
+    .filter-tab-container
+      span
+        font-size: 20px
+        line-height: 28px
+        padding-left: 15px
+        padding-right: 15px
+        &:not(:last-child)
+          margin-right: 0
+        margin-bottom: 15px
+
 // ≥1200px
 +media-breakpoint-down(lg)
   //
@@ -2567,6 +2631,50 @@
         width: 100%
         right: -25%
         img
+  .section-reports, .section-photo
+    padding-left: 0
+    padding-right: 0
+    padding-bottom: 60px
+    .swiper-button-next
+      right: 6.5%
+    .swiper-button-prev
+      left: 6.5%
+  .section-photo
+    .item
+      .image
+        img
+          max-width: 100%
+  .filter-container-subfilter
+    .subfilter
+      margin-bottom: 0
+      span
+        margin-bottom: 7.5px
+        margin-right: 7.5px
+        margin-left: 7.5px
+        max-width: unset
+        flex: 2 1 auto
+        &:not(:last-child)
+          margin-right: 7.5px
+          margin-left: 7.5px
+        &:nth-of-type(2n)
+          margin-right: 7.5px
+          margin-left: 7.5px
+  .filter-tab
+    .desc
+      font-size: 18px
+      line-height: 24px
+      margin-right: 15px
+      width: 20%
+    .filter-tab-container
+      width: 80%
+      span
+        font-size: 20px
+        line-height: 28px
+        padding-left: 15px
+        padding-right: 15px
+        &:not(:last-child)
+          margin-right: 0
+        margin-bottom: 15px
 
 // ≥768px
 +media-breakpoint-down(sm)
@@ -3981,6 +4089,51 @@
         .title
           font-size: 18px
           line-height: 25px
+  .section-reports, .section-photo
+    padding-left: 0
+    padding-right: 0
+    padding-bottom: 30px
+    .swiper-pagination
+      bottom: -20px !important
+    .section-content
+      padding-top: 3px
+      padding-left: 6px
+      padding-right: 6px
+    .swiper-container-init-mobile
+    .swiper-button-next, .swiper-button-prev
+      top: 50%
+      transform: translateY(-50%)
+      &:after
+        font-size: 36px
+        line-height: 36px
+        color: $b
+        opacity: .2
+    .swiper-button-next
+      right: -6px
+    .swiper-button-prev
+      left: -6px
+    .item
+      .date
+        padding-bottom: 0
+        font-size: 12px
+        line-height: 16px
+      .desc
+        padding-bottom: 5px
+        font-size: 14px
+        line-height: 19px
+        text-align: center
+  .section-reports
+    .section-content
+      .container
+        padding-top: 0
+        padding-bottom: 0
+  .section-photo
+    .section-content
+      padding-top: 0
+      padding-bottom: 0
+  .section-videos-wrap
+    .items-container
+      flex-wrap: wrap
 
 // ≥576px
 +media-breakpoint-down(xs)
@@ -4606,6 +4759,26 @@
     font-size: 18px
     line-height: 25px
     margin-right: 10px
+  .filter-tab
+    flex-direction: column
+    .desc
+      font-size: 16px
+      line-height: 22px
+      margin-right: 0
+      width: 100%
+      text-align: left
+      margin-bottom: 5px
+    .filter-tab-container
+      width: 100%
+      span
+        font-size: 18px
+        line-height: 25px
+        padding-left: 15px
+        padding-right: 15px
+        width: 100%
+        &:not(:last-child)
+          margin-right: 0
+        margin-bottom: 15px
 
 @media (max-width: 565px)
   .discounts-container
@@ -4706,6 +4879,26 @@
           .action
           .text
             &:after
+
+  .filter-container-subfilter
+    .subfilter
+      margin-bottom: 0
+      span
+        font-size: 14px
+        line-height: 19px
+        padding-left: 10px
+        padding-right: 10px
+        margin-bottom: 10px
+        margin-right: 5px
+        margin-left: 5px
+        max-width: unset
+        flex: 2 1 auto
+        &:not(:last-child)
+          margin-right: 5px
+          margin-left: 5px
+        &:nth-of-type(2n)
+          margin-right: 5px
+          margin-left: 5px
 
 @media (max-width: 545px)
   .discounts-container

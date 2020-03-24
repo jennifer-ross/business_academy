@@ -761,6 +761,119 @@ $(function () {
         );
         desktopSwipers.push(visitSeminarSwiper2);
 
+        let reportsSwiper = new Swiper('.section-reports .swiper-container-reports',
+            Object.assign({}, defaultSwiperOptions, {
+                slidesPerView: 3,
+                slidesPerGroup: 1,
+                spaceBetween: 30,
+                navigation: {
+                    nextEl: '.section-reports .swiper-button-next',
+                    prevEl: '.section-reports .swiper-button-prev',
+                },
+                pagination: {
+                    el: '.section-reports .swiper-pagination',
+                    type: 'bullets',
+                    clickable: true,
+                },
+                on: {
+                    init: function () {
+                        // let el = $(this.$el);
+                        // let maxHeight = 0;
+                        // let fixHeight = 5;
+                        // Array.prototype.forEach.call(el.find('.item'), v => {
+                        //     let height = v.getBoundingClientRect().height;
+                        //     if (height > maxHeight) {
+                        //         maxHeight = height;
+                        //     }
+                        // });
+                        // maxHeight += fixHeight;
+                        // $(this.el).attr('style', 'height: ' + maxHeight + 'px;');
+                    }
+                },
+                breakpoints: {
+                    1500: {
+                        slidesPerView: 3,
+                        slidesPerGroup: 1,
+                        spaceBetween: 30,
+                    },
+                    1280: {
+                        slidesPerView: 2,
+                        slidesPerGroup: 1,
+                        spaceBetween: 30,
+                    },
+                    1080: {
+                        slidesPerView: 2,
+                        slidesPerGroup: 1,
+                        spaceBetween: 30,
+                    },
+                    830: {
+                        slidesPerView: 2,
+                        slidesPerGroup: 1,
+                        spaceBetween: 30,
+                    },
+                    640: {
+                        slidesPerView: 1,
+                        slidesPerGroup: 1,
+                        spaceBetween: 40,
+                    },
+                    0: {
+                        slidesPerView: 1,
+                        slidesPerGroup: 1,
+                    }
+                }
+            })
+        );
+        desktopSwipers.push(reportsSwiper);
+
+        let photosSwiper = new Swiper('.section-photo .swiper-container-photo',
+            Object.assign({}, defaultSwiperOptions, {
+                slidesPerView: 4,
+                slidesPerGroup: 1,
+                spaceBetween: 30,
+                navigation: {
+                    nextEl: '.section-reports .swiper-button-next',
+                    prevEl: '.section-reports .swiper-button-prev',
+                },
+                pagination: {
+                    el: '.section-photo .swiper-pagination',
+                    type: 'bullets',
+                    clickable: true,
+                },
+                breakpoints: {
+                    1500: {
+                        slidesPerView: 4,
+                        slidesPerGroup: 1,
+                        spaceBetween: 30,
+                    },
+                    1280: {
+                        slidesPerView: 3,
+                        slidesPerGroup: 1,
+                        spaceBetween: 30,
+                    },
+                    1080: {
+                        slidesPerView: 3,
+                        slidesPerGroup: 1,
+                        spaceBetween: 30,
+                    },
+                    830: {
+                        slidesPerView: 2,
+                        slidesPerGroup: 1,
+                        spaceBetween: 30,
+                    },
+                    640: {
+                        slidesPerView: 1,
+                        slidesPerGroup: 1,
+                        spaceBetween: 40,
+                    },
+                    0: {
+                        slidesPerView: 1,
+                        slidesPerGroup: 1,
+                    }
+                }
+            })
+        );
+        desktopSwipers.push(photosSwiper);
+
         if (window.innerWidth <= 1400) {
             swiperFix(desktopSwipers);
         }
@@ -1003,8 +1116,6 @@ $(function () {
                 self['searchInp'] = self.search.find('input');
                 self['searchBtn'] = self.search.find('.btn-search');
 
-                console.log(self);
-
                 self.searchBtn.on('click', function (evt) {
                     e.search(k, evt, this);
                 });
@@ -1035,16 +1146,16 @@ $(function () {
                         el = $(_this);
                     }
 
-                    let key = parseInt(el.attr('data-filter-key'));
-                    let skey = parseInt(el.attr('data-sfilter-key'));
+                    let key = el.attr('data-filter-key');
+                    let skey = el.attr('data-sfilter-key');
 
-                    if (key === 0 && !key) {
+                    if ((key == 0 || key == '0') && !key) {
                         key = 0;
                     }else if(!key) {
                         key = self.key;
                     }
 
-                    if (skey === 0) {
+                    if ((skey == 0 || skey == '0') && !skey) {
                         skey = 0;
                     }else if (!skey) {
                         skey = self.skey;
@@ -1078,17 +1189,17 @@ $(function () {
                         }
 
                         if (self.hasSubfilter) {
-                            if (self.key === 0 && self.skey === 0) {
+                            if ( (self.key === 0 && self.skey === 0) || (self.key === '0' && self.skey === '0')) {
                                 self.filteredItems = self.items;
-                            }else if (self.skey === 0) {
+                            }else if (self.skey === 0 || self.skey === '0') {
                                 self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"]'));
-                            }else if(self.key === 0) {
+                            }else if(self.key === 0 || self.key === '0') {
                                 self.filteredItems = e.toObject(self.filterContainer.find('[data-skey="' + self.skey + '"]'));
                             }else {
                                 self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"][data-skey="' + self.skey + '"]'));
                             }
                         }else {
-                            if (self.key === 0) {
+                            if (self.key === 0 || self.key === '0') {
                                 self.filteredItems = self.items;
                             }else {
                                 self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"]'));
@@ -1290,14 +1401,33 @@ $(function () {
                     self.paginator.dom = self.paginator.pagesContainer.parent();
                 }
 
-                let filterItems = null;
-                if (self.key == 0 || self.key == '0') {
-                    filterItems = self.items;
+                // let filterItems = null;
+                // if (self.key == 0 || self.key == '0') {
+                //     filterItems = self.items;
+                // }else {
+                //     filterItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"]'));
+                // }
+
+                // TODO make as fn
+                if (self.hasSubfilter) {
+                    if ( (self.key === 0 && self.skey === 0) || (self.key === '0' && self.skey === '0')) {
+                        self.filteredItems = self.items;
+                    }else if (self.skey === 0 || self.skey === '0') {
+                        self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"]'));
+                    }else if(self.key === 0 || self.key === '0') {
+                        self.filteredItems = e.toObject(self.filterContainer.find('[data-skey="' + self.skey + '"]'));
+                    }else {
+                        self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"][data-skey="' + self.skey + '"]'));
+                    }
                 }else {
-                    filterItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"]'));
+                    if (self.key === 0 || self.key === '0') {
+                        self.filteredItems = self.items;
+                    }else {
+                        self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"]'));
+                    }
                 }
 
-                self.filteredItems = filterItems;
+                // self.filteredItems = filterItems;
 
                 e.generatePages(k);
                 e.filterItems2(k);

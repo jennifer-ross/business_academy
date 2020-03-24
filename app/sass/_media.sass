@@ -351,6 +351,20 @@
       .bg
         right: -14%
         z-index: -1
+  .swiper-container-articles
+    .item
+      .title
+        font-size: 24px
+        line-height: 33px
+        padding-bottom: 15px
+      .desc
+        font-size: 18px
+        line-height: 30px
+      .image
+        min-width: 305px
+        max-width: 305px
+        margin-right: 15px
+        height: 234px
 
 // 1500px
 @media (max-width: 1499.98px)
@@ -886,6 +900,28 @@
         max-width: 30%
         font-size: 16px
         line-height: 19px
+  .articles-bg
+    padding-left: 0
+    padding-right: 0
+  .section-articles
+    padding-bottom: 60px
+  .swiper-container-articles
+    .item
+      flex-direction: column
+      .title
+        font-size: 20px
+        line-height: 28px
+      .desc
+        font-size: 16px
+        line-height: 28px
+      .image
+        max-width: 100%
+        min-width: 100%
+        margin-bottom: 15px
+        margin-right: 0
+        img
+          object-fit: contain
+
 
 @media (max-width: 1400px)
   .book-detail-popup
@@ -1605,6 +1641,11 @@
         padding-left: 30px
         padding-right: 30px
         flex: 1 1 auto
+  .articles-bg
+    padding-left: 0
+    padding-right: 0
+  .section-articles
+    padding-bottom: 60px
 
 @media (max-width: 1200px)
 
@@ -2218,6 +2259,17 @@
         &:not(:last-child)
           margin-right: 0
         margin-bottom: 15px
+  .articles-bg
+    .section-content
+      background-size: cover
+  .swiper-container-articles
+    .item
+      flex-direction: row
+      .image
+        max-width: 305px
+        min-width: 305px
+        margin-bottom: 0
+        margin-right: 15px
 
 // ≥1200px
 +media-breakpoint-down(lg)
@@ -2675,6 +2727,23 @@
         &:not(:last-child)
           margin-right: 0
         margin-bottom: 15px
+  .articles-bg
+    .section-content
+      padding-top: 10px
+      padding-bottom: 10px
+      background-size: cover
+  .swiper-container-articles
+    .item
+      flex-direction: column
+      .title
+        padding-bottom: 10px
+      .desc
+        padding-top: 10px
+      .image
+        max-width: 100%
+        min-width: 100%
+        margin-right: 0
+        margin-bottom: 10px
 
 // ≥768px
 +media-breakpoint-down(sm)
@@ -4134,6 +4203,46 @@
   .section-videos-wrap
     .items-container
       flex-wrap: wrap
+  .section-articles
+    padding-bottom: 30px
+    padding-left: 0
+    padding-right: 0
+    .swiper-button-next, .swiper-button-prev
+      display: block
+      top: 50%
+      transform: translateY(-50%)
+      &:after
+        font-size: 36px
+        line-height: 36px
+        color: $b
+        opacity: .2
+    .swiper-button-next
+      right: -6px
+    .swiper-button-prev
+      left: -6px
+    .swiper-pagination
+      bottom: -20px !important
+    .section-content
+      margin-top: 0
+      padding-left: 0
+      padding-right: 0
+      position: relative
+
+  .swiper-container-articles
+    .item
+      .date
+        display: flex
+      .title
+        font-size: 16px
+        line-height: 22px
+      .action
+        display: inline-block
+      .desc
+        font-size: 16px
+        line-height: 22px
+      .image
+        display: none
+
 
 // ≥576px
 +media-breakpoint-down(xs)

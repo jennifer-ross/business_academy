@@ -874,6 +874,36 @@ $(function () {
         );
         desktopSwipers.push(photosSwiper);
 
+        let articlesSwiper = new Swiper('.section-articles .swiper-container-articles',
+            Object.assign({}, defaultSwiperOptions, {
+                slidesPerView: 2,
+                slidesPerGroup: 2,
+                spaceBetween: 30,
+                navigation: {
+                    nextEl: '.section-articles .swiper-button-next',
+                    prevEl: '.section-articles .swiper-button-prev',
+                },
+                pagination: {
+                    el: '.section-articles .swiper-pagination',
+                    type: 'bullets',
+                    clickable: true,
+                },
+                breakpoints: {
+                    1080: {
+                        slidesPerView: 2,
+                        slidesPerGroup: 2,
+                        spaceBetween: 30,
+                    },
+                    0: {
+                        slidesPerView: 1,
+                        slidesPerGroup: 1,
+                        spaceBetween: 30,
+                    }
+                }
+            })
+        );
+        desktopSwipers.push(articlesSwiper);
+
         if (window.innerWidth <= 1400) {
             swiperFix(desktopSwipers);
         }
@@ -1252,6 +1282,8 @@ $(function () {
                 });
 
                 self.filteredItems = Array.from(self.items);
+
+                e.onResize(k);
             });
         },
         unhide2: (evt, k) => {
@@ -1624,13 +1656,17 @@ $(function () {
             });
             return obj;
         },
-        onResize: (evt, hasPaginator,filterItemsContainer, items, itemsContainer, v) => {
+        onResize: (k) => {
             let e = window.itemsFilter;
+            let self = e.filters[k];
 
-            let hasGen = $(v.attr('data-filter-items')).parent().find('.paginator').length > 0 ? true : false;
-            if (!hasGen && window.innerWidth <= mobileBreakpoint) {
-                e.unhide(evt, hasPaginator, filterItemsContainer, items, itemsContainer, v);
-            }
+            $(window).on('resize', function () {
+                console.log(self);
+                let hasGen = !!(self.paginator.dom && self.paginator.dom.length > 0);
+                if (!hasGen && window.innerWidth <= mobileBreakpoint) {
+                    e.unhide2({target: null}, k);
+                }
+            });
         }
     };
 

@@ -1053,7 +1053,7 @@ ul
         object-fit: cover
         width: 100%
 
-.section-videos, .section-books-brick, .section-publ-brick, .section-read-more, .section-articles-brick, .section-reviews-filter
+.section-videos, .section-books-brick, .section-publ-brick, .section-read-more, .section-articles-brick, .section-reviews-filter, .section-news-brick
   .section-action
     margin-top: 20px
 
@@ -3251,7 +3251,7 @@ input[type="checkbox"]
       opacity: 1
       color: $r
 
-.section-publ-brick, .section-read-more, .section-articles-brick
+.section-publ-brick, .section-read-more, .section-articles-brick, .section-news-brick
   .items-container
     .item
       flex: 1 1 calc(33% - 30px)
@@ -3294,7 +3294,7 @@ input[type="checkbox"]
           text-decoration: underline !important
           color: #8f1154
 
-.section-publ-brick, .section-read-more, .section-articles-brick
+.section-publ-brick, .section-read-more, .section-articles-brick, .section-news-brick
   .items-container
     margin-top: 30px
     .item
@@ -4266,6 +4266,80 @@ input[type="checkbox"]
         width: 100%
         height: 100%
         object-fit: cover
+
+.section-news-brick
+  .items-container
+    .item
+      position: relative
+      padding: 15px
+      border: 1px solid #DDE8F1
+      &:after
+        content: ""
+        position: absolute
+        width: 100%
+        height: 100%
+        left: 0
+        bottom: 0
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.500246) 0%, #FFFFFF 100%)
+        z-index: -1
+      .desc
+        padding-top: 25px
+        padding-bottom: 15px
+      .title-container
+        position: relative
+        padding-bottom: 38px
+        &:after
+          content: ""
+          bottom: 0
+          left: 0
+          position: absolute
+          width: 100%
+          height: 2px
+          background: $r
+        .date
+          font-size: 18px
+          line-height: 25px
+          color: #8F1154
+          padding-bottom: 5px
+        .title
+          padding-left: 20px
+          font-size: 24px
+          text-align: right
+          line-height: 33px
+          text-transform: uppercase
+      .bg
+        position: absolute
+        width: 100%
+        height: 100%
+        left: 0
+        top: 0
+        z-index: -2
+        img
+          width: 100%
+          height: 100%
+          object-fit: cover
+
+.filters-container
+  display: flex
+  .search-filter
+    display: flex
+    flex: 1 1 auto
+
+.section-news-brick
+  .filter-container
+    padding-right: 0
+    span
+      border: 2px solid #11558F
+      display: flex
+      justify-content: center
+      flex: 1 1 auto
+      font-size: 18px
+      line-height: 30px
+      text-transform: uppercase
+      color: #8F1154
+      margin-bottom: 15px
+    span.active
+      border: 2px solid #11558F
 
 .mobile-image
   display: none

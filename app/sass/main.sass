@@ -4321,11 +4321,15 @@ input[type="checkbox"]
 
 .filters-container
   display: flex
+  margin-bottom: 15px
   .search-filter
     display: flex
     flex: 1 1 auto
+    margin-bottom: 0
 
 .section-news-brick
+  .search-filter
+    margin-right: 30px
   .filter-container
     padding-right: 0
     span
@@ -4338,8 +4342,54 @@ input[type="checkbox"]
       text-transform: uppercase
       color: #8F1154
       margin-bottom: 15px
+      margin-left: 0
+      margin-right: 0
+      max-width: calc(100% / 12 )
+      width: calc( (100% / 12) - 30px )
+      &:not(:nth-last-child(2))
+        margin-right: 30px
     span.active
       border: 2px solid #11558F
+
+.date-filter
+  position: relative
+  input
+    width: 100%
+    height: 100%
+    color: transparent
+    background: transparent
+    border: none
+    outline: none
+    appearance: none
+    pointer-events: none
+    position: absolute
+    left: 0
+    top: 0
+
+.btn-calendar
+  font-size: 18px
+  line-height: 30px
+  text-align: center
+  text-transform: uppercase
+  color: #8F1154
+  border: 2px solid #11558F
+  border-radius: 2px
+  padding-left: 60px
+  padding-right: 66px
+  position: relative
+  display: flex
+  background: #fff
+  &:after
+    content: "\FDFA"
+    font-family: "Material Design Icons"
+    font-size: 24px
+    text-align: center
+    text-transform: uppercase
+    color: #8F1154
+    display: inline-block
+    //margin-left: 7px
+    position: absolute
+    right: 7px
 
 .mobile-image
   display: none

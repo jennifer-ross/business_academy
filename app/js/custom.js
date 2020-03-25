@@ -1158,22 +1158,22 @@ $(function () {
 
                     self.dateFilter.btn.attr('data-key', k);
 
-                    let lp = new Lightpick({
-                        field: self.dateFilter.input[0],
-                        singleDate: false,
-                        hideOnBodyClick: false,
-                        onSelect: function(start, end) {
-                            console.log(start, end);
-                            self.dateVal = start + end;
+                    let lp = self.dateFilter.input.datepicker({
+                        toggleSelected: false,
+                        range: true,
+                        onSelect: function (formattedDate, date, inst) {
+                            self.dateVal = date;
+                        },
+                        onHide: function (inst, animationCompleted) {
+                            console.log(self.dateVal);
                         }
                     });
 
-                    self['dateFilterPick'] = lp;
+                    self['dateFilterPick'] = lp.data('datepicker');
 
                     self.dateFilter.btn.on('click', function (e) {
                        let self = window.itemsFilter.filters[$(this).attr('data-key')];
-                        e.preventDefault();
-                       self.dateFilterPick.show({target: self.dateFilter.input[0]});
+                       self.dateFilterPick.show();
                     });
                 }
 
@@ -1342,7 +1342,9 @@ $(function () {
 
                 $(evt.target).hide();
             }else {
-                self.paginator.dom.show();
+                if (self.hasPaginator && self.paginator.dom) {
+                    self.paginator.dom.show();
+                }
             }
         },
         generatePagination: (k) => {

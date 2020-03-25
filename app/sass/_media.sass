@@ -365,6 +365,10 @@
         max-width: 305px
         margin-right: 15px
         height: 234px
+  .section-news-brick
+    .filter-container
+      span
+        width: calc((100% / 12))
 
 // 1500px
 @media (max-width: 1499.98px)
@@ -921,7 +925,23 @@
         margin-right: 0
         img
           object-fit: contain
+  .section-news-brick
+    .items-container
+      .item
+        flex: 1 1 calc(50% - 30px)
+        max-width: calc(50% - 30px)
+    .search-filter
+      margin-right: 15px
+    .filter-container
+      span
+        width: calc((100% / 8))
+        max-width: calc((100% / 8))
+        &:not(:last-child)
+          margin-right: 15px
 
+  .btn-calendar
+    padding-left: 50px
+    padding-right: 56px
 
 @media (max-width: 1400px)
   .book-detail-popup
@@ -2270,6 +2290,36 @@
         min-width: 305px
         margin-bottom: 0
         margin-right: 15px
+  .section-news-brick
+    .items-container
+      .item
+        padding: 10px
+        .desc
+          font-size: 16px
+          line-height: 21px
+          padding-top: 15px
+          padding-bottom: 5px
+        .title-container
+          padding-bottom: 10px
+          .date
+            font-size: 16px
+            line-height: 21px
+          .title
+            padding-left: 0
+            font-size: 18px
+            line-height: 28px
+    .filter-container
+      span
+        margin-left: 7.5px
+        margin-right: 7.5px
+        width: calc((100% / 6) - 15px)
+        max-width: calc((100% / 6))
+        &:not(:last-child)
+          margin-right: 7.5px
+
+  .btn-calendar
+    padding-left: 40px
+    padding-right: 46px
 
 // ≥1200px
 +media-breakpoint-down(lg)
@@ -2744,6 +2794,40 @@
         min-width: 100%
         margin-right: 0
         margin-bottom: 10px
+  .section-news-brick
+    .items-container
+      justify-content: center
+      .item
+        flex: 1 1 calc(85% - 60px)
+        max-width: calc(85% - 60px)
+        margin-left: 30px
+        margin-right: 30px
+    .search-filter
+      margin-right: 15px
+    .filter-container
+      span
+        margin-left: 0
+        margin-right: 15px
+        width: calc((100% / 4) - 15px)
+        max-width: unset
+        font-size: 14px
+        &:not(:last-child)
+          margin-right: 15px
+        &:nth-of-type(4n)
+          margin-right: 0
+
+.btn-search,.btn-calendar
+  font-size: 16px
+  &:after
+    font-size: 20px
+
+.btn-search
+  padding-left: 23px
+  padding-right: 30px
+
+.btn-calendar
+  padding-left: 30px
+  padding-right: 36px
 
 // ≥768px
 +media-breakpoint-down(sm)
@@ -4242,7 +4326,28 @@
         line-height: 22px
       .image
         display: none
-
+  .section-news-brick
+    .items-container
+      margin-top: 0
+      .item
+        flex: 1 1 calc(85% - 60px)
+        max-width: calc(85% - 60px)
+        margin-left: 30px
+        margin-right: 30px
+    .search-filter
+      margin-right: 15px
+    .filter-container
+      display: none
+    .filters-container
+      flex-direction: column
+      margin-bottom: 0
+      padding-bottom: 10px
+    .search-filter
+      margin-bottom: 10px
+      margin-right: 0
+    .date-filter
+      flex: 1 1 auto
+      justify-content: center
 
 // ≥576px
 +media-breakpoint-down(xs)
@@ -4945,6 +5050,15 @@
           i
             font-size: 18px
             line-height: 25px
+  .section-news-brick
+    .items-container
+      margin-top: 0
+      .item
+        flex: 1 1 calc(100% - 20px)
+        max-width: calc(100% - 20px)
+        margin-left: 10px
+        margin-right: 10px
+        margin-bottom: 10px
 
 @media (max-width: 480px)
   .container-auditors-partners .swiper-container-audit-partners
@@ -5041,6 +5155,24 @@
     .title
       font-size: 20px
       line-height: 26px
+  .section-news-brick
+    .items-container
+      .item
+        padding: 10px
+        .desc
+          font-size: 14px
+          line-height: 19px
+          padding-top: 5px
+          padding-bottom: 5px
+        .title-container
+          padding-bottom: 5px
+          .date
+            font-size: 14px
+            line-height: 19px
+          .title
+            font-size: 16px
+            line-height: 22px
+            padding-bottom: 0
 
 @media (max-width: 400px)
   .clients-brick-container .item .icon

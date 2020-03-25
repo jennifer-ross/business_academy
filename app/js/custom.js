@@ -2,8 +2,6 @@
 
 $(function () {
 
-    $('[type="tel"]').inputmask({ mask: "+7(999)999-99-99"});
-
     // Array.prototype.__proto__.findInstance = function(el) {
     //     for (let i = 0;i < this.length;i++) {
     //         if (this[i] === el) {
@@ -1045,6 +1043,8 @@ $(function () {
     let clients = $('.clients-container .item');
     let clientsCnt = clients.length;
 
+    phoneFieldsUpdate();
+
     window.helper = {
       parseBool: (string) => {
           if (string == undefined) return false;
@@ -1126,14 +1126,19 @@ $(function () {
                     paginator: {
                         dom: null,
                     },
+                    dateFilter: {
+                        dom: $(v.attr('data-dfilter'))
+                    },
                     subfilter: v.find('.subfilter'),
                     subfilterKeys: v.find('[data-sfilter-key]'),
                     hasSubfilter: window.helper.parseBool(v.attr('data-subfilter')),
+                    hasDateFilter: window.helper.parseBool(v.attr('data-date-filter')),
                     filteredItems: [],
                     count: 0,
                     dataCount: v.attr('data-count'),
                     hasSearch: false,
                     searchVal: "",
+                    dateVal: "",
                     unhide: $(v.attr('data-unhide')),
                     countPages: 0,
                     currentPage: 1,
@@ -1145,6 +1150,32 @@ $(function () {
                 self.search.attr('data-filter-items', v.attr('data-filter-items'));
                 self['searchInp'] = self.search.find('input');
                 self['searchBtn'] = self.search.find('.btn-search');
+
+                if (self.hasDateFilter) {
+
+                    self.dateFilter.input = self.dateFilter.dom.find('input');
+                    self.dateFilter.btn = self.dateFilter.dom.find('button');
+
+                    self.dateFilter.btn.attr('data-key', k);
+
+                    let lp = self.dateFilter.input.datepicker({
+                        toggleSelected: false,
+                        range: true,
+                        onSelect: function (formattedDate, date, inst) {
+                            self.dateVal = date;
+                        },
+                        onHide: function (inst, animationCompleted) {
+                            console.log(self.dateVal);
+                        }
+                    });
+
+                    self['dateFilterPick'] = lp.data('datepicker');
+
+                    self.dateFilter.btn.on('click', function (e) {
+                       let self = window.itemsFilter.filters[$(this).attr('data-key')];
+                       self.dateFilterPick.show();
+                    });
+                }
 
                 self.searchBtn.on('click', function (evt) {
                     e.search(k, evt, this);
@@ -1311,7 +1342,9 @@ $(function () {
 
                 $(evt.target).hide();
             }else {
-                self.paginator.dom.show();
+                if (self.hasPaginator && self.paginator.dom) {
+                    self.paginator.dom.show();
+                }
             }
         },
         generatePagination: (k) => {
@@ -2246,5 +2279,7 @@ $(function () {
 
     $(window).on('resize', onResizeMasonry);
     onResizeMasonry();
+
+
 
 });

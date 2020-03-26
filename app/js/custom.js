@@ -1398,14 +1398,6 @@ $(function () {
                 e.onResize(k);
             });
         },
-        inDateRange: (v, date, dateFrom, dateTo) => {
-            // date = new Date(date);
-            // dateFrom = new Date(dateFrom);
-            // dateTo = new Date(dateTo);
-
-            console.log(date >= dateFrom && date < dateTo);
-
-        },
         unhide2: (evt, k) => {
             let e = window.itemsFilter;
 
@@ -1807,7 +1799,6 @@ $(function () {
             let self = e.filters[k];
 
             $(window).on('resize', function () {
-                console.log(self);
                 let hasGen = !!(self.paginator.dom && self.paginator.dom.length > 0);
                 if (!hasGen && window.innerWidth <= mobileBreakpoint) {
                     e.unhide2({target: null}, k);

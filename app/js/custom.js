@@ -1169,6 +1169,8 @@ $(function () {
                         range: true,
                         classes: 'filter-calendar',
                         clearButton: true,
+                        minDate: new Date(2010, 1),
+                        maxDate: new Date(),
                         onSelect: function (formattedDate, date, inst) {
                             self.dateVal = date;
 
@@ -2354,11 +2356,54 @@ $(function () {
         }
     };
 
+    window.filterTab = {
+        filters: [],
+        init: () => {
+            let e = window.filterTab;
+
+            e.filter = $('[data-filtertab]');
+            if (e.filter.length <= 0) {
+                return;
+            }
+
+            Array.prototype.forEach.call(e.filter, function (v, k) {
+                v = $(v);
+
+                e.filters[k] = {
+                    filter: v,
+                    items: $('body').find('[data-has-filtertab]'),
+                    filterKeys: v.find('[data-filtertab-key]'),
+                };
+
+                let self = e.filters[k];
+
+                self.filterKeys.on('click', function () {
+                    let el = $(this);
+
+                    if (el.hasClass('active')) {
+                        self.filterKeys.removeClass('active');
+                        self.items.show();
+                        return;
+                    }
+                    self.filterKeys.removeClass('active');
+                    el.addClass('active');
+
+                    let key = el.attr('data-filtertab-key');
+
+                    self.items.hide();
+                    $('body').find('[data-has-filtertab][data-filter-key="' + key + '"]').show();
+                });
+
+            });
+        }
+    };
+
     // always upper then other
     window.customStyles.init();
 
     window.submenu.init();
     window.itemsFilter.init();
+    window.filterTab.init();
     window.mobileMenu.init();
     window.popup.init();
     window.checkboxSelect.init();
@@ -2383,6 +2428,53 @@ $(function () {
 
     $(window).on('resize', onResizeMasonry);
     onResizeMasonry();
+
+   window.sl = new Swiper('.swiper-container-seminar', {
+        speed: 400,
+        spaceBetween: 100,
+        direction: 'vertical',
+        loop: !1,
+        centeredSlides: true,
+        allowTouchMove: true,
+        passiveListeners: false,
+        simulateTouch: true,
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        touchStartPreventDefault: false,
+        followFinger: false,
+        // on: {
+        //     init: function () {
+        //         let el = $(this.$el);
+        //         let maxHeight = 0;
+        //         let fixHeight = 5;
+        //
+        //         let active = $(this.el).find('.swiper-slide-active');
+        //
+        //         Array.prototype.forEach.call(el.find('.swiper-slide'), v => {
+        //             let height = $(v).find('.container')[0].getBoundingClientRect().height;
+        //
+        //             console.log(v);
+        //
+        //             if ($(v).hasClass('.swiper-slide-active')) {
+        //                 maxHeight = height;
+        //             }
+        //
+        //             $(v).attr('style', 'height: ' + height + 'px;');
+        //         });
+        //
+        //         if (active.length > 0) {
+        //             $(this.el).find('.swiper-slide-active').attr('style', 'height: ' + maxHeight + 'px;');
+        //         }else {
+        //             let first = $(this.el).find('.swiper-slide').get(0);
+        //
+        //             maxHeight = maxHeight === 0 ? first.getBoundingClientRect().height : maxHeight;
+        //             $(first).attr('style', 'height: ' + maxHeight + 'px;');
+        //         }
+        //         $(this.el).find('.swiper-wrapper').attr('style', 'height: ' + maxHeight + 'px;');
+        //
+        //     }
+        // }
+    });
 
 
 

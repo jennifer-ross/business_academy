@@ -1716,7 +1716,6 @@ $(function () {
                 });
             }else {
                 Array.prototype.forEach.call(self.items, (elem) => {
-                    console.log(elem);
                     if (elem.title.includes(value) && (elem.key == key || key == 0 || key == '0')) searchTitle.push(elem);
                     if (elem.desc.includes(value) && (elem.key == key || key == 0 || key == '0')) searchDesc.push(elem);
                 });
@@ -1732,6 +1731,7 @@ $(function () {
                 self.filteredItems = searchDesc;
             }else {
                 self.hasSearch = false;
+                self.filteredItems = [];
             }
             e.generatePages(k);
             e.filterItems2(k);

@@ -1103,6 +1103,7 @@ $(function () {
     window.itemsFilter = {
         filters: [],
         swiperType: "filter",
+        emptyResult: "Ничего не найдено",
         init: () => {
             let e = window.itemsFilter;
 
@@ -1137,6 +1138,7 @@ $(function () {
                     count: 0,
                     dataCount: v.attr('data-count'),
                     hasSearch: false,
+                    dateFiltered: false,
                     searchVal: "",
                     dateVal: "",
                     unhide: $(v.attr('data-unhide')),
@@ -1151,6 +1153,10 @@ $(function () {
                 self['searchInp'] = self.search.find('input');
                 self['searchBtn'] = self.search.find('.btn-search');
 
+                self.filterContainer.append("<div class='item-empty-result'>" + e.emptyResult + "</div>");
+                self['emptyResult'] = $(self.filterContainer).find('.item-empty-result');
+                self.emptyResult.hide();
+
                 if (self.hasDateFilter) {
 
                     self.dateFilter.input = self.dateFilter.dom.find('input');
@@ -1161,12 +1167,49 @@ $(function () {
                     let lp = self.dateFilter.input.datepicker({
                         toggleSelected: false,
                         range: true,
+                        classes: 'filter-calendar',
+                        clearButton: true,
                         onSelect: function (formattedDate, date, inst) {
                             self.dateVal = date;
+
+                            self.dateFiltered = true;
+
+                            if (date === null || date === undefined || date === '') {
+                                self.dateFiltered = false;
+                            }
+
+                            if (self.dateFiltered) {
+                                let filteredItems = [];
+
+                                let dateFrom, dateTo = null;
+                                if (date.length === 1) {
+                                    return;
+                                }else {
+                                    dateFrom = new Date(date[0]).getTime();
+                                    dateTo = new Date(date[1]).getTime();
+                                }
+
+                                Array.prototype.forEach.call(self.items, (v,k) => {
+                                    let el = $(v.link);
+
+                                    let dkey = el.attr('data-fkey');
+                                    let dkeyDate = Date.parse(dkey);
+
+                                    if (dkeyDate >= dateFrom && dkeyDate <= dateTo) {
+                                        filteredItems.push(v);
+                                    }
+                                });
+
+                                self.filteredItems = filteredItems;
+
+                            }else {
+                                self.filteredItems = self.items;
+                            }
+
+                            e.unhide2({ target: self.unhide }, k);
+                            e.generatePages(k);
+                            e.filterItems2(k);
                         },
-                        onHide: function (inst, animationCompleted) {
-                            console.log(self.dateVal);
-                        }
                     });
 
                     self['dateFilterPick'] = lp.data('datepicker');
@@ -1187,11 +1230,14 @@ $(function () {
                     }
                 });
 
-                self.searchInp.on('input', function (evt) {
+                self.searchInp.on('input changed', function (evt) {
                     let value = $(this).val();
                     self.searchVal = value;
-                    if (!value) {
+                    if (value === '') {
                         self.hasSearch = false;
+                        self.filteredItems = self.items;
+                        e.generatePages(k);
+                        e.filterItems2(k);
                     }
                 });
 
@@ -1225,64 +1271,99 @@ $(function () {
                     self.key = key;
                     self.skey = skey;
 
-                    if (self.hasPaginator) {
+                    if (!self.hasDateFilter) {
+                        if (self.hasPaginator) {
 
-                        if (type === 'click') {
-                            if (self.hasSubfilter && subfilter) {
-                                if (el.hasClass('active')) {
-                                    self.subfilterKeys.removeClass('active');
-                                    self.skey = 0;
-                                } else {
-                                    self.subfilterKeys.removeClass('active');
-                                    self.subfilter.find('[data-sfilter-key="' + self.skey + '"]').addClass('active');
-                                }
-                                self.key = 0;
-                                self.filterKeys.removeClass('active');
-                                self.filter.find('[data-filter-key="' + self.key +'"]').addClass('active');
-                            }else {
-                                if (el.hasClass('active')) {
-                                    self.filterKeys.removeClass('active');
+                            if (type === 'click') {
+                                if (self.hasSubfilter && subfilter) {
+                                    if (el.hasClass('active')) {
+                                        self.subfilterKeys.removeClass('active');
+                                        self.skey = 0;
+                                    } else {
+                                        self.subfilterKeys.removeClass('active');
+                                        self.subfilter.find('[data-sfilter-key="' + self.skey + '"]').addClass('active');
+                                    }
                                     self.key = 0;
+                                    self.filterKeys.removeClass('active');
+                                    self.filter.find('[data-filter-key="' + self.key +'"]').addClass('active');
+                                }else {
+                                    if (el.hasClass('active')) {
+                                        self.filterKeys.removeClass('active');
+                                        self.key = 0;
+                                    }
+                                    self.filterKeys.removeClass('active');
+                                    self.filter.find('[data-filter-key="' + self.key +'"]').addClass('active');
                                 }
-                                self.filterKeys.removeClass('active');
-                                self.filter.find('[data-filter-key="' + self.key +'"]').addClass('active');
                             }
-                        }
 
-                        if (self.hasSubfilter) {
-                            if ( (self.key === 0 && self.skey === 0) || (self.key === '0' && self.skey === '0')) {
-                                self.filteredItems = self.items;
-                            }else if (self.skey === 0 || self.skey === '0') {
-                                self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"]'));
-                            }else if(self.key === 0 || self.key === '0') {
-                                self.filteredItems = e.toObject(self.filterContainer.find('[data-skey="' + self.skey + '"]'));
+                            if (self.hasSubfilter) {
+                                if ( (self.key === 0 && self.skey === 0) || (self.key === '0' && self.skey === '0')) {
+                                    self.filteredItems = self.items;
+                                }else if (self.skey === 0 || self.skey === '0') {
+                                    self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"]'));
+                                }else if(self.key === 0 || self.key === '0') {
+                                    self.filteredItems = e.toObject(self.filterContainer.find('[data-skey="' + self.skey + '"]'));
+                                }else {
+                                    self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"][data-skey="' + self.skey + '"]'));
+                                }
                             }else {
-                                self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"][data-skey="' + self.skey + '"]'));
+                                if (self.key === 0 || self.key === '0') {
+                                    self.filteredItems = self.items;
+                                }else {
+                                    self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"]'));
+                                }
+                            }
+
+                            let paginator = self.filterContainer.parent().find('.paginator');
+                            if (paginator && !self.paginator) {
+                                self.paginator.dom = paginator;
+                            }
+
+                            self.count = Math.ceil(self.filteredItems.length / self.dataCount);
+                            self.currentPage = 1;
+
+                            if (self.hasSearch) {
+                                e.search(k, {}, _this);
+                            }else {
+                                e.generatePages(k);
+                                e.filterItems2(k);
                             }
                         }else {
-                            if (self.key === 0 || self.key === '0') {
-                                self.filteredItems = self.items;
-                            }else {
-                                self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"]'));
-                            }
-                        }
-
-                        let paginator = self.filterContainer.parent().find('.paginator');
-                        if (paginator && !self.paginator) {
-                            self.paginator.dom = paginator;
-                        }
-
-                        self.count = Math.ceil(self.filteredItems.length / self.dataCount);
-                        self.currentPage = 1;
-
-                        if (self.hasSearch) {
-                            e.search(k, {}, _this);
-                        }else {
-                            e.generatePages(k);
-                            e.filterItems2(k);
+                            e.filterItems3(k, type, _this);
                         }
                     }else {
-                        e.filterItems3(k, type, _this);
+                        self.key = new Date(Date.parse(self.key));
+
+                        let filteredItems = [];
+                        Array.prototype.forEach.call(self.items, (v,k) => {
+                           let el = $(v.link);
+
+                           let dkey = el.attr('data-fkey');
+                           let dkeyDate = new Date(Date.parse(dkey));
+
+                           if (self.key.getMonth() === dkeyDate.getMonth()) {
+                               filteredItems.push(v)
+                           }
+                        });
+
+                        self.filteredItems = filteredItems;
+
+                        if (type === 'click') {
+                            if (el.hasClass('active')) {
+                                self.filterKeys.removeClass('active');
+                                self.key = 0;
+                            }else {
+                                self.filterKeys.removeClass('active');
+                                $(_this).addClass('active');
+                            }
+                        }
+
+                        if (self.key === 0 || self.key === '0') {
+                            self.filteredItems = self.items;
+                        }
+
+                        e.generatePages(k);
+                        e.filterItems2(k);
                     }
                 };
 
@@ -1317,6 +1398,14 @@ $(function () {
                 e.onResize(k);
             });
         },
+        inDateRange: (v, date, dateFrom, dateTo) => {
+            // date = new Date(date);
+            // dateFrom = new Date(dateFrom);
+            // dateTo = new Date(dateTo);
+
+            console.log(date >= dateFrom && date < dateTo);
+
+        },
         unhide2: (evt, k) => {
             let e = window.itemsFilter;
 
@@ -1344,6 +1433,8 @@ $(function () {
             }else {
                 if (self.hasPaginator && self.paginator.dom) {
                     self.paginator.dom.show();
+
+                    $(evt.target).hide();
                 }
             }
         },
@@ -1474,13 +1565,6 @@ $(function () {
                     self.paginator.dom = self.paginator.pagesContainer.parent();
                 }
 
-                // let filterItems = null;
-                // if (self.key == 0 || self.key == '0') {
-                //     filterItems = self.items;
-                // }else {
-                //     filterItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"]'));
-                // }
-
                 // TODO make as fn
                 if (self.hasSubfilter) {
                     if ( (self.key === 0 && self.skey === 0) || (self.key === '0' && self.skey === '0')) {
@@ -1496,11 +1580,12 @@ $(function () {
                     if (self.key === 0 || self.key === '0') {
                         self.filteredItems = self.items;
                     }else {
-                        self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"]'));
+                        if (!self.hasDateFilter) {
+                            self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"]'));
+
+                        }
                     }
                 }
-
-                // self.filteredItems = filterItems;
 
                 e.generatePages(k);
                 e.filterItems2(k);
@@ -1525,6 +1610,15 @@ $(function () {
             Array.prototype.forEach.call(self.items, (v) => {
                 $(v.link).hide();
             });
+
+            if (self.filteredItems.length <= 0) {
+                self.paginator.dom.hide();
+                self.emptyResult.show();
+                return;
+            }else {
+                self.paginator.dom.show();
+                self.emptyResult.hide();
+            }
 
             if (self.count > 1) {
                 Array.prototype.forEach.call(self.filteredItems.slice((self.currentPage-1)*self.dataCount, self.currentPage*self.dataCount), (v) => {
@@ -1571,6 +1665,15 @@ $(function () {
 
             self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + key + '"]'));
 
+            if (self.filteredItems.length <= 0) {
+                self.paginator.dom.hide();
+                self.emptyResult.show();
+                return;
+            }else {
+                self.paginator.dom.show();
+                self.emptyResult.hide();
+            }
+
             Array.prototype.forEach.call(self.filteredItems, (v) => {
                 $(v.link).css('display', 'flex');
             });
@@ -1584,15 +1687,18 @@ $(function () {
 
             let value = "";
             if (!self.searchVal) {
-                value = self.searchInp.val();
+                value = self.searchInp.val().toLowerCase();
             }else {
-                value = self.searchVal;
+                value = self.searchVal.toLowerCase();
             }
 
             self.searchVal = value;
 
             if (!value) {
                 self.hasSearch = false;
+                self.filteredItems = self.items;
+                e.generatePages(k);
+                e.filterItems2(k);
                 return;
             }
 
@@ -1601,24 +1707,31 @@ $(function () {
             let searchTitle = [];
             let searchDate = [];
             let searchDesc = [];
-            Array.prototype.forEach.call(self.items, (elem) => {
-                if (elem.title.includes(value) && (elem.key == key || key == 0 || key == '0')) searchTitle.push(elem);
-                if (elem.date.includes(value) && (elem.key == key || key == 0 || key == '0')) searchDate.push(elem);
-                if (elem.desc.includes(value) && (elem.key == key || key == 0 || key == '0')) searchDesc.push(elem);
-            });
+
+            if (!self.hasDateFilter) {
+                Array.prototype.forEach.call(self.items, (elem) => {
+                    if (elem.title.includes(value) && (elem.key == key || key == 0 || key == '0')) searchTitle.push(elem);
+                    if (elem.date.includes(value) && (elem.key == key || key == 0 || key == '0')) searchDate.push(elem);
+                    if (elem.desc.includes(value) && (elem.key == key || key == 0 || key == '0')) searchDesc.push(elem);
+                });
+            }else {
+                Array.prototype.forEach.call(self.items, (elem) => {
+                    console.log(elem);
+                    if (elem.title.includes(value) && (elem.key == key || key == 0 || key == '0')) searchTitle.push(elem);
+                    if (elem.desc.includes(value) && (elem.key == key || key == 0 || key == '0')) searchDesc.push(elem);
+                });
+            }
+
+            self.hasSearch = true;
 
             if (searchTitle.length > 0) {
                 self.filteredItems = searchTitle;
-                self.hasSearch = true;
             }else if(searchDate.length > 0) {
                 self.filteredItems = searchDate;
-                self.hasSearch = true;
             }else if(searchDesc.length > 0) {
                 self.filteredItems = searchDesc;
-                self.hasSearch = true;
             }else {
                 self.hasSearch = false;
-                // hide paginator & show empty result
             }
             e.generatePages(k);
             e.filterItems2(k);
@@ -1680,10 +1793,10 @@ $(function () {
             Array.prototype.forEach.call(items, (vv) => {
                 vv = $(vv);
                 obj.push({
-                    date: vv.find('.date').text(),
-                    title: vv.find('.title').text(),
+                    date: vv.find('.date').text().toLowerCase(),
+                    title: vv.find('.title').text().toLowerCase(),
                     key: vv.attr('data-fkey'),
-                    desc: vv.find('.desc').text(),
+                    desc: vv.find('.desc').text().toLowerCase(),
                     link: vv[0]
                 });
             });

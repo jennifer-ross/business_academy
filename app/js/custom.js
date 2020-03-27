@@ -1606,10 +1606,15 @@ $(function () {
             });
 
             if (self.filteredItems.length <= 0) {
-                self.paginator.dom.hide();
+                if (self.hasPaginator && self.paginator.dom.length > 0) {
+                    self.paginator.dom.hide();
+                }
                 self.emptyResult.show();
                 return;
             }else {
+                if (self.hasPaginator && self.paginator.dom.length > 0) {
+                    self.paginator.dom.show();
+                }
                 self.paginator.dom.show();
                 self.emptyResult.hide();
             }
@@ -1660,10 +1665,15 @@ $(function () {
             self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + key + '"]'));
 
             if (self.filteredItems.length <= 0) {
-                self.paginator.dom.hide();
+                if (self.hasPaginator && self.paginator.dom.length > 0) {
+                    self.paginator.dom.hide();
+                }
                 self.emptyResult.show();
                 return;
             }else {
+                if (self.hasPaginator && self.paginator.dom.length > 0) {
+                    self.paginator.dom.show();
+                }
                 self.paginator.dom.show();
                 self.emptyResult.hide();
             }
@@ -2442,7 +2452,7 @@ $(function () {
         slidesPerGroup: 1,
         touchStartPreventDefault: false,
         followFinger: false,
-        // on: {
+        on: {
         //     init: function () {
         //         let el = $(this.$el);
         //         let maxHeight = 0;
@@ -2472,10 +2482,32 @@ $(function () {
         //         }
         //         $(this.el).find('.swiper-wrapper').attr('style', 'height: ' + maxHeight + 'px;');
         //
+        //     },
+        //     transitionStart: function () {
+        //         let el = $(this.$el);
+        //         let maxHeight = 0;
+        //         let fixHeight = 5;
+        //
+        //         let active = $(this.el).find('.swiper-slide-active');
+        //
+        //         console.log(active[0].getBoundingClientRect());
+        //         $(this.el).attr('style', 'height: ' + active[0].getBoundingClientRect().height + 'px;');
+        //         console.log(active);
         //     }
-        // }
+        }
     });
 
-
+    // $('.swiper-container-seminar .swiper-wrapper').slick({
+    //     infinite: false,
+    //     vertical:true,
+    //     verticalSwiping:true,
+    //     slidesToShow: 1,
+    //     slidesToScroll: 1,
+    //     prevArrow: null,
+    //     nextArrow: null,
+    //     adaptiveHeight: true,
+    //     mobileFirst: true,
+    //     useTransform: false
+    // });
 
 });

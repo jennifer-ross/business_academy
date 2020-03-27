@@ -3983,6 +3983,53 @@ input[type="checkbox"]
     font-size: 16px
     line-height: 24px
 
+.section-mresult-2
+  .mresult-container
+    flex-direction: row-reverse
+    .action
+      margin-top: 30px
+      .btn
+        font-weight: normal
+        font-size: 18px
+        line-height: 30px
+        text-align: center
+        text-transform: uppercase
+        color: #FFFFFF
+        border-radius: 2px
+        background: $r
+        padding-left: 20px
+        padding-right: 20px
+        padding-top: 3px
+        padding-bottom: 3px
+    .text
+      padding-left: 0
+      padding-right: 15px
+      font-size: 24px
+      line-height: 33px
+      text-align: right
+      color: #202B38
+      small
+        font-weight: 400
+        font-size: 16px
+        line-height: 24px
+      span
+        font-size: 24px
+        line-height: 33px
+        text-transform: uppercase
+        color: $b
+      &:after
+        left: unset
+        right: 0
+    .left-path
+      text-align: right
+      justify-content: center
+      .title
+        font-weight: normal
+    .right-path
+      .bg
+        right: unset
+        left: -12%
+
 .mobile-par-container
   display: none
 .mobile-par
@@ -4450,7 +4497,7 @@ input[type="checkbox"]
       line-height: 24px
       font-style: italic
       text-align: right
-    .about-review
+    .about-seminar.about-review
       margin: 8px
       position: relative
       background: rgba(#283345, .8)
@@ -4634,10 +4681,17 @@ input[type="checkbox"]
 
 .seminar-slide3
   .seminar-banner-wrapper
+    .content
+      padding-top: 60px
+      padding-bottom: 57px
+    .seminar-name
+      margin-bottom: 26px
     .title
+      margin-bottom: 30px
       h1,h2,h3,h4,h5
         display: flex
         flex-direction: column
+        line-height: 73px
         span
           display: flex
           background: rgba(#9A003B, .7)
@@ -4913,8 +4967,407 @@ input[type="checkbox"]
           mix-blend-mode: normal
           background: rgba(#11558F, 0.6)
 
-a:hover,a:visited,a:focus
-  color: inherit
+.swiper-container-seminar
+
+.swiper-container-seminar .swiper-wrapper
+  transition-duration: 400ms !important
+
+.stock-block
+  margin-top: 60px
+  background-repeat: no-repeat
+  background-position: center
+
+.stock-block h2
+  font-weight: normal
+  font-size: 80px
+  line-height: 109px
+  text-align: center
+  text-transform: uppercase
+  color: #FFFFFF
+
+.stock_wrapper
+  display: grid
+  grid-template-columns: 1fr 1fr 1fr
+
+.stock__item
+  flex-grow: 1
+
+.stock__item .percent__block
+  font-weight: normal
+  font-size: 72px
+  line-height: 107px
+  text-align: center
+  color: #AD1250
+
+.stock__item .stock__descr
+  font-weight: normal
+  font-size: 18px
+  line-height: 30px
+  text-align: center
+  text-transform: uppercase
+  color: #11558F
+  white-space: pre-wrap
+  max-width: 365px
+  margin: 0 auto
+
+.cost-section .warning, .section-how-cost .warning
+  width: 100%
+  display: block
+  font-weight: normal
+  font-size: 16px
+  line-height: 22px
+  text-align: center
+  color: #202B38
+
+.section-who-list
+  .who-list-container
+    display: flex
+    .left-path, .right-path
+      width: calc(50% - 15px)
+      position: relative
+      display: flex
+      flex-direction: column
+      justify-content: center
+      &:after
+        content: ""
+        width: 100%
+        height: 100%
+        position: absolute
+        left: 0
+        top: 0
+      .content
+        z-index: 1
+      .bg
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        height: 100%
+        z-index: -1
+        img
+          width: 100%
+          height: 100%
+          object-fit: cover
+    .left-path
+      margin-right: 15px
+      padding-top: 60px
+      padding-bottom: 58px
+      text-align: right
+      padding-left: 122px
+      .content
+        font-size: 18px
+        line-height: 24px
+        color: #202B38
+        span
+          font-weight: 600
+          font-size: 24px
+          line-height: 33px
+          text-align: right
+          color: #11558F
+        p
+          display: flex
+          flex-direction: column
+    .right-path
+      margin-left: 15px
+      .content
+        padding-top: 83px
+        padding-bottom: 83px
+        padding-left: 132px
+        max-width: 565px
+        .title
+          font-weight: normal
+          font-size: 60px
+          line-height: 82px
+          text-transform: uppercase
+          color: #FFFFFF
+
+.section-program-container
+  display: flex
+  flex-direction: column
+  font-size: 16px
+  line-height: 24px
+  font-weight: normal
+  margin-top: 30px
+  span
+    font-weight: 600
+    font-size: 16px
+    line-height: 22px
+    color: #11558F
+  .heading
+    margin-bottom: 10px
+  p
+    margin-bottom: 0
+  li
+    margin-bottom: 10px
+    list-style: none
+    position: relative
+    padding-left: 1.25rem
+    &:before
+      content: "·"
+      display: inline-block
+      font-size: 36px
+      margin-bottom: -10px
+      color: $r
+      position: absolute
+      left: 0
+  ul,ol
+  .program-row
+    display: flex
+    margin-bottom: 30px
+  .program-cell
+    width: 50%
+    &:not(:last-child)
+      margin-right: 30px
+      width: calc(50% - 30px)
+  .program-column
+    display: flex
+    flex-direction: column
+
+.section
+  .author-block-container
+    .left
+      min-width: 642px
+    .right
+      .degree-block
+        font-size: 24px
+      .desc
+        font-weight: normal
+        font-size: 18px
+        line-height: 36px
+        color: #202B38
+        width: 70%
+        span
+          margin-top: 0
+          font-weight: normal
+          font-size: 24px
+          line-height: 33px
+          color: #11558F
+  .spelling
+    margin-top: 60px
+    text-align: right
+    display: flex
+    flex-direction: column
+    align-items: flex-end
+    font-weight: normal
+    font-size: 16px
+    line-height: 24px
+    text-align: right
+    color: #11558F
+    padding-left: 180px
+    font-style: italic
+    span
+      font-size: 24px
+      margin-right: 10px
+    .image
+      margin-bottom: 15px
+      align-self: center
+
+
+.section-program
+  padding-left: 0
+  padding-right: 0
+
+.section-program .about-block__wrap
+    margin-bottom: 25px
+    padding: 25px 0
+
+.section-program .download_btn
+  font-weight: normal
+  font-size: 18px
+  line-height: 30px
+  text-align: center
+  text-transform: uppercase
+  color: #FFFFFF
+  background: #A92C59
+  padding: 5px 30px
+
+.section-program .section-title.center h2
+  text-align: center
+
+.section-program .label-title:after
+  width: 0
+
+.section-program .top-row h4
+  font-weight: normal
+  font-size: 36px
+  line-height: 49px
+  text-align: center
+  color: #202B38
+
+.section-program .digit-spacer
+  margin-right: 15px
+
+.section-program .counter-wrapper
+  display: flex
+  justify-content: center
+  align-items: center
+
+.section-program .counter-background
+  padding: 30px 0
+  background: url('/img/saved_money_counter.png') center no-repeat
+  border: 1px solid #DDE8F1
+  background-size: cover
+
+.section-program .counter-wrapper .digit-block
+  font-family: Oswald, sans-serif
+  font-style: normal
+  font-weight: bold
+  font-size: 72px
+  text-align: center
+  color: #8F1154
+  display: flex
+  justify-content: center
+  align-items: center
+  position: relative
+  padding: 0 8px
+  margin: 0 4px
+
+.section-program .counter-wrapper .digit-block span, .section-program .counter-wrapper .digit-block img
+  position: relative
+  z-index: 40
+
+.section-program .counter-wrapper .digit-block:not(.no-bg):before
+  content: ''
+  display: block
+  position: absolute
+  width: 100%
+  height: 50%
+  background: #DDE8F1
+  border: 1px solid #DDE8F1
+  border-bottom: none
+  box-sizing: border-box
+  z-index: 39
+  top: 0
+  left: 0
+
+.section-program .counter-wrapper .digit-block:not(.no-bg):after
+  content: ''
+  display: block
+  position: absolute
+  width: 100%
+  height: 50%
+  background: #F6F9FB
+  border: 1px solid #DDE8F1
+  border-top: none
+  z-index: 39
+  bottom: 0
+  left: 0
+
+.button-row .getConsult
+  font-weight: normal
+  font-size: 18px
+  line-height: 30px
+  text-align: center
+  text-transform: uppercase
+  color: #FFFFFF
+  background: #8F1154
+  padding: 3px 60px
+  border-radius: 2px
+
+.button-row
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  margin-top: 30px
+
+.button-row.center
+  justify-content: center
+
+.section-program
+  .section-title
+    .center
+      h1, h2, h3, h4, h5
+
+.section-participate-form
+  padding-bottom: 15px
+  background: url(/img/participate_form_bg.png) no-repeat
+  background-size: cover
+
+.section-participate-form .subscribe-form-container
+  justify-content: space-between
+
+.section-participate-form .subscribe-form-container .subsc
+  margin-right: 60px !important
+  width: 55% !important
+
+.section-participate-form .subscribe-form-container
+  justify-content: center
+  form
+    width: 40%
+    display: flex
+    justify-content: center
+    .form-block
+      width: 100%
+      max-width: 500px
+      .form-wrapper
+        width: 100%
+
+.subscribe-form-container .subsc:after
+  height: 100% !important
+  top: 0 !important
+
+.section-participate-form .subsc h4
+  margin-bottom: 60px
+  padding-top: 40px
+
+.section-participate-form .subsc h4 .top-line, .section-participate-form .subsc h4 .subline
+  font-weight: normal
+  font-size: 36px
+  line-height: 49px
+  text-align: right
+  text-transform: uppercase
+  color: #11558F
+
+.section-participate-form .subsc h4 .subline
+  color: #8F1154
+
+.section-participate-form .count-container .item
+  max-width: 264px
+
+.section-participate-form .count-container .item .desc
+  font-weight: normal
+  font-size: 18px
+  line-height: 25px
+  text-align: center
+  color: #11558F
+  text-transform: none
+
+.section-participate-form .form-block
+  width: auto
+
+.section-participate-form .form-block ::placeholder
+  font-weight: normal
+  font-size: 18px
+  line-height: 30px
+  text-align: center
+  text-transform: uppercase
+  color: #3D444D
+  transition: opacity 0.35s ease-in-out
+
+.section-participate-form .form-block .form-wrapper
+  background: none
+  padding: 0
+
+.section-participate-form .form-block .header-row
+  margin-bottom: 30px
+
+.section-participate-form .form-block .header-row h4
+  font-style: normal
+  font-weight: 600
+  font-size: 24px
+  line-height: 33px
+  text-align: center
+  text-transform: uppercase
+  color: #11558F
+
+.section-participate-form .form-block .bottom-block
+  margin-top: 0
+  margin-bottom: 22px
+
+.section-participate-form .form-block .bottom-block button
+  margin-top: 0
+
+.section-timetable
 
 .mobile-image
   display: none

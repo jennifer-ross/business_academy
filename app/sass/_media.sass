@@ -477,8 +477,9 @@
         transform: scale(.8)
         right: 0
     .left-block
-      .content
-        padding-right: 50px
+      .action-ctn
+        .content
+          padding-right: 50px
     .action
       padding-right: 80px
 
@@ -3178,25 +3179,26 @@
           margin-right: 5px
     .left-block
       width: 100%
-      .content
-        padding: 66px 0
-        padding-bottom: 10px
-        .left-path
-          padding-right: 5px
-          width: 50%
-          &:after
-            right: -1px
+      .action-ctn
+        .content
+          padding: 66px 0
+          padding-bottom: 10px
+          .left-path
+            padding-right: 5px
+            width: 50%
+            &:after
+              right: -1px
+            .title
+              align-items: flex-start
+          .right-path
+            padding-left: 5px
+            width: 50%
+            .title
+              display: flex
+              align-items: flex-start
           .title
-            align-items: flex-start
-        .right-path
-          padding-left: 5px
-          width: 50%
-          .title
-            display: flex
-            align-items: flex-start
-        .title
-          font-size: 18px
-          min-height: unset
+            font-size: 18px
+            min-height: unset
     .right-block
       width: 100%
       overflow: hidden

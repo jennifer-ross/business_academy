@@ -1299,7 +1299,7 @@ $(function () {
                             }
 
                             if (self.hasSubfilter) {
-                                if ( (self.key === 0 && self.skey === 0) || (self.key === '0' && self.skey === '0')) {
+                                if ( (self.key === 0 || self.key === '0') && (self.skey === 0 || self.skey === '0')) {
                                     self.filteredItems = self.items;
                                 }else if (self.skey === 0 || self.skey === '0') {
                                     self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"]'));
@@ -1561,7 +1561,7 @@ $(function () {
 
                 // TODO make as fn
                 if (self.hasSubfilter) {
-                    if ( (self.key === 0 && self.skey === 0) || (self.key === '0' && self.skey === '0')) {
+                    if ( (self.key === 0 || self.key === '0') && (self.skey === 0 || self.skey === '0')) {
                         self.filteredItems = self.items;
                     }else if (self.skey === 0 || self.skey === '0') {
                         self.filteredItems = e.toObject(self.filterContainer.find('[data-fkey="' + self.key +'"]'));
@@ -2437,75 +2437,45 @@ $(function () {
     $(window).on('resize', onResizeMasonry);
     onResizeMasonry();
 
-   window.sl = new Swiper('.swiper-container-seminar', {
+   let verticalSeminarSlider = new Swiper('.swiper-container-seminar', {
         speed: 400,
         spaceBetween: 100,
         direction: 'vertical',
         loop: !1,
         centeredSlides: true,
         allowTouchMove: true,
-        passiveListeners: false,
+        passiveListeners: true,
+        mousewheel: {
+            forceToAxis: true,
+            invert: true,
+            releaseOnEdges: true,
+        },
+        parallax: true,
         simulateTouch: true,
         slidesPerView: 1,
         slidesPerGroup: 1,
-        touchStartPreventDefault: false,
-        followFinger: false,
         on: {
-        //     init: function () {
-        //         let el = $(this.$el);
-        //         let maxHeight = 0;
-        //         let fixHeight = 5;
-        //
-        //         let active = $(this.el).find('.swiper-slide-active');
-        //
-        //         Array.prototype.forEach.call(el.find('.swiper-slide'), v => {
-        //             let height = $(v).find('.container')[0].getBoundingClientRect().height;
-        //
-        //             console.log(v);
-        //
-        //             if ($(v).hasClass('.swiper-slide-active')) {
-        //                 maxHeight = height;
-        //             }
-        //
-        //             $(v).attr('style', 'height: ' + height + 'px;');
-        //         });
-        //
-        //         if (active.length > 0) {
-        //             $(this.el).find('.swiper-slide-active').attr('style', 'height: ' + maxHeight + 'px;');
-        //         }else {
-        //             let first = $(this.el).find('.swiper-slide').get(0);
-        //
-        //             maxHeight = maxHeight === 0 ? first.getBoundingClientRect().height : maxHeight;
-        //             $(first).attr('style', 'height: ' + maxHeight + 'px;');
-        //         }
-        //         $(this.el).find('.swiper-wrapper').attr('style', 'height: ' + maxHeight + 'px;');
-        //
-        //     },
-        //     transitionStart: function () {
-        //         let el = $(this.$el);
-        //         let maxHeight = 0;
-        //         let fixHeight = 5;
-        //
-        //         let active = $(this.el).find('.swiper-slide-active');
-        //
-        //         console.log(active[0].getBoundingClientRect());
-        //         $(this.el).attr('style', 'height: ' + active[0].getBoundingClientRect().height + 'px;');
-        //         console.log(active);
-        //     }
+            init: function () {
+                let el = $(this.$el);
+
+                let active = $(this.el).find('.swiper-slide').get(0);
+
+                $(this.el).attr('style', 'height: ' + $(active).find('.container').css('height'));
+                this.update();
+            },
+            transitionStart: function () {
+                let el = $(this.$el);
+
+                let active = $(this.el).find('.swiper-slide-active');
+
+                $(this.el).attr('style', 'height: ' + active.find('.container').css('height'));
+                this.update();
+            },
+            reachEnd: function () {
+            },
+            reachBeginning: function () {
+            }
         }
     });
-
-    // $('.swiper-container-seminar .swiper-wrapper').slick({
-    //     infinite: false,
-    //     vertical:true,
-    //     verticalSwiping:true,
-    //     slidesToShow: 1,
-    //     slidesToScroll: 1,
-    //     prevArrow: null,
-    //     nextArrow: null,
-    //     adaptiveHeight: true,
-    //     mobileFirst: true,
-    //     useTransform: false
-    // });
 
 });

@@ -1615,7 +1615,6 @@ $(function () {
                 if (self.hasPaginator && self.paginator.dom.length > 0) {
                     self.paginator.dom.show();
                 }
-                self.paginator.dom.show();
                 self.emptyResult.hide();
             }
 
@@ -1674,7 +1673,6 @@ $(function () {
                 if (self.hasPaginator && self.paginator.dom.length > 0) {
                     self.paginator.dom.show();
                 }
-                self.paginator.dom.show();
                 self.emptyResult.hide();
             }
 

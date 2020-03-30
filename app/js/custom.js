@@ -2433,9 +2433,8 @@ $(function () {
             });
         }
     };
-
-    $(window).on('resize', onResizeMasonry);
-    onResizeMasonry();
+    // $(window).on('resize', onResizeMasonry);
+    // onResizeMasonry();
 
    let verticalSeminarSlider = new Swiper('.swiper-container-seminar', {
         speed: 400,

@@ -387,6 +387,51 @@
           padding-left: 15px
           padding-right: 15px
 
+  .section
+    .author-block-container
+      .left
+        width: 50%
+      .right
+        width: 50%
+        .degree-block
+        .desc
+          width: 100%
+          span
+    .spelling
+      padding-left: 0
+      span
+      .image
+
+  .section-participate-form
+    .subscribe-form-container
+      form
+        width: 35%
+      .subsc
+        width: 65% !important
+
+  .section-timetable
+    .section-timetable-container
+      .left-path
+        width: calc(25% - 30px)
+      .right-path
+        width: calc(75% - 30px)
+        .content
+          .item
+            padding-right: 30px
+
+  .section-mresult-3
+    .mresult-container
+      .actions
+        .item
+          &:not(:last-child)
+            margin-right: 30px
+          .item-title
+            font-size: 30px
+
+  .seminar-map-container
+    .content
+      width: 60%
+
 // 1500px
 @media (max-width: 1499.98px)
   .header
@@ -960,6 +1005,250 @@
   .btn-calendar
     padding-left: 50px
     padding-right: 56px
+  .seminar-slide
+    .seminar-banner-wrapper
+      .seminar-name
+        margin-bottom: 30px
+      .title
+        h1,h2,h3,h4,h5
+          font-size: 46px
+          line-height: 64px
+      .content
+        padding-top: 40px
+        width: 45%
+        padding-right: 32px
+      .image-block
+        width: 65%
+
+  .seminar-slide2
+    .seminar-banner-wrapper
+      .seminar-about, .events-block
+        font-size: 20px
+        line-height: 26px
+      .descr-text
+        font-size: 28px
+        line-height: 32px
+      .content
+        padding-left: 30px
+        padding-right: 0
+      .about-seminar-wrap
+        padding-top: 30px
+        padding-bottom: 30px
+        justify-content: center
+
+  .seminar-slide3
+    .seminar-banner-wrapper
+      .about-review-title
+        font-size: 20px
+        line-height: 20px
+      .about-seminar.about-review, .about-review-author
+        font-size: 16px
+        line-height: 24px
+      .title
+        h1,h2,h3,h4,h5
+          span
+            &:not(:last-child)
+              margin-bottom: 10px
+      .image-block
+        width: 40%
+      .content
+        width: 65%
+
+  .form-block .form-wrapper
+    padding: 60px 20px 20px
+
+  .form-block .header-row h4
+    font-size: 28px
+    line-height: 36px
+
+  .form-block .header-row
+    margin-bottom: 30px
+
+  .form-block input,.form-block input::placeholder, .form-block select
+    font-size: 20px
+    padding: 5px 10px
+
+  .form-block .bottom-block
+    margin-top: 30px
+    margin-bottom: 30px
+
+  .about-seminar-container
+    .item
+      width: calc((100% / 3) - 30px)
+
+  .how-cost-container
+    .items-container
+      .item
+        &:not(:last-child)
+          margin-right: 15px
+      .item-cost1
+        .item-title
+          font-size: 20px
+          line-height: 28px
+        .content
+          font-size: 16px
+          line-height: 21px
+          ul
+            li
+              &:before
+                width: 14px
+                height: 14px
+      .item-cost2, .item-cost3
+        .subtitle
+          font-size: 16px
+          line-height: 21px
+        .content
+          padding-left: 5px
+        .item-title
+          font-size: 30px
+          line-height: 42px
+        .subtitle-cost, .item-cost
+          font-size: 30px
+          line-height: 44px
+        .action
+          .btn
+            font-size: 20px
+            line-height: 26px
+    .title
+      margin-right: 15px
+      font-size: 28px
+      line-height: 42px
+
+  .stock-block
+    h2
+      font-size: 60px
+      line-height: 89px
+
+  .stock__item
+    .percent__block
+      font-size: 60px
+      line-height: 87px
+    .stock__descr
+      font-size: 16px
+      line-height: 28px
+
+  .section-who-list
+    .who-list-container
+      .right-path
+        .content
+          padding-left: 120px
+          padding-right: 30px
+          display: flex
+          justify-content: center
+          align-items: center
+          .title
+            font-size: 48px
+            line-height: 62px
+      .left-path
+        padding-left: 0
+
+  .section
+    .spelling
+      margin-top: 30px
+      font-size: 14px
+      line-height: 20px
+      span
+        font-size: 20px
+    .author-block-container
+      .left
+        margin-left: 10px
+        margin-right: 0
+      .right
+        margin-left: 0
+        margin-right: 10px
+        width: 60%
+        .desc
+          font-size: 18px
+          line-height: 36px
+
+  .section-participate-form .subscribe-form-container .subsc
+    margin-right: 30px !important
+
+  .subscribe-form-container .subsc
+    &:after
+      right: -1rem
+
+  .section-participate-form
+    .subsc
+      h4
+        margin-bottom: 30px
+    .count-container
+      .item
+        max-width: 206px
+        .desc
+          font-size: 16px
+        .count
+          font-size: 42px
+
+  .section-participate-form .subscribe-form-container .subsc
+    width: 60% !important
+
+  .form-block .bottom-block button
+    font-size: 20px
+    line-height: 24px
+
+  .form-block .warning
+    font-size: 14px
+    line-height: 19px
+
+  .section-timetable
+    .section-timetable-container
+      .left-path
+        padding-right: 15px
+        width: calc(25% - 15px)
+        .title
+          font-size: 30px
+          line-height: 42px
+      .right-path
+        width: calc(75% - 15px)
+        padding-left: 15px
+        .content
+          .item
+            .city
+              font-size: 20px
+              line-height: 24px
+            .address, .date
+              font-size: 16px
+              line-height: 21px
+
+  .mresult-container .text
+    padding-left: 15px
+
+  .section-mresult-3
+    .mresult-container
+      .actions
+        .item
+          .btn
+            font-size: 16px
+            line-height: 21px
+          .item-title
+            font-size: 24px
+            line-height: 30px
+          .content
+            padding-left: 10px
+          &:not(:last-child)
+            margin-right: 15px
+      .title
+        font-size: 30px
+        line-height: 42px
+      .actions
+        .item
+          .image
+            width: 86px
+            height: 60px
+
+  .seminar-map-container
+    padding: 30px 0
+    .content
+      width: 65%
+      padding-left: 15px
+      padding-top: 15px
+      padding-bottom: 15px
+      font-size: 16px
+      line-height: 21px
+      span
+        font-size: 20px
+        line-height: 24px
 
 @media (max-width: 1400px)
   .book-detail-popup

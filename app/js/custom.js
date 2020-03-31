@@ -2477,4 +2477,8 @@ $(function () {
         }
     });
 
+   if (window.innerWidth < 1280) {
+       verticalSeminarSlider.destroy();
+   }
+
 });

@@ -1246,9 +1246,15 @@
       padding-bottom: 15px
       font-size: 16px
       line-height: 21px
+      &:before
+        height: calc(100% - 30px)
+        top: 15px
       span
         font-size: 20px
         line-height: 24px
+  .section-program
+    padding-left: 0
+    padding-right: 0
 
 @media (max-width: 1400px)
   .book-detail-popup
@@ -2024,6 +2030,8 @@
           left: -110%
 
   .section-program
+    padding-left: 0
+    padding-right: 0
     .counter-wrapper
       .digit-block
         font-size: 48px
@@ -2778,6 +2786,123 @@
   .btn-calendar
     padding-left: 40px
     padding-right: 46px
+  .about-seminar-container
+    .item
+      width: calc((100% / 2) - 30px)
+
+  .how-cost-container
+    .title
+      margin-right: 15px
+      width: 40%
+
+  .stock__item
+    .percent__block
+      font-size: 42px
+      line-height: 60px
+  .stock-block
+    h2
+      font-size: 48px
+      line-height: 72px
+
+  .section-who-list
+    .who-list-container
+      flex-direction: column-reverse
+      .left-path
+        width: 100%
+        padding-top: 0
+        padding-bottom: 0
+        margin-top: 15px
+      .right-path
+        width: 100%
+        .content
+          padding-top: 15px
+          padding-bottom: 15px
+          padding-right: 15px
+          max-width: 100%
+
+  .section-program-container
+    .program-row
+        flex-direction: column
+    .program-cell
+      width: 100%
+      &:not(:last-child)
+        margin-right: 0
+        width: 100%
+
+  .section-mresult-2
+    .mresult-container
+      flex-direction: column-reverse
+      .left-path
+        width: 100%
+      .right-path
+        width: 100%
+        .bg
+          left: -35%
+  .section
+    .spelling
+      margin-top: 15px
+    .author-block-container
+      .left
+        display: flex
+        width: 40%
+        align-items: flex-end
+        .mobile-image
+          display: block
+          max-width: 100%
+          object-fit: contain
+        .row-bg-wrap, .instance-1
+          display: none
+      .right
+        width: 60%
+        .desc
+          font-size: 16px
+          line-height: 19px
+          span
+            margin-top: 0
+
+  .section .author-block-container .right .degree-block
+    font-size: 20px
+
+  .degree-block .uppercase-name, .section .rtl-2 .right .desc .degree-block .uppercase-name
+    font-size: 24px
+    line-height: 28px
+
+  .section-program .counter-background
+    padding: 15px 0
+
+  .section-program
+    .top-row
+      h4
+        font-size: 24px
+        line-height: 36px
+
+  .subscribe-form-container .subsc:after
+    right: -2rem
+    
+  .section-participate-form .subsc h4
+    text-align: right
+    padding-top: 0
+
+  .section-participate-form .subsc h4 .subline, .section-participate-form .subsc h4 .top-line
+    font-size: 28px
+    line-height: 32px
+
+  .section-participate-form
+    .count-container
+      .item
+        .count
+          font-size: 36px
+
+  .section-timetable
+    .section-timetable-container
+      flex-direction: column
+
+  .seminar-map-container
+    .content
+      width: 100%
+      span
+        font-size: 18px
+        line-height: 21px
 
 // ≥1200px
 +media-breakpoint-down(lg)
@@ -3286,6 +3411,184 @@
   .btn-calendar
     padding-left: 30px
     padding-right: 36px
+  .seminar-slide
+    .seminar-banner-wrapper
+      .image-block
+        .image
+          max-width: 330px
+        .image-second
+          max-width: 80px
+      .seminar-action
+        .btn
+          font-size: 18px
+          padding-left: 40px
+          padding-right: 40px
+      .about-seminar
+        font-size: 18px
+        line-height: 21px
+      .title
+        h1,h2,h3,h4,h5
+          font-size: 28px
+          line-height: 32px
+      .seminar-name
+        font-size: 18px
+        line-height: 21px
+        span
+          font-size: 20px
+          line-height: 26px
+
+  .seminar-slide2
+    .seminar-banner-wrapper
+      .about-seminar-wrap
+        padding-top: 15px
+        padding-bottom: 15px
+      .descr-block, .schedule-block
+        flex-direction: column
+        .split-line
+          display: none
+        .seminar-about, .events-block
+          margin-top: 15px
+          position: relative
+          padding-left: 15px
+          font-size: 18px
+          &:before
+            content: ""
+            width: 2px
+            position: absolute
+            left: 0
+            top: 0
+            height: 100%
+            background: $r
+      .content
+        padding-left: 0
+
+  .seminar-slide3
+    .seminar-banner-wrapper
+      .about-seminar.about-review
+        font-size: 14px
+      .content
+        padding-right: 0
+
+  .about-seminar-container
+    .item
+      width: 100%
+      &:not(:last-child)
+        width: 100%
+        margin-right: 0
+      .content
+        &:before
+          height: 100%
+
+  .how-cost-container
+    flex-direction: column
+    .title
+      width: 100%
+      margin-right: 0
+    .items-container
+      margin-top: 15px
+      margin-left: auto
+      width: 80%
+      align-items: flex-end
+
+  .stock_wrapper
+    display: flex
+    flex-direction: column
+
+  .stocks-discount-container
+    .container.label-title
+      margin-top: 10px
+
+  .stock__item
+    display: flex
+    align-items: center
+    .percent__block
+      text-align: left
+      width: 20%
+    .stock__descr
+      text-align: left
+      margin-left: 10px
+
+  .section-who-list
+    .who-list-container
+      .right-path
+        .content
+          padding-left: 15px
+          span
+            font-size: 18px
+            line-height: 21px
+          .title
+            font-size: 36px
+            line-height: 42px
+
+  .section
+    .author-block-container
+      .left
+        display: none
+      .right
+        width: 100%
+
+  .section-program
+    .counter-wrapper
+      .no-bg
+        display: flex
+        align-items: flex-end
+        height: 100%
+      .digit-block
+        font-size: 36px
+        img
+          width: 20px
+
+  .button-row .getConsult
+    font-size: 16px
+    line-height: 24px
+    padding-top: 2px
+    padding-bottom: 2px
+    padding-left: 30px
+    padding-right: 30px
+
+  .section-program .digit-spacer
+    margin-right: 10px
+
+  .section-participate-form
+    .count-container
+      justify-content: center
+      flex-wrap: wrap
+      .item
+        margin: 0 15px
+        margin-bottom: 15px
+
+  .section-participate-form .subscribe-form-container .subsc
+    margin-right: 15px !important
+
+  .subscribe-form-container .subsc:after
+    right: -1rem
+
+  .section-participate-form .subsc h4
+    margin-bottom: 15px
+
+  .section-participate-form .subscribe-form-container form
+    margin-top: 30px
+
+  .section-timetable
+    .section-timetable-container
+      padding-top: 15px
+      padding-bottom: 15px
+      .right-path
+        margin-top: 15px
+        .action
+          margin-top: 15px
+        .content
+          .item
+            padding-right: 0
+            width: 100%
+            margin-right: 0
+            margin-bottom: 15px
+
+  .seminar-map-container
+    .content
+      padding-right: 15px
+      ul,ol
+        margin-top: 15px
 
 // ≥768px
 +media-breakpoint-down(sm)

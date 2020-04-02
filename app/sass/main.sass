@@ -5753,6 +5753,74 @@ input[type="checkbox"]
       &:before
         top: 12px
 
+.section-projects
+  .swiper-pagination
+    display: none
+  .swiper-button-next, .swiper-button-prev
+    display: flex
+    margin-top: 0
+    top: 50%
+    transform: translateY(-50%)
+    &:after
+      content: "\F141"
+      font-family: "Material Design Icons"
+      font-size: 72px
+      text-transform: uppercase
+      color: #8F1154
+  .swiper-button-next
+    right: -7.5%
+  .swiper-button-prev
+    left: -7.5%
+  .section-content
+    position: relative
+    padding-top: 30px
+    &:before
+      content: ""
+      position: absolute
+      left: -10%
+      top: 0
+      height: calc(50% + 18px)
+      width: 120%
+      border-top: 1px solid #DDE8F1
+      background: #F6F9FB
+
+.projects-container
+  .item
+    background: #FFFFFF
+    border: 1px solid #DDE8F1
+    display: flex
+    padding: 30px
+    padding-right: 60px
+    .deliver
+      width: 100%
+      height: 2px
+      background: $r
+      margin-top: 6px
+      margin-bottom: 7px
+    .desc
+      font-weight: normal
+      font-size: 18px
+      line-height: 30px
+      color: #202B38
+      span
+        font-weight: normal
+        font-size: 24px
+        line-height: 36px
+        color: #11558F
+    .title
+      font-weight: 600
+      font-size: 24px
+      line-height: 33px
+      text-transform: uppercase
+      color: #11558F
+      margin-bottom: 30px
+    .content
+      padding-left: 30px
+    .image
+      max-width: 630px
+      max-height: 480px
+
+
 .mobile-image
   display: none
 

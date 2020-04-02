@@ -902,6 +902,31 @@ $(function () {
         );
         desktopSwipers.push(articlesSwiper);
 
+        let projectSwiper = new Swiper('.section-projects .projects-container',
+            Object.assign({}, defaultSwiperOptions, {
+                slidesPerView: 1,
+                slidesPerGroup: 1,
+                spaceBetween: 30,
+                navigation: {
+                    nextEl: '.section-projects .swiper-button-next',
+                    prevEl: '.section-projects .swiper-button-prev',
+                },
+                pagination: {
+                    el: '.section-projects .swiper-pagination',
+                    type: 'bullets',
+                    clickable: true,
+                },
+                breakpoints: {
+                    0: {
+                        slidesPerView: 1,
+                        slidesPerGroup: 1,
+                        spaceBetween: 30,
+                    }
+                }
+            })
+        );
+        desktopSwipers.push(projectSwiper);
+
         if (window.innerWidth <= 1400) {
             swiperFix(desktopSwipers);
         }

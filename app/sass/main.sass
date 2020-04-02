@@ -5643,6 +5643,115 @@ input[type="checkbox"]
       width: calc((100% / 4) - 30px)
       max-width: calc((100% / 4) - 30px)
 
+.buhgline-container
+  display: flex
+  flex-direction: column
+  align-items: flex-end
+  .item
+    background: #FFFFFF
+    border: 1px solid #DDE8F1
+    box-shadow: 8px 8px 0px rgba(17, 85, 143, 0.603365)
+    position: relative
+    margin-bottom: 35px
+    max-width: 1158px
+    display: flex
+    span
+      font-size: 24px
+      line-height: 33px
+      text-align: right
+      color: #8F1154
+    .left
+      width: 65%
+    .right
+      width: 35%
+      display: flex
+      justify-content: flex-end
+      align-items: center
+    .desc
+      font-weight: normal
+      font-size: 18px
+      line-height: 25px
+      li
+        margin-bottom: 10px
+    .title
+      margin-bottom: 30px
+      font-weight: normal
+      font-size: 24px
+      line-height: 33px
+      color: #11558F
+    .bg
+      position: absolute
+      width: 100%
+      height: 100%
+      right: 0
+      top: 0
+      display: flex
+      justify-content: flex-end
+    .content
+      padding-top: 30px
+      padding-bottom: 25px
+      padding-left: 60px
+      padding-right: 30px
+      position: relative
+      display: flex
+      justify-content: flex-end
+  .no-bg
+    box-shadow: none
+    border: none
+    .content
+      padding-top: 0
+      padding-bottom: 0
+      padding-right: 0
+    .bg
+      display: none
+  .item-left
+    margin-right: auto
+
+.text-right
+  text-align: right
+
+.custom-list
+  li
+    position: relative
+    list-style: none
+    padding-left: 23px
+    &:before
+      display: inline-block
+      content: ""
+      width: 16px
+      height: 16px
+      border: 2px solid $r
+      border-radius: 50%
+      position: absolute
+      top: 5px
+      left: 0
+
+.section-text-bg
+  .container
+    display: flex
+    justify-content: center
+  .bg
+    width: calc(100% + 370px)
+    left: -185px
+    position: absolute
+    height: 100%
+    top: 0
+    z-index: -1
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+  .content
+    max-width: 1026px
+    padding-top: 40px
+    padding-bottom: 104px
+    font-weight: normal
+    font-size: 24px
+    line-height: 37px
+  .custom-list
+    li
+      &:before
+        top: 12px
 
 .mobile-image
   display: none

@@ -6048,6 +6048,110 @@ input[type="checkbox"]
       height: 100%
       object-fit: cover
 
+.calend_content.non_price i.price_col
+  display: none
+
+.calendar-wrap
+  display: flex
+  position: relative
+  width: 100%
+  justify-content: center
+
+.calendar-wrap:not(.calendar_show)
+  padding-left: 60px
+  padding-right: 60px
+
+.section-par .section-par-container .container-par
+  .calendar-content
+    &:first-child
+      .calendar-prev
+        display: block
+        position: absolute
+        top: 50%
+        left: -7.5%
+        transform: translateY(-50%)
+        &:before
+          content: "\F141"
+          font-family: "Material Design Icons"
+          font-size: 72px
+          line-height: 84px
+          text-transform: uppercase
+          color: #8F1154
+    &:last-child
+      .calendar-next
+        display: block
+        position: absolute
+        top: 50%
+        right: -7.5%
+        transform: translateY(-50%)
+        &:before
+          content: "\F142"
+          font-family: "Material Design Icons"
+          font-size: 72px
+          line-height: 84px
+          text-transform: uppercase
+          color: #8F1154
+  .calendar-caption
+    font-weight: 600
+    font-size: 18px
+    line-height: 25px
+    text-align: center
+    color: #11558F
+    margin-bottom: 15px
+    width: 100%
+    display: block
+  .calendar-content
+    &:not(:last-child)
+      margin-right: 60px
+  .calendar-row span a, .calendar_blocked a, .calendar_otherMonth a,
+  .calendar-row span, .calendar_blocked, .calendar_otherMonth
+    font-weight: 600
+    font-size: 18px
+    line-height: 25px
+    text-align: right
+    letter-spacing: 4.55px
+    color: #11558F
+  .calendar-row span, .calendar_blocked, .calendar_otherMonth
+    min-width: 35px
+    height: 35px
+    padding: 0 3px
+    margin: 0 2px
+    display: inline-block
+  .calendar-head
+    background: #F6F9FB
+    span
+      font-weight: bold
+      font-size: 16px
+      line-height: 22px
+      text-align: center
+      letter-spacing: -0.3px
+      text-transform: uppercase
+      color: #202B38
+      mix-blend-mode: normal
+      opacity: 0.51
+      width: 35px
+      height: 35px
+      padding: 0 3px
+      margin: 0 2px
+      display: inline-block
+  .calendar-caption
+    font-weight: 600
+    font-size: 18px
+    line-height: 25px
+    text-align: center
+    color: #11558F
+  .busy
+    border: 1px solid $r
+  .calendar-next, .calendar-prev
+    display: none
+
+.calendar-wrap-container
+  display: flex
+  justify-content: center
+
+.calendar-wrap.calendar_show
+  border-bottom: 2px solid #DDE8F1
+
 .mobile-image
   display: none
 

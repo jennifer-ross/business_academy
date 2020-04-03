@@ -32,6 +32,7 @@
   <script src="/js/viewer.min.js"></script>
   <script src="/js/parallax.min.js"></script>
   <script src="/js/masonry.pkgd.min.js"></script>
+  <script src="/js/jquery-asDatepicker.js"></script>
   <script src="/js/custom.js"></script>
 
 </head>
@@ -263,6 +264,24 @@
                         </div>
                         <div class="action">
                             <a href="" class="btn">запишитесь<span class="mdi mdi-chevron-right"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    let calendars = {"calendar":[["20200601","20200601","title","#link"],["20200603","20200603","title","#link"]]},
+                        current_date = 20200403;
+                </script>
+                <div class="container-par no-bg calendars">
+                    <div class="calend_block">
+                        <div class="calend_content non_price">
+                            <div class="calend_scroll">
+                                <div class="calendar-wrap-container">
+                                    <span class="calendar-prev">prev</span>
+                                    <div id="calendar" class="calendar_hide"></div>
+
+                                    <span class="calendar-next">next</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

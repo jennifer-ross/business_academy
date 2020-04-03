@@ -5818,10 +5818,175 @@ input[type="checkbox"]
     .content
       padding-left: 30px
     .image
+      display: flex
+      justify-content: center
+      align-items: center
       max-width: 630px
+      min-width: 630px
       max-height: 480px
       img
+        width: 100%
+        height: 100%
         object-fit: contain
+
+.section-par
+  .section-par-container
+    .section-left-par
+      .container-par
+        padding-left: 10px
+      span
+        font-weight: 600
+        font-size: 18px
+        line-height: 25px
+        color: #11558F
+        margin-bottom: 15px
+
+.container-par.no-bg
+  border: 0 !important
+
+.section-par
+  .section-par-container
+    .button-row
+      margin-top: 0
+    .show-all, .show-all
+      font-size: 24px
+      line-height: 28px
+      text-align: center
+      text-transform: uppercase
+      color: #8F1154
+    .section-right-par
+      .container-par
+        .seminar-head, .item
+          position: relative
+          padding: 15px 30px
+          display: flex
+          justify-content: center
+          .action
+            display: flex
+            align-items: center
+            justify-content: center
+          .btn
+            font-weight: bold
+            font-size: 18px
+            line-height: 25px
+            text-align: center
+            text-transform: uppercase
+            color: #FFFFFF
+            border: 1px solid #FFFFFF
+            box-sizing: border-box
+            border-radius: 2px
+            display: flex
+            align-items: center
+            padding-left: 52px
+            padding-right: 5px
+            span
+              font-size: 30px
+              line-height: normal
+              color: #FFFFFF
+              margin-left: 15px
+          .date-container
+            margin-right: 30px
+            font-weight: normal
+            font-size: 28px
+            line-height: 33px
+            color: #FFFFFF
+            max-width: 254px
+            .city
+              font-size: 24px
+            .address
+              font-size: 18px
+          .title-container
+            margin-right: 30px
+            max-width: 535px
+          .subtitle
+            font-weight: 600
+            font-size: 16px
+            line-height: 22px
+            text-transform: uppercase
+            color: #FFFFFF
+          .title
+            font-weight: bold
+            font-size: 36px
+            line-height: 49px
+            display: flex
+            align-items: center
+            text-transform: uppercase
+            color: #FFFFFF
+          .bg
+            position: absolute
+            left: 0
+            top: 0
+            width: 100%
+            height: 100%
+            z-index: -2
+            img
+              width: 100%
+              height: 100%
+              object-fit: cover
+          &:after
+            content: ""
+            position: absolute
+            left: 0
+            top: 0
+            width: 100%
+            height: 100%
+            background: rgba(#89093B, 0.7)
+            z-index: -1
+        .item
+          border: 1px solid #8F1154
+          &:not(:last-child)
+            margin-bottom: 15px
+          .cost-container
+            font-size: 18px
+            line-height: 25px
+            text-align: right
+            margin-bottom: 25px
+            .cost
+              color: $b
+              font-size: 24px
+          .bg
+            width: 100%
+          .action
+            display: flex
+            flex-direction: column
+            align-items: flex-end
+          .btn
+            color: $r
+            border: 1px solid $r
+            span
+              color: $r
+          .title-container
+            max-width: 535px
+          .date-container
+            color: #11558F
+            max-width: 254px
+          .subtitle
+            font-weight: 600
+            font-size: 16px
+            line-height: 22px
+            text-transform: uppercase
+            color: #8F1154
+            margin-bottom: 10px
+          .title
+            font-weight: normal
+            font-size: 16px
+            line-height: 22px
+            color: #11558F
+            display: block
+            text-transform: none
+            span
+              font-weight: bold
+              font-size: 24px
+              text-transform: uppercase
+          &:after
+            background: linear-gradient(270deg, #FFFFFF 10.91%, rgba(255, 255, 255, 0.0001) 91.53%)
+
+.sbtl-list
+  font-weight: 600
+  font-size: 24px
+  line-height: 33px
+  color: #11558F
+  margin-bottom: 15px
 
 
 .mobile-image

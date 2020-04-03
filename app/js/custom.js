@@ -2288,7 +2288,7 @@ $(function () {
                     mmBreackpoint: popup.attr('data-mm-breackpoint') || false,
                     closeAfter: popup.attr('data-close-after') || false,
                     callerId: popup[0].id,
-                    idCustom: el.attr('data-hidden-id') || false
+                    idCustom: el && el.length > 0 ? el.attr('data-hidden-id') : false
                 };
                 if (e.replaceContainer === null) {
                     e.replaceContainer = e.create(options);
@@ -2358,7 +2358,7 @@ $(function () {
                 mmBreackpoint: el.attr('data-mm-breackpoint') || false,
                 closeAfter: el.attr('data-close-after') || false,
                 callerId: el.attr('data-caller') || false,
-                idCustom: $(el.attr('data-caller')).attr('data-hidden-id') || false
+                idCustom: $(el.attr('data-caller')) && $(el.attr('data-caller')).length > 0 ? $(el.attr('data-caller')).attr('data-hidden-id') : false
             });
             v.remove();
             e.update();

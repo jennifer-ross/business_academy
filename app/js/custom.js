@@ -2637,37 +2637,40 @@ $(function () {
     });
 
    if (window.innerWidth < 1280) {
-       verticalSeminarSlider.destroy();
+       if (verticalSeminarSlider && verticalSeminarSlider.length && verticalSeminarSlider.length > 0) {
+           verticalSeminarSlider.destroy();
+       }
    }
 
-    function refresh_calendar(calendar_id) {
-        $("span[data-date][data-id='" + calendar_id + "']").each(function() {
-            $(this).removeClass().addClass("calendar_blocked");
-            let busy = false;
-            let title = [];
-            let link = "";
-            let date = $(this).data("date");
-            $.each(calendars[calendar_id], function( index, value ) {
-                if ((date>=value[0]) && (date<=value[1])) {
-                    link = value[3];
-                    title.push(value[2]);
-                }
-                busy = busy || ((date>=value[0]) && (date<=value[1]));
-            });
-            if ((busy) && (date >= current_date))  {
-                $(this).addClass("busy");
-                $(this).html('<a href="/' + link + '" title="' + title.join('; ') + '">' + $(this).html() + '</a>');
+    let dp = null;
+
+    if (window.innerWidth < 830) {
+        $.each(calendars, function( calendar_id, value ) {
+            try {
+                $('#' + calendar_id).asDatepicker('destroy');
+            }catch (e) {
             }
-            if ((busy) && (date < current_date))  {
-                $(this).addClass("old_busy");
-                $(this).html('<a href="/' + link + '" title="' + title.join('; ') + '">' + $(this).html() + '</a>');
+            dp = $('#' + calendar_id).asDatepicker({displayMode: 'inline', mode: 'single', calendars: 1, lang: 'ru', keyboard: false, calendar_id: calendar_id});
+            refresh_calendar(calendar_id);
+        });
+    }else if (window.innerWidth < 1500) {
+        $.each(calendars, function( calendar_id, value ) {
+            try {
+                $('#' + calendar_id).asDatepicker('destroy');
+            }catch (e) {
             }
+            dp = $('#' + calendar_id).asDatepicker({displayMode: 'inline', mode: 'multiple', calendars: 2, lang: 'ru', keyboard: false, calendar_id: calendar_id});
+            refresh_calendar(calendar_id);
+        });
+    }else {
+        $.each(calendars, function( calendar_id, value ) {
+            try {
+                $('#' + calendar_id).asDatepicker('destroy');
+            }catch (e) {
+            }
+            dp = $('#' + calendar_id).asDatepicker({displayMode: 'inline', mode: 'multiple', calendars: 3, lang: 'ru', keyboard: false, calendar_id: calendar_id});
+            refresh_calendar(calendar_id);
         });
     }
-
-    $.each(calendars, function( calendar_id, value ) {
-        $('#' + calendar_id).asDatepicker({displayMode: 'inline', mode: 'multiple', calendars: 3, lang: 'ru', keyboard: false, calendar_id: calendar_id});
-        refresh_calendar(calendar_id);
-    });
 
 });

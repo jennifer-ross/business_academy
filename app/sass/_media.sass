@@ -1390,6 +1390,27 @@
       padding-bottom: 30px
       font-size: 20px
       line-height: 32px
+  .section-par
+    .section-par-container
+      .section-right-par
+        .container-par
+          .item, .seminar-head
+            flex-direction: column
+            align-items: flex-start
+            .date-container
+              max-width: 100%
+              margin-bottom: 15px
+            .title-container
+              max-width: 100%
+              margin-bottom: 15px
+          .item
+            .action
+              flex-direction: row
+              max-width: 100%
+            .cost-container
+              margin-bottom: 0
+              text-align: left
+              margin-right: 60px
 
 @media (max-width: 1400px)
   .book-detail-popup
@@ -3884,6 +3905,81 @@
         width: 100%
         margin-left: 0
         margin-right: 0
+  .section-par
+    .section-par-container
+      .section-right-par
+        .container-par
+          .seminar-head
+            .action
+              justify-content: center
+              display: flex
+              .btn
+                width: 100%
+                justify-content: center
+            .title
+              font-size: 18px
+              line-height: 25px
+              margin-bottom: 5px
+          .item, .seminar-head
+            padding: 5px 10px
+            .action
+              width: 100%
+              max-width: 100%
+            .title
+              margin-right: 0
+              width: 100%
+              max-width: 100%
+            .subtitle
+              font-size: 10px
+              line-height: 14px
+              margin-bottom: 10px
+            .title-container
+              margin-right: 0
+            .date-container
+              width: 100%
+              margin-right: 0
+              max-width: 100%
+              display: flex
+              flex-direction: row
+              justify-content: space-between
+              font-size: 16px
+              line-height: 22px
+              margin-bottom: 5px
+              .city
+                font-size: 16px
+                line-height: 22px
+              .address
+                display: none
+          .item
+            .action
+              justify-content: space-between
+            .btn
+              padding-left: 15px
+              span
+                margin-left: 0
+            .cost-container
+              font-size: 16px
+              line-height: 19px
+              margin-right: 10px
+              .cost
+                font-size: 18px
+                line-height: 25px
+            .title
+              font-size: 14px
+              line-height: 16px
+              span
+                font-size: 16px
+                line-height: 16px
+
+  .section-par .section-par-container .container-par .calendar-content:last-child .calendar-next:before,  .section-par .section-par-container .container-par .calendar-content:first-child .calendar-prev:before
+    font-size: 32px
+    line-height: normal
+
+  .section-par .section-par-container .container-par .calendar-content:last-child .calendar-next
+    right: 0
+  .section-par .section-par-container .container-par .calendar-content:first-child .calendar-prev
+    left: 0
+
 
 // ≥768px
 +media-breakpoint-down(sm)
@@ -5503,6 +5599,11 @@
   .section-step-2
     .step-container
       margin-top: 15px
+  .section-par .section-par-container .show-all
+    font-size: 20px
+  .sbtl-list
+    font-size: 18px
+    line-height: 25px
 
 // ≥576px
 +media-breakpoint-down(xs)
@@ -6530,6 +6631,10 @@
         margin-right: 10px
         margin-bottom: 10px
 
+@media (max-width: 500px)
+  .calendar-wrap-container
+    padding-left: 10px
+    padding-right: 10px
 @media (max-width: 480px)
   .container-auditors-partners .swiper-container-audit-partners
     width: 90%
@@ -6656,6 +6761,10 @@
       height: 100%
     .bg
       object-position: 74%
+  .section-par .section-par-container .container-par .calendar-content:first-child .calendar-prev
+    left: -20px
+  .section-par .section-par-container .container-par .calendar-content:last-child .calendar-next
+    right: -20px
 
 /*==========  Mobile First  ==========*/
 

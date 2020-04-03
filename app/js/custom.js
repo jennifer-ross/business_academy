@@ -2603,11 +2603,11 @@ $(function () {
         centeredSlides: true,
         allowTouchMove: true,
         passiveListeners: true,
-        // mousewheel: {
-            // forceToAxis: true,
-            // invert: true,
-            // releaseOnEdges: true,
-        // },
+        mousewheel: {
+            forceToAxis: true,
+            invert: true,
+            releaseOnEdges: true,
+        },
         parallax: true,
         simulateTouch: true,
         slidesPerView: 1,

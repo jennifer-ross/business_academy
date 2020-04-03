@@ -2266,7 +2266,7 @@ $(function () {
 
             e.onResize();
         },
-        show: (popupId) => {
+        show: (popupId, el) => {
             let e = window.popup;
 
             let popup = $('#' + popupId);
@@ -2288,7 +2288,7 @@ $(function () {
                     mmBreackpoint: popup.attr('data-mm-breackpoint') || false,
                     closeAfter: popup.attr('data-close-after') || false,
                     callerId: popup[0].id,
-                    idCustom: popup.attr('data-hidden-id')
+                    idCustom: el.attr('data-hidden-id') || false
                 };
                 if (e.replaceContainer === null) {
                     e.replaceContainer = e.create(options);
@@ -2358,7 +2358,7 @@ $(function () {
                 mmBreackpoint: el.attr('data-mm-breackpoint') || false,
                 closeAfter: el.attr('data-close-after') || false,
                 callerId: el.attr('data-caller') || false,
-                idCustom: el.attr('data-hidden-id') || false
+                idCustom: $(el.attr('data-caller')).attr('data-hidden-id') || false
             });
             v.remove();
             e.update();
@@ -2486,7 +2486,7 @@ $(function () {
                 }
 
                 let popupId = el.attr('data-popup-target');
-                e.show(popupId);
+                e.show(popupId, el);
             });
 
             inputsUpdate();
@@ -2597,8 +2597,8 @@ $(function () {
             });
         }
     };
-    // $(window).on('resize', onResizeMasonry);
-    // onResizeMasonry();
+    $(window).on('resize', onResizeMasonry);
+    onResizeMasonry();
 
    let verticalSeminarSlider = new Swiper('.swiper-container-seminar', {
         speed: 400,

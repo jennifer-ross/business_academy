@@ -22,3 +22,7 @@ function refresh_calendar(calendar_id) {
         }
     });
 }
+
+function select_date() {
+    return false;
+}

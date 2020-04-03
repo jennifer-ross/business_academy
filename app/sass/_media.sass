@@ -476,7 +476,6 @@
     height: 32px
   .section-par .section-par-container .container-par .calendar-content:not(:last-child)
     margin-right: 30px
-
   .section-par
     .section-par-container
       .section-right-par
@@ -498,6 +497,11 @@
               span
                 font-size: 20px
                 line-height: 28px
+  .section-max-block
+    .title
+      font-size: 32px
+    .image
+      margin-left: 60px
 
 // 1500px
 @media (max-width: 1499.98px)
@@ -1411,6 +1415,20 @@
               margin-bottom: 0
               text-align: left
               margin-right: 60px
+  .section-max-block
+    .text
+      padding-left: 15px
+      padding-top: 15px
+      padding-bottom: 15px
+    .desc
+      font-size: 18px
+      line-height: 23px
+    .title
+      font-size: 26px
+      padding-right: 15px
+      span
+        font-size: 36px
+        line-height: 54px
 
 @media (max-width: 1400px)
   .book-detail-popup
@@ -2346,6 +2364,20 @@
   .section-text-bg
     .content
       max-width: 826px
+  .section-max-block
+    .title
+      font-size: 21px
+      span
+        font-size: 28px
+        line-height: 42px
+    .content
+      li
+        margin-bottom: 7px
+    .desc
+      font-size: 16px
+    .image
+      margin-left: 30px
+      width: 216px
 
 
 @media (max-width: 1200px)
@@ -3199,6 +3231,18 @@
       .bg
         img
           height: auto
+  .section-max-block
+    .content
+      flex-direction: column
+      .title
+        z-index: 1
+        width: 100%
+      .text
+        width: 100%
+        position: unset
+        &:after
+          content: none
+
 
 // ≥1200px
 +media-breakpoint-down(lg)
@@ -3979,7 +4023,9 @@
     right: 0
   .section-par .section-par-container .container-par .calendar-content:first-child .calendar-prev
     left: 0
-
+  .section-max-block
+    .image
+      display: none
 
 // ≥768px
 +media-breakpoint-down(sm)
@@ -6564,6 +6610,22 @@
   .section-tariff-plan
     .section-action
       margin-top: 30px
+  .section-max-block
+    .content
+      li
+        margin-bottom: 5px
+    .text
+      padding-left: 5px
+      padding-top: 10px
+      padding-bottom: 10px
+    .desc
+      font-size: 14px
+      line-height: 19px
+    .title
+      font-size: 24px
+      span
+        font-size: 36px
+        line-height: 49px
 
 @media (max-width: 565px)
   .discounts-container

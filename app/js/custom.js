@@ -126,13 +126,15 @@ Date.prototype.format = function (mask, utc) {
     return dateFormat(this, mask, utc);
 };
 
-$.asDatepicker.localize("ru", {
-    days: ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"],
-    daysShort: [ "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
-    daysMin: [ 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', "Вс"],
-    months: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
-    monthsShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
-});
+if ($.asDatepicker) {
+    $.asDatepicker.localize("ru", {
+        days: ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"],
+        daysShort: [ "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+        daysMin: [ 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', "Вс"],
+        months: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+        monthsShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
+    });
+}
 
 $(function () {
 
@@ -2285,7 +2287,8 @@ $(function () {
                     html: popup[0].innerHTML,
                     mmBreackpoint: popup.attr('data-mm-breackpoint') || false,
                     closeAfter: popup.attr('data-close-after') || false,
-                    callerId: popup[0].id
+                    callerId: popup[0].id,
+                    idCustom: popup.attr('data-hidden-id')
                 };
                 if (e.replaceContainer === null) {
                     e.replaceContainer = e.create(options);
@@ -2297,6 +2300,7 @@ $(function () {
                     e.replaceContainer.attr('data-mm-breackpoint', options.mmBreackpoint);
                     e.replaceContainer.attr('data-close-after', options.closeAfter);
                     e.replaceContainer.attr('data-caller', options.callerId);
+                    e.replaceContainer.attr('data-hidden-id', options.idCustom)
                 }
                 popup = e.replaceContainer;
                 replace = true;
@@ -2353,7 +2357,8 @@ $(function () {
                 html: v.innerHTML,
                 mmBreackpoint: el.attr('data-mm-breackpoint') || false,
                 closeAfter: el.attr('data-close-after') || false,
-                callerId: el.attr('data-caller') || false
+                callerId: el.attr('data-caller') || false,
+                idCustom: el.attr('data-hidden-id') || false
             });
             v.remove();
             e.update();
@@ -2361,7 +2366,7 @@ $(function () {
         create: (options) => {
             let e = window.popup;
 
-            e.container.append("<div class='" + options.className + (e.parseBool(options.className) == false ? '' : ' closable') + "' id='" + options.id + "' data-caller='" + options.callerId + "' data-close-after='" + options.closeAfter + "' data-replace='" + options.replace + "' data-mm-breackpoint='" + options.mmBreackpoint + "' data-offset-type='" + options.offsetType + "' data-offset='" + options.offset + "'>" + options.html + "</div>");
+            e.container.append("<div class='" + options.className + (e.parseBool(options.className) == false ? '' : ' closable') + "' id='" + options.id + "' data-hidden-id='" + options.idCustom + "' data-caller='" + options.callerId + "' data-close-after='" + options.closeAfter + "' data-replace='" + options.replace + "' data-mm-breackpoint='" + options.mmBreackpoint + "' data-offset-type='" + options.offsetType + "' data-offset='" + options.offset + "'>" + options.html + "</div>");
 
             e.update();
 
@@ -2644,33 +2649,31 @@ $(function () {
 
     let dp = null;
 
-    if (window.innerWidth < 830) {
-        $.each(calendars, function( calendar_id, value ) {
-            try {
-                $('#' + calendar_id).asDatepicker('destroy');
-            }catch (e) {
-            }
-            dp = $('#' + calendar_id).asDatepicker({displayMode: 'inline', mode: 'single', calendars: 1, lang: 'ru', keyboard: false, calendar_id: calendar_id});
-            refresh_calendar(calendar_id);
-        });
-    }else if (window.innerWidth < 1500) {
-        $.each(calendars, function( calendar_id, value ) {
-            try {
-                $('#' + calendar_id).asDatepicker('destroy');
-            }catch (e) {
-            }
-            dp = $('#' + calendar_id).asDatepicker({displayMode: 'inline', mode: 'multiple', calendars: 2, lang: 'ru', keyboard: false, calendar_id: calendar_id});
-            refresh_calendar(calendar_id);
-        });
-    }else {
-        $.each(calendars, function( calendar_id, value ) {
-            try {
-                $('#' + calendar_id).asDatepicker('destroy');
-            }catch (e) {
-            }
-            dp = $('#' + calendar_id).asDatepicker({displayMode: 'inline', mode: 'multiple', calendars: 3, lang: 'ru', keyboard: false, calendar_id: calendar_id});
-            refresh_calendar(calendar_id);
-        });
-    }
+   try {
+       if (window.innerWidth < 830) {
+           $.each(calendars, function( calendar_id, value ) {
+               $('#' + calendar_id).asDatepicker('destroy');
+               dp = $('#' + calendar_id).asDatepicker({displayMode: 'inline', mode: 'single', calendars: 1, lang: 'ru', keyboard: false, calendar_id: calendar_id});
+               refresh_calendar(calendar_id);
+           });
+       }else if (window.innerWidth < 1500) {
+           $.each(calendars, function( calendar_id, value ) {
+               $('#' + calendar_id).asDatepicker('destroy');
+               dp = $('#' + calendar_id).asDatepicker({displayMode: 'inline', mode: 'multiple', calendars: 2, lang: 'ru', keyboard: false, calendar_id: calendar_id});
+               refresh_calendar(calendar_id);
+           });
+       }else {
+           $.each(calendars, function( calendar_id, value ) {
+               try {
+                   $('#' + calendar_id).asDatepicker('destroy');
+               }catch (e) {
+               }
+               dp = $('#' + calendar_id).asDatepicker({displayMode: 'inline', mode: 'multiple', calendars: 3, lang: 'ru', keyboard: false, calendar_id: calendar_id});
+               refresh_calendar(calendar_id);
+           });
+       }
+   }catch (e) {
+
+   }
 
 });

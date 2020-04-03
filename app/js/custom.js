@@ -2599,6 +2599,9 @@ $(function () {
     };
     $(window).on('resize', onResizeMasonry);
     onResizeMasonry();
+    setTimeout(function () {
+        $(window).trigger('resize');
+    },1500);
 
    let verticalSeminarSlider = new Swiper('.swiper-container-seminar', {
         speed: 400,
